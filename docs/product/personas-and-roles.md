@@ -2,7 +2,7 @@
 doc-id: PROD-PERSONAS
 title: Personas and Role Model
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Product Owner (accountable); operational validation with the acting operations authority (OQ-003 closed)
 applies-to: full enterprise target; pilot detail
@@ -26,6 +26,8 @@ Personas inform workflow design. System roles implement least privilege. Authori
 All personas below are **ASSUMED** from hospitality practice and the accepted pilot profile. They are validated by the acting operations authority (Product Owner; OQ-003 closed) through role-played workflow scenarios before the reference release; real-hotel validation and on-site walkthroughs are First-Property Deployment Gate items.
 
 ## 2. Persona catalogue
+
+Catalogue scope: hotel operating roles (2.1–2.17) plus platform governance roles (2.18 Technical Lead, 2.19 Security/Privacy Adviser). Governance personas are programme/platform roles, not property operations; their role-based reference-pilot accounts follow §4.8.
 
 ### 2.1 Front Desk Agent
 
@@ -153,6 +155,10 @@ At the pilot, front-desk agents rotate through the cashier role; the control mod
 | Must never be able to | Alter immutable posted records; approve their own reconciliations where SoD requires another party; change tax rules without effective-dated configuration and audit |
 | Surfaces | Finance workspace, AR, reconciliation queues, financial reports |
 
+**Blueprint-governance duties (charter §12):** approves the financial architecture and authority limits; sets the credit policy and suspension/reinstatement rules; certifies the close; owns reopen authority; signs tax configuration with the adviser; validates finance personas and separation of duties.
+
+**Reference-pilot account:** provisioned as a role-based account with the `Financial Controller` role plus base desk access (convention and controls: §4.8). Replaced by a named-person account with MFA at the First-Property Deployment Gate.
+
 ### 2.12 General Manager / Property Manager
 
 | Aspect | Detail |
@@ -222,6 +228,30 @@ Tier: Target; deferred from pilot (BR-MVP-013).
 | Must never be able to | Modify anything; see data beyond the audit mandate |
 | Surfaces | Reporting/read-only access under contract |
 
+### 2.18 Technical Lead (platform governance)
+
+| Aspect | Detail |
+|---|---|
+| Goal | Own the technical integrity of the platform and the technical approvals of the blueprint |
+| Key activities | Technical design authority; architecture decisions and ADR maintenance; environment, release and migration gates; integration contracts; performance and reliability engineering; incident command for technical escalations |
+| Decisions | Technical approach within the blueprint; technical release readiness; remediation and escalation plans |
+| Needs | Architecture and ADR registers, release state, test and incident evidence, environment and recovery visibility |
+| Must never be able to | Change approved business requirements, financial policy or prices; grant themselves business authority through technical roles (separation of duties); bypass change control |
+| Surfaces | Architecture and ADR registers, release gates, monitoring, runbooks |
+| Reference-pilot account | Role-based account with technical administration access; no business authority. Named person + MFA at the First-Property Deployment Gate (convention and controls: §4.8) |
+
+### 2.19 Security / Privacy Adviser (governance)
+
+| Aspect | Detail |
+|---|---|
+| Goal | Keep guest and financial data lawful, minimised and protected; provide security and privacy sign-off |
+| Key activities | Security model and role-matrix review; privacy impact assessments and lawful-basis review; retention schedule ownership (with counsel); access reviews; incident and breach procedures; security test oversight |
+| Decisions | Security/privacy approval of designs and releases; retention and handling exceptions; breach-response recommendations |
+| Needs | Security model, data inventory, access and audit evidence, incident records, privacy assessments |
+| Must never be able to | Operate the business or perform transactions; grant themselves access; waive an obligation without recorded authority |
+| Surfaces | Security model, audit logs, read-only evidence views |
+| Reference-pilot account | Role-based account with read-only audit access and logged reads; named person + MFA at the First-Property Deployment Gate (convention and controls: §4.8) |
+
 ## 3. System actors (non-human principals)
 
 | Actor | Nature | Constraint |
@@ -248,10 +278,12 @@ Tier: Target; deferred from pilot (BR-MVP-013).
 5. **Authority limits are configuration.** Numeric limits, thresholds and approval chains are property-configurable with effective dates and audit, not hard-coded assumptions.
 6. **Override discipline.** Overrides are first-class actions: reason required, authority checked, before/after recorded, reportable.
 7. **Emergency access.** Any break-glass access is time-boxed, extremely visible, and reviewed afterwards; it cannot be a standing role.
+8. **Role-based accounts (reference pilot only).** Role-played UAT uses one role-based functional account per role that needs a scripted login (finance controller and governance roles first), named by role and carrying only that role's permissions. Role-based accounts are for scripted sessions only: not shared between people for day-to-day work, never used for production operations, with rotated credentials, and disabled at the First-Property Deployment Gate. Production access is personal — one named account per person (SEC-MODEL §9) — with MFA for privileged roles (Finance Controller, Technical Lead/administrator, Security/Privacy Adviser). Every action is audited to the account; leaver deactivation is immediate.
 
 ## 5. Validation and next steps
 
 - Validate personas and separation-of-duties expectations with the acting operations authority (OQ-003 closed) before the reference release; real-hotel validation at the First-Property Deployment Gate.
+- Appoint or confirm the Technical Lead and Security/Privacy Adviser (OQ-033); their personas gate blueprint acceptance (charter §12).
 - Produce the full role × permission × limit matrix in WP 0.5 (security model), traced to capability IDs and test obligations.
 - Confirm staffing reality (who can perform which duty at 03:00, Sundays, and public holidays) — staffing assumptions that fail in practice become control failures (RSK-OPS-001).
 
@@ -261,3 +293,4 @@ Tier: Target; deferred from pilot (BR-MVP-013).
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial personas and role-model requirements issued with WP 0.1 pass 1 | PROPOSED |
 | 0.2 | 2026-09-23 | Synthetic reference pilot: validation authority updated (acting operations authority; real-hotel validation at the First-Property Deployment Gate) | PROPOSED |
+| 0.3 | 2026-09-23 | Governance personas added (2.18 Technical Lead, 2.19 Security/Privacy Adviser); Finance Controller governance duties and reference-pilot account noted; role-based account rules added (§4.8) | PROPOSED |
