@@ -222,7 +222,7 @@ Screens are listed in §14–§29. Each states: purpose; users; information hier
 | Primary actions | Modify; cancel/reinstate; assign/move; pre-register; take/apply deposit; edit routing; send confirmation; convert to stay context at arrival |
 | Filters/search | Timeline filters; per-room drill; balance detail |
 | Keyboard | `M` modify, `C` cancel (confirms consequences), `R` routing, `D` deposit, `A` assign, `H` timeline |
-| Validation & errors | Consequential actions show before/after with pricing and policy basis (BR-RSV-006, BR-FOL-011); blocked actions explain the legal transition and the alternative |
+| Validation & errors | Consequential actions show before/after with pricing and policy basis (BR-RTM-007, BR-FOL-011); blocked actions explain the legal transition and the alternative |
 | Permissions | Waivers/overrides per authority; finance actions per role |
 | Empty state | Not applicable; "no amendments recorded" shown as positive confirmation |
 | Mobile | Read and light actions (assignment, traces) on tablet |
