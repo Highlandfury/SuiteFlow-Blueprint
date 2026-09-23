@@ -133,7 +133,7 @@ Room has two independent state dimensions plus derived occupancy; a single "room
 | | |
 |---|---|
 | Entity | Folio (aggregate root; one per responsibility container) |
-| States | `OPEN`, `SETTLED` (balance zero), `TRANSFERRED` (balance moved to AR), `CLOSED` (locked after checkout/event end), `VOID` (opened in error, no financial effect), `REOPENED` (governed post-stay correction window) |
+| States | `OPEN`, `SETTLED` (balance zero), `TRANSFERRED` (balance moved to AR), `CLOSED` (locked after checkout/event end), `VOID` (opened in error, no financial effect), `CORRECTION_OPEN` (governed post-stay correction window; distinct from a business-day reopen) |
 
 | # | From → To | Trigger | Actor | Authority / preconditions | Effects | Exceptions |
 |---|---|---|---|---|---|---|
@@ -141,7 +141,7 @@ Room has two independent state dimensions plus derived occupancy; a single "room
 | 2 | OPEN → SETTLED | Full settlement | Front desk / cashier | INV-FOL-1 holds with zero balance; all payments in valid final state (no pending clearance unless policy allows zero-balance-credit) | `folio.settled` | Pending POS/cheque with zero balance blocks closure unless policy authorises "settled with clearance open" (flagged, tracked) |
 | 3 | OPEN → TRANSFERRED | Direct-bill transfer | Supervisor / finance | Credit eligibility or approved exception (INV-FOL-9); responsibility documented | CityLedgerTransfer → Accounting Interface posting; balance removed from guest ledger responsibility; `folio.transferred` | Partial transfer allowed (per window/charge set); remainder stays OPEN |
 | 4 | SETTLED/TRANSFERRED → CLOSED | Checkout or event completion | Front desk / system | INV-FO-3; no pending dispute on the folio | Folio locked; keys revoked; `folio.closed` | Folio with open DisputeCase closes only with flag recorded |
-| 5 | CLOSED → REOPENED → OPEN | Post-stay correction | Finance with authority | Reason, authority, within policy window or on reopened accounting date; remediation evidence | Corrections as linked items; `folio.reopened` | Post-close corrections are never silent; they surface in audit reports |
+| 5 | CLOSED → CORRECTION_OPEN → OPEN | Post-stay correction | Finance with authority | Reason, authority, within policy window or on reopened accounting date; remediation evidence | Corrections as linked items; `folio.correction_opened` | Post-close corrections are never silent; they surface in audit reports |
 | 6 | — → VOID | Erroneous folio creation | Supervisor | No financial items posted | Folio voided with reason; `folio.voided` | Folio with items must be settled/transferred/reopened, not voided |
 
 ### SM-FOLIO-ITEM
