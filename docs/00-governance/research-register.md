@@ -121,9 +121,32 @@ Pinned stack observed: **frappe 16.31.0 · erpnext 16.32.3 · kamra 2.5.0 · hrm
 
 ## R5 — Operational/NFR benchmark sanity
 
+**Synthetic volume model (pass 1, 23 Sep 2026).** Reference profile (ASSUMED; validate at Programme P2/D7): 200 rooms; occupancy 70–80%; average stay 2.0 nights; one property.
+
+| Volume | Formula | Annual | Per day (avg) | 90-day pilot window |
+|---|---|---|---|---|
+| Physical capacity | 200 × 365 | 73,000 room-nights | 200 | 18,000 |
+| Room-nights sold | capacity × 70–80% | **51,100–58,400** | 140–160 | 12,600–14,400 |
+| Stays / check-ins | room-nights ÷ 2.0 nights | 25,550–29,200 | 70–80 | 6,300–7,200 |
+| Reservations (incl. cancels/no-shows) | stays × 1.25 | ~32,000–36,500 | 88–100 | 7,900–9,000 |
+| Folio items (data-model bound) | stated 1–3M/yr | 1–3M | 2,740–8,220 | 246k–740k |
+| Payments (records) | stays × 1.2–1.8 | 31k–53k | 85–145 | 7.7k–13k |
+| Cashier sessions | 3 shifts/day | ~1,095 | 3 | 270 |
+| POS orders | 100–150/day | 36.5k–54.8k | 100–150 | 9k–13.5k |
+| POS lines | orders × 3–5 | 110k–274k | 300–750 | 27k–67.5k |
+| Audit events / outbox events | comparable to folio items | 1–3M each | 2.7k–8.2k each | 246k–740k each |
+| Primary storage (≈1 KB/row ASSUMED) | folio + audit + outbox | ~3–9 GB/yr | — | ~0.75–2.25 GB |
+
+**Budget mapping.** P-6 nightly run: 2,740–8,220 items in <15 min → throughput target **≥ ~9.2 items/s at the worst-case nightly volume**; P-8 report pack <60 s; P-9 large historical <5 min; C-1 50 concurrent sessions; C-2 15 peak check-ins; the 02:00–04:00 close processes ~140–160 stays plus settlement and reconciliation.
+
+**Findings.**
+- **R5-F1 (Medium):** the data-model assumption "70–80k room-nights per year" for a 200-room property **exceeds physical capacity (73,000)** — corrected to **51,100–58,400** at 70–80% occupancy (data-model v0.3).
+- **R5-F2 (Low):** occupancy and stay-length assumptions (70–80%; 2.0-night stay) must be stated wherever volumes are used; adopted for this model and to be validated with hotel data in Programme P2/D7.
+- **R5-F3 (Low):** confirm the ≈1 KB/row storage assumption against real schema sizes during D8 performance work.
+
 | ID | Claim / question | Status | Next |
 |---|---|---|---|
-| RS-501 | Performance budgets (P-1…P-9) plausible at 200-room scale | OPEN — public benchmark sources not yet located (OPERA docs are functional, not performance) | Synthetic volume model + public hosting benchmarks |
+| RS-501 | Performance budgets plausible at 200-room scale | IN-PROGRESS — volume model pass 1 complete (capacity-corrected); nightly throughput target derived | D8 performance tests with production-scale synthetic data |
 | RS-502 | 99.5%/99.9% availability and 1 h RPO/RTO practice | OPEN | Public references + D9 drill evidence |
 
 ## R6 — Licence/SBOM inventory
@@ -153,3 +176,5 @@ Register complete with statuses; every material blueprint claim carries a source
 | 0.1 | 2026-09-23 | Research register opened: R1–R6 with initial questions and owners | PROPOSED |
 | 0.2 | 2026-09-23 | Pass 1: vendor surface probes + official docs, Oracle index, NDPC sources, licence inventory (LIC-01/LIC-02); FIRS/CBN access blocked | PROPOSED |
 | 0.3 | 2026-09-23 | Pass 2: queue/migration audit evidence (RS-103 evidenced, RS-105 partial); OPERA Cloud 26.3 public benchmark captured with pattern comparison table (RS-201 partial) | PROPOSED |
+| 0.4 | 2026-09-23 | Pass 3: R2 domain walk completed across all 22 pilot domains; candidate findings R2-F1…F5 recorded; RS-202 partial | PROPOSED |
+| 0.5 | 2026-09-23 | Candidate dispositions recorded (R2-F1→D15, F2→D10, F3→D11, F4→D17, F5 adopted as documentation); R5 synthetic volume model pass 1 with R5-F1 correction | PROPOSED |

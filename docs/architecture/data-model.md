@@ -2,7 +2,7 @@
 doc-id: ARCH-DATA
 title: Target Data Architecture
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Data Architect (drafted); Product Owner (approval)
 applies-to: full enterprise target
@@ -69,7 +69,7 @@ This document turns the domain model into data-architecture rules: what is store
 
 ## 7. Performance and indexing patterns
 
-Volume assumptions (ASSUMED, to be validated with hotel data in Programme P2/D7): one 200-room property produces roughly 70–80k room-nights, 1–3 million folio items, and comparable audit/outbox volumes per year. Chain deployments multiply by property count. Per-property deployments below one million items per year are operationally small; the design must nevertheless survive chain scale without redesign.
+Volume assumptions (ASSUMED, to be validated with hotel data in Programme P2/D7): one 200-room property (physical capacity 73,000 room-nights/year) produces roughly **51–58k room-nights at 70–80% occupancy**, 1–3 million folio items, and comparable audit/outbox volumes per year. Chain deployments multiply by property count. Per-property deployments below one million items per year are operationally small; the design must nevertheless survive chain scale without redesign.
 
 | Access pattern | Required shape |
 |---|---|
@@ -135,3 +135,4 @@ Archival preserves scope dimensions, identity and reconstructability (an archive
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial data architecture issued with WP 0.2 pass 2 | PROPOSED |
 | 0.2 | 2026-09-23 | P1 resolutions: outbox dispatch state (TEC-03); retention defaults and lifecycle breadth incl. backups/caches/erasure (SEC-07/08) | PROPOSED |
+| 0.3 | 2026-09-23 | R5 volume model correction: room-night assumption aligned to physical capacity (51–58k at 70–80% occupancy; R5-F1) | PROPOSED |

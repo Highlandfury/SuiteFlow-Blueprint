@@ -26,7 +26,7 @@ Documentation is part of the product, not an artefact produced after it. Princip
 
 | # | Document | Audience | Owner | Maintenance trigger |
 |---|---|---|---|---|
-| 1 | Administrator Manual (property configuration, users, policy, integrations health) | System admin, GM | Platform | Configuration feature change |
+| 1 | Administrator Manual (property configuration, users, policy, integrations health, **including per-capability enablement notes** — default state, steps to enable, required approval/audit; R2-F5) | System admin, GM | Platform | Configuration feature change |
 | 2 | Front Desk Manual (arrivals, stays, departures, payments, overrides) | Front office | Operations | Workflow/UI change |
 | 3 | Reservations Manual (booking, amendments, deposits, groups intake) | Reservations | Operations | Workflow/UI change |
 | 4 | Housekeeping Manual (boards, tasks, inspections, discrepancies) | Housekeeping | Operations | Workflow/UI change |

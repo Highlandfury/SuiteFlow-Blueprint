@@ -116,6 +116,8 @@ Conditions: refunds to the original instrument; card/transfer refunds only from 
 
 **Cumulative and split control (SEC-12 resolution).** Limits are also tracked **cumulatively per shift, day and month per beneficiary**; split/velocity patterns (same beneficiary, rapid repeats, session boundaries) feed **report #11 (Overrides and limits usage)**, reviewed daily by income audit and security. Cumulative thresholds are PROPOSED configuration, effective-dated.
 
+**Comp routing depth (R2-F4, PO disposition 23 Sep 2026).** Pilot comp authorisation is single-authorizer per band with maker–checker above the top band; multi-authorizer combined-limit routing is a Delivery D17 candidate requiring Security/Privacy Adviser review and anti-splitting controls. It must not weaken this table.
+
 ## 5. Separation of duties
 
 | # | Separation | Rule | Exception path |

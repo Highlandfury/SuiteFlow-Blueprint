@@ -60,6 +60,7 @@ Detailed screen-level operational design (swim-lanes, information hierarchy, key
 - **Controls:** pickup vs block (BR-GRP-001); attrition calculation evidence (BR-GRP-003); credit exposure at transfer (BR-CRP-001); master folio invariant.
 - **Failure modes:** rooming list late (walk-in-style creation at desk); attrition dispute (calculation evidence is the arbiter); credit breach at checkout (escalation, not silent transfer).
 - **Links:** CAP-GRP-001…008; SM-GROUP-BLOCK; SM-CORPORATE-CONTRACT #4; SM-FOLIO #3.
+- **Depth note (R2-F2, PO disposition 23 Sep 2026):** bulk rooming-list import (XLS/CSV) is a Delivery D10 candidate; when built it enforces class-A handling and rooming-list validation rules. Pilot satisfiable by manual/API entry.
 
 ## 3. Front office
 

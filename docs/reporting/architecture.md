@@ -115,6 +115,7 @@ Exports are permission-scoped, logged, and carry provenance (as-of, certificatio
 | Item | Owner |
 |---|---|
 | OQ-011 (closed) invoice/statement formats | Finance |
+| R2-F1 holding-ledger style revenue-recognition report | Delivery D15 candidate (PO disposition 23 Sep 2026); Finance Controller confirms at appointment whether reports #4/#8/#13 suffice — any gap returns as a trade-out candidate at the P0 freeze |
 | OQ-036 (closed) statistical defaults (comp/house) — BR-RPT-003 | Product Owner / Hotel Ops |
 | OQ-017 (closed) group reporting depth for pilot | Hotel Ops |
 | OQ-024 retention for report instances | Security / Legal |
