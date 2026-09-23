@@ -2,7 +2,7 @@
 doc-id: GOV-PO-DEC
 title: Product Owner Decisions — P1 Acceptance-Readiness Items (23 Sep 2026, delegated)
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Product Owner (accountable); decisions taken by the Product Owner persona under explicit delegation of 23 Sep 2026
 applies-to: P1 findings in GOV-REVIEW and the affected blueprint documents
@@ -118,9 +118,23 @@ Prepared as `adviser-briefs-2026-09-23.md` (GOV-BRIEFS): tax (OQ-029), legal/pri
 
 Opened `research-register.md` (GOV-RESEARCH): R1 vendor capability verification, R2 OPERA public benchmark, R3 Nigerian tax/legal primary sources (source packs for the advisers), R4 provider evidence, R5 NFR benchmark sanity, R6 licence/SBOM inventory. Starts now without appointments (register + evidence collection + adviser source packs); adviser conclusions wait on engagement; property-dependent evidence waits for the First-Property Gate.
 
+### F. Execution artifacts issued (23 Sep 2026)
+
+The four next actions were executed to the programme-side maximum under delegation; every human-only step remains reserved:
+
+| Action | Artifact | Human step remaining |
+|---|---|---|
+| Appoint acting role capacities | `interim-appointments-2026-09-23.md` (GOV-APPOINT) — three instruments with countersignature blocks | Real-PO countersignature; human appointments OQ-002/OQ-033 (A-01…A-03) |
+| 24×7 model / contract | `operations/support-model-and-procurement.md` (OPS-SUPPORT) — requirements, two options, structural cost model, matrix, Week-3 timeline, approval block | RFQ issuance, quote scoring, **contract signature and spend** (A-04/A-05) |
+| Adviser engagements | `adviser-briefs-2026-09-23.md` v0.2 — three ready-to-forward emails + checklist + cadence | **Send**, fees, engagement letters, NDAs (A-06) |
+| P0 sitting | `p0-sitting-pack.md` (GOV-SITTING) — invitation, agenda, checklists, minute template, outcome paths | **Convene and chair**, human sign-offs (A-07) |
+
+All actions are tracked in `action-register.md` (GOV-ACTIONS) with owner, due date, trigger and evidence.
+
 ## Version history
 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial delegated PO decision record for the P1 acceptance-readiness items (12 decisions + 3 recommendations) | PROPOSED |
 | 0.2 | 2026-09-23 | Next-stage record: P2 dispositions (16 fixed); interim governance (OQ-010 in-principle, OQ-002/033 arrangements with expiry); adviser briefs; acceptance pack/sitting plan; P1 research register opened | PROPOSED |
+| 0.3 | 2026-09-23 | Execution artifacts issued: interim appointments (GOV-APPOINT), support procurement pack (OPS-SUPPORT), engagement emails (GOV-BRIEFS v0.2), sitting pack (GOV-SITTING), action register (GOV-ACTIONS) | PROPOSED |

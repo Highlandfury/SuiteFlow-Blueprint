@@ -2,7 +2,7 @@
 doc-id: GOV-BRIEFS
 title: Adviser Engagement Briefs — Tax, Legal/Privacy, OSS Licensing (23 Sep 2026)
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Product Owner (engagement execution); prepared under delegated PO direction
 applies-to: OQ-024, OQ-028, OQ-029 and dependent blueprint content
@@ -66,8 +66,68 @@ Ready-to-forward scopes of work prepared under delegated Product Owner direction
 
 **Blueprint impact.** Closes OQ-028; settles release/distribution architecture constraints; RSK-LIC-001 treatment; D1 topology input; release-pack gate item.
 
-## 4. Version history
+## 4. Engagement emails (ready to forward)
+
+Drafts prepared under **Product Owner direction (delegated), 23 Sep 2026**. Sending, engagement letters, fees and NDAs are the real Product Owner's human step. No firm names or addresses are invented; complete bracketed fields before sending.
+
+### 4.1 Nigerian tax adviser (OQ-029)
+
+**Subject:** Engagement — Nigerian tax treatment of hotel operations in a PMS (OQ-029)
+
+Dear [Adviser name],
+
+[Programme] is preparing a hotel management platform for a Nigerian pilot and needs a Nigerian tax adviser to confirm the tax treatment of hotel operations as implemented in the system: VAT tax points by revenue type; penalties/forfeitures; the 10% service charge; deposits/cancellations/no-shows; FIRS e-invoicing/fiscalisation; invoice particulars and number-series rules.
+
+Attachment: `adviser-briefs-2026-09-23.md` §1 (Tax brief, GOV-BRIEFS).
+
+Requested: written opinion; effective-dated tax-point mapping; worked examples matching the golden-day fixture; gate-ready sign-off statement; open-items memo. Timing: acknowledge within 3 business days; draft within 3 weeks; final within 6 weeks of engagement (timings ASSUMED, fixed in the engagement letter).
+
+Fees, engagement letter and NDA are handled by the Product Owner's office. Please direct scheduling to [contact].
+
+Kind regards,
+[Sender name], [role]
+
+### 4.2 Legal counsel (OQ-024, with OQ-019 legal, SEC-03/07/08, FIN-10)
+
+**Subject:** Engagement — privacy/legal review for a hotel PMS in Nigeria (OQ-024)
+
+Dear [Adviser name],
+
+[Programme] is preparing a hotel management platform for a Nigerian pilot and needs legal counsel for NDPA/privacy compliance across guest and employee data, plus flagged dependencies: the retention schedule (ID images, profiles, financial, AML, logs, CCTV); DSAR workflow and timelines; breach notification duties and clocks; lawful basis per processing activity; cross-border transfer conditions; whether ID scanning is legally required at hotel registration; treatment of unclaimed deposits.
+
+Attachment: `adviser-briefs-2026-09-23.md` §2 (Legal/Privacy brief, GOV-BRIEFS).
+
+Requested: legal memo; confirmed retention schedule; notification matrix; processor/transfer register requirements; DSAR design confirmation; statements citable in the blueprint. Timing: as §4.1.
+
+Fees, engagement letter and NDA are handled by the Product Owner's office. Please direct scheduling to [contact].
+
+Kind regards,
+[Sender name], [role]
+
+### 4.3 OSS licensing counsel (OQ-028, with RSK-LIC-001)
+
+**Subject:** Engagement — OSS licensing review (Frappe/ERPNext/Kamra stack) (OQ-028)
+
+Dear [Adviser name],
+
+[Programme] is preparing a hotel management platform built on Frappe/ERPNext/Kamra for a Nigerian pilot, operated SaaS-hosted and, later, on-premise at properties. We need an OSS licensing opinion on the stack and its dependencies: licence classification; network-copyleft/AGPL implications for SaaS operation; source-offer and attribution duties for on-premise distribution; bundling/compatibility; required notices; trademark constraints; release-gate controls (SBOM/licence scanning in CI; pre-distribution review).
+
+Attachment: `adviser-briefs-2026-09-23.md` §3 (OSS licensing brief, GOV-BRIEFS).
+
+Requested: licence inventory and risk opinion; OSS policy; pre-distribution gate checklist; citations for the release pack. Timing: as §4.1.
+
+Fees, engagement letter and NDA are handled by the Product Owner's office. Please direct scheduling to [contact].
+
+Kind regards,
+[Sender name], [role]
+
+**Engagement checklist.** Attach the matching brief; confirm scope/milestones, conflict check, fee quote, engagement letter and NDA; name a single contact. Execution and signature are the real Product Owner's human step; no programme commitment exists before countersignature.
+
+**Follow-up cadence.** Day 0 send → Day 3 reminder if unacknowledged → Day 7 confirm kick-off and engagement-letter status → weekly written status until deliverables → escalate to the Product Owner if any milestone slips by more than one week (threshold ASSUMED).
+
+## 5. Version history
 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial adviser briefs prepared under delegated PO direction (C1–C3) | PROPOSED |
+| 0.2 | 2026-09-23 | Engagement emails, checklist and follow-up cadence added (human send/signature steps retained) | PROPOSED |
