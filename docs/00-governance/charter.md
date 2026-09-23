@@ -230,7 +230,8 @@ docs/
 │   ├── reservations/  front-desk/  housekeeping/  maintenance/  finance/  night-audit/   [WP 0.6 detail]
 ├── finance/                           [WP 0.4 complete]
 │   └── financial-architecture.md      [present]
-├── ux/                                [WP 0.6]
+├── ux/                                [WP 0.6 complete]
+│   └── architecture.md                [present — 16 screens]
 ├── qa/                                [WP 0.7]
 ├── deployment/  migration/  operations/  manuals/  release/  ai/   [WP 0.7]
 ```

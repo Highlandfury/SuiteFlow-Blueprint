@@ -56,11 +56,11 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 ## Current phase
 
-**WP 0.5 — Security, tenancy enforcement and roles** — complete, pending Product Owner review:
+**WP 0.6 — UX architecture** — complete, pending Product Owner review:
 
-- `security/security-model.md`: principals and authentication, data classification (A–D) with handling rules, scope enforcement per surface class with negative-test obligations, maker–checker catalogue, AI/integration principal rules, break-glass protocol, audit and monitoring, secrets, threat model, security test gates.
-- `security/role-and-authority-matrix.md`: 20-role catalogue, permission summary matrix, authority-limit defaults (all PROPOSED, NGN), 8 separation-of-duties rules with explicit exception paths, provisioning/deprovisioning.
-- ADR-009: authorization and enforcement model (RBAC + scopes + effective-dated limits, single enforcement point, payload-bound maker–checker).
+- `ux/architecture.md`: UX principles, design-system requirements, navigation, live-data/conflict handling, notification classes, permission-driven UI, error/empty-state standards, keyboard standards, mobile/tablet strategy, print/export, graceful degradation.
+- **16-screen catalogue** (Front Desk, Reservation Console, Room Rack, Tape Chart, Guest 360, Reservation 360, Housekeeping Board, Maintenance Board, Cashier, Night Audit, Manager Dashboard, Group Management, Corporate Management, Rate Management, Reporting, Administration), each with purpose, users, information hierarchy, actions, filters, keyboard, validation/errors, permissions, empty state, mobile behaviour and traceability to workflows/capabilities.
+- UI acceptance and test obligations (§30), including keyboard-only flows, permission-leak tests, performance budgets and degradation drills.
 
 ### Completed work packages
 
@@ -69,16 +69,17 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 | 0.1 | Governance, vision, scope, personas, capability map (283), roadmap skeleton | Complete |
 | 0.2 | Target-state, ownership, tenancy, domain model (80 invariants), data architecture, ADR-001…004 | Complete |
 | 0.3 | 18 state machines, 22 workflows, 101 business rules | Complete |
-| 0.4 | Financial architecture, ADR-005…008; inputs validated (DP-CTX-003, DP-ADR-001/002/005 confirmed with refinements) | Complete |
+| 0.4 | Financial architecture, ADR-005…008; inputs validated | Complete |
 | 0.5 | Security model, role/authority matrix, ADR-009 | Complete |
+| 0.6 | UX architecture (16 screens), test obligations | Complete |
 
 ### Outstanding Product Owner dependencies
 
-OQ-011 (invoice authority — ADR-008 provisional) · OQ-012 (deposit/cancellation policy defaults in force) · OQ-021/OQ-029 (tax/fiscalisation — UNVERIFIED) · OQ-001/OQ-002/OQ-003 (entity, Finance and Operations representatives) · all authority-limit defaults are proposed. See `docs/00-governance/decisions-required.md`.
+OQ-011 (invoice authority) · OQ-012 (deposit/cancellation defaults) · OQ-021/OQ-029 (tax/fiscalisation — UNVERIFIED) · OQ-001/OQ-002/OQ-003 (entity and named representatives) · OQ-014/017/022 (outlets, groups, maintenance pilot depth) · OQ-034 (housekeeping standards). All authority limits are proposed defaults. See `docs/00-governance/decisions-required.md`.
 
-Remaining before first committed implementation: WP 0.6 (UX), WP 0.7 (platform architecture), WP 0.8 (blueprint consolidation + full roadmap), then Phase 1 research, Phase 2 audit, Phase 3 gap, Phase 4 transition. Governed proof spikes are permitted earlier (charter §4).
+Remaining before first committed implementation: WP 0.7 (platform architecture), WP 0.8 (blueprint consolidation + full roadmap), then Phase 1 research, Phase 2 audit, Phase 3 gap, Phase 4 transition.
 
-Next: WP 0.6 — UX architecture.
+Next: WP 0.7 — integration, reporting, non-functional, QA, deployment, documentation and AI architecture.
 
 ## Licensing
 
