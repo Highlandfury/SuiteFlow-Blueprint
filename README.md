@@ -56,11 +56,16 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 ## Current phase
 
-**WP 0.6 — UX architecture** — complete, pending Product Owner review:
+**WP 0.7 — Platform architecture** — complete, pending Product Owner review:
 
-- `ux/architecture.md`: UX principles, design-system requirements, navigation, live-data/conflict handling, notification classes, permission-driven UI, error/empty-state standards, keyboard standards, mobile/tablet strategy, print/export, graceful degradation.
-- **16-screen catalogue** (Front Desk, Reservation Console, Room Rack, Tape Chart, Guest 360, Reservation 360, Housekeeping Board, Maintenance Board, Cashier, Night Audit, Manager Dashboard, Group Management, Corporate Management, Rate Management, Reporting, Administration), each with purpose, users, information hierarchy, actions, filters, keyboard, validation/errors, permissions, empty state, mobile behaviour and traceability to workflows/capabilities.
-- UI acceptance and test obligations (§30), including keyboard-only flows, permission-leak tests, performance budgets and degradation drills.
+- `integrations/architecture.md`: 14 interfaces with auth, identity, retry, failure and reconciliation contracts; global failure model; security and acceptance obligations.
+- `reporting/architecture.md`: data flow, 22-report catalogue, definitions governance, drill-down and reconciliation, scheduling, exports, performance.
+- `architecture/non-functional-requirements.md`: measurable requirements labelled REQUIRED/TARGET/ASPIRATIONAL/TBD across performance, concurrency, availability, recovery, integrity, observability, scalability, security, maintainability, accessibility.
+- `qa/strategy.md`: 15 test levels, golden-day fixture, test-obligation registry (TO-*), gates, severity model, regression suites, UAT and acceptance.
+- `deployment/architecture.md`: environments and promotion, topology, connectivity/power requirements (OQ-038), recovery architecture, observability, release management, runbook catalogue.
+- `manuals/documentation-architecture.md`: 21-document set with owners and maintenance triggers; docs-as-code governance.
+- `ai/architecture.md`: AI governance, tool gateway, capability gates, failure controls (no AI enabled at pilot by default).
+- ADR-010 (integration/event/idempotency), ADR-011 (payments adapter). All proposed inputs now have recorded validation outcomes.
 
 ### Completed work packages
 
@@ -69,17 +74,14 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 | 0.1 | Governance, vision, scope, personas, capability map (283), roadmap skeleton | Complete |
 | 0.2 | Target-state, ownership, tenancy, domain model (80 invariants), data architecture, ADR-001…004 | Complete |
 | 0.3 | 18 state machines, 22 workflows, 101 business rules | Complete |
-| 0.4 | Financial architecture, ADR-005…008; inputs validated | Complete |
-| 0.5 | Security model, role/authority matrix, ADR-009 | Complete |
-| 0.6 | UX architecture (16 screens), test obligations | Complete |
+| 0.4 | Financial architecture, ADR-005…008; financial inputs validated | Complete |
+| 0.5 | Security model, role/authority matrix (20 roles, limits, SoD), ADR-009 | Complete |
+| 0.6 | UX architecture (16 screens) with test obligations | Complete |
+| 0.7 | Integration, reporting, NFR, QA, deployment, documentation, AI architectures, ADR-010/011 | Complete |
 
-### Outstanding Product Owner dependencies
+Remaining in Phase 0: **WP 0.8 — blueprint consolidation v1.0 + full roadmap with exit criteria**, then Phase 1 research, Phase 2 audit, Phase 3 gap, Phase 4 transition.
 
-OQ-011 (invoice authority) · OQ-012 (deposit/cancellation defaults) · OQ-021/OQ-029 (tax/fiscalisation — UNVERIFIED) · OQ-001/OQ-002/OQ-003 (entity and named representatives) · OQ-014/017/022 (outlets, groups, maintenance pilot depth) · OQ-034 (housekeeping standards). All authority limits are proposed defaults. See `docs/00-governance/decisions-required.md`.
-
-Remaining before first committed implementation: WP 0.7 (platform architecture), WP 0.8 (blueprint consolidation + full roadmap), then Phase 1 research, Phase 2 audit, Phase 3 gap, Phase 4 transition.
-
-Next: WP 0.7 — integration, reporting, non-functional, QA, deployment, documentation and AI architecture.
+Next: WP 0.8 — consolidation.
 
 ## Licensing
 

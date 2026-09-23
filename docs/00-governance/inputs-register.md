@@ -132,8 +132,8 @@ Observed statuses are working-tree observations and are recorded here for planni
 |---|---|---|---|
 | DP-ADR-001 revenue/direct bill | **CONFIRMED WITH REFINEMENTS** | ADR-005: daily aggregated posting by family with item-level links; revenue once per business day; zero-revenue AR transfer | 2026-09-23 |
 | DP-ADR-002 business-day gate | **CONFIRMED WITH REFINEMENTS** | ADR-006: close gate confirmed; certification timing property-configurable; pilot default certification-before-advance; reopen governance and no-partial-advance defined | 2026-09-23 |
-| DP-ADR-003 outbox/idempotency | Reserved | To be ruled in WP 0.7 | — |
-| DP-ADR-004 payments adapter | Reserved | To be ruled in WP 0.7 | — |
+| DP-ADR-003 outbox/idempotency | **CONFIRMED WITH REFINEMENTS** | ADR-010: transactional outbox, versioned envelopes, at-least-once delivery with idempotent effects, write-ahead provider intent, event registry | 2026-09-23 |
+| DP-ADR-004 payments adapter | **CONFIRMED WITH REFINEMENTS; PROVIDER SELECTION REMAINS OPEN** | ADR-011: provider-neutral contract with capability flags; manual path is a first-class provider; selection via Phase 1/3 evidence matrix | 2026-09-23 |
 | DP-ADR-005 deposits | **CONFIRMED WITH REFINEMENTS** | ADR-007: obligation-linked liability; dedicated cancellation/no-show revenue for forfeiture; tax defaults flagged UNVERIFIED pending advice | 2026-09-23 |
 | DP-CTX-001 topology and tenancy | **MODIFIED** | ADR-002: tenant is the deployment unit with property partitions; optional dedicated deployment for hard-isolation customers. One site per hotel no longer the target default | 2026-09-23 |
 | DP-CTX-002 operations/accounting/control-plane split | **ROLES CONFIRMED, PRODUCT BINDING DEFERRED** | ADR-001: layered ownership adopted; which products fill the roles is decided in Phase 3/4 with role-contract evidence | 2026-09-23 |
@@ -155,3 +155,4 @@ Observed statuses are working-tree observations and are recorded here for planni
 | 0.1 | 2026-09-23 | Initial register: SRC-001…004; BR requirements; proposed inputs | PROPOSED |
 | 0.2 | 2026-09-23 | Validation outcomes §4.3 added: DP-CTX-001 MODIFIED (ADR-002); DP-CTX-002 roles confirmed, binding deferred (ADR-001); DP-CTX-003 reserved for WP 0.4 | PROPOSED |
 | 0.3 | 2026-09-23 | §4.3 outcomes updated: DP-CTX-003, DP-ADR-001, DP-ADR-002, DP-ADR-005 confirmed with refinements (ADR-005…007); invoice authority ruled provisionally (ADR-008, pending OQ-011) | PROPOSED |
+| 0.4 | 2026-09-23 | §4.3 outcomes completed: DP-ADR-003 confirmed with refinements (ADR-010); DP-ADR-004 confirmed with refinements, provider selection remains open (ADR-011). All proposed inputs now have recorded outcomes | PROPOSED |
