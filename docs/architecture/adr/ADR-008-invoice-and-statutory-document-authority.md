@@ -2,19 +2,19 @@
 doc-id: ADR-008
 title: Invoice and statutory document authority
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Financial Systems Architect (drafted); Finance Controller + tax adviser (approval; roles open)
 applies-to: full enterprise target
 depends-on: [ADR-005, ARCH-RULES]
-supersedes: none (rules on OQ-011)
+supersedes: none (rules on OQ-011, closed 2026-09-23)
 ---
 
 # ADR-008: Invoice and statutory document authority
 
 ## Context
 
-OQ-011 asks which document is the statutory and customer-facing invoice: the hotel-generated folio invoice or the accounting system's tax invoice. The question has three dimensions: who issues the document, which system holds its authority, and which numbering/particulars regime applies. Nigerian VAT invoicing practice and any fiscalisation requirements (OQ-029) shape the answer; tax and legal advice is not yet available.
+OQ-011 asked which document is the statutory and customer-facing invoice: the hotel-generated folio invoice or the accounting system's tax invoice. The question has three dimensions: who issues the document, which system holds its authority, and which numbering/particulars regime applies. It was closed by Product Owner adoption of the industry-standard answer on 23 September 2026 (`00-governance/industry-standard-answers.md`): SuiteFlow issues the customer-facing document; a required statutory/fiscal document derives from and links to it. Nigerian VAT invoice particulars and any fiscalisation requirements (OQ-029) still shape the details; tax and legal advice is not yet available.
 
 ## Problem
 
@@ -47,10 +47,10 @@ Which system issues which financial document, under what authority and numbering
 6. **Corporate statements** are produced from AR by the Accounting Authority; their content reconciles to folio-level detail held in SuiteFlow; disputes reference the folio evidence.
 7. **Proformas are not invoices**: they carry a clear non-statutory marking and no series that implies tax invoicing.
 8. **This ADR is PROPOSED pending:**
-   - Finance confirmation of the default (OQ-011),
-   - tax advice on VAT invoice particulars and any fiscalisation regime (OQ-021, OQ-029),
+   - Finance Controller confirmation at acceptance (OQ-002);
+   - tax advice on VAT invoice particulars and any fiscalisation regime (OQ-029);
    - legal entity/tax identifiers (OQ-001).
-   No invoicing implementation may be committed before these confirmations; the design above is the working basis.
+   The issuing-authority question itself is ruled (OQ-011 closed by Product Owner adoption, 23 Sep 2026). No invoicing implementation may be committed before the pending confirmations; the design above is the working basis.
 
 ## Reasoning
 
@@ -95,4 +95,5 @@ Historical document series migrate with numbering continuity preserved; no reuse
 
 | Version | Date | Change | Status |
 |---|---|---|---|
-| 0.1 | 2026-09-23 | Initial decision issued with WP 0.4; pending OQ-011 confirmation | PROPOSED |
+| 0.1 | 2026-09-23 | Initial decision issued with WP 0.4; OQ-011 confirmation pending | PROPOSED |
+| 0.2 | 2026-09-23 | OQ-011 closed by Product Owner adoption (industry-standard answer); pending items restated (OQ-002, OQ-029, OQ-001) | PROPOSED |

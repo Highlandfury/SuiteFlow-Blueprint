@@ -117,7 +117,7 @@ Per ADR-010: transactional outbox for outbound effects; inbound endpoints (webho
 | Guarantees | Delivery status recorded; failures retried; no guest communication marked sent without acceptance by the provider |
 | Reconciliation | Delivery-failure report on the notification surface |
 
-### 4.9 Door locks (INT-010) — pending OQ-020
+### 4.9 Door locks (INT-010) — OQ-020 closed: manual keys at pilot; integration later
 
 | Field | Specification |
 |---|---|
@@ -128,7 +128,7 @@ Per ADR-010: transactional outbox for outbound effects; inbound endpoints (webho
 | Failure | Offline encoder mode documented; revocation queue with alert if unsent |
 | Reconciliation | Daily: issued keys vs active stays |
 
-### 4.10 ID scanners and document capture (INT-011) — pending OQ-019
+### 4.10 ID scanners and document capture (INT-011) — OQ-019 closed: capture type/number; scanning only if legally required
 
 | Field | Specification |
 |---|---|
@@ -218,9 +218,9 @@ Each interface is "done" only with: contract conformance tests; failure-scenario
 |---|---|---|
 | OQ-004/005/006/007 bank and acquirer facts | Product Owner / Finance | Payments and banking interfaces |
 | OQ-029 fiscalisation | Legal / Finance | Fiscal adapter necessity |
-| OQ-018 channel strategy | Product Owner | Channel manager timing (Ph13) |
-| OQ-020 locks | Hotel Ops | Lock interface in/out of pilot |
-| OQ-030 provider capability evidence | Platform / Finance | ADR-011 binding |
+| OQ-018 (closed) channel strategy | Product Owner | Channel manager timing (Ph13) |
+| OQ-020 (closed) locks | Hotel Ops | Lock interface in/out of pilot |
+| OQ-030 (closed) provider capability evidence | Platform / Finance | ADR-011 binding |
 
 ## 10. Version history
 

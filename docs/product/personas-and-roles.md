@@ -186,7 +186,7 @@ At the pilot, front-desk agents rotate through the cashier role; the control mod
 | Must never be able to | Post to arbitrary rooms/folios without validation; alter posted outlet revenue; approve stock variances they caused |
 | Surfaces | Outlet console, room posting, stock counts |
 
-Existence and pilot inclusion depend on OQ-014/OQ-015.
+Existence and pilot inclusion adopted (OQ-014, OQ-015 closed).
 
 ### 2.15 System Administrator / IT
 

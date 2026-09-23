@@ -27,7 +27,7 @@ How are deposits and prepayments recorded, applied, refunded, forfeited, taxed a
 - Refunds only from cleared funds, with method fidelity and authority (BR-FOL-012).
 - Partial application, partial refund and partial forfeiture are normal and exactly tracked.
 - The deposit liability control account reconciles daily (BR-ACC-004).
-- Tax treatment is deterministic and configuration-driven, pending tax advice (OQ-021, OQ-029).
+- Tax treatment is deterministic and configuration-driven, pending tax advice (OQ-021 closed, OQ-029).
 
 ## Options
 
@@ -46,7 +46,7 @@ How are deposits and prepayments recorded, applied, refunded, forfeited, taxed a
 5. **Tax defaults (pending tax advice):**
    - VAT is **not** charged on deposit receipt (it is not consideration for a supply yet).
    - On application, tax follows the underlying supply's tax treatment for its business dates.
-   - On forfeiture, the default assumption is that the amount **is taxable consideration** for the cancellation right, taxed at the applicable rate for the cancelled service; where tax advice concludes otherwise, the mapping changes by configuration with effect from the advice date. **STATUS: UNVERIFIED — tax adviser confirmation required (OQ-021/OQ-029).**
+   - On forfeiture, the default assumption is that the amount **is taxable consideration** for the cancellation right, taxed at the applicable rate for the cancelled service; where tax advice concludes otherwise, the mapping changes by configuration with effect from the advice date. **STATUS: UNVERIFIED — tax adviser confirmation required (OQ-021 closed/OQ-029).**
 6. **Refunds** are executed only from cleared funds, ideally by the original method; bank-detail changes require enhanced verification (BR-FOL-012).
 7. **Unclaimed deposits** age under finance monitoring; treatment of genuinely unclaimed funds (escheatment, retention, or write-back) follows jurisdictional advice — **UNVERIFIED**, flagged for Phase 1 research.
 8. **Deposit liability reporting** is a standard daily and month-end output: opening balance, receipts, applications, refunds, forfeitures, closing balance, reconciled to the control account.

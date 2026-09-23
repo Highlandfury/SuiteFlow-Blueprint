@@ -2,7 +2,7 @@
 doc-id: ARCH-NFR
 title: Non-Functional Requirements
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Principal Architect + SRE (drafted); Product Owner (approval)
 applies-to: pilot and enterprise target; values labelled REQUIRED / TARGET / ASPIRATIONAL / TBD
@@ -26,8 +26,8 @@ Labels (mandate §20): **REQUIRED** (contractual or confirmed), **TARGET** (engi
 | P-3 | Global search (guest/reservation/folio) | < 1 s p95 | TARGET | UX budget |
 | P-4 | Tape chart (90 days × 10 room types, bookings+bocks) | < 2 s p95 | TARGET | UX budget |
 | P-5 | Command latency (check-in confirm, payment post) | < 2 s p95 | TARGET | Counter pace |
-| P-6 | Nightly posting run (200 rooms, full folio volume) | < 15 min | TARGET | Close window (OQ-008 default 02:00–04:00) |
-| P-7 | Total close including reconciliation | within configured close window | REQUIRED if OQ-008 confirmed | BR-NAU-001 |
+| P-6 | Nightly posting run (200 rooms, full folio volume) | < 15 min | TARGET | Close window (OQ-008 closed: 02:00–04:00 default) |
+| P-7 | Total close including reconciliation | within configured close window | REQUIRED (OQ-008 closed) | BR-NAU-001 |
 | P-8 | Daily report pack generation | < 60 s | TARGET | Morning operations |
 | P-9 | Large historical reports | < 5 min | TARGET | Management use |
 | P-10 | API p95: queries / commands | 500 ms / 1 s | TARGET | Integration contracts (WP 0.7) |
@@ -46,7 +46,7 @@ Labels (mandate §20): **REQUIRED** (contractual or confirmed), **TARGET** (engi
 
 | # | Requirement | Value | Label | Basis |
 |---|---|---|---|---|
-| A-1 | Service availability | 99.5% (pending OQ-009) | TARGET | BR-REL-004 |
+| A-1 | Service availability | 99.5% pilot; 99.9% enterprise target (OQ-009 closed) | TARGET | BR-REL-004 |
 | A-2 | RPO | 60 minutes | REQUIRED | BR-REL-002 |
 | A-3 | RTO | 60 minutes | REQUIRED | BR-REL-003 |
 | A-4 | Restore drill cadence | Pre-release and quarterly, timed | REQUIRED | BR-REL-002/003 |
@@ -104,7 +104,7 @@ Per SEC-MODEL: deny by default; server-side enforcement on all surfaces; MFA for
 
 | # | Requirement | Value | Label |
 |---|---|---|---|
-| X-1 | Accessibility | WCAG 2.2 AA for core flows | TARGET (OQ-032 scope) |
+| X-1 | Accessibility | WCAG 2.2 AA for core flows | TARGET (OQ-032 closed scope) |
 | X-2 | Browsers | Current evergreen Chrome/Edge/Firefox/Safari; tablet Safari/Chrome | REQUIRED |
 | X-3 | Minimum viewport | 1366×768 desktop; tablet/phone responsive per UX-ARCH §10 | REQUIRED |
 | X-4 | Language | English at pilot; localisation architecture ready | REQUIRED / ASPIRATIONAL |
@@ -114,12 +114,12 @@ Per SEC-MODEL: deny by default; server-side enforcement on all surfaces; MFA for
 
 | Item | Owner | Effect |
 |---|---|---|
-| OQ-008 close window | Hotel Ops | P-6/P-7 operability |
-| OQ-009 availability objective | Product Owner | A-1 |
+| OQ-008 (closed) close window | Hotel Ops | P-6/P-7 operability |
+| OQ-009 (closed) availability objective | Product Owner | A-1 |
 | OQ-010 support cost/staffing approval | Product Owner | O-2, 24×7 rota |
 | OQ-024 retention periods | Security/Legal | O-6, retention design |
-| OQ-026 hosting/region | Product Owner | Deployment topology, residency |
-| OQ-032 accessibility/language scope | Product Owner | X-1, X-4 |
+| OQ-026 (closed) hosting/region | Product Owner | Deployment topology, residency |
+| OQ-032 (closed) accessibility/language scope | Product Owner | X-1, X-4 |
 | OQ-038 connectivity/power | Product Owner | A-7/A-8 design |
 
 ## 12. Version history
@@ -127,3 +127,4 @@ Per SEC-MODEL: deny by default; server-side enforcement on all surfaces; MFA for
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial NFRs issued with WP 0.7 | PROPOSED |
+| 0.2 | 2026-09-23 | Adopted answers applied: OQ-008 close window and OQ-009 availability (99.5% pilot, 99.9% enterprise target) marked closed | PROPOSED |

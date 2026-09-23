@@ -29,7 +29,7 @@ Traceability: every screen lists the workflows (`WF-*`) and capabilities (`CAP-*
 8. **Live where it matters.** Room board, arrival queues and cashier totals are live; reports state their as-of point. Stale information is labelled, never presented as current.
 9. **One screen per job.** A housekeeping attendant gets a task list, not a dashboard. A night auditor gets a checklist, not a rate calendar.
 10. **Graceful degradation.** When connectivity or a service fails, the screen says so plainly, protects what is already captured, and limits actions to those that cannot corrupt financial state.
-11. **Accessible to be usable.** WCAG 2.2 AA target: full keyboard reachability, visible focus, screen-reader labels on core flows, contrast, scalable text (OQ-032 for language/localisation scope).
+11. **Accessible to be usable.** WCAG 2.2 AA target: full keyboard reachability, visible focus, screen-reader labels on core flows, contrast, scalable text (OQ-032 closed for language/localisation scope).
 12. **Operational density with calm spacing.** Information-dense lists for scanning; generous hit targets on touch screens; whitespace where a decision is required.
 
 ## 3. Design system requirements
@@ -108,13 +108,13 @@ Traceability: every screen lists the workflows (`WF-*`) and capabilities (`CAP-*
 | Maintenance technician | Phone | Work orders, parts notes, photo evidence, completion |
 | Night auditor / cashier | Desktop | Full flow; no mobile close |
 | Manager | Phone (read), desktop (act) | Dashboard summary and approvals; drill-down on desktop |
-| Guest-adjacent operators | Tablet | Future guest-facing and kiosk flows are out of pilot scope (OQ-031) |
+| Guest-adjacent operators | Tablet | Future guest-facing and kiosk flows are out of pilot scope (OQ-031 closed) |
 
 Responsive rule: a screen states its breakpoint behaviour; tables collapse to cards; primary action stays visible without hover.
 
 ## 11. Print and export UX
 
-- Folio invoice/pro forma, receipts, registration card, group statements and day packs print from the screen context with correct series numbers and statutory particulars (ADR-008; formats pending OQ-011).
+- Folio invoice/pro forma, receipts, registration card, group statements and day packs print from the screen context with correct series numbers and statutory particulars (ADR-008; formats OQ-011 (closed)).
 - Exports are permission-scoped, logged, and class-A exports require approval and carry provenance (SEC-MODEL §10).
 - Report exports state "as of" and scope; scheduled deliveries use the same definitions (WP 0.7 reporting architecture).
 
@@ -244,7 +244,7 @@ Screens are listed in §14–§29. Each states: purpose; users; information hier
 | Mobile | Supervisor tablet-first; attendant phone-native task list with offline-tolerant completion queue |
 | Traceability | WF-HK-001/002; CAP-HSK-001…012; SM-HOUSEKEEPING-TASK; SM-ROOM |
 
-## 21. Maintenance Board **[P — pending OQ-022]**
+## 21. Maintenance Board **[P — pilot scope; OQ-022 closed]**
 
 | Aspect | Specification |
 |---|---|
@@ -308,7 +308,7 @@ Screens are listed in §14–§29. Each states: purpose; users; information hier
 | Mobile | Summary cards + approvals; full drill on desktop |
 | Traceability | CAP-RPT-007; CAP-RPT-002/003; CAP-BI-* (future variants) |
 
-## 25. Group Management **[P — pending OQ-017]**
+## 25. Group Management **[P — OQ-017 (closed)]**
 
 | Aspect | Specification |
 |---|---|
@@ -409,10 +409,10 @@ Screens are listed in §14–§29. Each states: purpose; users; information hier
 | Item | Owner | Effect |
 |---|---|---|
 | OQ-003 operations representative | Product Owner | Workflow and screen validation with the hotel |
-| OQ-011 invoice formats | Finance | Document layout and particulars |
-| OQ-014/017/022 outlets, groups, maintenance pilot depth | Product Owner / Hotel Ops | Which screens are pilot-live vs configured off |
-| OQ-032 accessibility/language scope | Product Owner | Localisation, assistive requirements beyond WCAG AA |
-| OQ-034 housekeeping standards | Hotel Ops | Board defaults, inspection affordances |
+| OQ-011 (closed) invoice formats | Finance | Document layout and particulars |
+| OQ-014 (closed)/017/022 outlets, groups, maintenance pilot depth | Product Owner / Hotel Ops | Which screens are pilot-live vs configured off |
+| OQ-032 (closed) accessibility/language scope | Product Owner | Localisation, assistive requirements beyond WCAG AA |
+| OQ-034 (closed) housekeeping standards | Hotel Ops | Board defaults, inspection affordances |
 | Device strategy and network reality at the property | Hotel Ops / Platform | Responsive priorities, offline tolerance design |
 | UX copy deck and hotel terminology review | Domain + Hotel Ops | Wording in all screens (glossary normative) |
 

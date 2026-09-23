@@ -169,9 +169,9 @@ Each clearing account ages visibly; unmatched items beyond policy windows are fi
 | Element | Treatment | Status |
 |---|---|---|
 | Tax engine | Effective-dated rules per tax type: rate, basis, applicability (service categories), exemptions, rounding, computation order | REQUIRED |
-| VAT | Applied per configured rate on applicable services; tax payable liability; tax point tied to service delivery/business date | Rate and treatment **UNVERIFIED** for the pilot jurisdiction pending Phase 1 primary-source research and tax advice (OQ-021, OQ-029) |
+| VAT | Applied per configured rate on applicable services; tax payable liability; tax point tied to service delivery/business date | Rate and treatment **UNVERIFIED** for the pilot jurisdiction pending Phase 1 primary-source research and tax advice (service-charge answer OQ-021 closed; tax advice OQ-029 open) |
 | Consumption/levy taxes | Modelled as additional configurable tax types where applicable | **UNVERIFIED** applicability to this property |
-| Service charge | Default: collected as a liability for distribution (not revenue), distinct from tax | OQ-021; default per BR-FOL-010 context |
+| Service charge | Default: collected as a liability for distribution (not revenue), distinct from tax | OQ-021 (closed); default per BR-FOL-010 context |
 | Withholding tax | Out of scope for guest operations at pilot; relevant to commissions/payables where applicable | **UNVERIFIED** |
 | Fiscalisation | If required, an accredited provider becomes an adapter (INT-014); documents derive from SuiteFlow's operative document (ADR-008) | **UNVERIFIED** (OQ-029) |
 | Tax evidence | Every taxed item stores the rule version used (INV-FOL-5); tax reports reconcile collected vs posted liability daily | REQUIRED |
@@ -253,9 +253,9 @@ Every item below runs daily; a difference produces a ReconciliationCase with own
 
 | Item | Blocks | Owner |
 |---|---|---|
-| OQ-011 invoice authority confirmation | Invoicing implementation (ADR-008 provisional) | Finance Controller |
-| OQ-012 deposit/cancellation/no-show policy | Rule ACCEPTED status (defaults in force) | Product Owner / Finance |
-| OQ-021 service charge and tax treatment | Tax configuration finalisation | Finance / tax adviser |
+| OQ-011 (closed) invoice authority confirmation | Invoicing implementation (ADR-008 provisional) | Finance Controller |
+| OQ-012 (closed) deposit/cancellation/no-show policy | Rule ACCEPTED status (defaults in force) | Product Owner / Finance |
+| OQ-021 (closed) service charge and tax treatment | Tax configuration finalisation | Finance / tax adviser |
 | OQ-029 fiscalisation requirements | Invoicing/integration scope | Legal / Finance |
 | OQ-001 legal entity and tax identifiers | Document templates, statutory reporting | Product Owner |
 | Nigeria tax primary-source research | Tax rule implementation (RSK-FIN-004) | Finance / Phase 1 research |

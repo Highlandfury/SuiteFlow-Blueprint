@@ -34,7 +34,7 @@ The roadmap follows the programme path: this blueprint (Phase 0) → external re
 |---|---|
 | Objective | One property, one tenant, enforced scopes; identities, permissions, audit, events and business-date foundations operating |
 | Capabilities | CAP-PLT-001…009, 011…014; CAP-PM-001…004, 013; CAP-HRM-001/002; CAP-NAU-001; CAP-ACC-001 |
-| Inputs | Accepted blueprint; environment ready; OQ-026 (hosting), OQ-028 (licensing) for topology only |
+| Inputs | Accepted blueprint; environment ready; OQ-026 (closed; hosting), OQ-028 (licensing) for topology only |
 | Deliverables | Tenant/property/company configuration; authentication with MFA for privileged roles; RBAC with authority limits; append-only audit; outbox/event substrate; effective-dated configuration; numbering series; business-date scaffolding |
 | Dependencies | Phase 0 blueprint accepted (WP 0.8); transition architecture rulings for platform domain (Phase 4) |
 | Risks | RSK-ARCH-001 (ownership ambiguity), RSK-SEC-001 (scope leak), RSK-MIG-002 (tenancy migration) |
@@ -47,7 +47,7 @@ The roadmap follows the programme path: this blueprint (Phase 0) → external re
 |---|---|
 | Objective | The property's sellable existence: rooms, types, features, zones, rate plans, restrictions, effective-dated pricing |
 | Capabilities | CAP-PM-005…012; CAP-RTM-001…012; CAP-AVL-001/002/004; CAP-PLT-014 |
-| Inputs | OQ-021 (tax/service charge) before tax configuration is final; hotel room inventory data |
+| Inputs | OQ-021 (closed; tax/service charge) before tax configuration is final; hotel room inventory data |
 | Deliverables | Room inventory and numbering; types/features/pools; OOO/OOS control; rate plans, amounts, derives, restrictions; capacity and availability calculation; tax/localisation configuration framework |
 | Dependencies | Phase 1 |
 | Risks | RSK-FIN-004 (tax correctness), RSK-PROD-002 (hotel reality mismatch) |
@@ -60,7 +60,7 @@ The roadmap follows the programme path: this blueprint (Phase 0) → external re
 |---|---|
 | Objective | The full commercial booking lifecycle with privacy-aware guest records |
 | Capabilities | CAP-GST-001…010, 012; CAP-RSV-001…023; CAP-AVL-003/007/009 |
-| Inputs | OQ-012 (cancellation/no-show/deposit policy), OQ-024 (retention) for class-A handling |
+| Inputs | OQ-012 (closed; cancellation/no-show/deposit policy), OQ-024 (retention) for class-A handling |
 | Deliverables | Guest profiles with duplicates/merge/consent; reservation lifecycle with amendments, guarantees, deposits, routing instructions, traces; booking concurrency discipline; waitlist; shared/split/join structures |
 | Dependencies | Phases 1–2 |
 | Risks | RSK-GST (if any), RSK-FIN-001 (deposit/cancellation correctness), RSK-DOM-001 |
@@ -73,7 +73,7 @@ The roadmap follows the programme path: this blueprint (Phase 0) → external re
 |---|---|
 | Objective | Governed arrival, stay and departure with service operations |
 | Capabilities | CAP-FO-001…010, 012…019 |
-| Inputs | OQ-019 (ID capture) for registration evidence; Phase 3 guest data |
+| Inputs | OQ-019 (closed; ID capture) for registration evidence; Phase 3 guest data |
 | Deliverables | Arrivals and readiness; check-in gates with overrides; registration evidence; in-house console; room moves; extensions; checkout invariant; early/late; service recovery; incidents; shift handover; relocation; house-use/comps |
 | Dependencies | Phases 1–3; Phase 5 readiness integration |
 | Risks | RSK-OPS-001 (adoption), RSK-OPS-002 (business-date discipline) |
@@ -85,8 +85,8 @@ The roadmap follows the programme path: this blueprint (Phase 0) → external re
 | Aspect | Detail |
 |---|---|
 | Objective | Rooms cleaned, inspected and released on real state; maintenance tracked with evidence |
-| Capabilities | CAP-HSK-001…012; CAP-MNT-001…008 (pilot depth per OQ-022); CAP-PM-009/010 |
-| Inputs | OQ-014 (F&B/minibar), OQ-022 (maintenance scope), OQ-034 (inspection/service standards) |
+| Capabilities | CAP-HSK-001…012; CAP-MNT-001…008 (pilot depth per OQ-022 (closed)); CAP-PM-009/010 |
+| Inputs | OQ-014 (closed; F&B/minibar), OQ-022 (closed; maintenance scope), OQ-034 (closed; inspection/service standards) |
 | Deliverables | Room board; task generation/assignment; attendant console (mobile); inspection workflow; discrepancy resolution; productivity; work orders with SLA and evidence; OOO return-to-service verification |
 | Dependencies | Phase 4 exchange (front office ↔ housekeeping states) |
 | Risks | RSK-OPS-001 (device/rota reality), RSK-DOM-001 |
@@ -98,9 +98,9 @@ The roadmap follows the programme path: this blueprint (Phase 0) → external re
 | Aspect | Detail |
 |---|---|
 | Objective | Every charge, payment, deposit, adjustment and refund correct, evidenced and reproducible |
-| Capabilities | CAP-FOL-001…013; CAP-CSH-001…010; POS/guest communication as scoped by OQ-014; CAP-INT-004/005 (payments/banking as configured) |
-| Inputs | OQ-006 (POS/acquirer details), OQ-011 (invoice form), OQ-012, OQ-021 |
-| Deliverables | Folios and windows; binding windows to responsibility; charges/taxes; adjustments with authority; payments by method with true states; deposits lifecycle; refunds; cashier sessions and variance; receipts/invoices per OQ-011 |
+| Capabilities | CAP-FOL-001…013; CAP-CSH-001…010; POS/guest communication as scoped by OQ-014 (closed); CAP-INT-004/005 (payments/banking as configured) |
+| Inputs | OQ-006 (POS/acquirer details), OQ-011 (closed; invoice form), OQ-012 (closed), OQ-021 (closed) |
+| Deliverables | Folios and windows; binding windows to responsibility; charges/taxes; adjustments with authority; payments by method with true states; deposits lifecycle; refunds; cashier sessions and variance; receipts/invoices per OQ-011 (closed) |
 | Dependencies | Phases 4–5; ADR-007/008 confirmed |
 | Risks | RSK-FIN-001/003, RSK-SEC-002 |
 | Tests | TO-FOL-001…005; TO-CSH-001; payment state transitions; no PAN/CVV storage verified; concurrency on folio posting; settlement matching (manual provider baseline) |
@@ -112,7 +112,7 @@ The roadmap follows the programme path: this blueprint (Phase 0) → external re
 |---|---|
 | Objective | The day closes once, provably, recoverably; revenue and tax post correctly; books reconcile |
 | Capabilities | CAP-NAU-002…010; CAP-INA-001…008; CAP-ACC-001…012; CAP-INT-007 |
-| Inputs | OQ-002 (Finance Controller), OQ-008 (close window), OQ-011, OQ-021; ADR-005/006 confirmed |
+| Inputs | OQ-002 (Finance Controller), OQ-008 (closed; close window), OQ-011 (closed), OQ-021 (closed); ADR-005/006 confirmed |
 | Deliverables | Business-date gate; close checklist and runs; control totals; exception management; certification; posting families with mapping; reconciliation suite; day reports |
 | Dependencies | Phase 6; accounting interface binding (role contract, product per Phase 4 transition) |
 | Risks | RSK-FIN-001/002/004, RSK-OPS-002 |

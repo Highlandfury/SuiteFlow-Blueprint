@@ -100,7 +100,7 @@ AI in SuiteFlow is an operational amplifier under governance:
 - **Governed when acting** — any state change passes through the same authorized domain services a human would use, with the same validation and audit.
 - **Never authoritative** — no AI output defines a price, an availability count, a tax, a payment amount, an accounting total, or a permission.
 
-AI capability priorities for the pilot are an open question (OQ-031) and are architected in WP 0.7, not assumed into pilot scope.
+AI capability priorities are governed by OQ-031 closed (no AI at pilot) and are architected in WP 0.7, not assumed into pilot scope.
 
 ## 8. Benchmark posture
 
@@ -112,7 +112,7 @@ Publicly documented enterprise PMS capabilities (including Oracle Hospitality OP
 - SuiteFlow is not a general-purpose ERP; accounting depth beyond hospitality-operations needs is integrated, not re-implemented.
 - SuiteFlow will not store card PAN/CVV data. Card processing is handled by acquirers under their own compliance regimes.
 - SuiteFlow will not replace human authority: credit approvals, comps, refunds, forfeitures and overrides are human decisions with recorded accountability.
-- SuiteFlow is not a revenue-management algorithm vendor; recommendations may be supported, but pricing authority remains human (see OQ-016 for pilot expectations).
+- SuiteFlow is not a revenue-management algorithm vendor; recommendations may be supported, but pricing authority remains human (see OQ-016 (closed) for pilot expectations).
 
 ## 10. Success measures
 
@@ -124,7 +124,7 @@ Publicly documented enterprise PMS capabilities (including Oracle Hospitality OP
 | Cash control | 100% of cashier sessions closed with counted cash and resolved variances within policy |
 | Settlement control | ≥95% of POS batches matched to acquirer settlement within the agreed clearance window; all exceptions visible and owned |
 | Operational adoption | Front desk performs arrivals, moves, extensions and checkout end-to-end in SuiteFlow with no parallel paper process for those steps |
-| Reliability | 99.5% availability objective (pending OQ-009) with proven 1-hour RPO/RTO drill |
+| Reliability | 99.5% availability objective (OQ-009 closed) with proven 1-hour RPO/RTO drill |
 | Reporting | Daily operating and financial reports produced from the system, not from spreadsheets |
 
 ### Enterprise (multi-property)

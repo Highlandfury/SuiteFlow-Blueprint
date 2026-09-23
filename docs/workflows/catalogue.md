@@ -52,7 +52,7 @@ Detailed screen-level operational design (swim-lanes, information hierarchy, key
 - **Failure modes:** late arrivals after determination (reinstate + reversal); guest with valid late-arrival note (documented).
 - **Links:** CAP-RSV-005; SM-RESERVATION #6; SM-INVENTORY #2/3.
 
-### WF-RSV-004 — Group booking: block to master account **[P — pending OQ-017]**
+### WF-RSV-004 — Group booking: block to master account **[P — OQ-017 (closed)]**
 
 - **Trigger:** group/event enquiry with contracted terms.
 - **Actors:** sales, revenue (rates/inventory), finance (credit/deposit), front desk at arrival, night audit for billing.
@@ -95,7 +95,7 @@ Detailed screen-level operational design (swim-lanes, information hierarchy, key
 
 - **Trigger:** guest departure (or express checkout).
 - **Actors:** front desk; cashier; finance for transfers.
-- **Steps:** verify consumption posted (minibar/laundry/F&B) → present folio → settle or transfer per responsibility (BR-FOL-013/014) → issue invoice/receipt per OQ-011 → checkout transition; keys revoked; room release to housekeeping → discrepancy check if physical state differs.
+- **Steps:** verify consumption posted (minibar/laundry/F&B) → present folio → settle or transfer per responsibility (BR-FOL-013/014) → issue invoice/receipt per OQ-011 (closed) → checkout transition; keys revoked; room release to housekeeping → discrepancy check if physical state differs.
 - **Controls:** folio invariant blocking (BR-FO-002); pending-clearance flagging; credit check at transfer; direct-bill requires eligibility or approval.
 - **Failure modes:** disputed charges (adjustment path with authority); transfer declines (alternative settlement documented); late minibar post (governed correction).
 - **Financial consequence:** settlement/transfer; revenue cleared to books at close.
@@ -136,7 +136,7 @@ Detailed screen-level operational design (swim-lanes, information hierarchy, key
 - **Controls:** no silent resolution; security involvement for unauthorised occupancy.
 - **Links:** CAP-HSK-010; SM-ROOM; BR-NAU-001.
 
-### WF-MT-001 — Work order to verified completion **[P — pending OQ-022]**
+### WF-MT-001 — Work order to verified completion **[P — OQ-022 (closed)]**
 
 - **Trigger:** fault report (guest, staff, inspection, PM schedule).
 - **Actors:** reporter, chief engineer (triage/assign), technician, supervisor (verify).
@@ -191,7 +191,7 @@ Detailed screen-level operational design (swim-lanes, information hierarchy, key
 
 ### WF-NA-001 — Night audit and close **[P]**
 
-- **Trigger:** end of operating day (cutoff configured; OQ-008).
+- **Trigger:** end of operating day (cutoff configured; OQ-008 (closed)).
 - **Actors:** night auditor (execution), supervisor/manager (exception approvals), on-call (failures), income auditor (next morning).
 - **Steps:** pre-close checklist (unposted charges, open sessions, pending departures, discrepancies, queues) → resolve or escalate each blocker (BR-NAU-001) → initiate close → nightly postings run idempotently (BR-NAU-003) → control totals reconcile (BR-ACC-004) → day CLOSED, next day OPENED atomically → day reports generated and distributed → handover notes for morning.
 - **Controls:** blocking checklist; idempotent resumable runs; control-total reconciliation; alerts around the close window (BR-REL-005).

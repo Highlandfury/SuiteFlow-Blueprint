@@ -44,7 +44,7 @@ Which system owns which financial record, at what cadence are accounting effects
 3. **Revenue recognition.** Revenue is recognised **once**, when the service is delivered, through the daily business-day posting: room revenue night by night; outlet revenue on service; other revenue on delivery. Settlement (cash, POS, transfer, cheque) and deposits are **balance-sheet movements**, never revenue.
 4. **Guest-ledger control.** The books carry a Guest Ledger Control account; its balance must equal the sum of open folio balances at all times at day level (`BR-ACC-004`). SuiteFlow computes the expectation; the Accounting Authority holds the balance; reconciliation proves agreement.
 5. **Direct bill.** A City Ledger Transfer moves a settled balance from Guest Ledger Control to AR Control with **zero revenue effect** — revenue was already recognised on its business dates. The transfer produces exactly one AR document (idempotent, INV-FOL-9).
-6. **Allowances, comps and discounts.** Allowances and discounts post as contra-revenue against the revenue account they reduce; **comps post at value with an offsetting contra-revenue allowance in the same journal**, preserving statistical integrity (occupancy/ADR include comps) and making the cost visible rather than invisible (default per OQ-036; BR-FOL-005).
+6. **Allowances, comps and discounts.** Allowances and discounts post as contra-revenue against the revenue account they reduce; **comps post at value with an offsetting contra-revenue allowance in the same journal**, preserving statistical integrity (occupancy/ADR include comps) and making the cost visible rather than invisible (default per OQ-036 (closed); BR-FOL-005).
 7. **Mapping completeness.** Every posting family maps to configured accounts, tax and cost-centre dimensions. An unmapped family **blocks the close** rather than posting to a suspense account.
 8. **Idempotency and drill-down.** Each posting job carries a durable identity `(property, business_date, run_type)`; re-execution resolves to the original outcome. Every aggregated figure drills down to the contributing items; every item's evidence records its posting link once committed.
 9. **Reversals.** Correcting a posted journal is done by a linked reversal/new posting on the appropriate business date; posted journals are never edited (BR-ACC-005).
@@ -93,7 +93,7 @@ No immediate implementation change. The current implementation's accounting adap
 ## Review trigger
 
 - Finance-controller objection to daily cadence or comp-at-value treatment.
-- Statutory requirements (OQ-011/OQ-029) demanding per-transaction statutory documents.
+- Statutory requirements (OQ-011 closed/OQ-029) demanding per-transaction statutory documents.
 - Evidence that posting-family aggregation cannot support required statutory reporting.
 
 ## Version history

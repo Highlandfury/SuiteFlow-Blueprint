@@ -131,8 +131,8 @@ Promotion is by versioned artefact only; no environment-specific code branches; 
 | Item | Owner | Effect |
 |---|---|---|
 | OQ-002/OQ-003 named acceptance participants | Product Owner | UAT script owners and sign-off |
-| OQ-008 close window | Hotel Ops | Close performance gate |
-| OQ-009 availability objective | Product Owner | Availability test definition |
+| OQ-008 (closed) close window | Hotel Ops | Close performance gate |
+| OQ-009 (closed) availability objective | Product Owner | Availability test definition |
 | OQ-024 retention | Security/Legal | Test data retention |
 | OQ-038 connectivity | Product Owner | Degradation drills design |
 

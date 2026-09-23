@@ -26,7 +26,7 @@ What gates must pass before a hotel's operating day advances, in what order, and
 - The day advances only when required controls pass or blocking exceptions are resolved with evidence (BR-NAU-001).
 - The close is idempotent, resumable and failure-tolerant (INV-NAU-2).
 - Corrections after close are additive, authorised and versioned (INV-NAU-4/5; ADR-003).
-- The gate must reflect real hotel operations at 02:00–04:00 (OQ-008 default) with a real staffing model (RSK-OPS-002).
+- The gate must reflect real hotel operations at 02:00–04:00 (OQ-008 closed: adopted default) with a real staffing model (RSK-OPS-002).
 
 ## Options
 
@@ -56,7 +56,7 @@ What gates must pass before a hotel's operating day advances, in what order, and
 
 ## Trade-offs
 
-- Pre-advance certification can delay the close beyond the cutoff where income-audit staffing is thin; the mitigation is staffing/process design, not weaker control (RSK-OPS-002, OQ-008).
+- Pre-advance certification can delay the close beyond the cutoff where income-audit staffing is thin; the mitigation is staffing/process design, not weaker control (RSK-OPS-002, OQ-008 (closed)).
 - Configurability introduces two close profiles; mitigated by identical control requirements and report status labelling.
 - Reopen governance adds workflow; accepted as the price of immutable history.
 
@@ -64,7 +64,7 @@ What gates must pass before a hotel's operating day advances, in what order, and
 
 | Risk | Mitigation |
 |---|---|
-| Close staffing cannot support pre-advance certification | Configurable timing (decision 4); OQ-008 resolution; training and rota design |
+| Close staffing cannot support pre-advance certification | Configurable timing (decision 4); OQ-008 (closed) resolution; training and rota design |
 | Close run partially commits then fails repeatedly | Checkpointed idempotent runs; engineering escalation path (WF-NA-002) |
 | Reopen used to avoid fixing root causes | Reopen metrics reported monthly to finance and audit |
 | Business-date abuse (posting today into yesterday) | Posting window enforcement plus audit reporting of backdated volumes |

@@ -429,7 +429,7 @@ Service charge or tax rule changes during a guest's stay.
 
 - Loyalty program mechanics, CRM campaign entities, sales pipeline depth and BI models are target capabilities whose detailed models arrive with their enterprise phases (Ph12, Ph10, Ph15).
 - Payment provider token models and bank statement entities are defined with the integration architecture (WP 0.7) and financial architecture (WP 0.4).
-- Tax and statutory document entities are finalised in WP 0.4 (OQ-011, OQ-021).
+- Tax and statutory document entities are finalised in WP 0.4 (OQ-011, OQ-021 closed).
 
 ## 7. Version history
 

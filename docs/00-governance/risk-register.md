@@ -2,7 +2,7 @@
 doc-id: GOV-RISK
 title: Risk Register
 status: PROPOSED
-version: 0.1
+version: 0.3
 date: 2026-09-23
 owner: Product Owner (accountable); technical risks delegated to Technical Lead
 applies-to: all blueprint and programme work
@@ -24,7 +24,7 @@ Impact and likelihood ratings are **planning judgments (ASSUMED)**, to be re-rat
 | RSK-ARCH-002 | Architecture | Multi-property/chain target is designed as an afterthought; single-property shortcuts in tenancy, numbering and configuration block the second property | H | M | **H** | Principal Architect | Property/company scoping designed from the start (WP 0.2, 0.5); single property must be a trivial case, not a special case | Any schema or permission decision that cannot express a second property |
 | RSK-ARCH-003 | Architecture | Blueprint becomes unbuildable in the pilot horizon: over-engineered target displaces the 24-week pilot | H | M | **H** | Product Owner | Pilot-first roadmap; capability priorities P0–P4; explicit pilot release scope in scope.md; phased delivery | Pilot-critical capability slips while P3/P4 design work expands |
 | RSK-PROD-001 | Product | Scope breadth (24 capability domains) consumed without prioritisation; everything is "must have" | H | H | **H** | Product Owner | Capability map with P0–P4 and pilot flags (WP 0.1 pass 2); decision log discipline | More than ~20% of capabilities marked pilot-critical |
-| RSK-PROD-002 | Product | Accepted MVP boundaries conflict with hotel reality at kickoff (e.g. F&B/group business assumed out but present at the property) | H | M | **H** | Product Owner / Hotel Ops | OQ-014, OQ-017 resolved before capability prioritisation closes | Hotel walkthrough or UAT reveals an operating workflow with no capability coverage |
+| RSK-PROD-002 | Product | Accepted MVP boundaries conflict with hotel reality at kickoff (e.g. F&B/group business assumed out but present at the property) | H | M | **H** | Product Owner / Hotel Ops | OQ-014/OQ-017 closed 23 Sep 2026 (F&B and groups in pilot scope); capability prioritisation must reflect them | Hotel walkthrough or UAT reveals an operating workflow with no capability coverage |
 | RSK-DOM-001 | Hospitality domain | Blueprint workflows are not validated with the actual hotel; they reflect generic PMS theory rather than Golfview's practice | H | M | **H** | Hotel Operations rep (OQ-003 open) | Operational-realism test (charter §10); workflow review with named hotel staff; walkthrough against a real operating day | No named hotel reviewer at a workflow approval gate |
 | RSK-DOM-002 | Hospitality domain | Terminology drift between blueprint English and hotel usage; staff misread screens and control states | M | M | M | Hotel Operations | Glossary is normative; UI wording reviewed with staff (WP 0.6); training materials reuse hotel vocabulary | Confusion reported in UAT or training |
 | RSK-FIN-001 | Financial | Wrong revenue recognition or tax point: deposits, forfeitures, direct bills or nightly postings recognised at the wrong time or twice | H | M | **H** | Finance Controller (OQ-002 open) | Financial architecture (WP 0.4) with worked examples; golden-day acceptance fixture; independent income-audit controls | Any financial scenario without a worked end-to-end example and test obligation |
@@ -36,7 +36,7 @@ Impact and likelihood ratings are **planning judgments (ASSUMED)**, to be re-rat
 | RSK-SEC-003 | Security | Secrets and credentials sprawl across environments; provider keys exposed or unrotated | M | M | M | Platform Engineer | Central secret management, rotation policy, no secrets in repos, recovery procedures include secrets restoration (BR-REL-003) | Any credential found in repository or ticket history |
 | RSK-DATA-001 | Data | Migration from incumbent records produces duplicates, orphaned balances or broken guest history; opening balances do not reconcile | H | M | M | Data Architect | Migration architecture with dry runs and reconciliation (WP 0.7); opening-balance proof; duplicate strategy; rollback plan | OQ-025 answer reveals data of unverified quality |
 | RSK-INT-001 | Integration | Bank/acquirer interfaces unavailable, immature or undocumented; payment automation cannot be proven in time | H | M | M | Integration Architect | Provider-neutral adapter design; manual/reference reconciliation fallback accepted in MVP (BR-MVP-005) | OQ-004/OQ-006 answers arrive late or with no interface documentation |
-| RSK-INT-002 | Integration | No channel/OTA distribution at pilot limits commercial value or forces parallel manual channel management | M | M | M | Product Owner | OQ-018 resolution; manual channel handling documented as a pilot operating procedure if deferred | Hotel cannot operate its sales channels with the delivered scope |
+| RSK-INT-002 | Integration | No channel/OTA distribution at pilot limits commercial value or forces parallel manual channel management | M | M | M | Product Owner | OQ-018 closed 23 Sep 2026: direct + corporate at pilot; manual channel handling documented as a pilot operating procedure if required | Hotel cannot operate its sales channels with the delivered scope |
 | RSK-PERF-001 | Performance | Night audit and month-end reporting exceed their operating window at 200 rooms with realistic data volumes | H | M | M | Performance/DB Engineer | Volume assumptions stated; performance tests with production-scale synthetic data; close-window budget as NFR | Close runtime approaches the hotel's cutoff window in test |
 | RSK-SCALE-001 | Scalability | Chain-level reporting and shared-profile requirements cannot be met by the pilot tenancy model without redesign | M | M | M | Principal Architect | Tenancy and reporting design reviewed against the multi-property target in WP 0.2/0.7 | First serious chain requirement appears after pilot go-live |
 | RSK-MIG-001 | Migration | Cutover of a live hotel operation causes data loss or extended downtime; rollback fails | H | M | M | Release Manager | Rehearsed cutover, parallel-run plan, verified backups and restore, one-hour RTO drill (BR-REL-003), controlled go/no-go | First cutover rehearsal reveals an unproven rollback step |
@@ -54,7 +54,7 @@ Impact and likelihood ratings are **planning judgments (ASSUMED)**, to be re-rat
 ## 2. Top risks requiring early decisions
 
 1. **RSK-GOV-001 (blueprint drift)** — controls the entire programme's value. Mitigated only by discipline: nothing implemented without an ACCEPTED capability requirement and a transition-architecture decision.
-2. **RSK-FIN-001 / RSK-FIN-004 (financial and tax correctness)** — highest consequence, lowest tolerance. Blocked by OQ-011, OQ-012, OQ-021 and Phase 1 tax research.
+2. **RSK-FIN-001 / RSK-FIN-004 (financial and tax correctness)** — highest consequence, lowest tolerance. Partly unblocked: invoice, deposit and service-charge answers adopted (OQ-011/012/021 closed 23 Sep 2026); tax advice on the Nigerian position (OQ-029) remains.
 3. **RSK-SEC-001 (scope leakage)** — designed out at platform level in WP 0.5, tested per surface.
 4. **RSK-ARCH-002 (multi-property afterthought)** — the Product Owner has directed an enterprise target with pilot-first delivery; shortcuts in tenancy now become expensive later.
 5. **RSK-OPS-001/002 (operational adoption and business-date discipline)** — the most common cause of PMS failure in practice; requires hotel participation, not better software alone.
@@ -65,3 +65,4 @@ Impact and likelihood ratings are **planning judgments (ASSUMED)**, to be re-rat
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial register with 30 seeded risks | PROPOSED |
 | 0.2 | 2026-09-23 | RSK-MIG-002 (tenancy migration) and RSK-DEP-003 (connectivity/power) added; now 32 risks | PROPOSED |
+| 0.3 | 2026-09-23 | Controls updated after OQ adoption: RSK-PROD-002 and RSK-INT-002 reflect closed questions (OQ-014/017/018); RSK-FIN-001/004 partly unblocked (OQ-011/012/021 closed) | PROPOSED |

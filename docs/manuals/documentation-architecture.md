@@ -36,7 +36,7 @@ Documentation is part of the product, not an artefact produced after it. Princip
 | 8 | Night Audit Playbook (checklist, failure recovery, escalation) | Night audit | Finance + ops | Close process change |
 | 9 | Management Guide (dashboards, reports, approvals) | GM, managers | Product | Reporting change |
 | 10 | Sales & Groups Guide | Sales, events | Product | Commercial workflow change |
-| 11 | POS/Outlets Guide *(scope per OQ-014)* | F&B | Operations | Outlet feature change |
+| 11 | POS/Outlets Guide *(scope per OQ-014 (closed))* | F&B | Operations | Outlet feature change |
 | 12 | Reports Catalogue (definitions, as-of semantics, drill-down) | All roles | Finance + data | Report definition change |
 | 13 | Developer Manual (architecture, module map, contracts, testing) | Engineers | Engineering | Architecture/API change |
 | 14 | API Manual (endpoints, auth, idempotency, errors, versioning) | Integrators | Engineering (generated) | Contract change |
@@ -69,7 +69,7 @@ Training is role-based (per personas and roles): job-shadow scripts, scenario ex
 
 ## 6. Localisation
 
-English at pilot (OQ-032 scope); documentation architecture supports translation by separating content from presentation and maintaining terminology per the glossary.
+English at pilot (OQ-032 closed scope); documentation architecture supports translation by separating content from presentation and maintaining terminology per the glossary.
 
 ## 7. Governance and review
 
@@ -83,7 +83,7 @@ English at pilot (OQ-032 scope); documentation architecture supports translation
 | Item | Owner |
 |---|---|
 | OQ-003 operations representative (manual validation) | Product Owner |
-| OQ-011 document formats for finance/guest documents | Finance |
+| OQ-011 (closed) document formats for finance/guest documents | Finance |
 | Operations documentation hosting decision | WP 0.8 |
 | OQ-024 retention (documentation of data handling) | Security/Legal |
 

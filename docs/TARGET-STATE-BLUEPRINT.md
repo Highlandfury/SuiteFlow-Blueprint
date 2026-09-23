@@ -1,15 +1,15 @@
 ---
 doc-id: BP-V1
-title: SuiteFlow Target-State Blueprint v1.0
+title: SuiteFlow Target-State Blueprint v1.1
 status: PROPOSED
-version: 1.0
+version: 1.1
 date: 2026-09-23
 owner: Product Owner (acceptance); Principal Architect (maintainer)
 applies-to: all SuiteFlow work
 depends-on: [GOV-CHARTER, GOV-INPUTS]
 ---
 
-# SuiteFlow Target-State Blueprint v1.0
+# SuiteFlow Target-State Blueprint v1.1
 
 ## 1. What this is
 
@@ -23,7 +23,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 
 | Artifact class | Count | Location |
 |---|---|---|
-| Documents in this blueprint | 41 | `docs/` |
+| Documents in this blueprint | 42 | `docs/` |
 | Domains | 25 | capability map |
 | Capabilities (`CAP-*`) | 283 | `product/capability-map.md` |
 | Domain invariants (`INV-*`) | 80 | `architecture/domain-model.md` |
@@ -36,7 +36,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 | Test obligations (`TO-*`) | 29 representative | `qa/strategy.md` |
 | Architecture decisions (`ADR-*`) | 11 | `architecture/adr/` |
 | Risks (`RSK-*`) | 32 | `00-governance/risk-register.md` |
-| Open questions (`OQ-*`) | 38 | `00-governance/open-questions.md` |
+| Open questions (`OQ-*`) | 38 (25 closed, 13 open) | `00-governance/open-questions.md` |
 | Accepted requirements (`BR-PILOT/PAY/MVP/REL-*`) | 33 | `00-governance/inputs-register.md` |
 
 ## 3. Governance summary
@@ -68,7 +68,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 - **Revenue:** recognised once, on the correct business day; settlements and deposits are balance-sheet movements; direct-bill transfer is zero-revenue; comps post at value with contra-revenue.
 - **Close (ADR-006):** validation → postings → reconciliation → certification → advance; certification timing configurable with pilot default before advance; reopen governed and versioned; guest operations never freeze for financial degradation.
 - **Deposits (ADR-007):** obligation-linked liabilities with conservation; forfeiture to dedicated cancellation/no-show revenue; tax points flagged UNVERIFIED pending advice.
-- **Documents (ADR-008):** SuiteFlow issues guest/corporate documents; statutory documents derive and link one-to-one; provisional pending OQ-011.
+- **Documents (ADR-008):** SuiteFlow issues guest/corporate documents; statutory documents derive and link one-to-one; ruled by OQ-011 (closed) — SuiteFlow issues the customer-facing document, statutory/fiscal documents derive from and link to it.
 - **Reconciliation:** 11 daily checks; zero unexplained difference; exceptions owned and aged.
 
 ## 7. Security at a glance
@@ -103,23 +103,23 @@ Pilot phases 1–9 (foundation → property/rates → guests/reservations → fr
 
 ## 11. Open questions and risks
 
-- **Open questions:** 38 in the register (`00-governance/open-questions.md`), summarised for decision-making in `00-governance/decisions-required.md`. The financially blocking ones: **OQ-011** (invoice authority), **OQ-012** (deposit/cancellation/no-show policy), **OQ-021** (service charge/tax), **OQ-001/002/003** (entity and named representatives), **OQ-038** (connectivity/power).
+- **Open questions:** 38 in the register (`00-governance/open-questions.md`); **25 are closed** by Product Owner adoption of the industry-standard answers on 23 Sep 2026 (`00-governance/industry-standard-answers.md`; decision log in the register §4). The 13 open items are hotel/provider facts (OQ-001/002/003/004/006/007/025/033/038), professional advice (OQ-024/028/029) and one cost approval (OQ-010). The financially blocking ones now: **OQ-001/002/003** (entity and named representatives) and **OQ-038** (connectivity/power).
 - **Risks:** 32 in the register (`00-governance/risk-register.md`); highest: blueprint drift (RSK-GOV-001), financial/tax correctness (RSK-FIN-001/004), scope leakage (RSK-SEC-001), tenancy migration (RSK-MIG-002), connectivity/power (RSK-DEP-003), operational adoption (RSK-OPS-001).
-- **Provisional assumptions:** all `[OQ-nnn]` defaults remain in force, clearly marked, until answered.
+- **Adopted answers and interim defaults:** the 25 closed questions' answers are in force and marked `OQ-nnn (closed)` in affected documents; the 13 open questions carry interim defaults, clearly marked, until their evidence, advice or approval exists.
 
 ## 12. Phase 0 exit gate — what remains for ACCEPTED status
 
 | Requirement | Approver | Status |
 |---|---|---|
 | Product vision, scope, capability priorities (incl. pilot de-scope decision) | Product Owner | Pending |
-| Domain model, state machines, workflows, business rules (incl. `[OQ]` defaults) | Product Owner + Hotel Operations rep (OQ-003) | Pending |
-| Financial architecture, posting/close/deposit/invoice rules | Finance Controller (OQ-002) + tax adviser (OQ-021/029) | Pending |
+| Domain model, state machines, workflows, business rules (incl. adopted `[OQ]` answers) | Product Owner + Hotel Operations rep (OQ-003) | Pending |
+| Financial architecture, posting/close/deposit/invoice rules | Finance Controller (OQ-002) + tax adviser (OQ-029) | Pending — invoice/deposit/service-charge answers adopted (OQ-011/012/021 closed) |
 | Security model, role matrix, authority-limit defaults | Security/Privacy adviser (OQ-033) + Product Owner | Pending |
 | UX, integration, reporting, NFR, QA, deployment, documentation, AI architectures | Technical Lead (OQ-033) + Product Owner | Pending |
 | All 11 ADRs confirmed as ACCEPTED or revised | Respective approvers per ADR | Pending |
-| Open questions closed or defaults formally adopted | Product Owner | Pending |
+| Open questions closed or defaults formally adopted | Product Owner | 25 closed by adoption (23 Sep 2026); 13 remain (9 facts, 3 advice, 1 approval) |
 
-When the above complete, the blueprint is promoted to **v1.0 ACCEPTED** and becomes level 2 of the source-of-truth hierarchy — the baseline for Phase 2's audit, Phase 3's gap matrix and all implementation commitments.
+When the above complete, the blueprint is promoted to **ACCEPTED (current version, v1.1)** and becomes level 2 of the source-of-truth hierarchy — the baseline for Phase 2's audit, Phase 3's gap matrix and all implementation commitments.
 
 ## 13. What happens next
 
@@ -134,3 +134,4 @@ When the above complete, the blueprint is promoted to **v1.0 ACCEPTED** and beco
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 1.0 | 2026-09-23 | Consolidated blueprint issued at WP 0.8: inventory, architecture summaries, acceptance model, exit gate, next steps | PROPOSED |
+| 1.1 | 2026-09-23 | Industry-standard answers adopted (25 questions closed, register v0.3): inventory, ADR-008 summary, §11 and §12 updated | PROPOSED |

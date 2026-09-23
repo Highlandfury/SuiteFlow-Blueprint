@@ -2,7 +2,7 @@
 doc-id: ARCH-TARGET
 title: Target-State Architecture Overview
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Principal Architect (drafted); Product Owner (approval)
 applies-to: full enterprise target
@@ -118,7 +118,7 @@ Rule: exactly one authoritative owner per datum; every other occurrence is a der
 | Posting link and idempotency identity | Accounting Interface | Posting records | Reconciliation reports |
 | Reconciliation state and exceptions | Accounting Interface / Income Audit | Reconciliation records | Management and audit views |
 | GL entries, AR documents, tax documents, statutory books, period close | Accounting Authority | Accounting documents | Balances read back for reconciliation |
-| Statutory/customer-facing invoice | **Open — OQ-011; to be ruled in WP 0.4** | — | — |
+| Statutory/customer-facing invoice | Customer documents: SuiteFlow issues the operative document; statutory/fiscal copy derives and links (OQ-011 closed; ADR-008) | Document records + linked statutory derivative | Document views, statutory-copy linkage |
 | Audit trail | Platform | Append-only audit store | Audit reporting |
 | Outbox events | Platform | Transactional outbox rows | Consumer procesing state |
 | Configuration (policies, timings, limits, numbering series) | Platform | Effective-dated, property/tenant-scoped | Resolved configuration snapshots |
@@ -185,7 +185,7 @@ Detail belongs to WP 0.7; the principles established here:
 ## 9. Open items carried forward
 
 - WP 0.2 pass 2: domain model, data model, temporal and identity ADRs.
-- WP 0.4: financial ownership, invoice/document authority (OQ-011), deposit and tax treatment (OQ-012, OQ-021).
+- WP 0.4: financial ownership, invoice/document authority (OQ-011 closed), deposit and tax treatment (OQ-012, OQ-021 closed).
 - WP 0.5: security model including scope enforcement design and role matrix.
 - WP 0.7: deployment/recovery design, integration contracts, NFRs.
 
@@ -194,3 +194,4 @@ Detail belongs to WP 0.7; the principles established here:
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial target-state overview issued with WP 0.2 pass 1 | PROPOSED |
+| 0.2 | 2026-09-23 | Invoice/document authority ruled (OQ-011 closed) in the ownership matrix | PROPOSED |

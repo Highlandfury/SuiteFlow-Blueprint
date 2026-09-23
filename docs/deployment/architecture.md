@@ -4,7 +4,7 @@ title: Target Deployment and Operations Architecture
 status: PROPOSED
 version: 0.1
 date: 2026-09-23
-owner: DevOps / SRE (drafted); Product Owner (approval; OQ-010/OQ-026/OQ-038 open)
+owner: DevOps / SRE (drafted); Product Owner (approval; OQ-010 and OQ-038 open; OQ-026 closed)
 applies-to: pilot and enterprise target
 depends-on: [ADR-001, ADR-002, ARCH-NFR, SEC-MODEL, ARCH-RULES]
 ---
@@ -131,8 +131,8 @@ Per SEC-MODEL §11: central secret management; no production secrets outside pro
 |---|---|---|
 | OQ-038 connectivity/power facts | Product Owner | D-1…D-6 validation and cost |
 | OQ-010 support and recovery cost approval | Product Owner | 24×7 rota, warm capacity |
-| OQ-026 hosting region | Product Owner | Topology, residency, latency |
-| OQ-009 availability objective | Product Owner | A-1 measurement |
+| OQ-026 (closed) hosting region | Product Owner | Topology, residency, latency |
+| OQ-009 (closed) availability objective | Product Owner | A-1 measurement |
 | Managed support partner decision | Product Owner | 24×7 sustainability (RSK-DEP-001) |
 
 ## 12. Version history

@@ -146,7 +146,7 @@ Observed statuses are working-tree observations and are recorded here for planni
 | Product breadth | Accepted MVP defers multi-property, foreign currency and advanced analytics for the pilot (BR-MVP-012/013) | Product Owner direction (23 Sep 2026): enterprise target includes multi-property/chain, designed now, delivered pilot-first | Reconciled by scope.md: enterprise target vs pilot release scope; no capability dropped from the target |
 | Product naming | MVP boundary names Kamra/ERPNext as included systems | Blueprint must define target ownership independently of existing products | Named systems treated as candidate implementations of target roles; validation in Phase 1–3 |
 | Accounting authority | Decision pack proposes ERPNext as accounting book of record | Blueprint must determine the correct financial architecture on its own merits | WP 0.4 validation with explicit ADR outcome |
-| Service objective | 99.5% planning baseline | Not confirmed (REL-001) | Open question OQ-004 |
+| Service objective | 99.5% pilot / 99.9% enterprise target | Closed — adopted (OQ-009, 23 Sep 2026) |
 
 ## 6. Version history
 
@@ -156,3 +156,4 @@ Observed statuses are working-tree observations and are recorded here for planni
 | 0.2 | 2026-09-23 | Validation outcomes §4.3 added: DP-CTX-001 MODIFIED (ADR-002); DP-CTX-002 roles confirmed, binding deferred (ADR-001); DP-CTX-003 reserved for WP 0.4 | PROPOSED |
 | 0.3 | 2026-09-23 | §4.3 outcomes updated: DP-CTX-003, DP-ADR-001, DP-ADR-002, DP-ADR-005 confirmed with refinements (ADR-005…007); invoice authority ruled provisionally (ADR-008, pending OQ-011) | PROPOSED |
 | 0.4 | 2026-09-23 | §4.3 outcomes completed: DP-ADR-003 confirmed with refinements (ADR-010); DP-ADR-004 confirmed with refinements, provider selection remains open (ADR-011). All proposed inputs now have recorded outcomes | PROPOSED |
+| 0.5 | 2026-09-23 | Service-objective status corrected to adopted (OQ-009 closed: 99.5% pilot / 99.9% enterprise target) | PROPOSED |

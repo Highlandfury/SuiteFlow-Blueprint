@@ -25,7 +25,7 @@ How are entities identified internally, how are human-facing numbers allocated, 
 - Human-facing numbers are unique, searchable, controllable per property and never reassigned (CAP-PLT-005).
 - External system references are traceable and deduplicated per provider (CAP-INT-001, CAP-PLT-010).
 - Merges (guests, accounts) preserve resolution from every historical reference (INV-GST-1).
-- Legal numbering obligations (invoices, vouchers, fiscal series) can be met without redesign (OQ-011/OQ-029 open).
+- Legal numbering obligations (invoices, vouchers, fiscal series) can be met without redesign (OQ-011 closed/OQ-029 open).
 - Room numbers, names, emails and phone numbers may change freely without breaking anything.
 
 ## Options
@@ -49,7 +49,7 @@ How are entities identified internally, how are human-facing numbers allocated, 
 
 - Human numbers (reservation, folio, cashier session, work order, invoice, voucher, event) are attributes with the same stability rules, allocated from **configured, property-scoped number series**.
 - Series behaviour is configurable: prefix/suffix, width, reset rules (annual, financial period, never), and gap policy.
-- Where law requires gapless or sequential series (candidate: invoices, fiscal documents — OQ-011/OQ-029), the series supports gapless allocation with transactional reservation and audit of any gap. Series deployment is finalised in WP 0.4.
+- Where law requires gapless or sequential series (candidate: invoices, fiscal documents — OQ-011 (closed)/OQ-029), the series supports gapless allocation with transactional reservation and audit of any gap. Series deployment is finalised in WP 0.4.
 - Numbers are unique per series and never reassigned, even if a record is voided or cancelled.
 - Numbers are displayed, printed, searchable and quotable — never used as foreign keys.
 
@@ -116,7 +116,7 @@ No immediate change. Phase 2 classifies current identity practices; Phase 4 deci
 
 ## Review trigger
 
-- Statutory numbering requirements (OQ-011, OQ-029) demanding series semantics beyond this decision.
+- Statutory numbering requirements (OQ-011 closed, OQ-029) demanding series semantics beyond this decision.
 - Multi-property consolidation requirements that expose identity collisions.
 - Evidence of identity instability under restore or consolidation.
 

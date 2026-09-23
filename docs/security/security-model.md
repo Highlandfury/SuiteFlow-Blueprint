@@ -168,8 +168,8 @@ Audit records are append-only (INV-PLT-4); access to audit data is itself scoped
 | Item | Owner | Note |
 |---|---|---|
 | OQ-024 guest data retention periods | Security / Legal | Drives class-A lifecycle and erasure design |
-| OQ-019 ID capture requirements | Hotel Operations / Security | Drives class-A scope and workflow |
-| OQ-026 hosting/region and OQ-028 licensing | Product Owner / Legal | Deployment security and data residency |
+| OQ-019 (closed) ID capture requirements | Hotel Operations / Security | Drives class-A scope and workflow |
+| OQ-026 (closed) hosting/region and OQ-028 licensing | Product Owner / Legal | Deployment security and data residency |
 | OQ-002/OQ-033 named Finance/Security approvers | Product Owner | Approval gates for this model |
 | Authenticator choice (MFA method) | Platform | Deployment-phase decision (WP 0.7) |
 

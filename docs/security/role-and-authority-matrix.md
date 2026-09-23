@@ -15,7 +15,7 @@ depends-on: [SEC-MODEL, ADR-009, PROD-PERSONAS]
 
 This document turns the personas (`PROD-PERSONAS`) into a **system role catalogue**, per-role permission summaries, **authority-limit defaults** and **separation-of-duties rules**. It is the implementation source for ADR-009 and the security model.
 
-All numeric limits are **PROPOSED defaults pending confirmation** (OQ-002 Finance Controller, OQ-012 policies, OQ-013 credit); they are expressed in NGN and are property-configurable, effective-dated configuration (BR-PLT-001). Nothing here is hard-coded.
+All numeric limits are **PROPOSED defaults pending sign-off** (OQ-002 Finance Controller appointment; OQ-012 and OQ-013 policies closed by adoption 23 Sep 2026); they are expressed in NGN and are property-configurable, effective-dated configuration (BR-PLT-001). Nothing here is hard-coded.
 
 ## 2. Role catalogue
 
@@ -124,8 +124,8 @@ Exception principle: where staffing makes strict separation impossible (small ni
 |---|---|
 | OQ-002 Finance Controller named (approves bands) | Product Owner |
 | OQ-003 Operations representative named (validates operational roles) | Product Owner |
-| OQ-012 deposit/refund/cancellation policy (defines forfeiture formula) | Product Owner / Finance |
-| OQ-013 corporate credit policy (limits and suspension) | Finance |
+| OQ-012 (closed) deposit/refund/cancellation policy (defines forfeiture formula) | Product Owner / Finance |
+| OQ-013 (closed) corporate credit policy (limits and suspension) | Finance |
 | OQ-033 Security adviser named | Product Owner |
 
 ## 8. Version history

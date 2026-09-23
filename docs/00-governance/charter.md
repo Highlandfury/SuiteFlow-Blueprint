@@ -2,7 +2,7 @@
 doc-id: GOV-CHARTER
 title: SuiteFlow Blueprint Charter
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: this repository
@@ -188,7 +188,7 @@ Identifiers are never reused. Retired identifiers remain reserved.
 | Financial architecture | Finance Controller; external tax adviser where applicable; Technical Lead |
 | Security and privacy | Security/Privacy adviser; Technical Lead |
 | Integration architecture | Technical Lead; Finance for financial integrations |
-| Blueprint release (v1.0) | Product Owner with the above sign-offs recorded |
+| Blueprint release (v1.x) | Product Owner with the above sign-offs recorded |
 
 Named individuals for the pilot roles are currently open items (see inputs register).
 
@@ -198,7 +198,7 @@ Planned structure; documents appear as their work packages execute. Only files t
 
 ```text
 docs/
-├── TARGET-STATE-BLUEPRINT.md          [present — master index v1.0]
+├── TARGET-STATE-BLUEPRINT.md          [present — master index v1.1]
 ├── 00-governance/
 │   ├── charter.md                     [present]
 │   ├── inputs-register.md             [present]
@@ -249,7 +249,7 @@ docs/
 
 | Phase | Content | Gate to exit |
 |---|---|---|
-| 0 | Target product definition (this repository, WP 0.1–0.8) | Blueprint v1.0 accepted |
+| 0 | Target product definition (this repository, WP 0.1–0.8) | Blueprint ACCEPTED (current version) |
 | 1 | External research and benchmark validation | Research register complete; blueprint claims labelled with sources |
 | 2 | Current-state audit of implementation and ecosystem | Evidence-based capability classifications |
 | 3 | Target vs current gap matrix | Every capability mapped with an action and priority |
@@ -268,3 +268,4 @@ docs/
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial charter issued with WP 0.1 pass 1 | PROPOSED |
+| 0.2 | 2026-09-23 | Version references updated for blueprint v1.1 after adoption of the industry-standard answers | PROPOSED |

@@ -2,7 +2,7 @@
 doc-id: GOV-ANSWERS
 title: Open Question Answers — Industry-Standard and Best-Practice Positions
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Principal Architect (drafted at Product Owner direction); Product Owner (adoption)
 applies-to: resolution of the Open Questions Register (GOV-OQ)
@@ -20,7 +20,7 @@ This document records those answers. It does two things:
 1. Where industry practice determines a concrete answer, it gives the answer in an adoptable form (**ANSWERED-D**).
 2. Where only the hotel, a named person, a provider or professional advice can answer, it states the **evidence required** and a recommended interim default so design continues without inventing facts (**OPEN-FACT**, **OPEN-ADVICE**, **OPEN-APPROVAL**).
 
-**Authority and governance.** This document does not fabricate facts, does not name people, and does not close questions that require an accountable human. An `ANSWERED-D` answer is the recommended design baseline; it is closed formally at the blueprint acceptance gate by the approver named in charter §12, or earlier by explicit Product Owner adoption. `OPEN-FACT` and `OPEN-ADVICE` questions remain open until the evidence or advice exists. All statements are PROPOSED and carry the confidence labels of charter §6: industry-practice statements are ASSUMED unless evidenced; jurisdiction-specific legal and tax statements are **UNVERIFIED** pending Phase 1 primary-source research and professional advice, and are design positions — not compliance claims.
+**Authority and governance.** This document does not fabricate facts, does not name people, and does not close questions that require an accountable human. On **23 September 2026 the Product Owner adopted all `ANSWERED-D` answers in full**; the 25 questions are `CLOSED` in the register with a decision-log entry (GOV-OQ §4), and the affected documents carry the marker `OQ-nnn (closed)`. The named-approver sign-offs for the affected document sets remain part of blueprint acceptance (charter §12). `OPEN-FACT` and `OPEN-ADVICE` questions remain open until the evidence or advice exists. All statements are PROPOSED and carry the confidence labels of charter §6: industry-practice statements are ASSUMED unless evidenced; jurisdiction-specific legal and tax statements are **UNVERIFIED** pending Phase 1 primary-source research and professional advice, and are design positions — not compliance claims.
 
 ## 2. How to read the answers
 
@@ -35,7 +35,7 @@ Each answer states: **Answer**, **Basis**, **Still needed**, **Affects**.
 
 ## 3. Summary of outcomes
 
-25 questions are answered on an industry-standard basis; 9 need facts; 3 need professional advice; 1 needs the Product Owner's cost approval.
+25 questions are answered on an industry-standard basis and were adopted by the Product Owner on 23 September 2026 (now `CLOSED` in the register); 9 need facts; 3 need professional advice; 1 needs the Product Owner's cost approval.
 
 | ID | Class | Answer in one line |
 |---|---|---|
@@ -483,17 +483,21 @@ Retention is per-category configuration from day one (data model already support
 
 **Affects.** Deployment architecture, NFR A-7/A-8, offline strategy, risk RSK-DEP-003.
 
-## 5. Adoption path
+## 5. Adoption record and next steps
 
-1. **Adopt the defaults.** The Product Owner may adopt all `ANSWERED-D` answers in one line (for example: "Adopt all industry-standard answers" or "Adopt all except OQ-nnn"). On adoption, register statuses move to `CLOSED` with the decision recorded (answer, authority, date, affected documents), and the `[OQ-nnn]` markers in the affected documents are updated to cite the adopted answer — a mechanical propagation with version bumps per charter §7.
-2. **Supply the facts.** The `OPEN-FACT` items (OQ-001, 002, 003, 004, 006, 007, 025, 033, 038) close when the evidence is recorded. The fastest financial unblock remains Group 1: entity documents, Finance Controller, operations representative, provider/bank facts, connectivity survey, data inventory.
-3. **Commission the advice.** The `OPEN-ADVICE` items (OQ-024, 028, 029) close with Phase 1 professional sign-off; interim positions above keep design moving.
-4. **Decide the cost.** OQ-010 (`OPEN-APPROVAL`) closes with the Product Owner's approval of the 24×7 staffing model and recovery budget.
+**Adopted.** On 23 September 2026 the Product Owner adopted all `ANSWERED-D` answers in full. The register records the closure and decision log (GOV-OQ §4), and the affected documents now mark these questions `OQ-nnn (closed)`; documents whose rules were refined by an adopted answer (business rules, NFR, capability map, target state, ADR-008, master index) carry a version increment, and marker-only updates are recorded in the commit history.
 
-Nothing adopted here changes accepted business requirements (level 1); all answers are consistent with the accepted MVP boundaries and the charter's standing constraints.
+**Still open — and what closes them:**
+
+1. **Facts** (`OPEN-FACT`): OQ-001 (entity/tax documents), OQ-002 (Finance Controller), OQ-003 (Operations representative), OQ-004 (bank roles), OQ-006 (acquirer/terminals/settlement reports), OQ-007 (statement formats), OQ-025 (existing data inventory), OQ-033 (Technical Lead and Security/Privacy adviser), OQ-038 (site survey). Close when the evidence is recorded.
+2. **Advice** (`OPEN-ADVICE`): OQ-024 (retention schedule), OQ-028 (open-source licensing), OQ-029 (fiscalisation/e-invoicing). Close with Phase 1 professional sign-off; the interim positions above keep design moving.
+3. **Approval** (`OPEN-APPROVAL`): OQ-010 (24×7 staffing and recovery budget). Close with the Product Owner's approval.
+
+Nothing adopted here changes accepted business requirements (level 1); all answers are consistent with the accepted MVP boundaries and the charter's standing constraints. Where an adopted answer keeps a dependency (for example OQ-019 legal confirmation on scanning, OQ-021 tax treatment), the dependency is stated in the answer and tracked in the risk register — the adopted position is what design uses meanwhile.
 
 ## 6. Version history
 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial answer pack at Product Owner direction: 38 questions answered on industry-standard/best-practice basis (25 ANSWERED-D, 9 OPEN-FACT, 3 OPEN-ADVICE, 1 OPEN-APPROVAL) | PROPOSED |
+| 0.2 | 2026-09-23 | All 25 ANSWERED-D answers adopted by the Product Owner; register closed (§4 decision log) and affected documents marked `OQ-nnn (closed)` | PROPOSED |

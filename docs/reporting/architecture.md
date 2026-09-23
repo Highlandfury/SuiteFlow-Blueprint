@@ -114,11 +114,11 @@ Exports are permission-scoped, logged, and carry provenance (as-of, certificatio
 
 | Item | Owner |
 |---|---|
-| OQ-011 invoice/statement formats | Finance |
-| OQ-012 statistical defaults (comp/house) — BR-RPT-003 | Product Owner / Hotel Ops |
-| OQ-017 group reporting depth for pilot | Hotel Ops |
+| OQ-011 (closed) invoice/statement formats | Finance |
+| OQ-036 (closed) statistical defaults (comp/house) — BR-RPT-003 | Product Owner / Hotel Ops |
+| OQ-017 (closed) group reporting depth for pilot | Hotel Ops |
 | OQ-024 retention for report instances | Security / Legal |
-| OQ-026 hosting region (data residency for extracts) | Product Owner |
+| OQ-026 (closed) hosting region (data residency for extracts) | Product Owner |
 
 ## 11. Version history
 

@@ -4,7 +4,7 @@ title: AI Governance and Assistance Architecture
 status: PROPOSED
 version: 0.1
 date: 2026-09-23
-owner: Principal Architect + Security Engineer (drafted); Product Owner (approval; OQ-031 open)
+owner: Principal Architect + Security Engineer (drafted); Product Owner (approval; OQ-031 closed)
 applies-to: enterprise target (Phase 19); pilot has no AI capabilities enabled by default
 depends-on: [ADR-009, SEC-MODEL, ARCH-DOMAIN]
 ---
@@ -64,13 +64,13 @@ Prompt and response logging follows security retention rules; logs redact class-
 | AI-003 Management reporting assistant | Report/read models, definitions | Explanation with drill links | Definition-version awareness; no invented numbers |
 | AI-004 Housekeeping assistant | Task reads, board summaries | Proposals (task prioritisation suggestions) | Supervisors remain deciders |
 | AI-005 Maintenance assistant | Work-order/asset reads | Proposals (triage suggestion) | — |
-| AI-006 Document extraction (IDs, invoices, vouchers) | Class-A handling per OQ-019/024 | Proposals (pre-fill) | Extraction accuracy and privacy tests |
+| AI-006 Document extraction (IDs, invoices, vouchers) | Class-A handling per OQ-019 (closed)/024 | Proposals (pre-fill) | Extraction accuracy and privacy tests |
 | AI-007 Anomaly detection (financial/operational) | Posting/close/audit data within scope | Alerts for humans | False-positive/negative evaluation; no automatic enforcement |
 | AI-008 Shift-handover summaries | Transition/evidence reads | Draft text | Accuracy review; no financial claims without drill links |
 | AI-009 Guest communication drafting | Guest context within scope, templates, policy | Draft only | Brand/policy compliance review |
 | AI-010 Governance layer | — (platform capability) | Enforces tool scope, budgets, audit | Mandatory before any other AI capability |
 
-Pilot position: no AI capability is enabled by default; OQ-031 sets priorities if any pilot AI is approved.
+Pilot position: no AI capability is enabled by default (OQ-031 closed: no pilot AI); candidate priorities for enterprise phases are recorded in `00-governance/industry-standard-answers.md`.
 
 ## 5. Failure modes and controls
 
@@ -96,7 +96,7 @@ Pilot position: no AI capability is enabled by default; OQ-031 sets priorities i
 
 | Item | Owner |
 |---|---|
-| OQ-031 AI priorities for pilot/roadmap | Product Owner |
+| OQ-031 (closed) AI priorities for pilot/roadmap | Product Owner |
 | Model/provider selection and data-processing terms | Security + product (WP 0.8/Ph19) |
 | OQ-024 retention (prompt/log retention) | Security/Legal |
 | Evaluation suite content per capability | QA + product |
