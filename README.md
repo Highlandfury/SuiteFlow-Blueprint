@@ -79,7 +79,7 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 Phase 1 (external research and benchmark validation) → Phase 2 (current-state audit) → Phase 3 (gap matrix) → Phase 4 (transition architecture) → delivery phases 1–20. Governed proof spikes are permitted earlier with Product Owner approval.
 
-**Outstanding decisions for the Product Owner** (blocking ACCEPTED status or pilot configuration): OQ-011, OQ-012, OQ-021, OQ-001/002/003, OQ-038 — see `docs/00-governance/decisions-required.md`.
+**Open questions:** industry-standard answers prepared for all 38 questions at Product Owner direction (25 adoptable defaults, 9 hotel/provider facts, 3 professional-advice items, 1 cost approval) — see `docs/00-governance/industry-standard-answers.md`; decision digest in `docs/00-governance/decisions-required.md`.
 
 ## Licensing
 

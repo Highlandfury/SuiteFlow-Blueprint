@@ -2,91 +2,114 @@
 doc-id: GOV-DECISIONS
 title: Decisions Required from the Product Owner and Hotel
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: plain-language digest of the Open Questions Register
-depends-on: [GOV-OQ]
+depends-on: [GOV-OQ, GOV-ANSWERS]
 ---
 
 # Decisions Required — Plain-Language Digest
 
 ## What this is
 
-The blueprint has an **Open Questions Register** (`open-questions.md`) containing every question that only you, the hotel, or the finance team can answer. It is numbered `OQ-001`, `OQ-002`, … — "OQ" means **Open Question**.
+The blueprint has an **Open Questions Register** (`open-questions.md`) containing every question that only you, the hotel, or the finance team can answer. It is numbered `OQ-001`, `OQ-002`, … — "OQ" means **Open Question**. The register remains the authoritative record; if this digest and the register ever disagree, the register wins.
 
-This document is a plain-language digest of that register, written for decision-making rather than architecture. **The register remains the authoritative record**; if the two ever disagree, the register wins.
+## Update — industry-standard answers prepared (23 Sep 2026)
 
-## Why I keep asking these
+At your direction, every pending question has now been answered on an **industry-standard/best-practice basis** in `industry-standard-answers.md`. The outcome:
 
-When a rule depends on a decision that isn't made yet, I still have to design *something* so the work continues. So each question below carries a **working assumption** — clearly marked in the documents as `[OQ-nnn]` — a sensible hotel-industry default. Nothing built from an assumption is treated as final. When you answer, the assumption is replaced and the affected documents are updated through change control.
+| Outcome | Count | Meaning |
+|---|---|---|
+| Answered by industry standard | **25** | Concrete answer recorded; adopt them (all or with exceptions) and the design proceeds on them |
+| Need a fact from you or the hotel | **9** | No standard can invent a company name, a person, a bank's API, or a site survey — see below |
+| Need legal/tax advice | **3** | Recommended position recorded; a professional confirms before launch |
+| Need your cost approval | **1** | The 24×7 staffing/recovery model |
+
+## What still needs you
+
+### 1. Facts only you or the hotel can provide
+
+| ID | What to provide | Needed by |
+|---|---|---|
+| OQ-001 | CAC certificate, TIN, VAT registration, registered address of the legal entity | Week 1 |
+| OQ-002 | Name the Finance Controller (and a deputy) | Week 1 |
+| OQ-003 | Name the Hotel Operations representative / acceptance approver (and a deputy) | Week 1 |
+| OQ-004 | Which bank is the primary collections/operating account, which is the POS acquirer, and does either offer API/virtual accounts? | Week 1 |
+| OQ-006 | POS acquirer, merchant/terminal IDs, settlement frequency and a sample settlement report | Week 1 |
+| OQ-007 | Bank statement samples and access method for both banks | Week 1–2 |
+| OQ-025 | Is there existing data to migrate (old system, spreadsheets, paper)? Volume and quality? | Week 2 |
+| OQ-033 | Name the Technical Lead and the Security/Privacy adviser (and deputies) | Week 1–2 |
+| OQ-038 | Connectivity/power reality at the property — schedule the site survey (links, failover, generator, UPS) | Week 1 |
+
+### 2. Professional advice
+
+| ID | Recommended position | Confirmation needed |
+|---|---|---|
+| OQ-024 | Retention schedule: ID images 90 days; profiles 6 years; financial records 7 years; AML 5 years; logs 12 months+; CCTV 30 days | Legal/counsel |
+| OQ-028 | Open-source policy with SBOM/license scanning; copyleft review before any distribution | Legal counsel |
+| OQ-029 | Fiscalisation as a configurable adapter deriving from our invoice; confirm current FIRS e-invoicing obligations | Tax adviser |
+
+### 3. Cost approval
+
+| ID | Recommended model | Decision needed |
+|---|---|---|
+| OQ-010 | 24×7 needs a rota of at least four on-call engineers or a managed NOC partner, plus warm recovery capacity for the 1-hour RPO/RTO | Approve the staffing/cost model by Week 3 |
+
+## What is now answered by industry standard (adoptable)
+
+These 25 no longer need you unless you want to differ. The one-line answers:
+
+| ID | Answer | Adopt? |
+|---|---|---|
+| OQ-005 | Online payment links: yes at enterprise target; at pilot, at most one provider path if prepayment is needed | |
+| OQ-008 | Night close: 02:00 WAT cutoff, audit 02:00–03:30, certified by 04:00 | |
+| OQ-009 | Keep 99.5% availability for pilot; 99.9% enterprise target | |
+| OQ-011 | Hotel-generated SuiteFlow document is the customer invoice; statutory/fiscal document derives and links | |
+| OQ-012 | Free cancellation 48 h+; one-night penalty inside 48 h; no-show = first night + tax; deposits per policy; logged overrides | |
+| OQ-013 | Corporate credit: limit at onboarding, 30-day terms, suspension at 60 days overdue | |
+| OQ-014 | Restaurant + bar (room service if operated) run in SuiteFlow at pilot | |
+| OQ-015 | Light stock control at pilot; full recipe costing later | |
+| OQ-016 | Manual rate management at pilot; RMS later | |
+| OQ-017 | Groups pilot-critical: blocks, rooming lists, master folio, deposits, conference space booking | |
+| OQ-018 | Direct + corporate at pilot; manual OTA handling if unavoidable; channel manager later | |
+| OQ-019 | Capture ID type/number for adults; scan only if legally required; never NIN images | |
+| OQ-020 | Manual keys at pilot; lock integration researched later | |
+| OQ-021 | 10% F&B service charge held as staff-distribution liability, never revenue | |
+| OQ-022 | Work orders + light preventive maintenance at pilot | |
+| OQ-023 | HRMS/directory owns employee identity; SuiteFlow consumes identity only; no payroll | |
+| OQ-026 | Hosting in Nigeria (or NDPA-adequate region) with in-country backups | |
+| OQ-027 | Multi-property already designed; second property is configuration, not re-architecture | |
+| OQ-030 | Automate gateway webhooks; bank confirmation manual until evidence permits; reconciliation is the control | |
+| OQ-031 | No AI at pilot; candidates listed for later phases | |
+| OQ-032 | English-only + WCAG 2.2 AA at pilot | |
+| OQ-034 | Inspect VIP/arrival-critical + ≥20% spot checks; daily stayover service; minibar only if operated | |
+| OQ-035 | Children ≤5 free; 6–12 sharing at 50%; early/late check-in/out 50%–full night | |
+| OQ-036 | Comps approved/reason-coded, ≤2% target, counted in occupancy at value; house use excluded | |
+| OQ-037 | Cash float ₦100k; zero tolerance, investigate >0.5%; payouts ≤₦50k need FOM; daily banking; dual custody | |
+
+*(Full text with reasoning, evidence required and affected documents: `industry-standard-answers.md`.)*
 
 ## How to answer
 
 Reply in chat in any format, for example:
 
 ```
-OQ-012: forfeit first night on no-show; full refund if cancelled 48h+ before arrival
-OQ-014: yes, restaurant and bar run in SuiteFlow at pilot
-OQ-008: close starts 02:00 WAT, must finish by 04:00
+adopt all industry-standard answers
+adopt all except OQ-012 (cancel window is 24h, not 48h)
+OQ-002: Finance Controller is <name>
+OQ-038: site has fibre + 4G failover, generator, UPS on front desk
 ```
 
-One line is enough. I record each answer in the register, update the affected rules, and tell you what changed.
-
-## Group 1 — Answer now: these unblock the financial design (WP 0.4)
-
-| ID | Question in plain words | Working assumption until you decide | Why it matters |
-|---|---|---|---|
-| OQ-001 | What is the hotel's registered company name and tax number (TIN/VAT)? | None — legal identity is a fact only you have | Invoicing, tax setup, statutory documents |
-| OQ-002 | Who is the hotel's Finance Controller (the person who approves financial policy)? | Role exists but unfilled | Approvals, sign-offs on financial rules |
-| OQ-003 | Who is the hotel-side operations representative (and who accepts the system at go-live)? | Role exists but unfilled | Validating workflows against real hotel practice |
-| OQ-008 | What time does the hotel day close, and by what time must it finish? | 02:00 start, 04:00 finish (common practice) | Night audit design, staffing, alerts |
-| OQ-011 | Which document is the official invoice: the hotel's own folio invoice, or the accounting system's tax invoice? | Hotel-generated invoice from SuiteFlow | Invoicing, tax, direct billing |
-| OQ-012 | Cancellation, deposit, no-show and refund policy: refund windows, forfeit amounts, who may override | 24–48h cancellation window; first-night forfeit on no-show; deposits refundable per policy | Every front-desk money decision |
-| OQ-013 | Corporate credit: default limits, who approves, when do we suspend a company that doesn't pay | Limit set per account at onboarding; suspension on overdue AR | Direct billing exposure |
-| OQ-019 | Do we scan/record guest ID documents at check-in, and how long do we keep them? | Capture ID number/type at check-in; scan only if required by law | Registration, privacy, data retention |
-| OQ-021 | Is a service charge added (e.g. 10%), and how is it distributed? | 10% service charge on F&B only, standard VAT treatment | Pricing, taxes, staff distribution |
-
-## Group 2 — Answer when you can: these shape what the pilot must actually do
-
-| ID | Question in plain words | Working assumption until you decide |
-|---|---|---|
-| OQ-014 | Does the pilot run the restaurant/bar/room service inside SuiteFlow, or on a separate POS? | Restaurant and bar run in SuiteFlow at pilot |
-| OQ-015 | Do we manage kitchen/bar stock (inventory counts, recipes) at the pilot? | Light stock control at pilot |
-| OQ-017 | How important are group/conference bookings at the pilot (the property is a conference centre)? | Groups are pilot-critical |
-| OQ-018 | Do bookings come through Booking.com/Expedia or other channels, or only direct/corporate? | Direct and corporate only at pilot |
-| OQ-020 | Do we integrate the door locks, or are keys handled manually? | Manual keys at pilot |
-| OQ-022 | Does the engineering/maintenance module run at the pilot, or does maintenance stay informal? | Work orders run at pilot |
-| OQ-025 | Is there existing data (an old system, spreadsheets) to bring across, and how much? | Migration of guest/reservation/opening balances assessed in Phase 2 |
-| OQ-034 | Housekeeping standards: is supervisor inspection required before a room is sold? Stayover service frequency? Minibar? | Inspection only for VIP/rush rooms; minibar in room-service scope |
-| OQ-035 | Free-stay child age, extra-person pricing, early check-in / late-checkout charges | Children ≤ 5 free; early/late charged per policy |
-| OQ-036 | Comp rooms and staff house use: who approves, limits, and do they count in occupancy statistics? | Comps need manager approval and count in occupancy; house use excluded |
-| OQ-037 | Cash policy: till float size, variance tolerance, payout limits | Zero tolerance with review above 0.5% of session volume |
-| OQ-038 | What is the internet and power reality at the hotel (links, redundancy, UPS)? | One link with graceful degradation; offline mode designed in WP 0.7 |
-| OQ-004 | Which bank/POS acquirer does what (UBA, Wema roles)? | Both banks used manually at pilot |
-| OQ-006 | Which POS terminals/acquirer, and what does a settlement report look like? | Manual batch reconciliation from terminal printouts |
-| OQ-007 | Can we get bank statements electronically, and in what format? | Manual statement review |
-
-## Group 3 — Deferred: no action needed now
-
-| ID | Question | When it matters |
-|---|---|---|
-| OQ-005, OQ-030 | Online payment links; whether bank/payment interfaces can automate reconciliation | With payment integration design (later) |
-| OQ-009, OQ-010 | Confirm the 99.5% availability target; approve 24×7 support cost | Deployment design (WP 0.7) |
-| OQ-016 | Revenue management: manual or automated rate recommendations | Rates phase (after pilot) |
-| OQ-023 | Whether HR data beyond user identity is needed | HR boundary (enterprise phase) |
-| OQ-024 | Guest data retention periods | Privacy model (WP 0.5) |
-| OQ-026, OQ-028, OQ-029 | Cloud region, licensing, fiscalisation rules | Deployment/legal (later) |
-| OQ-027 | When a second property is expected | Multi-property phase (after pilot) |
-| OQ-031, OQ-032 | AI priorities; accessibility/language requirements | Later phases |
-| OQ-033 | Named Technical Lead and Security adviser | Blueprint acceptance (can nominate later) |
+Adopting the defaults closes the 25 answered questions as the design baseline; the three fact groups above are then what remains before the blueprint can be ACCEPTED. Nothing adopted here overrides an accepted business requirement.
 
 ## What happens if you never answer
 
-The working assumptions above remain in force, clearly marked. The pilot can be configured to them. The risk is not failure — it is that the hotel receives a system built to *common practice* instead of *Golfview practice*, and changes then become configuration work or rework. Group 1 answers before WP 0.4 completes remove most of that risk.
+The industry-standard answers in `industry-standard-answers.md` remain the working defaults, clearly marked. The pilot can be configured to them. The risk is not failure — it is that the hotel receives a system built to *common practice* instead of *Golfview practice*, and changes then become configuration work or rework. The Group-1 facts (entity, Finance Controller, operations representative) and the site survey remove most of that risk.
 
 ## Version history
 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial digest issued after Product Owner question on OQ numbering; register authoritative | PROPOSED |
+| 0.2 | 2026-09-23 | Rewritten against the industry-standard answer pack (GOV-ANSWERS): what is answered (25), what still needs facts (9), advice (3) and cost approval (1) | PROPOSED |
