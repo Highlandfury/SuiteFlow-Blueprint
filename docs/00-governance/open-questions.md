@@ -60,6 +60,7 @@ Priority: **B** = blocking for its work package; **I** = important, not blocking
 | OQ-030 | Do payment gateway webhooks and bank interfaces provide idempotent, referenceable confirmations suitable for automated reconciliation, or is manual reconciliation the pilot baseline? | Platform / Finance | Payments and reconciliation design (WP 0.7) | I | OPEN |
 | OQ-031 | AI capability priorities and acceptability for hotel staff at pilot; which AI assistance, if any, is desired at launch? | Product Owner | AI capability priorities (pass 2) | D (Phase 20 target) | OPEN |
 | OQ-032 | Accessibility and language requirements for staff facing interfaces (English-only assumption?) | Product Owner | UX architecture (WP 0.6) | D (WP 0.6) | OPEN |
+| OQ-034 | Housekeeping service standards: is formal supervisor inspection required before sale (all rooms or VIP/rush only), stayover service frequency, and does the property operate minibar/in-room consumption? | Hotel Operations | Housekeeping workflows and rules (BR-HSK-002/005) | I | OPEN |
 | OQ-033 | Named Technical Lead and Security/Privacy adviser for blueprint approval gates; no such named roles exist yet | Product Owner | Blueprint ACCEPTED status (charter §12) | I | OPEN |
 
 ## 4. Governance

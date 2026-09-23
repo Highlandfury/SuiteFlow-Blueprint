@@ -115,7 +115,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | ID | Rule | Basis / dependencies |
 |---|---|---|
 | BR-HSK-001 | Task generation is deterministic from state: departure → departure clean; occupied non-departure → stayover per service policy; OOO return → readiness task; requests → priority task. | CAP-HSK-002 |
-| BR-HSK-002 | A room is released to sale only through: task completed + inspection passed where the property requires inspection [OQ-014 default: inspection required for VIP/arrival-critical rooms only] + no active OOS/OOO. | INV-SVC-1 |
+| BR-HSK-002 | A room is released to sale only through: task completed + inspection passed where the property requires inspection [OQ-034 default: inspection required for VIP/arrival-critical rooms only] + no active OOS/OOO. | INV-SVC-1 |
 | BR-HSK-003 | Self-inspection (cleaner = inspector) is permitted only under a recorded property policy with authority exception per room type; exceptions are reported. | INV-SVC-1 |
 | BR-HSK-004 | Discrepancies between physical occupancy and system state are resolved before the business day closes; unresolved discrepancies appear on the close checklist. | INV-SVC-4; BR-NAU-001 |
 | BR-HSK-005 | Minibar/consumption capture posts to the responsible folio window; unposted consumption flagged at departure blocks silent checkout tolerance per policy. [OQ-014] | CAP-HSK-008 |
@@ -181,7 +181,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 
 ## 14. Rules awaiting decisions
 
-The following rules contain `[OQ-nnn]` defaults that must be confirmed before ACCEPTED: BR-RTM-005 (child age), BR-FO-001 (identity capture), BR-FO-004 (early/late pricing), BR-FOL-009/010/011 (deposit, no-show, cancellation), BR-CSH-002 (tolerance), BR-GRP-003 (attrition), BR-HSK-002/005 (inspection, minibar), BR-RPT-003 (comp/house). Each default is chosen to match common hotel practice and Nigerian-market pilot expectations; all remain PROPOSED.
+The following rules contain `[OQ-nnn]` defaults that must be confirmed before ACCEPTED: BR-RTM-005 (child age), BR-FO-001 (identity capture), BR-FO-004 (early/late pricing), BR-FOL-009/010/011 (deposit, no-show, cancellation), BR-CSH-002 (tolerance), BR-GRP-003 (attrition), BR-HSK-002 (inspection policy, OQ-034), BR-HSK-005 (minibar, OQ-014), BR-RPT-003 (comp/house). Each default is chosen to match common hotel practice and Nigerian-market pilot expectations; all remain PROPOSED.
 
 ## 15. Version history
 
