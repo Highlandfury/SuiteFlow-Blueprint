@@ -2,9 +2,9 @@
 doc-id: SEC-MODEL
 title: Target Security Model
 status: PROPOSED
-version: 0.3
+version: 0.4
 date: 2026-09-23
-owner: Security Engineer (drafted); Product Owner (approval)
+owner: Security Engineer (drafted); Security/Privacy Adviser + Technical Lead (approval; pending appointment, OQ-033); Product Owner (interim)
 applies-to: full enterprise target
 depends-on: [ADR-002, ADR-009, ARCH-DOMAIN]
 ---
@@ -209,3 +209,4 @@ Legal specifics remain counsel-confirmed; the operating mechanics are design com
 | 0.1 | 2026-09-23 | Initial security model issued with WP 0.5 | PROPOSED |
 | 0.2 | 2026-09-23 | P0 resolutions: framework-generic surfaces (SEC-01, §2.3); no-self-grant break-glass with named reviewer (SEC-02, §9); reference-pilot account rules (SEC-05, §3) | PROPOSED |
 | 0.3 | 2026-09-23 | P1 resolutions: data-at-rest lifecycle (SEC-07, §5); AI authority intersection (SEC-10, §8); audit sink (SEC-13, §10); vulnerability gate (SEC-14, §13); incident/breach response (§14) and privacy operations (§15) added; financial-config approval restriction (FIN-11, §7) | PROPOSED |
+| 0.4 | 2026-09-23 | P2: approval lines aligned to charter §12 (SEC-11) | PROPOSED |

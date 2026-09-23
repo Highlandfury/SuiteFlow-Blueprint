@@ -2,7 +2,7 @@
 doc-id: DEP-ARCH
 title: Target Deployment and Operations Architecture
 status: PROPOSED
-version: 0.3
+version: 0.4
 date: 2026-09-23
 owner: DevOps / SRE (drafted); Product Owner (approval; OQ-010 open; OQ-038 deferred to first property; OQ-026 closed)
 applies-to: pilot and enterprise target
@@ -78,6 +78,8 @@ The synthetic reference pilot has no site; it runs on a hosted reference environ
 | Drill cadence | Pre-release and quarterly; evidence recorded; failure to meet 1 h blocks go-live (OQ-issues aside) |
 | Data loss disclosure | Any recovery that loses committed data beyond RPO is an incident with financial reconciliation and customer notification procedure |
 
+**Partial and property-scoped recovery (TEC-11 resolution).** Property-scoped export/restore is designed and drilled for the enterprise (ADR-002), not asserted. Restore order is mandatory: **quiesce workers → resolve uncertain provider/bank intents against status/reconciliation evidence → reconcile control accounts → resume.** No worker resumes with unresolved intents; the sequence is part of the drill evidence (TO-REL-003).
+
 ## 6. Observability
 
 | Surface | Content | Alerting |
@@ -142,3 +144,4 @@ Per SEC-MODEL §11: central secret management; no production secrets outside pro
 | 0.1 | 2026-09-23 | Initial deployment and operations architecture issued with WP 0.7 | PROPOSED |
 | 0.2 | 2026-09-23 | Synthetic reference pilot: connectivity/power requirements reframed for first-property deployment (OQ-038 deferred); reference pilot runs hosted | PROPOSED |
 | 0.3 | 2026-09-23 | P1 resolution: release evidence includes SBOM and vulnerability-gate disposition (SEC-14) | PROPOSED |
+| 0.4 | 2026-09-23 | P2: property-scoped restore and mandatory restore order (TEC-11) | PROPOSED |

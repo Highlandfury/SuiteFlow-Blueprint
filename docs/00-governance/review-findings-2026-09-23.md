@@ -2,7 +2,7 @@
 doc-id: GOV-REVIEW
 title: Acceptance-Readiness Review — Finance, Technical and Security Passes (23 Sep 2026)
 status: PROPOSED
-version: 0.3
+version: 0.4
 date: 2026-09-23
 owner: Product Owner (accountable); findings produced by the Finance Controller, Technical Lead and Security/Privacy Adviser role-assistant personas
 applies-to: blueprint v1.2 (PROPOSED) and the acceptance gate
@@ -375,10 +375,36 @@ P1 dispositions follow the delegated Product Owner decision record (`product-own
 
 **Remaining:** 16 findings — FIN-09/10/14/15; TEC-06/07/09/10/11/12/13/14/15; SEC-11/12/15 — with TEC-14/15 and FIN-15 partly closed by the hygiene pass; plus the input-dependent items (tax OQ-029, retention OQ-024, appointments OQ-002/033, cost OQ-010). Next pass: P2.
 
-## 9. Version history
+## 9. Resolution log — P2 fixes applied (23 Sep 2026)
+
+All 16 P2 findings are resolved per the delegated PO record (GOV-PO-DEC v0.2 §A); sub-elements requiring adviser input are flagged rather than deferred.
+
+| Finding | Resolution | Evidence |
+|---|---|---|
+| FIN-09 | Service-charge liability lifecycle: control account, distribution family 17, monthly reconciliation (check 14), worked ordering example, citation fix | financial-architecture v0.4; VAT-base element with OQ-029 |
+| FIN-10 | Deposit "expiry" removed; aged/unclaimed report; write-back only on counsel-confirmed rule | business-rules v0.6 (BR-FOL-008); OQ-024 advice |
+| FIN-14 | Refund instrument fidelity; over/short pair; chargeback mapping (family 18) | financial-architecture v0.4 |
+| FIN-15 | Remaining citation corrections completed | commit history |
+| TEC-06 | CAP-AVL-003 moved to D2 | roadmap v1.3 |
+| TEC-07 | D4 minimal readiness model; circular dependency removed | roadmap v1.3 |
+| TEC-09 | Single reporting budget (NFR P-9); "<60 s" withdrawn | reporting v0.3 |
+| TEC-10 | UAT wording — role-played at reference release; real roles at the gate | qa v0.5 |
+| TEC-11 | Property-scoped restore + mandatory restore order; TO-REL-003 | deployment v0.4 |
+| TEC-12 | Series semantics section; TO-ACC-005; fiscal specifics UNVERIFIED | financial-architecture v0.4 |
+| TEC-13 | BR-RTM-009 rate-basis fidelity; TO-RTM-003 | business-rules v0.6 |
+| TEC-14 | Consistency pass complete; zero mismatches required at pack freeze | gate condition |
+| TEC-15 | adr/README standard front matter (ADR-INDEX) | adr/README |
+| SEC-11 | Approval lines aligned to charter §12; governance roles added to the catalogue | SEC-ROLES v0.4; SEC-MODEL v0.4; ADR-009/010/011 |
+| SEC-12 | Cumulative limits + split/velocity detection → report #11; TO-SEC-011 | SEC-ROLES v0.4 |
+| SEC-15 | TO-SEC-008/009/010 registered in the D9 pack | qa v0.5 |
+
+**Status: all 45 findings resolved** (P0 8, P1 21, P2 16). Residual dependencies are inputs, not defects: adviser conclusions for FIN-02/09/10/12 and TEC-12; appointee review for the mechanical edits; property facts at the First-Property Gate. Programme P1 support opened (`research-register.md`).
+
+## 10. Version history
 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial review record: finance, technical and security passes executed by role-assistant personas over blueprint v1.2; 45 findings (3 critical, 13 high, 26 medium, 3 low); hygiene corrections applied | PROPOSED |
 | 0.2 | 2026-09-23 | P0 resolution log added: TEC-01, FIN-01/02/04, SEC-01/02/04/05 resolved via versioned document changes and new test obligations | PROPOSED |
 | 0.3 | 2026-09-23 | P1 resolution log added: 21 findings resolved per delegated PO decisions D1–D12; 16 remain | PROPOSED |
+| 0.4 | 2026-09-23 | P2 resolution log added: all remaining 16 findings resolved; all 45 findings closed; residual dependencies identified | PROPOSED |

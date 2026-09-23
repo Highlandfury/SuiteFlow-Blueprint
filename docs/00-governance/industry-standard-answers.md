@@ -48,7 +48,7 @@ Each answer states: **Answer**, **Basis**, **Still needed**, **Affects**.
 | OQ-007 | OPEN-FACT | Request CSV/Excel/MT940/API statements from both banks; manual import fallback with dual review |
 | OQ-008 | ANSWERED-D | 02:00 WAT cutoff; audit 02:00–03:30; certified close by 04:00; property-configurable |
 | OQ-009 | ANSWERED-D | Keep 99.5% for the pilot (monthly, maintenance excluded); 99.9% as enterprise target |
-| OQ-010 | OPEN-APPROVAL | Approve 24×7 with a sustainable rota (≥4 on-call engineers or a managed partner) and the warm-recovery cost |
+| OQ-010 | APPROVED-IN-PRINCIPLE (delegated) | 24×7 model approved as the planning basis (rota two-deep or managed NOC; ≤5 min paging; warm recovery; two costed options due Week 3); no spend committed — contract signature remains with the real Product Owner |
 | OQ-011 | ANSWERED-D | SuiteFlow's hotel document is the customer-facing invoice; statutory/fiscal document derives and links (ADR-008) |
 | OQ-012 | ANSWERED-D | 48 h free cancellation; one night inside 48 h; no-show = first night + tax; deposits 1 night / 100% groups; FOM/GM overrides logged |
 | OQ-013 | ANSWERED-D | Credit application + references; limit at onboarding; 30-day terms; suspension at 60 days overdue; Finance Controller reinstates |
@@ -502,4 +502,6 @@ The accepted business-requirement amendment for the synthetic reference pilot is
 | 0.1 | 2026-09-23 | Initial answer pack at Product Owner direction: 38 questions answered on industry-standard/best-practice basis (25 ANSWERED-D, 9 OPEN-FACT, 3 OPEN-ADVICE, 1 OPEN-APPROVAL) | PROPOSED |
 | 0.2 | 2026-09-23 | All 25 ANSWERED-D answers adopted by the Product Owner; register closed (§4 decision log) and affected documents marked `OQ-nnn (closed)` | PROPOSED |
 | 0.3 | 2026-09-23 | Synthetic reference pilot decision: OQ-003 closed by appointment; OQ-001/004/006/007/025/038 marked deferred to the First-Property Deployment Gate | PROPOSED |
+| 0.4 | 2026-09-23 | P1: OQ-037 refined — zero acceptance tolerance, review threshold, consolidated authority table (FIN-06/FIN-08) | PROPOSED |
+| 0.5 | 2026-09-23 | P2: OQ-010 approved in principle (delegated); all review findings resolved | PROPOSED |
 | 0.4 | 2026-09-23 | P1: OQ-037 refined — zero acceptance tolerance, review threshold, consolidated authority table (FIN-06/FIN-08) | PROPOSED |

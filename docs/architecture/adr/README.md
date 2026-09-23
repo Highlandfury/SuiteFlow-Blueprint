@@ -1,3 +1,13 @@
+---
+doc-id: ADR-INDEX
+title: Blueprint Architecture Decision Records — Index
+status: PROPOSED
+version: 0.1
+date: 2026-09-23
+owner: Principal Architect (maintained); Technical Lead (approval; pending OQ-033)
+applies-to: docs/architecture/adr/
+---
+
 # Blueprint Architecture Decision Records
 
 This directory holds the SuiteFlow blueprint-level ADRs. They are numbered `ADR-001…` and are authoritative within this repository.

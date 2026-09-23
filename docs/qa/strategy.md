@@ -2,7 +2,7 @@
 doc-id: QA-STRATEGY
 title: Target QA and Acceptance Architecture
 status: PROPOSED
-version: 0.4
+version: 0.5
 date: 2026-09-23
 owner: QA Architect (drafted); Product Owner (approval)
 applies-to: full enterprise target; pilot acceptance
@@ -68,7 +68,9 @@ Every invariant, business rule and state machine produces test obligations `TO-<
 | TO-ACC-001 | Exactly one posting per source event per dimension under retry | INV-ACC-1 |
 | TO-ACC-002 | Direct-bill transfer posts zero revenue lines | ADR-005 §5 |
 | TO-ACC-003 | Mapping gap blocks close | ADR-005 §7; FIN-ARCH §3 |
+| TO-RTM-003 | Booked rate basis held per room-night; divergence flagged only on amendment/policy/audited correction | BR-RTM-009 |
 | TO-ACC-004 | Control accounts reconcile to zero on golden day | FIN-ARCH §10 |
+| TO-ACC-005 | Series semantics: gapless allocation under concurrency; gaps audited; void/reissue preserved | FIN-ARCH §10 series semantics |
 | TO-SEC-001 | Cross-scope denial per surface class (command/query/report/export/API/webhook/AI tool), including framework-generic surfaces (REST, report builder, attachments, imports/exports, Desk search) | SEC-MODEL §6, ADR-009 §11 |
 | TO-SEC-002 | Self-approval denial across maker–checker catalogue | SEC-ROLES §5 |
 | TO-SEC-003 | Class-A masking and read logging; export approval | SEC-MODEL §5/§10 |
@@ -76,11 +78,16 @@ Every invariant, business rule and state machine produces test obligations `TO-<
 | TO-SEC-005 | Privileged grants on maker–checker (requester ≠ approver ≠ beneficiary); reference-pilot role accounts time-boxed, rotated and logged | SEC-ROLES §3/§5, personas §4.8 |
 | TO-SEC-006 | Incident/breach tabletop at the reference release; evidence preservation and notification decision tree exercised | SEC-MODEL §14 |
 | TO-SEC-007 | Vulnerability gate: no unfixed exploitable criticals; highs within the accepted time-box; SBOM/scans in the release pack | SEC-MODEL §13, deployment §7 |
+| TO-SEC-008 | MFA/session enforcement for privileged roles, including reference-pilot role accounts | SEC-MODEL §3, personas §4.8 |
+| TO-SEC-009 | Audit append-only/tamper evidence and restore continuity | SEC-MODEL §10 |
+| TO-SEC-010 | Webhook signature verification and provider-intent safety | SEC-MODEL §7, ADR-010 §4 |
+| TO-SEC-011 | Cumulative limits and split/velocity detection feed report #11 | SEC-ROLES §4, REP-ARCH report 11 |
 | TO-INT-001 | Duplicate delivery produces one effect; replay safe | ADR-010 |
 | TO-INT-002 | Provider timeout resolved by status/reconciliation, no blind resubmission | ADR-010 §4 |
 | TO-INT-003 | Acquirer batch reconciliation catches injected mismatch | INT-ARCH §6 |
 | TO-REL-001 | Timed restore within 1 h RTO; post-restore reconciliation passes | BR-REL-002/003 |
 | TO-REL-002 | Restored workers do not duplicate external/accounting effects | BR-REL-007 |
+| TO-REL-003 | Property-scoped restore and mandatory restore order (quiesce → resolve intents → reconcile → resume) proven by drill | DEP-ARCH §5 |
 | TO-UX-001 | Keyboard-only completion of check-in/payment/move/checkout/close | UX-ARCH §30 |
 | TO-UX-002 | Permission UI cannot leak through counts/search/errors | UX-ARCH §30 |
 | TO-OPS-001 | Close failure pages on-call within 5 min and runbook resolves | NFR O-2, WF-NA-002 |
@@ -118,10 +125,10 @@ Any change to shared logic (authorization, posting, close, inventory) re-runs th
 
 ## 8. UAT and acceptance
 
-- **UAT scripts** derived from the workflow catalogue, executed by real roles (agent, supervisor, housekeeping, night audit, income audit, finance) on a UAT environment with production-like synthetic data.
-- **Financial acceptance**: finance controller executes close, reconciliation review, refund/forfeit flows and signs the golden-day result.
-- **Operational acceptance**: the acting operations authority (Product Owner; OQ-003 closed) signs workflow and service-quality acceptance at the reference release; hotel staff sign at the First-Property Deployment Gate.
-- **Go/no-go** considers: open S0/S1, golden-day result, restore drill recency, permission pack, security pack, runbook readiness, 24×7 rota (OQ-010), documentation completeness, and unresolved blocking open questions.
+- **UAT scripts** derived from the workflow catalogue, executed at the reference release as **role-played scenarios with the Product Owner (acting operations authority, OQ-003 closed) and finance review**, on a UAT environment with production-like synthetic data and evidence recorded (TEC-10).
+- **Financial acceptance**: the finance reviewer executes close, reconciliation review, refund/forfeit flows and signs the golden-day result; the named Finance Controller performs the formal sign-off at the acceptance gate / first property.
+- **Operational acceptance**: the acting operations authority (Product Owner) signs workflow and service-quality acceptance at the reference release; hotel staff sign at the First-Property Deployment Gate.
+- **Go/no-go** considers: open S0/S1, golden-day result, restore drill recency, permission pack, security pack, incident/breach tabletop, runbook readiness, 24×7 rota (OQ-010), documentation completeness, and unresolved blocking open questions.
 
 ## 9. Environments
 
@@ -152,3 +159,4 @@ Promotion is by versioned artefact only; no environment-specific code branches; 
 | 0.2 | 2026-09-23 | Synthetic reference pilot: UAT reframed as scripted role-played acceptance; release gates updated (reference release; First-Property Deployment Gate) | PROPOSED |
 | 0.3 | 2026-09-23 | P0 obligations registered: TO-AVL-001 (capacity divergence), TO-FOL-006/007 (no-show, forfeiture tax), TO-SEC-004/005 (break-glass, privileged grants); TO-SEC-001 covers framework-generic surfaces | PROPOSED |
 | 0.4 | 2026-09-23 | P1 obligations: TO-SEC-006/007 (incident tabletop, vulnerability gate); reference-release gates include the tabletop (SEC-03/14) | PROPOSED |
+| 0.5 | 2026-09-23 | P2: role-played UAT wording (TEC-10); TO-RTM-003, TO-ACC-005, TO-REL-003, TO-SEC-008…011 registered | PROPOSED |

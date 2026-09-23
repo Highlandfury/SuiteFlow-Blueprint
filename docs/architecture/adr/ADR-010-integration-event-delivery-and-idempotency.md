@@ -2,9 +2,9 @@
 doc-id: ADR-010
 title: Integration, event delivery and idempotency contract
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
-owner: Integration Architect (drafted); Principal Architect (review); Product Owner (approval)
+owner: Integration Architect (drafted); Principal Architect (review); Security/Privacy Adviser (security boundaries; pending OQ-033); Product Owner (interim)
 applies-to: full enterprise target
 depends-on: [ADR-001, ADR-003, ADR-005, ARCH-DOMAIN]
 supersedes: rules on DP-ADR-003
@@ -101,3 +101,4 @@ Existing events and integrations migrate to the registry with identities back-fi
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial decision issued with WP 0.7; rules on DP-ADR-003 | PROPOSED |
 | 0.2 | 2026-09-23 | P1 resolution: immutable outbox events with separate dispatch/attempt state (TEC-03) | PROPOSED |
+| 0.3 | 2026-09-23 | P2: approval line aligned to charter §12 (SEC-11) | PROPOSED |

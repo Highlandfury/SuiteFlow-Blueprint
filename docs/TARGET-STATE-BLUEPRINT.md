@@ -1,15 +1,15 @@
 ---
 doc-id: BP-V1
-title: SuiteFlow Target-State Blueprint v1.3
+title: SuiteFlow Target-State Blueprint v1.4
 status: PROPOSED
-version: 1.3
+version: 1.4
 date: 2026-09-23
 owner: Product Owner (acceptance); Principal Architect (maintainer)
 applies-to: all SuiteFlow work
 depends-on: [GOV-CHARTER, GOV-INPUTS]
 ---
 
-# SuiteFlow Target-State Blueprint v1.3
+# SuiteFlow Target-State Blueprint v1.4
 
 ## 1. What this is
 
@@ -23,7 +23,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 
 | Artifact class | Count | Location |
 |---|---|---|
-| Documents in this blueprint | 44 | `docs/` |
+| Documents in this blueprint | 46 | `docs/` |
 | Domains | 25 | capability map |
 | Capabilities (`CAP-*`) | 283 | `product/capability-map.md` |
 | Domain invariants (`INV-*`) | 80 | `architecture/domain-model.md` |
@@ -90,7 +90,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 
 ## 9. Delivery plan
 
-Pilot D1–D9 (foundation → property/rates → guests/reservations → front office → housekeeping/maintenance → folio/cashiering → close/finance → reporting/hardening → synthetic migration/role-played UAT/reference release), the First-Property Deployment Gate, and enterprise D10–D20, each with objective, capabilities, inputs, dependencies, risks, tests and exit criteria: `product/roadmap.md` v1.1.
+Pilot D1–D9 (foundation → property/rates → guests/reservations → front office → housekeeping/maintenance → folio/cashiering → close/finance → reporting/hardening → synthetic migration/role-played UAT/reference release), the First-Property Deployment Gate, and enterprise D10–D20, each with objective, capabilities, inputs, dependencies, risks, tests and exit criteria: `product/roadmap.md` v1.3.
 
 ## 10. Acceptance model
 
@@ -106,7 +106,7 @@ Pilot D1–D9 (foundation → property/rates → guests/reservations → front o
 
 - **Open questions:** 38 in the register (`00-governance/open-questions.md`); **26 are closed** (25 by Product Owner adoption of the industry-standard answers on 23 Sep 2026, plus OQ-003 by the Product Owner acting as operations authority; decision log in the register §4). The 12 open items: **8 facts** — OQ-002 and OQ-033 now, OQ-001/004/006/007/025/038 deferred to the First-Property Deployment Gate — **3 professional-advice** items (OQ-024/028/029) and **one cost approval** (OQ-010). The non-deferred blockers are **OQ-002/033** (Finance Controller; Technical Lead and Security adviser).
 - **Risks:** 33 in the register (`00-governance/risk-register.md`); highest: blueprint drift (RSK-GOV-001), financial/tax correctness (RSK-FIN-001/004), scope leakage (RSK-SEC-001), tenancy migration (RSK-MIG-002), connectivity/power (RSK-DEP-003), reference-vs-reality gap (RSK-PROD-003), operational adoption (RSK-OPS-001).
-- **Review record:** acceptance-readiness review (`00-governance/review-findings-2026-09-23.md`, GOV-REVIEW) — 45 findings (3 critical, 13 high) from the finance, technical and security passes; resolution belongs to the pre-acceptance fix pass.
+- **Review record:** acceptance-readiness review (`00-governance/review-findings-2026-09-23.md`, GOV-REVIEW) — 45 findings (3 critical, 13 high, 26 medium, 3 low), **all resolved** through the P0/P1/P2 passes under delegated Product Owner decisions (`product-owner-decisions-2026-09-23.md`); residual dependencies are adviser inputs (tax/retention/licensing) and appointed-signatory reviews.
 - **Adopted answers and interim defaults:** the closed questions' answers are in force and marked `OQ-nnn (closed)` in affected documents; open questions carry interim defaults, clearly marked, until their evidence, advice or approval exists. The synthetic reference pilot amendment (no real property; role-played acceptance) is recorded in the inputs register §3.1.
 
 ## 12. Programme P0 exit gate — what remains for ACCEPTED status
@@ -140,3 +140,4 @@ When the above complete, the blueprint is promoted to **ACCEPTED (current versio
 | 1.1 | 2026-09-23 | Industry-standard answers adopted (25 questions closed, register v0.3): inventory, ADR-008 summary, §11 and §12 updated | PROPOSED |
 | 1.2 | 2026-09-23 | Synthetic reference pilot recorded (OQ-003 closed; property-dependent items deferred): pilot definition, delivery plan, acceptance model (First-Property Deployment Gate) and §11/§12 updated | PROPOSED |
 | 1.3 | 2026-09-23 | P1: candidate pilot scope (204/76/3), dated horizon, P0 scope-freeze gate row; review references updated (TEC-04/05/08, FIN/SEC P1) | PROPOSED |
+| 1.4 | 2026-09-23 | P2 complete: all 45 review findings resolved; adviser briefs and research register added (46 documents) | PROPOSED |

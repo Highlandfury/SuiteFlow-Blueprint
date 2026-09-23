@@ -2,7 +2,7 @@
 doc-id: GOV-OQ
 title: Open Questions Register
 status: PROPOSED
-version: 0.4
+version: 0.5
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: all blueprint work
@@ -26,13 +26,14 @@ Resolution statuses:
 | `OPEN-FACT` | Requires a hotel/provider/named-person fact; GOV-ANSWERS states the required evidence and an interim default |
 | `OPEN-ADVICE` | Requires legal/tax/privacy confirmation; GOV-ANSWERS states the recommended position |
 | `OPEN-APPROVAL` | Requires a Product Owner cost/staffing decision; GOV-ANSWERS states the recommended model |
+| `APPROVED-IN-PRINCIPLE` | Model approved under delegated Product Owner direction (23 Sep 2026); contract signature / spend remains the real Product Owner's execution step |
 
 ## 1. Product Owner inputs (from SRC-001 §6)
 
 | ID | Question | Owner | Needed by | Blocks | Priority | Status |
 |---|---|---|---|---|---|---|
 | OQ-001 | Registered legal entity name and tax identifiers (TIN, VAT registration) [PO-001A] | Product Owner | First property | Financial architecture, invoicing, tax configuration (WP 0.4) | B | OPEN-FACT |
-| OQ-002 | Named Finance Controller / pilot Finance representative [PO-001B] | Product Owner | Week 1 | Financial approvals, blueprint sign-off | B | OPEN-FACT |
+| OQ-002 | Named Finance Controller / pilot Finance representative [PO-001B] | Product Owner | Week 1 | Financial approvals, blueprint sign-off | B | OPEN-FACT (interim: real Product Owner holds financial approval; expiry at P0 sitting ≤14 Oct 2026) |
 | OQ-003 | Named Hotel Operations representative and hotel acceptance approver [PO-001C] | Product Owner | Week 1 | Workflow validation, UAT acceptance (WP 0.3) | B | CLOSED |
 | OQ-004 | Exact role of UBA and Wema Bank (operating, acquirer, transfer, settlement, API) [PAY-001] | Product Owner / Finance | First property | Payments architecture (WP 0.7) | I | OPEN-FACT |
 | OQ-005 | Are guest-facing online payment links required? [PAY-002] | Product Owner | Week 1 | Payments architecture scope | I | CLOSED |
@@ -40,7 +41,7 @@ Resolution statuses:
 | OQ-007 | Bank statement formats and access/integration constraints [PAY-004] | Hotel Finance | First property | Bank reconciliation design | I | OPEN-FACT |
 | OQ-008 | Hotel business-day cutoff and expected close deadline in WAT [OPS-001] | Hotel Operations | Week 1 | Night-audit timing, staffing model (WP 0.3/0.4) | B | CLOSED |
 | OQ-009 | Confirm or replace the 99.5% service objective [REL-001] | Product Owner | Week 2 | Non-functional requirements (WP 0.7) | I | CLOSED |
-| OQ-010 | Approve cost and staffing consequences of 24×7 support and 1-hour RPO/RTO [REL-002] | Product Owner | Week 3 | Deployment/operations architecture (WP 0.7) | I | OPEN-APPROVAL |
+| OQ-010 | Approve cost and staffing consequences of 24×7 support and 1-hour RPO/RTO [REL-002] | Product Owner | Week 3 | Deployment/operations architecture (WP 0.7) | I | APPROVED-IN-PRINCIPLE (delegated; real-PO signature pending) |
 
 *Deferrals (PO decision, 23 Sep 2026): OQ-001, OQ-004, OQ-006 and OQ-007 are deferred to the First-Property Deployment Gate; the synthetic reference pilot uses recorded placeholders and simulated providers.*
 
@@ -82,7 +83,7 @@ Resolution statuses:
 | OQ-036 | Comp and house-use policy: who may authorise, limits, and statistical treatment (are comps counted in occupancy? is house use excluded from ADR?) | Product Owner / Hotel Operations | Statistics and reporting rules (BR-RPT-003, BR-FOL-005) | I | CLOSED |
 | OQ-037 | Cash handling policy: house-bank size, cashier variance tolerance, payout limits, deposit-to-safe rules | Finance | Cashiering rules (BR-CSH-002/005) | I | CLOSED |
 | OQ-038 | Connectivity and power reality at the property: WAN links and redundancy, power stability/UPS coverage, appetite for on-site equipment. Directly determines the offline/degraded-mode design (a front desk that stops when the internet drops is not viable) | Product Owner / Platform | Offline strategy, deployment architecture (WP 0.7) | I | OPEN-FACT |
-| OQ-033 | Named Technical Lead and Security/Privacy adviser for blueprint approval gates; no such named roles exist yet | Product Owner | Blueprint ACCEPTED status (charter §12) | I | OPEN-FACT |
+| OQ-033 | Named Technical Lead and Security/Privacy adviser for blueprint approval gates; no such named roles exist yet | Product Owner | Blueprint ACCEPTED status (charter §12) | I | OPEN-FACT (interim: maintaining architect for technical; advisory-only security support; expiry at P0 sitting ≤14 Oct 2026) |
 
 *Deferral (PO decision, 23 Sep 2026): OQ-038 is deferred to the First-Property Deployment Gate; the reference pilot has no site and runs on a hosted environment with the mandated connectivity/UPS controls assumed at deployment.*
 
@@ -133,3 +134,4 @@ For the industry-standard answers of 23 September 2026 (GOV-ANSWERS): an `ANSWER
 | 0.2 | 2026-09-23 | Answers classified against GOV-ANSWERS: 25 ANSWERED-D, 9 OPEN-FACT, 3 OPEN-ADVICE, 1 OPEN-APPROVAL; resolution-status legend added | PROPOSED |
 | 0.3 | 2026-09-23 | 25 questions closed by Product Owner adoption of the industry-standard answers; decision log added; statuses flipped to CLOSED | PROPOSED |
 | 0.4 | 2026-09-23 | Synthetic reference pilot: OQ-003 closed (Product Owner acting operations authority); OQ-001/004/006/007/025/038 deferred to the First-Property Deployment Gate | PROPOSED |
+| 0.5 | 2026-09-23 | OQ-010 approved in principle under delegated PO direction; OQ-002/OQ-033 interim arrangements recorded with expiry at the P0 sitting | PROPOSED |

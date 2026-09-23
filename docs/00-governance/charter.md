@@ -211,7 +211,7 @@ docs/
 │   ├── scope.md                       [present — WP 0.1]
 │   ├── personas-and-roles.md          [present — WP 0.1]
 │   ├── capability-map.md              [present — WP 0.1]
-│   └── roadmap.md                     [present — v1.2 with per-phase exit criteria]
+│   └── roadmap.md                     [present — v1.3 with per-phase exit criteria]
 ├── architecture/                      [WP 0.2 complete — pending review]
 │   ├── target-state.md                [present — WP 0.2]
 │   ├── domain-model.md                [present — WP 0.2]

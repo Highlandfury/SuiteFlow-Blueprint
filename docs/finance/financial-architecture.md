@@ -2,7 +2,7 @@
 doc-id: FIN-ARCH
 title: Target Financial Architecture
 status: PROPOSED
-version: 0.3
+version: 0.4
 date: 2026-09-23
 owner: Financial Systems Architect (drafted); Finance Controller (approval; OQ-002 open)
 applies-to: full enterprise target
@@ -36,7 +36,7 @@ Proven agreement, or an owned exception
 | Deposits and lifecycle | ✔ | — |
 | Cashier sessions, counts, variances | ✔ | — |
 | AR origination (transfer events) | ✔ (event) | AR documents and balances |
-| Control accounts (guest ledger, deposits, clearing, AR, tax) | expectation computed daily | balances held |
+| Control accounts (guest ledger, deposits, clearing, AR, tax, service charge payable) | expectation computed daily | balances held |
 | Revenue accounts and recognition journals | posting intent and evidence | journals |
 | Tax liabilities and statutory documents | tax computation evidence | liabilities and documents |
 | Period close and statutory statements | — | ✔ |
@@ -59,12 +59,14 @@ Every posting run aggregates by **family**; every family maps to configured acco
 | 8 | Deposit applications | Deposit Liability | Guest Ledger Control |
 | 9 | Deposit refunds | Deposit Liability | Bank / Cash |
 | 10 | Cancellation/no-show charges and deposit forfeitures | Guest Ledger Control (folio-path charge) / Deposit Liability (direct forfeiture) | Cancellation/No-show Revenue (+ tax per ADR-007 §5) |
-| 11 | Refunds (overpayment/service failure) | Guest Ledger Control | Bank / Cash |
+| 11 | Refunds (overpayment/service failure) | Guest Ledger Control | Original instrument clearing account (Bank only for direct refunds) |
 | 12 | Direct bill transfers (zero revenue) | AR Control | Guest Ledger Control |
 | 13 | AR settlements | Bank | AR Control |
-| 14 | Cash over/short | Cash Over/Short (or credit) | Cash sessions path |
+| 14 | Cash over/short | Cash Over/Short (Dr short / Cr over) | Cashier session clearing |
 | 15 | Bank fees, acquirer fees | Fee expense | Bank / Card Clearing |
 | 16 | Commissions (agent) | Commission expense / payable | Commission Payable / AR |
+| 17 | Service-charge distribution / remittance | Service Charge Payable | Bank (on remittance evidence; distribution computation outside SuiteFlow per OQ-023) |
+| 18 | Chargebacks | Reclaimed funds (original method clearing) | AR Control / Guest Ledger Control as applicable (fees per family 15) |
 
 Account names are illustrative; the chart of accounts and transaction-code mapping are Finance-owned configuration (CAP-ACC-001), effective-dated under ADR-003.
 
@@ -167,6 +169,8 @@ Over:  Dr Cash on Hand / Cr Cash Over/Short
 
 Variance approval and accounting treatment recorded (BR-CSH-003).
 
+**Service-charge ordering (illustrative; tax treatment UNVERIFIED pending OQ-029).** Room charge ₦100,000; service charge 10% = ₦10,000 collected as Service Charge Payable (liability). Default tax assumption: the room charge is the taxable base and the service charge is excluded — to be confirmed by the adviser; the mapping is effective-dated. Journals: Dr Guest Ledger Control 110,000 (+ tax) / Cr Room Revenue 100,000, Cr Service Charge Payable 10,000, Cr Tax Payable per rate.
+
 ## 6. Payment methods and clearing
 
 | Method | Clearing account | Settlement evidence | Failure handling |
@@ -185,7 +189,7 @@ Each clearing account ages visibly; unmatched items beyond policy windows are fi
 | Tax engine | Effective-dated rules per tax type: rate, basis, applicability (service categories), exemptions, rounding, computation order | REQUIRED |
 | VAT | Applied per configured rate on applicable services; tax payable liability; **tax point is a per-tax-type configuration attribute (delivery / invoice / payment / receipt), default service delivery/business date** | Rate and treatment **UNVERIFIED** for the pilot jurisdiction pending Programme P1 primary-source research and tax advice (service-charge answer OQ-021 closed; tax advice OQ-029 open) |
 | Consumption/levy taxes | Modelled as additional configurable tax types where applicable | **UNVERIFIED** applicability to this property |
-| Service charge | Default: collected as a liability for distribution (not revenue), distinct from tax | OQ-021 (closed); default per BR-FOL-010 context |
+| Service charge | Default: collected as a liability for distribution (not revenue), distinct from tax; distribution paid only on remittance evidence and reconciled monthly | OQ-021 (closed; GOV-ANSWERS §4.2); distribution evidence and monthly reconciliation per §10 |
 | Withholding tax | Out of scope for guest operations at pilot; relevant to commissions/payables where applicable | **UNVERIFIED** |
 | Fiscalisation | If required, an accredited provider becomes an adapter (INT-014); documents derive from SuiteFlow's operative document (ADR-008) | **UNVERIFIED** (OQ-029) |
 | Tax evidence | Every taxed item stores the rule version used (INV-FOL-5); tax reports reconcile collected vs posted liability daily | REQUIRED |
@@ -196,7 +200,7 @@ No tax rule enters implementation without a cited statutory source and Finance/t
 
 ## 8. Deposits
 
-As per ADR-007: obligation-linked liability, conservation invariant, dedicated forfeiture revenue, partial operations exact, tax defaults flagged, unclaimed-deposit treatment pending jurisdictional advice.
+As per ADR-007: obligation-linked liability, conservation invariant, dedicated forfeiture revenue, partial operations exact, tax defaults flagged. **Aged/unclaimed deposits** are reported monthly for finance review; no write-back, expiry or escheatment runs without a counsel-confirmed, effective-dated rule (FIN-10) — until then they remain liabilities.
 
 ## 9. Direct bill and receivables
 
@@ -225,6 +229,11 @@ Every item below runs daily; an **unexplained difference blocks the stage it pro
 | 11 | Document series | Issued numbers gapless where required; no reuse | Series configuration | as per series policy |
 | 12 | Acquirer settlement | Terminal batch totals by acquirer/terminal | Acquirer settlement report (batch, fees, net credit) | zero after fees; unmatched batches aged |
 | 13 | Bank statement | Bank statement entries (credits/debits) | Cash deposits + POS settlement credits + transfer/cheque clearing expected | zero unexplained |
+| 14 | Service-charge payable *(monthly)* | Σ collected-not-distributed by period | Service Charge Payable control | zero |
+
+Chargebacks are matched against the original method clearing within check 3; disputed amounts follow the failure model (§12).
+
+**Number-series semantics (TEC-12 resolution).** Where law or policy requires gapless numbering: allocation is transactional with a single allocator per series (unique constraint), gaps are detected by check #11 and audited, reset policy is configured (never mid-period unless statutory), and void/reissue preserves the original number with a linked void record. Fiscal-series particulars and gapless requirements are **UNVERIFIED pending OQ-029**; semantics are effective-dated configuration, tested by TO-ACC-005.
 
 ## 11. Close and period close
 
@@ -288,3 +297,4 @@ Every item below runs daily; an **unexplained difference blocks the stage it pro
 | 0.1 | 2026-09-23 | Initial financial architecture issued with WP 0.4; validates DP-CTX-003, DP-ADR-001/002/005 via ADR-005…008 | PROPOSED |
 | 0.2 | 2026-09-23 | P0 resolutions: no-show single-recognition rule + worked example (§5.6; FIN-01); tax-inclusive penalty/forfeiture computation (§7; FIN-02); closing/blocking semantics aligned to ADR-006 §3 (§10/§12; FIN-04) | PROPOSED |
 | 0.3 | 2026-09-23 | P1 resolutions: bank/acquirer reconciliation checks 12–13 (§10; FIN-03); configurable tax point (§7; FIN-12) | PROPOSED |
+| 0.4 | 2026-09-23 | P2 resolutions: service-charge lifecycle and charging example (FIN-09), refund instrument fidelity and chargebacks (FIN-14), series semantics (TEC-12) | PROPOSED |

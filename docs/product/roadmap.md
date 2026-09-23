@@ -2,7 +2,7 @@
 doc-id: PROD-ROADMAP
 title: Product Roadmap
 status: PROPOSED
-version: 1.2
+version: 1.3
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: full enterprise target; pilot-first delivery
@@ -48,7 +48,7 @@ The roadmap follows the programme path: this blueprint (Programme P0) → extern
 | Aspect | Detail |
 |---|---|
 | Objective | The property's sellable existence: rooms, types, features, zones, rate plans, restrictions, effective-dated pricing |
-| Capabilities | CAP-PM-005…012; CAP-RTM-001…012; CAP-AVL-001/002/004; CAP-PLT-014 |
+| Capabilities | CAP-PM-005…012; CAP-RTM-001…012; CAP-AVL-001/002/003/004; CAP-PLT-014 |
 | Inputs | OQ-021 (closed; tax/service charge) before tax configuration is final; reference property inventory data (synthetic) |
 | Deliverables | Room inventory and numbering; types/features/pools; OOO/OOS control; rate plans, amounts, derives, restrictions; capacity and availability calculation; tax/localisation configuration framework |
 | Dependencies | D1 |
@@ -61,7 +61,7 @@ The roadmap follows the programme path: this blueprint (Programme P0) → extern
 | Aspect | Detail |
 |---|---|
 | Objective | The full commercial booking lifecycle with privacy-aware guest records |
-| Capabilities | CAP-GST-001…010, 012; CAP-RSV-001…023; CAP-AVL-003/007/009 |
+| Capabilities | CAP-GST-001…010, 012; CAP-RSV-001…023; CAP-AVL-007/009 |
 | Inputs | OQ-012 (closed; cancellation/no-show/deposit policy), OQ-024 (retention) for class-A handling |
 | Deliverables | Guest profiles with duplicates/merge/consent; reservation lifecycle with amendments, guarantees, deposits, routing instructions, traces; booking concurrency discipline; waitlist; shared/split/join structures |
 | Dependencies | D1–D2 |
@@ -76,8 +76,8 @@ The roadmap follows the programme path: this blueprint (Programme P0) → extern
 | Objective | Governed arrival, stay and departure with service operations |
 | Capabilities | CAP-FO-001…010, 012…019 |
 | Inputs | OQ-019 (closed; ID capture) for registration evidence; D3 guest data |
-| Deliverables | Arrivals and readiness; check-in gates with overrides; registration evidence; in-house console; room moves; extensions; checkout invariant; early/late; service recovery; incidents; shift handover; relocation; house-use/comps |
-| Dependencies | D1–D3; D5 readiness integration |
+| Deliverables | Arrivals and readiness; check-in gates with overrides; registration evidence; in-house console; room moves; extensions; checkout invariant; early/late; service recovery; incidents; shift handover; relocation; house-use/comps; minimal readiness/release state model consumed at check-in (inspection and discrepancy depth completed in D5) |
+| Dependencies | D1–D3 |
 | Risks | RSK-OPS-001 (adoption), RSK-OPS-002 (business-date discipline) |
 | Tests | TO-FO-001 (gates block, overrides audited); TO-FO-002 (checkout invariant); registration immutability; move/do-not-move; extension availability/rate/credit; override audit trail; shift handover completeness |
 | Exit criteria | Every check-in gate blocks when failing and every override is authorized and audited; checkout invariant holds under fault injection; front desk performs arrival-to-departure with no parallel paper process for core steps (pilot acceptance criterion) |
@@ -197,3 +197,4 @@ Programme P0 (this blueprint) → Programme P1 research → P2 audit → P3 gap 
 | 1.0 | 2026-09-23 | Full roadmap with per-phase objectives, capabilities, inputs, dependencies, risks, tests and exit criteria; proof-spike provision; path to code | PROPOSED |
 | 1.1 | 2026-09-23 | Synthetic reference pilot: D9 renamed and rescoped (synthetic migration, role-played UAT, reference release); First-Property Deployment Gate added; property-dependent inputs deferred | PROPOSED |
 | 1.2 | 2026-09-23 | P1: clock and freeze paragraph; First-Property Gate rows for tax-adviser sign-off and FC-signed limits; D9 tabletop criterion; phase naming aligned (TEC-04/05, FIN-13) | PROPOSED |
+| 1.3 | 2026-09-23 | P2 sequencing: CAP-AVL-003 moved to D2 (TEC-06); D4/D5 circular dependency fixed (TEC-07) | PROPOSED |

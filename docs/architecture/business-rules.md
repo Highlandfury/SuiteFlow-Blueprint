@@ -2,7 +2,7 @@
 doc-id: ARCH-RULES
 title: Target Business Rules
 status: PROPOSED
-version: 0.5
+version: 0.6
 date: 2026-09-23
 owner: Hospitality Domain Architect (drafted); Finance Controller + Hotel Operations (approval; roles open)
 applies-to: full enterprise target; adopted OQ answers marked closed, remaining dependencies noted
@@ -42,6 +42,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | BR-RTM-006 | LOS pricing applies when the stay length meets the plan's thresholds; the applicable LOS price recomputes when stay dates change and is recorded at booking. | CAP-RTM-008 |
 | BR-RTM-007 | Every charge captures the applied rate basis (plan version, amount, rule) as evidence at posting time. | INV-RTM-2; ADR-003 |
 | BR-RTM-008 | "Best rate" claims (BAR guarantees) are only made where the property configures them; the system never invents a rate comparison at booking time. | Scope discipline |
+| BR-RTM-009 | Rate-basis fidelity: the rate basis (rate plan, amount, inclusions, tax treatment) is snapshotted per room-night at booking; future nights are held at the booked basis, and re-resolution occurs only on amendment, effective policy change or an audited correction. Posting divergence from the booked basis is flagged by reconciliation. | ADR-003; CAP-RTM-008 |
 
 ## 4. Front office (FO)
 
@@ -66,7 +67,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | BR-FOL-005 | Comps and house use require authority, are flagged as non-revenue, and are reported daily; they never silently reduce availability accounting. | CAP-FO-017 |
 | BR-FOL-006 | Voids are permitted only before the business day closes (or through the governed reopen path). Voids preserve the original item and create a linked reversal. | INV-FOL-2; SM-FOLIO-ITEM |
 | BR-FOL-007 | Transfers between folios/windows require an open target container, a responsible party, and produce a linked transfer pair. | SM-FOLIO-ITEM #4 |
-| BR-FOL-008 | Deposits are liabilities: applied only against charges, refunded only from cleared funds, and never recognised as revenue before application, forfeiture or expiry per policy. | INV-FOL-7; CAP-ACC-006 |
+| BR-FOL-008 | Deposits are liabilities: applied only against charges, refunded only from cleared funds, and never recognised as revenue before a lawful disposition — application, refund or forfeiture per policy. There is **no expiry disposition**; unclaimed deposits remain liabilities under monthly finance review until counsel-confirmed rules apply (FIN-10). | INV-FOL-7; CAP-ACC-006 |
 | BR-FOL-009 | Forfeiture requires the governing cancellation/no-show policy basis, authority per limits, and recorded guest communication; partial forfeiture proportions follow the policy calculation, not the operator's judgement. Application and forfeiture are mutually exclusive for the same amount (one penalty, one recognition). [OQ-012 (closed)] | CAP-RSV-004/005 |
 | BR-FOL-010 | No-show charging: guaranteed reservations charge the first night plus tax (default) as cancellation/no-show revenue — never room revenue — and the no-show night is suppressed from the nightly room-charge run. Where a deposit exists it is applied to the penalty first (settlement), and only the policy-computed remainder is charged or forfeited — never both. Non-guaranteed no-shows charge nothing. One penalty, one recognition (FIN-ARCH §5.6). [OQ-012 (closed)] | CAP-RSV-005 |
 | BR-FOL-011 | Cancellation penalty windows and percentages follow the resolved policy captured at booking plus any subsequently-effective statutory rule; the applied basis is recorded. [OQ-012 (closed)] | INV-RSV-6 |
@@ -193,3 +194,4 @@ The following rules carried `[OQ-nnn]` defaults; all were closed by Product Owne
 | 0.3 | 2026-09-23 | Review-pass corrections: front-matter scope wording, §14 preamble, BR-FOL-015 typo, BR-ACC-001 citation | PROPOSED |
 | 0.4 | 2026-09-23 | P0 resolutions: capacity definitions (BR-AVL-001/003, BR-RPT-002; TEC-01); no-show single-recognition and deposit exclusivity (BR-FOL-009/010; FIN-01); close blocking conditions (BR-NAU-001, BR-ACC-004; FIN-04) | PROPOSED |
 | 0.5 | 2026-09-23 | P1 resolutions: cashier variance semantics (BR-CSH-002/003; FIN-06); credit exposure and suspension rules (BR-CRP-001/002, BR-FOL-013; FIN-07) | PROPOSED |
+| 0.6 | 2026-09-23 | P2 resolutions: no-expiry deposits (BR-FOL-008; FIN-10); rate-basis fidelity (BR-RTM-009; TEC-13) | PROPOSED |

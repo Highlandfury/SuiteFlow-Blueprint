@@ -2,7 +2,7 @@
 doc-id: RPT-ARCH
 title: Target Reporting Architecture
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Data Architect (drafted); Finance Controller (approval; OQ-002 open)
 applies-to: full enterprise target
@@ -95,7 +95,7 @@ Exports are permission-scoped, logged, and carry provenance (as-of, certificatio
 
 ## 8. Performance and retention
 
-- Interactive report budget: daily/detail reports < 5 s; large historical reports < 60 s; nightly pack generation within the close window (NFR document).
+- Interactive report budget (single source: NFR §2): daily/detail reports < 5 s (P-1…P-5 class); large historical reports < 5 min (P-9); nightly pack generation within the close window (P-6/P-8). The earlier "< 60 s" wording is withdrawn as an ungrounded second commitment (TEC-09); any change requires change control with evidence.
 - Read models can be rebuilt; report instances (generated outputs) are retained per financial retention policy for audit reproduction (ADR-003).
 - Analytical extracts partition by business date and property; retention per data architecture §9.
 
@@ -126,3 +126,4 @@ Exports are permission-scoped, logged, and carry provenance (as-of, certificatio
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial reporting architecture issued with WP 0.7 | PROPOSED |
 | 0.2 | 2026-09-23 | P1 resolution: export execute/approve split and auditor path (SEC-06) | PROPOSED |
+| 0.3 | 2026-09-23 | P2: single performance budget per NFR P-9 (TEC-09) | PROPOSED |

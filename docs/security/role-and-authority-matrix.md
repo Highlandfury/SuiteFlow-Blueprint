@@ -2,9 +2,9 @@
 doc-id: SEC-ROLES
 title: Role and Authority Matrix
 status: PROPOSED
-version: 0.3
+version: 0.4
 date: 2026-09-23
-owner: Security Engineer (drafted); Product Owner + Finance Controller (approval; OQ-002 open; OQ-003 closed — acting operations authority)
+owner: Security Engineer (drafted); Security/Privacy Adviser + Technical Lead (approval; pending appointment, OQ-033); Product Owner (interim)
 applies-to: full enterprise target; pilot roles
 depends-on: [SEC-MODEL, ADR-009, PROD-PERSONAS]
 ---
@@ -38,6 +38,8 @@ All numeric limits are **PROPOSED defaults pending sign-off** (OQ-002 Finance Co
 | Sales & Events Coordinator | Property (sales) | Manages accounts, groups and events within commercial limits |
 | F&B Outlet Manager | Outlet(s) | Runs outlet operations; posts to rooms; stock control within limits |
 | System Administrator | Platform (technical) | User provisioning, configuration, integrations; **no business authority** |
+| Technical Lead *(governance)* | Platform (technical) | Architecture and release gates; ADR approvals; **no business authority** |
+| Security / Privacy Adviser *(governance)* | Platform (security) | Security/privacy sign-off, incident oversight, audit/read access; **no business transactions, no self-grant** |
 | External Auditor | Contract scope, read-only | Reads complete evidence; time-boxed; no writes |
 | Group/Chain Executive *(future)* | Group scope, read-only + policy | Portfolio reporting; no property financial entry |
 | Service identities *(machine)* | Interface scope | Batch, integration and worker jobs; explicit per-job scopes |
@@ -112,6 +114,8 @@ These bands align with the pilot's ~200-room operation and are expected to be re
 
 Conditions: refunds to the original instrument; card/transfer refunds only from cleared funds; reason code and audit flag on every waiver; cancellation-penalty waivers within the FOM band per OQ-012 with GM/FC above; forfeiture deviations Finance Controller only; comps per OQ-036. Cash payouts follow this table's cash column — the OQ-037 thresholds are an input to it, not an additional approval layer.
 
+**Cumulative and split control (SEC-12 resolution).** Limits are also tracked **cumulatively per shift, day and month per beneficiary**; split/velocity patterns (same beneficiary, rapid repeats, session boundaries) feed **report #11 (Overrides and limits usage)**, reviewed daily by income audit and security. Cumulative thresholds are PROPOSED configuration, effective-dated.
+
 ## 5. Separation of duties
 
 | # | Separation | Rule | Exception path |
@@ -152,3 +156,4 @@ Exception principle: where staffing makes strict separation impossible (small ni
 | 0.1 | 2026-09-23 | Initial role and authority matrix issued with WP 0.5; all limits PROPOSED defaults | PROPOSED |
 | 0.2 | 2026-09-23 | P0 resolutions: privileged grants on maker–checker with independent review (SEC-04, §3/§5); break-glass two-person grant and named reviewer (SEC-02, §4) | PROPOSED |
 | 0.3 | 2026-09-23 | P1 resolutions: FOM role + consolidated refund/payout/waiver table (FIN-08); financial-config approval restricted to FC (FIN-11); export execute/approve split (SEC-06) | PROPOSED |
+| 0.4 | 2026-09-23 | P2: governance roles added; approval lines aligned; cumulative/split limits (SEC-11/12) | PROPOSED |

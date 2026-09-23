@@ -2,7 +2,7 @@
 doc-id: GOV-DECISIONS
 title: Decisions Required from the Product Owner and Hotel
 status: PROPOSED
-version: 0.4
+version: 0.5
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: plain-language digest of the Open Questions Register
@@ -22,9 +22,9 @@ You asked for the pending questions to be answered on an **industry-standard/bes
 | Outcome | Count | Meaning |
 |---|---|---|
 | **Closed** | **26** | 25 industry-standard answers adopted + OQ-003 (you are the operations authority and acceptance approver) |
-| Need a fact | **8** | 2 now: Finance Controller (OQ-002), Technical Lead/Security adviser (OQ-033); 6 deferred to the first property (OQ-001/004/006/007/025/038) |
-| Need legal/tax advice | **3** | Recommended position in force; a professional confirms before launch (OQ-024/028/029) |
-| Need your cost approval | **1** | The 24×7 staffing/recovery model (OQ-010) |
+| Need a fact | **8** | 2 now: Finance Controller (OQ-002), Technical Lead/Security adviser (OQ-033) — interim arrangements recorded, expiring at the P0 sitting; 6 deferred to the first property (OQ-001/004/006/007/025/038) |
+| Need legal/tax advice | **3** | Scopes of work ready to forward (`adviser-briefs-2026-09-23.md`); a professional confirms before launch (OQ-024/028/029) |
+| Cost approval | **decided in principle** | OQ-010 model approved under delegated direction; contract signature remains yours |
 
 ## What still needs you
 
@@ -58,9 +58,9 @@ No action now; these form the **First-Property Deployment Gate** and must be clo
 
 ### 4. Cost approval
 
-| ID | Recommended model | Decision needed |
-|---|---|---|
-| OQ-010 | 24×7 needs a rota of at least four on-call engineers or a managed NOC partner, plus warm recovery capacity for the 1-hour RPO/RTO | Approve the staffing/cost model by Week 3 |
+| ID | Model (approved in principle under delegated direction; contract signature is yours) |
+|---|---|
+| OQ-010 | 24×7 coverage via ≥4 engineers two-deep or a managed NOC partner; paging ≤5 min; warm recovery for 1 h RPO/RTO; on-call compensation; two costed options (rota-first vs partner-first) due Week 3, lower whole-life cost selected, ≤12-month terms |
 
 ## What is now decided (adopted 23 Sep 2026)
 
@@ -121,3 +121,4 @@ The adopted answers are in force and the reference pilot can be configured to th
 | 0.2 | 2026-09-23 | Rewritten against the industry-standard answer pack (GOV-ANSWERS): what is answered (25), what still needs facts (9), advice (3) and cost approval (1) | PROPOSED |
 | 0.3 | 2026-09-23 | All 25 industry-standard answers adopted; remaining items restated as facts, advice and one approval | PROPOSED |
 | 0.4 | 2026-09-23 | Synthetic reference pilot: OQ-003 closed (you are the operations authority); property-dependent facts deferred to the First-Property Deployment Gate | PROPOSED |
+| 0.5 | 2026-09-23 | OQ-010 approved in principle; interim governance arrangements recorded (expire at the P0 sitting); adviser briefs and research register opened | PROPOSED |

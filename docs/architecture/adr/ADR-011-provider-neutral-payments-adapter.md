@@ -2,9 +2,9 @@
 doc-id: ADR-011
 title: Provider-neutral payments adapter
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
-owner: Integration Architect (drafted); Finance Controller (review; OQ-002 open); Product Owner (approval)
+owner: Integration Architect (drafted); Finance Controller (review; OQ-002 open); Security/Privacy Adviser (security boundaries; pending OQ-033); Product Owner (interim)
 applies-to: full enterprise target; provider selection remains open
 depends-on: [ADR-010, ADR-005, ADR-007, FIN-ARCH, SEC-MODEL]
 supersedes: rules on DP-ADR-004
@@ -94,3 +94,4 @@ Any historical payment records migrate with references preserved; settlement sta
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial decision issued with WP 0.7; rules on DP-ADR-004 | PROPOSED |
+| 0.2 | 2026-09-23 | P2: approval line aligned to charter §12 (SEC-11) | PROPOSED |

@@ -61,7 +61,8 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 - `docs/TARGET-STATE-BLUEPRINT.md` v1.3 (PROPOSED): consolidated master index with inventory, architecture summaries, acceptance model (reference pilot + First-Property Deployment Gate), the Programme P0 exit gate and next steps.
 - `product/roadmap.md` v1.2: full roadmap with per-phase objectives, capabilities, inputs, dependencies, risks, tests and exit criteria for Delivery D1–D9 (synthetic migration, role-played UAT, reference release), the First-Property Deployment Gate and enterprise D10–D20; dated 24-week horizon (start 23 Sep 2026, target 10 Mar 2027) with the pilot scope freeze at P0 acceptance.
 - Programme P0 exit gate: 7 approval groups remain (Product Owner incl. acting operations acceptance; Finance via OQ-002; Security adviser via OQ-033; Technical Lead; ADR confirmations; open questions). See the blueprint §12.
-- Acceptance-readiness review recorded (`docs/00-governance/review-findings-2026-09-23.md`): 45 findings; P0 (3 criticals + 5 highs) and P1 (8 highs + 13 mediums) resolved under the Product Owner's delegated decision record (`docs/00-governance/product-owner-decisions-2026-09-23.md`); P2 remain.
+- Acceptance-readiness review recorded (`docs/00-governance/review-findings-2026-09-23.md`): **all 45 findings resolved** (P0 8, P1 21, P2 16) under the delegated Product Owner decision record (`docs/00-governance/product-owner-decisions-2026-09-23.md`); residual dependencies are adviser inputs and appointed-signatory reviews.
+- Adviser briefs ready to forward (`docs/00-governance/adviser-briefs-2026-09-23.md`); Programme P1 research opened (`docs/00-governance/research-register.md`).
 
 ### How we got here
 
@@ -80,7 +81,7 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 Programme P1 (external research and benchmark validation) → Programme P2 (current-state audit) → Programme P3 (gap matrix) → Programme P4 (transition architecture) → delivery D1–D20. Governed proof spikes are permitted earlier with Product Owner approval.
 
-**Open questions:** 26 of 38 closed (25 adopted industry-standard answers + OQ-003 operations authority, 23 Sep 2026); 12 remain — 8 facts (2 now: Finance Controller, Technical Lead/Security adviser; 6 deferred to the first property), 3 professional-advice items, 1 cost approval. See `docs/00-governance/industry-standard-answers.md` and the register; decision digest in `docs/00-governance/decisions-required.md`.
+**Open questions:** 26 of 38 closed; OQ-010 approved in principle (delegated; contract signature with the Product Owner); 8 facts remain (2 interim — Finance Controller, Technical Lead/Security adviser; 6 deferred to the first property), 3 professional-advice items (briefs ready), plus interim arrangements expiring at the P0 sitting. See `docs/00-governance/industry-standard-answers.md` and the register; decision digest in `docs/00-governance/decisions-required.md`.
 
 ## Licensing
 

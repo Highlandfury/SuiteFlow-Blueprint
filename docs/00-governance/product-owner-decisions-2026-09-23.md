@@ -2,7 +2,7 @@
 doc-id: GOV-PO-DEC
 title: Product Owner Decisions — P1 Acceptance-Readiness Items (23 Sep 2026, delegated)
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Product Owner (accountable); decisions taken by the Product Owner persona under explicit delegation of 23 Sep 2026
 applies-to: P1 findings in GOV-REVIEW and the affected blueprint documents
@@ -72,8 +72,55 @@ depends-on: [GOV-REVIEW, GOV-CHARTER, PROD-ROADMAP, PROD-CAPMAP]
 
 Tax, retention and legal positions (OQ-024/028/029) remain UNVERIFIED pending counsel; OQ-002/OQ-033 are unappointed so no finance or security sign-off is claimed; OQ-010 cost approval and all real-property facts remain open; capability counts, phase durations and the pilot freeze are provisional until applied and confirmed at the P0 scope-freeze gate.
 
+## Next-stage record (v0.2) — P2 dispositions, interim governance, briefs, acceptance, P1
+
+### A. P2 dispositions (all 16 fixed; no deferrals)
+
+| ID | Resolution | Evidence / condition |
+|---|---|---|
+| FIN-09 | Service Charge Payable control account + posting family 17 (distribution/remittance) + monthly reconciliation (check 14) + worked ordering example; §7 citation corrected | FIN-ARCH v0.4; monthly recon live from D6; FC sign-off at appointment; VAT-base question stays with OQ-029 |
+| FIN-10 | "Expiry" disposition removed from BR-FOL-008; aged/unclaimed deposits reported monthly; write-back/escheatment only on counsel-confirmed effective-dated rule | business-rules v0.6; FIN-10 closes with OQ-024 advice |
+| FIN-14 | Family 11 refunds credit the original instrument clearing; family 14 Dr short/Cr over stated; chargebacks added (family 18) and matched in check 3 | FIN-ARCH v0.4 |
+| FIN-15 | Remaining citation corrections completed (hygiene) | commit history |
+| TEC-06 | CAP-AVL-003 moved from D3 to D2 (rebuild/reconciliation sits with availability) | roadmap v1.3 |
+| TEC-07 | D4 builds the minimal readiness state it consumes; dependency on D5 removed | roadmap v1.3 |
+| TEC-09 | One reporting budget: NFR P-9 (<5 min) for large historical; "<60 s" withdrawn | reporting v0.3 |
+| TEC-10 | QA §8 rewritten as role-played UAT at the reference release; real roles at the gate | qa v0.5 |
+| TEC-11 | Property-scoped restore + mandatory restore order (quiesce → resolve intents → reconcile → resume) + TO-REL-003 | deployment v0.4 |
+| TEC-12 | Series-semantics section (transactional allocation, single allocator, gap audit, reset/void rules) + TO-ACC-005; fiscal specifics UNVERIFIED pending OQ-029 | FIN-ARCH v0.4 |
+| TEC-13 | BR-RTM-009 rate-basis fidelity + TO-RTM-003 | business-rules v0.6 |
+| TEC-14 | Consistency pass complete; **zero count/link mismatches required at pack freeze** | gate condition |
+| TEC-15 | adr/README gains standard front matter (ADR-INDEX, PROPOSED); no index exemption | adr/README |
+| SEC-11 | Approval lines aligned to charter §12; Technical Lead and Security/Privacy Adviser added to the role catalogue with explicit bundles | SEC-ROLES v0.4; SEC-MODEL v0.4; ADR-009/010/011 |
+| SEC-12 | Cumulative shift/day/month limits + split/velocity detection feeding report #11; TO-SEC-011 | SEC-ROLES v0.4 |
+| SEC-16→15 | Security test registry completed: TO-SEC-008 (MFA/session), 009 (audit tamper/restore), 010 (webhook signature/provider intent) added to the D9 pack | qa v0.5 |
+
+### B. Interim governance (delegated)
+
+1. **OQ-010 — approved in principle.** Coverage (≥4 engineers two-deep or managed NOC), paging ≤5 min, warm recovery for 1 h RPO/RTO, on-call compensation, tooling/drill time. Two costed options (rota-first vs partner-first) prepared by Week 3; lower whole-life cost selected; ≤12-month terms, no lock-in. **No spend committed; contract signature is the real Product Owner's step.** Status: `APPROVED-IN-PRINCIPLE (delegated; signature pending)`.
+2. **OQ-002 / OQ-033 — interim acting arrangements.** Financing: real Product Owner holds financial approval (defaults stay PROPOSED). Technical: maintaining architect gives interim design direction only. Security: advisory support only; **sign-off remains pending — the blueprint cannot reach ACCEPTED without it.** Break-glass/incident reviewer interim: Technical Lead/PO. **All three expire at the P0 sitting (scheduled ≤14 Oct 2026) or on appointment, whichever is earlier.**
+3. **Human-only (never delegated):** appointments and deputies; FC/TL/Security correctness sign-offs; spend; adviser engagement letters and fees; any override of this record.
+4. **Appointment-ready charters** (purpose, decision rights, competencies, selection criteria, acceptance evidence) for the three roles are recorded in the persona's working record and summarised here: FC — accountancy + hospitality finance + Nigerian VAT familiarity, independence from sales/procurement, signs the scoped list; TL — enterprise architecture + PMS/ERP depth + tenancy/authorization/reliability, independent of delivery vendors, signs ADRs/NFR/deployment; Security adviser — security architecture + NDPA/privacy + incident response, independent of platform administration, signs security model/ADR-009 and participates in the tabletop. Term to the First-Property Deployment Gate review.
+
+### C. Adviser engagement briefs
+
+Prepared as `adviser-briefs-2026-09-23.md` (GOV-BRIEFS): tax (OQ-029), legal/privacy (OQ-024 + OQ-019 legal), OSS licensing (OQ-028). Engagement execution, fees and NDAs remain the real Product Owner's step.
+
+### D. Acceptance pack and sitting (≤14 Oct 2026)
+
+- **Artifacts:** registers; GOV-REVIEW with P0/P1/P2 logs; charter; master index; vision/scope/capability map (frozen pilot set)/roadmap/personas; ADR-001…011 with approver matrix; architecture set; evidence pack (freeze list, TO registry incl. TO-SEC-004…011, golden-day scope, OQ-010 in-principle record, interim arrangements, role charters).
+- **Per-approver checklist:** PO (vision/scope/priorities/freeze, this record); FC (financial architecture, ADR-005…008, limits and consolidated table, reconciliation, golden-day cases, tax items explicitly UNVERIFIED); TL (target/domain/data/state, ADR-001…004/010/011, NFR/DEP/QA, sequencing); Security adviser (SEC-MODEL/ROLES, ADR-009/010/011 boundaries, incident/privacy, AI gate, exports, UAT regime, TO-SEC pack).
+- **Pre-acceptable under delegation:** product/scope/priority calls, capability classification and freeze, gates and sequencing, conventions, D1–D12 and A1–A16 dispositions, interim arrangements, OQ-010 in-principle.
+- **Human-only:** FC/TL/Security sign-offs, appointments, spend, legal/tax conclusions.
+- **Outcomes:** (1) all appointed → full sign-offs, blueprint ACCEPTED, P0 exits; (2) appointee absent → PO items complete and **scope freeze effective**, recorded as "P0 conditional completion"; committed delivery does not start until outstanding sign-offs are recorded. No fabricated acceptance.
+
+### E. Programme P1 kickoff
+
+Opened `research-register.md` (GOV-RESEARCH): R1 vendor capability verification, R2 OPERA public benchmark, R3 Nigerian tax/legal primary sources (source packs for the advisers), R4 provider evidence, R5 NFR benchmark sanity, R6 licence/SBOM inventory. Starts now without appointments (register + evidence collection + adviser source packs); adviser conclusions wait on engagement; property-dependent evidence waits for the First-Property Gate.
+
 ## Version history
 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial delegated PO decision record for the P1 acceptance-readiness items (12 decisions + 3 recommendations) | PROPOSED |
+| 0.2 | 2026-09-23 | Next-stage record: P2 dispositions (16 fixed); interim governance (OQ-010 in-principle, OQ-002/033 arrangements with expiry); adviser briefs; acceptance pack/sitting plan; P1 research register opened | PROPOSED |
