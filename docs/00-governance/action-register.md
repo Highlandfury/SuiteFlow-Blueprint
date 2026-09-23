@@ -22,7 +22,7 @@ Every action arising from the delegated Product Owner record and the review reso
 | A-05 | Sign the 24×7 contract and commit spend | Real Product Owner | After quotes and P0 sitting (Week 3) | Signed contract; approval block in OPS-SUPPORT | OPEN — human |
 | A-06 | Send the three adviser engagement emails; confirm fees, engagement letters, NDAs | Real Product Owner | By 26 Sep 2026 | Sent correspondence; engagement confirmations (GOV-BRIEFS v0.2 §3) | OPEN — human |
 | A-07 | Convene and chair the P0 acceptance sitting | Real Product Owner | ≤14 Oct 2026 | Sitting minutes (GOV-SITTING §6); outcome path recorded | OPEN — human |
-| A-08 | Complete Programme P1 evidence collection (R1–R6) | Programme (TL review at appointment) | Inside P1–P2 envelope (by Week 8) | `research-register.md` statuses and citations | IN-PROGRESS — passes 1–2 complete (R1 largely evidenced, R2 partial with OPERA patterns, R3 access-blocked for FIRS/CBN, R6 evidenced); R2 per-capability walk and R5 remain |
+| A-08 | Complete Programme P1 evidence collection (R1–R6) | Programme (TL review at appointment) | Inside P1–P2 envelope (by Week 8) | `research-register.md` statuses and citations | IN-PROGRESS — passes 1–3 complete (R1 largely evidenced, R2 domain walk done with R2-F1…F5 candidates, R3 access-blocked for FIRS/CBN, R6 evidenced); per-capability depth + R5 remain |
 | A-09 | Freeze the pilot capability set at P0 acceptance | Product Owner | At/with acceptance | Capability map v0.3 frozen counts; sitting minute | OPEN |
 | A-10 | Discharge or extend interim arrangements at the sitting | Real Product Owner | At P0 sitting | Sitting minute; GOV-APPOINT status update | OPEN — human |
 

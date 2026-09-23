@@ -36,6 +36,14 @@ One row per claim or question requiring external evidence. **Statuses:** `OPEN` 
 | docs.frappe.io/framework/user/en/database-migrations | ✅ retrieved (migration/patch system, updated 2026-02-17) |
 | Two guessed Frappe doc URLs (`background-jobs`, `bench/reference/commands`) | ❌ 404 — direct-URL discovery is limited without search |
 
+### Pass 3 (23 Sep 2026)
+
+| Target | Result |
+|---|---|
+| OPERA Cloud 26.3 "All Books" index (`books.html`) | ⚠️ page returned without a book list (dynamically rendered) — limitation recorded |
+| Frozen pilot capability set extracted locally (204 candidates across 22 domains) | ✅ domain walk completed against the public OPERA areas; five candidate findings (R2-F1…F5) recorded |
+| Fixed/recurring-charge coverage check in the blueprint | ✅ BR-NAU-003 (recurring charges idempotent) and CAP-RSV-016 (packages/fixed charges) confirmed present |
+
 ## R1 — Vendor capability verification (Frappe v16 / ERPNext / Kamra)
 
 Pinned stack observed: **frappe 16.31.0 · erpnext 16.32.3 · kamra 2.5.0 · hrms 16.16.0 · crm 1.81.2 · payments 0.0.1 · hotel_integration 0.1.0.dev0** (`bench version`).
@@ -50,29 +58,47 @@ Pinned stack observed: **frappe 16.31.0 · erpnext 16.32.3 · kamra 2.5.0 · hrm
 
 ## R2 — OPERA Cloud public benchmark
 
-**Public sources (OPERA Cloud Services 26.3):** Release Readiness Guide feature summary; User Guide; Security Guide; Compatibility Matrix; Network Guidelines; Licensing Information User Manual; Reporting & Analytics; Distribution; Fiscal Regulatory Compliance; ID Document Scanning Interface; Validated Interfaces list. Integration surfaces documented via the Oracle Hospitality Integration Platform (developer portal).
+**Public sources (OPERA Cloud Services 26.3):** Release Readiness Guide feature summary; User Guide; Security Guide; Compatibility Matrix; Network Guidelines; Licensing Information User Manual; Reporting & Analytics; Distribution; Fiscal Regulatory Compliance; ID Document Scanning Interface; Validated Interfaces list. Integration surfaces documented via the Oracle Hospitality Integration Platform (developer portal). *Limitation recorded:* the "All Books" index page is dynamically rendered and did not return a book list; per-capability depth rests on the User Guide/feature summary and needs the Programme P2/P3 pass with the Technical Lead.
 
-**Capability areas observed in the public feature set (release 26.3):** Accounts Receivable, Block Management, Cashiering & Financials, Client Relations (profiles), Country-Specific compliance, Distribution, Events (space), Exports, Front Desk (keys, eSign registration), Integrations (async API queue UI), Membership/Loyalty, Mobile, Property APIs, Reports (forecast, holding ledger for revenue recognition, manager report), Reservations (sales screen, sharing, age thresholds), Role Manager (task-level permissions), Toolbox (imbalance analysis, AR transfer invoices utility).
+**Domain walk of the frozen pilot set (204 candidates) against public OPERA areas — requirements-level only:**
 
-**Benchmark observations vs the SuiteFlow target (requirements-level only; no implementation copying):**
+| SuiteFlow domain (pilot caps) | OPERA public evidence area | Observation |
+|---|---|---|
+| RSV Reservations (19) | Reservations / Reservation Sales Screen (age thresholds, copy, sharing, attachments, rooming lists) | Consistent; OPERA's age-threshold control maps to the OQ-035 child policy (already adopted). |
+| AVL Availability (7) | Blocks/inventory (borrow availability, blocks with room inventory) | Consistent; SuiteFlow block holds/cutoffs cover the same concept. |
+| RTM Rates (11) | Rate management (mass actions, pricing schedules, package copy, total-package tax) | Consistent; OPERA's total-package-rate tax calculation adds a worked-example candidate for the tax engine (package base net/gross). |
+| PM Property (11) | Rooms/types, OOO/OOS, key encoders | Consistent; lock integration deferred per OQ-020. |
+| FO Front office (18) | Front Desk (keys, eSign registration card, room moves, queues) | Consistent; eSign registration is a later UX enhancement candidate (SuiteFlow registration evidence exists in paper/scan form). |
+| HSK Housekeeping (9) | Housekeeping task sheets, mobile | Consistent. |
+| MNT Maintenance (5) | *(Not in this public set — OPERA maintenance sits with a separate product)* | SuiteFlow's light PM pilot scope is an extra relative to this doc set; consistent with the adopted answer (OQ-022). |
+| FOL Folio (13) | Cashiering & Financials, folio history, routing, comp folios (multiple authorizers with limits) | Consistent; multi-authorizer comp routing with combined limits is a depth candidate for routing instructions. |
+| CSH Cashiering (10) | Cashiering (additional charges, simplified settlement, payment instructions) | Consistent; OPERA's conditional "additional charges" at End of Day expand the recurring-charge depth (see R2-F3). |
+| INA Income audit (7) | Toolbox imbalance analysis | Consistent (SuiteFlow income-audit controls already richer). |
+| NAU Night audit (10) | End of Day (room & tax + additional charges) | Consistent; BR-NAU-003 covers recurring-charge idempotency. |
+| ACC Accounting (12) | Accounts Receivable (transfer invoices), holding ledger | Mostly consistent; **holding ledger for revenue recognition is a report-catalogue candidate (R2-F1)**. |
+| POS Outlets (10) | Restaurants (separate docs); POS interfaces | Consistent; external POS integration deferred per MVP. |
+| GRP Groups (9) | Block Management (pre-filled rooming lists XLS/CSV, statistics, mass borrow) | Consistent; **rooming-list import is a candidate depth item (R2-F2)**. |
+| CRP Corporate (6) | Accounts Receivable / Client Relations | Consistent. |
+| GST Guests (10) | Client Relations (address validation, property-specific PII storage/visibility, retention) | Consistent; SuiteFlow has stricter Class-A retention design; address auto-validation is a later-provider candidate. |
+| CRM (3) | Membership/Loyalty; mobile guest experience | Consistent (minimal consent projection at pilot; loyalty at D12). |
+| RPT Reporting (8) | Reports (28-day/yearly forecasts, manager report) + R+A product | Consistent; forecasting/BI deferred to D15. |
+| INV Inventory (6) | Materials Control (separate product) | SuiteFlow light stock control is deliberately lighter at pilot; consistent. |
+| INT Integrations (3 pilot) | Integration Platform (OHIP portal, async queue UI, validated interfaces) | Consistent; SuiteFlow's provider-neutral adapter with capability flags matches the OHIP-style separation. |
+| HRM HR boundary (2) | Role Manager task permissions | Consistent (identity boundary only at pilot). |
+| PLT Platform (15) | OPERA Controls, Role Manager, Business Events, Page Composer | Consistent; OPERA's off-by-default controls with enable steps validate SuiteFlow's effective-dated, audited configuration governance. |
 
-| OPERA public pattern observed | SuiteFlow counterpart |
-|---|---|
-| Per-property **feature controls** delivered disabled with documented "steps to enable" | Property-configurable capabilities with effective dates (BR-PLT-001) — consistent; SuiteFlow config governance is stricter (change control + audit) |
-| **Role Manager task-level permissions** for screens/utilities | Role catalogue + authority matrix + explicit permission areas — consistent direction |
-| **Business events** capturing user name on posting create/update/delete for auditability | Append-only audit + posting-link evidence — consistent; SuiteFlow adds hash-chained sink (SEC-13) |
-| **PAN restrictions** in free-text/check-number/profile fields with removal logging | SuiteFlow stores no PAN at all (BR-PAY-007) — stronger baseline |
-| **Property-specific PII storage/visibility controls** and profile identification retention | Class-A handling + retention schedule (OQ-024) — consistent; SuiteFlow adds per-category retention config |
-| **Pay by Link** for batch deposits + payment-status check | OQ-005/ADR-011: enterprise-target capability; pilot at most one provider path — consistent phasing |
-| **Holding ledger for revenue recognition** report | SuiteFlow revenue-recognition postings + reconciliation suite — reporting equivalent to assess in the report catalogue (potential RPT addition) |
-| **AR transfer invoices utility** for internal settlement | SuiteFlow zero-revenue direct-bill transfer (ADR-005) — same concept, already designed |
-| **Async queue UI** for monitoring API requests | Queue/observability surfaces in DEP-ARCH + NFR observability — consistent |
-| **Package/total-rate tax calculation** options (net/gross bases, per-night) | Tax engine with per-tax-type computation order and tax points (FIN-ARCH §7) — consistent |
+**Benchmark findings (candidates for assessment, not commitments):**
+
+- **R2-F1** — *Holding-ledger style revenue-recognition reporting*: assess against the 22-report catalogue (finance + reporting pass).
+- **R2-F2** — *Rooming-list import (XLS/CSV)*: assess as a group-workflow depth item in GRP-003.
+- **R2-F3** — *Conditional recurring/additional charges* (conditions, amount bases, transaction code selection): assess against BR-NAU-003/CAP-RSV-016 depth.
+- **R2-F4** — *Comp folio multi-authorizer routing with combined limits*: assess in folio routing depth.
+- **R2-F5** — *Capability enablement documentation*: OPERA documents "steps to enable" per feature; SuiteFlow's documentation architecture should carry an equivalent per-configurable-capability enablement note (docs pass).
 
 | ID | Claim / question | Status | Next |
 |---|---|---|---|
-| RS-201 | Capability comparison against the frozen pilot candidate set | PARTIAL — public doc structure and notable patterns captured; systematic per-capability pass pending | Walk the frozen pilot candidate list against the public guide areas; record gaps/extras as findings |
-| RS-202 | Gaps/extras vs target workflows (conflicts recorded, never averaged) | OPEN | Workflow-level comparison in Programme P2/P3 with the Technical Lead |
+| RS-201 | Capability comparison against the frozen pilot candidate set | **PARTIAL — domain walk complete** for all 22 pilot domains; five candidate findings recorded; per-capability depth pending | Per-capability depth with the Technical Lead at appointment |
+| RS-202 | Gaps/extras vs target workflows (conflicts recorded, never averaged) | PARTIAL — domain-level gaps/extras captured; workflow-level comparison pending | Programme P2/P3 |
 
 ## R3 — Nigerian tax and legal primary sources (for the advisers)
 
