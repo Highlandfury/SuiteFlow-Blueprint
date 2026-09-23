@@ -63,6 +63,7 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 - Programme P0 exit gate: 7 approval groups remain (Product Owner incl. acting operations acceptance; Finance via OQ-002; Security adviser via OQ-033; Technical Lead; ADR confirmations; open questions). See the blueprint §12.
 - Acceptance-readiness review recorded (`docs/00-governance/review-findings-2026-09-23.md`): **all 45 findings resolved** (P0 8, P1 21, P2 16) under the delegated Product Owner decision record (`docs/00-governance/product-owner-decisions-2026-09-23.md`); residual dependencies are adviser inputs and appointed-signatory reviews.
 - Adviser briefs ready to forward (`docs/00-governance/adviser-briefs-2026-09-23.md`); Programme P1 research opened (`docs/00-governance/research-register.md`).
+- Execution artifacts issued under delegated Product Owner direction: interim appointments (`interim-appointments-2026-09-23.md`), 24×7 procurement pack (`operations/support-model-and-procurement.md`), engagement emails, P0 sitting pack (`p0-sitting-pack.md`), action register (`action-register.md`). Human-only steps (countersignatures, appointments, spend, adviser engagement, convening the sitting) are tracked in the action register.
 
 ### How we got here
 

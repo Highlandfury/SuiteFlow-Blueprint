@@ -53,6 +53,8 @@ Ready-to-forward scopes of work prepared under delegated Product Owner direction
 
 **Scope.** Licence position for the platform stack (Frappe/ERPNext/Kamra and dependencies) under the intended operating and distribution models (SaaS-hosted; on-premise property deployment).
 
+**Attached input.** `research-register.md` R6 licence inventory (23 Sep 2026): frappe 16.31.0 **MIT**; erpnext 16.32.3 / hrms 16.16.0 / crm 1.81.2 **GPL-3.0**; kamra 2.5.0 **AGPL-3.0**; payments 0.0.1 **MIT**; hotel_integration **undeclared**. Findings LIC-01 (AGPL on-premise distribution) and LIC-02 (undeclared licence).
+
 **Questions.**
 1. Licence classification of each component and dependency.
 2. Network-copyleft/AGPL implications for SaaS operation, if present.
@@ -131,3 +133,4 @@ Kind regards,
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial adviser briefs prepared under delegated PO direction (C1–C3) | PROPOSED |
 | 0.2 | 2026-09-23 | Engagement emails, checklist and follow-up cadence added (human send/signature steps retained) | PROPOSED |
+| 0.3 | 2026-09-23 | OSS brief attaches the R6 licence inventory (Kamra AGPL-3.0; hotel_integration undeclared) | PROPOSED |
