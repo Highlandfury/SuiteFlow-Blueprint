@@ -198,6 +198,7 @@ Planned structure; documents appear as their work packages execute. Only files t
 
 ```text
 docs/
+├── TARGET-STATE-BLUEPRINT.md          [present — master index v1.0]
 ├── 00-governance/
 │   ├── charter.md                     [present]
 │   ├── inputs-register.md             [present]
@@ -210,7 +211,7 @@ docs/
 │   ├── scope.md                       [present — WP 0.1]
 │   ├── personas-and-roles.md          [present — WP 0.1]
 │   ├── capability-map.md              [present — WP 0.1]
-│   └── roadmap.md                     [present — WP 0.1 skeleton; full in WP 0.8]
+│   └── roadmap.md                     [present — v1.0 with per-phase exit criteria]
 ├── architecture/                      [WP 0.2 complete — pending review]
 │   ├── target-state.md                [present — WP 0.2]
 │   ├── domain-model.md                [present — WP 0.2]

@@ -56,18 +56,13 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 ## Current phase
 
-**WP 0.7 — Platform architecture** — complete, pending Product Owner review:
+**Phase 0 complete — WP 0.8 Blueprint Consolidation delivered; awaiting Product Owner acceptance.**
 
-- `integrations/architecture.md`: 14 interfaces with auth, identity, retry, failure and reconciliation contracts; global failure model; security and acceptance obligations.
-- `reporting/architecture.md`: data flow, 22-report catalogue, definitions governance, drill-down and reconciliation, scheduling, exports, performance.
-- `architecture/non-functional-requirements.md`: measurable requirements labelled REQUIRED/TARGET/ASPIRATIONAL/TBD across performance, concurrency, availability, recovery, integrity, observability, scalability, security, maintainability, accessibility.
-- `qa/strategy.md`: 15 test levels, golden-day fixture, test-obligation registry (TO-*), gates, severity model, regression suites, UAT and acceptance.
-- `deployment/architecture.md`: environments and promotion, topology, connectivity/power requirements (OQ-038), recovery architecture, observability, release management, runbook catalogue.
-- `manuals/documentation-architecture.md`: 21-document set with owners and maintenance triggers; docs-as-code governance.
-- `ai/architecture.md`: AI governance, tool gateway, capability gates, failure controls (no AI enabled at pilot by default).
-- ADR-010 (integration/event/idempotency), ADR-011 (payments adapter). All proposed inputs now have recorded validation outcomes.
+- `docs/TARGET-STATE-BLUEPRINT.md` v1.0 (PROPOSED): consolidated master index with inventory, architecture summaries, acceptance model, the Phase 0 exit gate and next steps.
+- `product/roadmap.md` v1.0: full roadmap with per-phase objectives, capabilities, inputs, dependencies, risks, tests and exit criteria for pilot phases 1–9 and enterprise phases 10–20, plus the governed proof-spike provision and the path to first code.
+- Phase 0 exit gate: 7 approval groups remain (Product Owner; Hotel Operations via OQ-003; Finance via OQ-002; Security adviser via OQ-033; Technical Lead; ADR confirmations; OQ resolutions). See the blueprint §12.
 
-### Completed work packages
+### How we got here
 
 | WP | Deliverable set | Status |
 |---|---|---|
@@ -75,13 +70,16 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 | 0.2 | Target-state, ownership, tenancy, domain model (80 invariants), data architecture, ADR-001…004 | Complete |
 | 0.3 | 18 state machines, 22 workflows, 101 business rules | Complete |
 | 0.4 | Financial architecture, ADR-005…008; financial inputs validated | Complete |
-| 0.5 | Security model, role/authority matrix (20 roles, limits, SoD), ADR-009 | Complete |
-| 0.6 | UX architecture (16 screens) with test obligations | Complete |
-| 0.7 | Integration, reporting, NFR, QA, deployment, documentation, AI architectures, ADR-010/011 | Complete |
+| 0.5 | Security model, role/authority matrix, ADR-009 | Complete |
+| 0.6 | UX architecture (16 screens) | Complete |
+| 0.7 | Integration (14 interfaces), reporting (22 reports), NFR, QA (29 test obligations), deployment, documentation, AI; ADR-010/011 | Complete |
+| 0.8 | Blueprint v1.0 consolidation; full roadmap; acceptance model | Complete |
 
-Remaining in Phase 0: **WP 0.8 — blueprint consolidation v1.0 + full roadmap with exit criteria**, then Phase 1 research, Phase 2 audit, Phase 3 gap, Phase 4 transition.
+### Programme next steps
 
-Next: WP 0.8 — consolidation.
+Phase 1 (external research and benchmark validation) → Phase 2 (current-state audit) → Phase 3 (gap matrix) → Phase 4 (transition architecture) → delivery phases 1–20. Governed proof spikes are permitted earlier with Product Owner approval.
+
+**Outstanding decisions for the Product Owner** (blocking ACCEPTED status or pilot configuration): OQ-011, OQ-012, OQ-021, OQ-001/002/003, OQ-038 — see `docs/00-governance/decisions-required.md`.
 
 ## Licensing
 

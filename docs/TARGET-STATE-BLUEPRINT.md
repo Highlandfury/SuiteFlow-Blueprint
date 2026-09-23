@@ -1,0 +1,136 @@
+---
+doc-id: BP-V1
+title: SuiteFlow Target-State Blueprint v1.0
+status: PROPOSED
+version: 1.0
+date: 2026-09-23
+owner: Product Owner (acceptance); Principal Architect (maintainer)
+applies-to: all SuiteFlow work
+depends-on: [GOV-CHARTER, GOV-INPUTS]
+---
+
+# SuiteFlow Target-State Blueprint v1.0
+
+## 1. What this is
+
+The consolidated target-state blueprint: the complete specification of the SuiteFlow hotel platform as it should exist, designed from hospitality requirements, enterprise PMS capability benchmarks, accounting principles, security principles and real operating workflows — before and independently of the current implementation.
+
+**Status: PROPOSED.** Nothing in this blueprint is yet ACCEPTED (charter §4). Acceptance requires the approvals and resolutions listed in §12. Until then, the blueprint is the working specification and the baseline against which the current implementation will be audited in Phase 2.
+
+**How to use it:** start at the charter (governance, source-of-truth hierarchy, change control); use the capability map for scope and priorities; use the domain/state/rule documents for behaviour; use finance, security, UX, integration, reporting, NFR, QA, deployment and documentation architectures for their disciplines. Every artifact cites capability IDs; every requirement resolves to a test obligation.
+
+## 2. Consolidated inventory
+
+| Artifact class | Count | Location |
+|---|---|---|
+| Documents in this blueprint | 41 | `docs/` |
+| Domains | 25 | capability map |
+| Capabilities (`CAP-*`) | 283 | `product/capability-map.md` |
+| Domain invariants (`INV-*`) | 80 | `architecture/domain-model.md` |
+| Business rules (`BR-*`) | 101 across 15 domains | `architecture/business-rules.md` |
+| State machines (`SM-*`) | 18 | `architecture/state-machines.md` |
+| Workflows (`WF-*`) | 22 | `workflows/catalogue.md` |
+| Screens | 16 | `ux/architecture.md` |
+| Reports | 22 | `reporting/architecture.md` |
+| Interfaces | 14 | `integrations/architecture.md` |
+| Test obligations (`TO-*`) | 29 representative | `qa/strategy.md` |
+| Architecture decisions (`ADR-*`) | 11 | `architecture/adr/` |
+| Risks (`RSK-*`) | 32 | `00-governance/risk-register.md` |
+| Open questions (`OQ-*`) | 38 | `00-governance/open-questions.md` |
+| Accepted requirements (`BR-PILOT/PAY/MVP/REL-*`) | 33 | `00-governance/inputs-register.md` |
+
+## 3. Governance summary
+
+- **Source of truth (charter §3):** approved business requirements → accepted blueprint → ADRs → rules → implementation specifications → code/database → tests → external research → assumptions. A lower level never silently overrides a higher one.
+- **Change control (charter §7):** accepted content changes only with impact analysis and recorded approval; architectural changes require an ADR first.
+- **Confidence labels (charter §6):** VERIFIED / INFERRED / ASSUMED / UNVERIFIED / CONFLICTING. Blueprint-wide defaults are PROPOSED and thus ASSUMED unless labelled otherwise.
+- **Review protocol:** ten explicit passes per work package including two adversarial (ASTRA) passes; findings recorded in commit history and work-package reports.
+
+## 4. Product definition at a glance
+
+- **Vision:** an enterprise hotel operating platform running the commercial, operational and financial life of a hotel — deterministic, auditable, operationally realistic — first proven on a 200-room Lagos property, designed for groups and chains without re-architecture.
+- **Scope tiers:** enterprise target (all 283 capabilities) / pilot release (160 capabilities marked `Yes`) / enterprise phases (72 + 51 pending hotel decisions).
+- **Pilot:** Golfview Suites and Conference Center, ~200 rooms, WAT, NGN, cash/POS/transfer/cheque, 24-week horizon, 24×7 support, 1 h RPO/RTO.
+- **Deferred by accepted boundary:** payroll, advanced CRM, advanced analytics, external POS business integration, foreign currency, multi-property reporting — all retained in the enterprise target with phases.
+
+## 5. Architecture at a glance
+
+- **Topology (ADR-001):** modular monolith; four ownership layers (Platform, Operations Core, Control Plane, Accounting Authority); one owner per datum; adapters at every external boundary; a single financial posting gateway; module boundaries enforced by tests.
+- **Tenancy (ADR-002):** tenant is the deployment unit; properties are first-class partitions; scope enforced platform-wide; optional dedicated deployment for hard-isolation customers.
+- **Temporal (ADR-003):** four classified temporal strategies; applied-basis snapshots; corrections additive; historical documents reproducible as issued.
+- **Identity (ADR-004):** opaque internal identity; separate human number series; namespaced external references; non-destructive merges.
+- **Product binding:** no existing product inherits architectural authority; binding to roles (operations core, accounting, control plane) is a Phase 3/4 evidence decision.
+
+## 6. Financial model at a glance
+
+- **Ownership (ADR-005):** SuiteFlow is the subledger of record (folios, payments, deposits, cashier); the Accounting Authority owns GL, AR, tax and period close.
+- **Posting:** one daily aggregated run per property per business day, 16 posting families, item-level drill-down, idempotent, unmapped family blocks close.
+- **Revenue:** recognised once, on the correct business day; settlements and deposits are balance-sheet movements; direct-bill transfer is zero-revenue; comps post at value with contra-revenue.
+- **Close (ADR-006):** validation → postings → reconciliation → certification → advance; certification timing configurable with pilot default before advance; reopen governed and versioned; guest operations never freeze for financial degradation.
+- **Deposits (ADR-007):** obligation-linked liabilities with conservation; forfeiture to dedicated cancellation/no-show revenue; tax points flagged UNVERIFIED pending advice.
+- **Documents (ADR-008):** SuiteFlow issues guest/corporate documents; statutory documents derive and link one-to-one; provisional pending OQ-011.
+- **Reconciliation:** 11 daily checks; zero unexplained difference; exceptions owned and aged.
+
+## 7. Security at a glance
+
+- **Principles:** deny by default; server-side enforcement; single enforcement point (ADR-009); effective-dated authority limits; payload-bound maker–checker; break-glass governed.
+- **Data classes:** A restricted (ID documents, watchlist, bank details) / B confidential / C internal / D configuration, with masking, read-logging and export controls.
+- **Scope:** property/company enforcement on every surface class including reports, exports, APIs and AI tools; scope leakage is a critical defect.
+- **Roles:** 20-role catalogue with limit defaults (PROPOSED) and 8 separation-of-duties rules with explicit exception paths.
+
+## 8. Experience, integration, reporting, operations
+
+- **UX:** 16 screens specified with keyboard flows, validation/error semantics, permission-driven rendering, empty states, mobile behaviour and degradation rules; UI test obligations include keyboard-only core flows and permission-leak tests.
+- **Integrations:** 14 interfaces with full failure models; transactional outbox and idempotency contract (ADR-010); provider-neutral payments with manual baseline (ADR-011).
+- **Reporting:** read-model architecture with as-of semantics, 22-report catalogue, definitions governance, drill-down guarantee.
+- **NFRs:** labelled performance, concurrency, availability, recovery (1 h RPO/RTO REQUIRED), integrity, observability, scalability and accessibility requirements.
+- **Deployment:** versioned artefact promotion, dual-path connectivity and UPS as pilot requirements, warm recovery, worker duplicate-effect protection, release management and runbook catalogue.
+- **Documentation:** 21-document operational set with owners; docs-as-code; release-gated currency.
+- **AI:** governance-first; proposals only; no AI enabled at pilot by default; evaluation gates per capability (Phase 19).
+
+## 9. Delivery plan
+
+Pilot phases 1–9 (foundation → property/rates → guests/reservations → front office → housekeeping/maintenance → folio/cashiering → close/finance → reporting/hardening → migration/UAT/cutover) and enterprise phases 10–20, each with objective, capabilities, inputs, dependencies, risks, tests and exit criteria: `product/roadmap.md` v1.0.
+
+## 10. Acceptance model
+
+| Level | Acceptance means |
+|---|---|
+| Capability | Behaviour per state machines, rules and invariants; test obligations pass; documentation updated |
+| Phase | Exit criteria met; evidence pack signed; no open S0/S1; approvers per charter §12 |
+| Pilot | Golden-day financial acceptance; security test pack; timed restore drill; UAT with hotel and finance; runbooks exercised; 24×7 rota live; go/no-go approval |
+| Blueprint | This document ACCEPTED with the sign-offs in §12 |
+
+## 11. Open questions and risks
+
+- **Open questions:** 38 in the register (`00-governance/open-questions.md`), summarised for decision-making in `00-governance/decisions-required.md`. The financially blocking ones: **OQ-011** (invoice authority), **OQ-012** (deposit/cancellation/no-show policy), **OQ-021** (service charge/tax), **OQ-001/002/003** (entity and named representatives), **OQ-038** (connectivity/power).
+- **Risks:** 32 in the register (`00-governance/risk-register.md`); highest: blueprint drift (RSK-GOV-001), financial/tax correctness (RSK-FIN-001/004), scope leakage (RSK-SEC-001), tenancy migration (RSK-MIG-002), connectivity/power (RSK-DEP-003), operational adoption (RSK-OPS-001).
+- **Provisional assumptions:** all `[OQ-nnn]` defaults remain in force, clearly marked, until answered.
+
+## 12. Phase 0 exit gate — what remains for ACCEPTED status
+
+| Requirement | Approver | Status |
+|---|---|---|
+| Product vision, scope, capability priorities (incl. pilot de-scope decision) | Product Owner | Pending |
+| Domain model, state machines, workflows, business rules (incl. `[OQ]` defaults) | Product Owner + Hotel Operations rep (OQ-003) | Pending |
+| Financial architecture, posting/close/deposit/invoice rules | Finance Controller (OQ-002) + tax adviser (OQ-021/029) | Pending |
+| Security model, role matrix, authority-limit defaults | Security/Privacy adviser (OQ-033) + Product Owner | Pending |
+| UX, integration, reporting, NFR, QA, deployment, documentation, AI architectures | Technical Lead (OQ-033) + Product Owner | Pending |
+| All 11 ADRs confirmed as ACCEPTED or revised | Respective approvers per ADR | Pending |
+| Open questions closed or defaults formally adopted | Product Owner | Pending |
+
+When the above complete, the blueprint is promoted to **v1.0 ACCEPTED** and becomes level 2 of the source-of-truth hierarchy — the baseline for Phase 2's audit, Phase 3's gap matrix and all implementation commitments.
+
+## 13. What happens next
+
+1. **Phase 1 — External research:** OPERA Cloud public-doc benchmark review, Frappe/ERPNext/Kamra/Frappe Payments/CRM/HRMS capability verification, Nigerian tax/legal primary sources, provider evidence matrices. Outputs: research register with cited sources; blueprint claims upgraded from ASSUMED to VERIFIED where evidence supports.
+2. **Phase 2 — Current-state audit:** evidence-based classification of the implementation (implemented-and-verified / partial / defective / architecturally wrong / duplicated / missing) against this blueprint.
+3. **Phase 3 — Gap matrix:** every capability mapped with action and priority.
+4. **Phase 4 — Transition architecture:** per-domain keep/extend/refactor/wrap/replace rulings, product binding for roles, migration strategy.
+5. **Phases 1–20:** delivery per the roadmap, with governed proof spikes permitted earlier for the riskiest mechanisms.
+
+## 14. Version history
+
+| Version | Date | Change | Status |
+|---|---|---|---|
+| 1.0 | 2026-09-23 | Consolidated blueprint issued at WP 0.8: inventory, architecture summaries, acceptance model, exit gate, next steps | PROPOSED |
