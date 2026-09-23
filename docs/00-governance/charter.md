@@ -198,7 +198,7 @@ Planned structure; documents appear as their work packages execute. Only files t
 
 ```text
 docs/
-├── TARGET-STATE-BLUEPRINT.md          [present — master index v1.5]
+├── TARGET-STATE-BLUEPRINT.md          [present — master index v1.6]
 ├── 00-governance/
 │   ├── charter.md                     [present]
 │   ├── inputs-register.md             [present]

@@ -1,15 +1,15 @@
 ---
 doc-id: BP-V1
-title: SuiteFlow Target-State Blueprint v1.5
+title: SuiteFlow Target-State Blueprint v1.6
 status: PROPOSED
-version: 1.5
+version: 1.6
 date: 2026-09-23
 owner: Product Owner (acceptance); Principal Architect (maintainer)
 applies-to: all SuiteFlow work
 depends-on: [GOV-CHARTER, GOV-INPUTS]
 ---
 
-# SuiteFlow Target-State Blueprint v1.5
+# SuiteFlow Target-State Blueprint v1.6
 
 ## 1. What this is
 
@@ -23,7 +23,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 
 | Artifact class | Count | Location |
 |---|---|---|
-| Documents in this blueprint | 50 | `docs/` |
+| Documents in this blueprint | 51 | `docs/` |
 | Domains | 25 | capability map |
 | Capabilities (`CAP-*`) | 283 | `product/capability-map.md` |
 | Domain invariants (`INV-*`) | 80 | `architecture/domain-model.md` |
@@ -142,3 +142,4 @@ When the above complete, the blueprint is promoted to **ACCEPTED (current versio
 | 1.3 | 2026-09-23 | P1: candidate pilot scope (204/76/3), dated horizon, P0 scope-freeze gate row; review references updated (TEC-04/05/08, FIN/SEC P1) | PROPOSED |
 | 1.4 | 2026-09-23 | P2 complete: all 45 review findings resolved; adviser briefs and research register added (46 documents) | PROPOSED |
 | 1.5 | 2026-09-23 | Execution artifacts issued under delegated PO direction: interim appointments, support procurement pack, engagement emails, sitting pack, action register (50 documents) | PROPOSED |
+| 1.6 | 2026-09-23 | Programme P2 audit plan added (51 documents); P1 research progress referenced | PROPOSED |

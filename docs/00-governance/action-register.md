@@ -2,7 +2,7 @@
 doc-id: GOV-ACTIONS
 title: Action Register — Human and Programme Actions
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Product Owner (accountable); maintained by the programme
 applies-to: execution actions arising from GOV-PO-DEC and GOV-REVIEW
@@ -25,9 +25,11 @@ Every action arising from the delegated Product Owner record and the review reso
 | A-08 | Complete Programme P1 evidence collection (R1–R6) | Programme (TL review at appointment) | Inside P1–P2 envelope (by Week 8) | `research-register.md` statuses and citations | IN-PROGRESS — R1 largely evidenced; R2 domain walk + dispositions done (R2-F1…F5 → D15/D10/D11/D17 + docs); R5 volume model pass 1 (R5-F1 corrected); R3 FIRS/CBN access-blocked; R4 deferred; RS-502 + R2 per-capability depth remain (TL appointment) |
 | A-09 | Freeze the pilot capability set at P0 acceptance | Product Owner | At/with acceptance | Capability map v0.3 frozen counts; sitting minute | OPEN |
 | A-10 | Discharge or extend interim arrangements at the sitting | Real Product Owner | At P0 sitting | Sitting minute; GOV-APPOINT status update | OPEN — human |
+| A-11 | Execute the Programme P2 current-state audit per the plan | Technical Lead (at appointment); interim: Programme | Entry at P0 acceptance/conditional completion | `programme-p2-audit-plan.md`; audit report + evidence register; IMPL-ADR re-verifications | OPEN — ready |
 
 ## Version history
 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial action register: 10 actions (human-only marked) from GOV-PO-DEC and the review resolutions | PROPOSED |
+| 0.2 | 2026-09-23 | A-08 progress (R1–R2, R5); A-11 added (P2 audit execution, ready) | PROPOSED |
