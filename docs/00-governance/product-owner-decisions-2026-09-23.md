@@ -2,7 +2,7 @@
 doc-id: GOV-PO-DEC
 title: Product Owner Decisions — P1 Acceptance-Readiness Items (23 Sep 2026, delegated)
 status: PROPOSED
-version: 0.4
+version: 0.5
 date: 2026-09-23
 owner: Product Owner (accountable); decisions taken by the Product Owner persona under explicit delegation of 23 Sep 2026
 applies-to: P1 findings in GOV-REVIEW and the affected blueprint documents
@@ -100,7 +100,7 @@ Tax, retention and legal positions (OQ-024/028/029) remain UNVERIFIED pending co
 1. **OQ-010 — approved in principle.** Coverage (≥4 engineers two-deep or managed NOC), paging ≤5 min, warm recovery for 1 h RPO/RTO, on-call compensation, tooling/drill time. Two costed options (rota-first vs partner-first) prepared by Week 3; lower whole-life cost selected; ≤12-month terms, no lock-in. **No spend committed; contract signature is the real Product Owner's step.** Status: `APPROVED-IN-PRINCIPLE (delegated; signature pending)`.
 2. **OQ-002 / OQ-033 — interim acting arrangements.** Financing: real Product Owner holds financial approval (defaults stay PROPOSED). Technical: maintaining architect gives interim design direction only. Security: advisory support only; **sign-off remains pending — the blueprint cannot reach ACCEPTED without it.** Break-glass/incident reviewer interim: Technical Lead/PO. **All three expire at the P0 sitting (scheduled ≤14 Oct 2026) or on appointment, whichever is earlier.**
 3. **Human-only (never delegated):** appointments and deputies; FC/TL/Security correctness sign-offs; spend; adviser engagement letters and fees; any override of this record.
-4. **Appointment-ready charters** (purpose, decision rights, competencies, selection criteria, acceptance evidence) for the three roles are recorded in the persona's working record and summarised here: FC — accountancy + hospitality finance + Nigerian VAT familiarity, independence from sales/procurement, signs the scoped list; TL — enterprise architecture + PMS/ERP depth + tenancy/authorization/reliability, independent of delivery vendors, signs ADRs/NFR/deployment; Security adviser — security architecture + NDPA/privacy + incident response, independent of platform administration, signs security model/ADR-009 and participates in the tabletop. Term to the First-Property Deployment Gate review.
+4. **Appointment-ready charters** (purpose, decision rights, competencies, selection criteria, acceptance evidence). Candidate-facing versions with time commitments and invitation drafts: `role-appointment-packs/` (finance-controller, technical-lead, security-privacy-adviser). for the three roles are recorded in the persona's working record and summarised here: FC — accountancy + hospitality finance + Nigerian VAT familiarity, independence from sales/procurement, signs the scoped list; TL — enterprise architecture + PMS/ERP depth + tenancy/authorization/reliability, independent of delivery vendors, signs ADRs/NFR/deployment; Security adviser — security architecture + NDPA/privacy + incident response, independent of platform administration, signs security model/ADR-009 and participates in the tabletop. Term to the First-Property Deployment Gate review.
 
 ### C. Adviser engagement briefs
 
@@ -139,3 +139,4 @@ All actions are tracked in `action-register.md` (GOV-ACTIONS) with owner, due da
 | 0.2 | 2026-09-23 | Next-stage record: P2 dispositions (16 fixed); interim governance (OQ-010 in-principle, OQ-002/033 arrangements with expiry); adviser briefs; acceptance pack/sitting plan; P1 research register opened | PROPOSED |
 | 0.3 | 2026-09-23 | Execution artifacts issued: interim appointments (GOV-APPOINT), support procurement pack (OPS-SUPPORT), engagement emails (GOV-BRIEFS v0.2), sitting pack (GOV-SITTING), action register (GOV-ACTIONS) | PROPOSED |
 | 0.4 | 2026-09-23 | Interim appointment instruments countersigned by recorded Product Owner direction (A-01 complete) | PROPOSED |
+| 0.5 | 2026-09-23 | Candidate-facing appointment packs published for the three human roles | PROPOSED |

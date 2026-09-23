@@ -1,15 +1,15 @@
 ---
 doc-id: BP-V1
-title: SuiteFlow Target-State Blueprint v1.7
+title: SuiteFlow Target-State Blueprint v1.8
 status: PROPOSED
-version: 1.7
+version: 1.8
 date: 2026-09-23
 owner: Product Owner (acceptance); Principal Architect (maintainer)
 applies-to: all SuiteFlow work
 depends-on: [GOV-CHARTER, GOV-INPUTS]
 ---
 
-# SuiteFlow Target-State Blueprint v1.7
+# SuiteFlow Target-State Blueprint v1.8
 
 ## 1. What this is
 
@@ -23,7 +23,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 
 | Artifact class | Count | Location |
 |---|---|---|
-| Documents in this blueprint | 55 | `docs/` |
+| Documents in this blueprint | 58 | `docs/` |
 | Domains | 25 | capability map |
 | Capabilities (`CAP-*`) | 283 | `product/capability-map.md` |
 | Domain invariants (`INV-*`) | 80 | `architecture/domain-model.md` |
@@ -144,3 +144,4 @@ When the above complete, the blueprint is promoted to **ACCEPTED (current versio
 | 1.5 | 2026-09-23 | Execution artifacts issued under delegated PO direction: interim appointments, support procurement pack, engagement emails, sitting pack, action register (50 documents) | PROPOSED |
 | 1.6 | 2026-09-23 | Programme P2 audit plan added (51 documents); P1 research progress referenced | PROPOSED |
 | 1.7 | 2026-09-23 | Send-ready engagement artifacts: three standalone adviser briefs and the 24x7 RFQ pack (55 documents) | PROPOSED |
+| 1.8 | 2026-09-23 | Candidate-facing appointment packs for the three human roles (58 documents) | PROPOSED |
