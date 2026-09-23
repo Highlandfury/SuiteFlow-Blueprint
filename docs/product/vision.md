@@ -137,7 +137,9 @@ Publicly documented enterprise PMS capabilities (including Oracle Hospitality OP
 
 ## 11. Uncertainty
 
-Target market sizing, competitor capability claims and Nigerian regulatory specifics are **ASSUMED/UNVERIFIED** pending Phase 1 research. Success-measure numbers inherited from the accepted baseline are marked accordingly (service objective pending OQ-009; RPO/RTO confirmed).
+Target market sizing, the problem statement in section 2, competitor capability claims and Nigerian regulatory specifics are **ASSUMED/UNVERIFIED** planning judgments drawn from the programme's operating context, pending Phase 1 research. They describe a real market gap as understood today; they are not yet backed by cited market evidence.
+
+Success-measure thresholds in section 10 are **PROPOSED planning targets** except where they restate a confirmed baseline requirement (RPO/RTO, 24×7 support). They require Product Owner confirmation before they become ACCEPTED.
 
 ## 12. Version history
 

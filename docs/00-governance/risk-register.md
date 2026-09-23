@@ -47,7 +47,7 @@ Impact and likelihood ratings are **planning judgments (ASSUMED)**, to be re-rat
 | RSK-LIC-001 | Licensing | Open-source licensing position (network-copyleft dependencies) blocks commercial distribution or forces rework | M | M | M | Legal counsel | Counsel review before distribution (OQ-028); repository boundary discipline maintained | Customer distribution or resale contemplated |
 | RSK-TEN-001 | Architecture | Pilot tenant isolation is assumed rather than enforced; "one site per hotel" becomes the only control | H | L | M | Security Engineer | Explicit tenant boundary tests; platform-level enforcement; Phase 2 verification of current controls | Any shared component without a tenant-scope test |
 | RSK-AI-001 | AI | AI features present recommendations as authority (rates, availability, balances) or leak data across properties | H | M | **H** | Product Owner / Security | AI governance rules (charter §15; WP 0.7 AI architecture): AI proposes, governed services decide; per-tool authorization; evaluation suite | Any AI output that can change price, availability, balance or permissions without a governed action |
-| RSK-PROG-003 | Programme | Key knowledge concentrates in one engineer/AI session; continuity lost | M | M | M | Technical Lead | Documented decisions (this repository), ADRs, runbooks; second-person review; onboarding materials | Any critical area understood by only one person/process |
+| RSK-PROG-001 | Programme | Key knowledge concentrates in one engineer/AI session; continuity lost | M | M | M | Technical Lead | Documented decisions (this repository), ADRs, runbooks; second-person review; onboarding materials | Any critical area understood by only one person/process |
 
 ## 2. Top risks requiring early decisions
 
@@ -61,4 +61,4 @@ Impact and likelihood ratings are **planning judgments (ASSUMED)**, to be re-rat
 
 | Version | Date | Change | Status |
 |---|---|---|---|
-| 0.1 | 2026-09-23 | Initial register with 28 seeded risks | PROPOSED |
+| 0.1 | 2026-09-23 | Initial register with 30 seeded risks | PROPOSED |

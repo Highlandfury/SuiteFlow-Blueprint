@@ -139,4 +139,4 @@ Observed statuses are working-tree observations and are recorded here for planni
 
 | Version | Date | Change | Status |
 |---|---|---|---|
-| 0.1 | 2026-09-23 | Initial register: SRCS-001…004; BR requirements; proposed inputs | PROPOSED |
+| 0.1 | 2026-09-23 | Initial register: SRC-001…004; BR requirements; proposed inputs | PROPOSED |
