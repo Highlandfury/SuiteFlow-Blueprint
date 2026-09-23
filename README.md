@@ -58,7 +58,7 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 **Programme P0 complete — WP 0.8 Blueprint Consolidation delivered; awaiting Product Owner acceptance. Pilot redefined (23 Sep 2026) as a synthetic reference pilot — no real property; the Product Owner acts as operations authority and acceptance approver.**
 
-- `docs/TARGET-STATE-BLUEPRINT.md` v1.6 (PROPOSED): consolidated master index with inventory, architecture summaries, acceptance model (reference pilot + First-Property Deployment Gate), the Programme P0 exit gate and next steps.
+- `docs/TARGET-STATE-BLUEPRINT.md` v1.7 (PROPOSED): consolidated master index with inventory, architecture summaries, acceptance model (reference pilot + First-Property Deployment Gate), the Programme P0 exit gate and next steps.
 - `product/roadmap.md` v1.2: full roadmap with per-phase objectives, capabilities, inputs, dependencies, risks, tests and exit criteria for Delivery D1–D9 (synthetic migration, role-played UAT, reference release), the First-Property Deployment Gate and enterprise D10–D20; dated 24-week horizon (start 23 Sep 2026, target 10 Mar 2027) with the pilot scope freeze at P0 acceptance.
 - Programme P0 exit gate: 7 approval groups remain (Product Owner incl. acting operations acceptance; Finance via OQ-002; Security adviser via OQ-033; Technical Lead; ADR confirmations; open questions). See the blueprint §12.
 - Acceptance-readiness review recorded (`docs/00-governance/review-findings-2026-09-23.md`): **all 45 findings resolved** (P0 8, P1 21, P2 16) under the delegated Product Owner decision record (`docs/00-governance/product-owner-decisions-2026-09-23.md`); residual dependencies are adviser inputs and appointed-signatory reviews.

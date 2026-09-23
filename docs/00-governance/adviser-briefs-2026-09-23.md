@@ -125,6 +125,8 @@ Kind regards,
 
 **Engagement checklist.** Attach the matching brief; confirm scope/milestones, conflict check, fee quote, engagement letter and NDA; name a single contact. Execution and signature are the real Product Owner's human step; no programme commitment exists before countersignature.
 
+**Attachment-ready standalone briefs** (send one per adviser): `adviser-briefs/brief-tax.md`, `adviser-briefs/brief-legal-privacy.md`, `adviser-briefs/brief-oss-licensing.md`. An RFQ pack for the 24×7 service is at `operations/rfq-24x7-support.md`.
+
 **Follow-up cadence.** Day 0 send → Day 3 reminder if unacknowledged → Day 7 confirm kick-off and engagement-letter status → weekly written status until deliverables → escalate to the Product Owner if any milestone slips by more than one week (threshold ASSUMED).
 
 ## 5. Version history
@@ -134,3 +136,4 @@ Kind regards,
 | 0.1 | 2026-09-23 | Initial adviser briefs prepared under delegated PO direction (C1–C3) | PROPOSED |
 | 0.2 | 2026-09-23 | Engagement emails, checklist and follow-up cadence added (human send/signature steps retained) | PROPOSED |
 | 0.3 | 2026-09-23 | OSS brief attaches the R6 licence inventory (Kamra AGPL-3.0; hotel_integration undeclared) | PROPOSED |
+| 0.4 | 2026-09-23 | Attachment-ready standalone briefs and the 24x7 RFQ pack prepared | PROPOSED |
