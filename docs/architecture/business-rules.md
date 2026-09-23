@@ -2,7 +2,7 @@
 doc-id: ARCH-RULES
 title: Target Business Rules
 status: PROPOSED
-version: 0.4
+version: 0.5
 date: 2026-09-23
 owner: Hospitality Domain Architect (drafted); Finance Controller + Hotel Operations (approval; roles open)
 applies-to: full enterprise target; adopted OQ answers marked closed, remaining dependencies noted
@@ -71,7 +71,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | BR-FOL-010 | No-show charging: guaranteed reservations charge the first night plus tax (default) as cancellation/no-show revenue — never room revenue — and the no-show night is suppressed from the nightly room-charge run. Where a deposit exists it is applied to the penalty first (settlement), and only the policy-computed remainder is charged or forfeited — never both. Non-guaranteed no-shows charge nothing. One penalty, one recognition (FIN-ARCH §5.6). [OQ-012 (closed)] | CAP-RSV-005 |
 | BR-FOL-011 | Cancellation penalty windows and percentages follow the resolved policy captured at booking plus any subsequently-effective statutory rule; the applied basis is recorded. [OQ-012 (closed)] | INV-RSV-6 |
 | BR-FOL-012 | Refunds never exceed cleared, un-refunded funds; method fidelity applies (same method where possible); bank-detail changes for refunds require enhanced verification. | INV-FOL-8; CAP-FOL-009 |
-| BR-FOL-013 | Direct-bill transfer requires credit eligibility per BR-CRP-001 or a recorded authorised exception; each transfer produces exactly one AR document (idempotent). | INV-FOL-9; CAP-CRP-005 |
+| BR-FOL-013 | Direct-bill transfer requires credit eligibility per BR-CRP-001/002 or a recorded authorised exception — **not available while the account is suspended for 60-day-overdue AR**; each transfer produces exactly one AR document (idempotent). | INV-FOL-9; CAP-CRP-005 |
 | BR-FOL-014 | A folio closes only when settled or transferred; pending-clearance payments with zero balance close with a tracked clearance flag per policy, never as silent settled money. | SM-FOLIO #2 |
 | BR-FOL-015 | Posting to a folio owned by a different property is prohibited except through governed inter-property agreements (future phase) with explicit evidence. | ADR-002; scope |
 
@@ -80,8 +80,8 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | ID | Rule | Basis / dependencies |
 |---|---|---|
 | BR-CSH-001 | One open session per cashier and till; opening requires an evidenced float. | SM-CASHIER-SESSION #1 |
-| BR-CSH-002 | Session close requires counts by method and produces a variance; variance tolerance is configured [OQ-037 (closed) default: zero tolerance with review above 0.5% of session volume]. | CAP-CSH-005/006 |
-| BR-CSH-003 | A variance beyond tolerance requires independent review (maker ≠ checker) with reason and selected accounting treatment before close completes. | INV-FOL-10 |
+| BR-CSH-002 | Session close requires counts by method and produces a variance. Acceptance tolerance is **zero**: every variance is recorded, reason-coded and posted over/short. Independent investigation and review apply when the variance exceeds **max(0.5% of session cash volume, ₦2,000)** — and in all cases above **₦20,000**, when unexplained or unrecorded, or on a repeat pattern (3+ variances by one cashier in 30 days). Configurable effective-dated defaults. [OQ-037 (closed; refined by PO decision 23 Sep 2026)] | CAP-CSH-005/006 |
+| BR-CSH-003 | A variance requiring review per BR-CSH-002 requires independent review (maker ≠ checker) with reason and selected accounting treatment before the session is accepted; an unexplained or unrecorded variance blocks the day advance (ADR-006 §3). | INV-FOL-10 |
 | BR-CSH-004 | Cash clears at count; POS clears against acquirer batch; transfer clears against bank confirmation; cheque clears against bank value confirmation. No other state counts as settled. | BR-PAY-006; CAP-CSH-010 |
 | BR-CSH-005 | Drops are evidenced and reconciled; cash-in-transit is tracked to bank deposit. | CAP-CSH-004 |
 | BR-CSH-006 | Repeated variance patterns (per person or till, per policy window) escalate to finance review and are reported monthly. | CAP-CSH-009 |
@@ -91,8 +91,8 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 
 | ID | Rule | Basis / dependencies |
 |---|---|---|
-| BR-CRP-001 | Exposure = unbilled in-house direct-bill exposure + open AR + unapplied deposits owed to the account's credit position... specifically: exposure check = direct-bill exposure + overdue AR; transfer allowed only if limit not breached. | CAP-CRP-004 |
-| BR-CRP-002 | A credit limit breach blocks new direct-bill transfers automatically; existing stays are handled per policy with sales/finance notification on the same day. | SM-CORPORATE-CONTRACT #2 |
+| BR-CRP-001 | Credit exposure = open AR (due + overdue) + unbilled in-house direct-bill balance − unapplied deposits held for the account. A direct-bill transfer is allowed only if post-transfer exposure ≤ the account's approved credit limit. | CAP-CRP-004 |
+| BR-CRP-002 | A credit limit breach blocks new direct-bill transfers automatically. **Suspension for AR overdue beyond 60 days (OQ-013) blocks new direct-bill bookings and is lifted only by Finance Controller reinstatement**; other breaches may take the recorded authorised exception path (BR-FOL-013) with reason and authority. Existing stays are handled per policy with same-day sales/finance notification. | SM-CORPORATE-CONTRACT #2 |
 | BR-CRP-003 | Suspension and reinstatement are recorded decisions with reasons; suspension never rewrites posted charges. | CAP-CRP-004 |
 | BR-CRP-004 | Commission accrues per agreement only; payable commissions require settlement/cleared payment status, and reversals follow the payment state. | INV-GRP-7; CAP-CRP-006 |
 | BR-CRP-005 | AR ageing buckets and due dates follow agreed terms; overdue thresholds trigger collection states and credit review. | CAP-ACC-004 |
@@ -192,3 +192,4 @@ The following rules carried `[OQ-nnn]` defaults; all were closed by Product Owne
 | 0.2 | 2026-09-23 | OQ defaults adopted (23 Sep 2026) and marked closed; BR-HSK-002 refined with the adopted ≥20% spot-check default; §14 rewritten | PROPOSED |
 | 0.3 | 2026-09-23 | Review-pass corrections: front-matter scope wording, §14 preamble, BR-FOL-015 typo, BR-ACC-001 citation | PROPOSED |
 | 0.4 | 2026-09-23 | P0 resolutions: capacity definitions (BR-AVL-001/003, BR-RPT-002; TEC-01); no-show single-recognition and deposit exclusivity (BR-FOL-009/010; FIN-01); close blocking conditions (BR-NAU-001, BR-ACC-004; FIN-04) | PROPOSED |
+| 0.5 | 2026-09-23 | P1 resolutions: cashier variance semantics (BR-CSH-002/003; FIN-06); credit exposure and suspension rules (BR-CRP-001/002, BR-FOL-013; FIN-07) | PROPOSED |

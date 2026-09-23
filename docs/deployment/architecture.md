@@ -2,7 +2,7 @@
 doc-id: DEP-ARCH
 title: Target Deployment and Operations Architecture
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: DevOps / SRE (drafted); Product Owner (approval; OQ-010 open; OQ-038 deferred to first property; OQ-026 closed)
 applies-to: pilot and enterprise target
@@ -99,7 +99,7 @@ Correlation identities flow from UI action → transition → event → posting 
 | Change window | Default low-occupancy window agreed with the hotel; close-window changes require finance agreement |
 | Feature flags | New behaviours can be enabled per property; flags are configuration with audit |
 | Rollback | Application rollback + data compatibility guaranteed for the defined window; if a migration is irreversible, the plan states the recovery path before release |
-| Evidence | Release evidence pack (QA gate §5) attached to the release |
+| Evidence | Release evidence pack (QA gate §5) attached to the release; includes SBOM and dependency/image scan results with the vulnerability-gate disposition (SEC-14) |
 | Communication | Release notes to operations and finance per documentation architecture |
 
 ## 8. Secrets and environment separation
@@ -141,3 +141,4 @@ Per SEC-MODEL §11: central secret management; no production secrets outside pro
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial deployment and operations architecture issued with WP 0.7 | PROPOSED |
 | 0.2 | 2026-09-23 | Synthetic reference pilot: connectivity/power requirements reframed for first-property deployment (OQ-038 deferred); reference pilot runs hosted | PROPOSED |
+| 0.3 | 2026-09-23 | P1 resolution: release evidence includes SBOM and vulnerability-gate disposition (SEC-14) | PROPOSED |

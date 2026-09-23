@@ -2,7 +2,7 @@
 doc-id: ARCH-DATA
 title: Target Data Architecture
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Data Architect (drafted); Product Owner (approval)
 applies-to: full enterprise target
@@ -69,7 +69,7 @@ This document turns the domain model into data-architecture rules: what is store
 
 ## 7. Performance and indexing patterns
 
-Volume assumptions (ASSUMED, to be validated with hotel data in Phase 2/7): one 200-room property produces roughly 70–80k room-nights, 1–3 million folio items, and comparable audit/outbox volumes per year. Chain deployments multiply by property count. Per-property deployments below one million items per year are operationally small; the design must nevertheless survive chain scale without redesign.
+Volume assumptions (ASSUMED, to be validated with hotel data in Programme P2/D7): one 200-room property produces roughly 70–80k room-nights, 1–3 million folio items, and comparable audit/outbox volumes per year. Chain deployments multiply by property count. Per-property deployments below one million items per year are operationally small; the design must nevertheless survive chain scale without redesign.
 
 | Access pattern | Required shape |
 |---|---|
@@ -81,7 +81,7 @@ Volume assumptions (ASSUMED, to be validated with hotel data in Phase 2/7): one 
 | AR ageing and exposure | `(company, status, due_date)` |
 | Close and reconciliation runs | `(property, business_date, control)` |
 | Audit and evidence drill-down | `(correlation_id)`, `(entity_type, entity_id, occurred_at)` |
-| Outbox dispatch and retry | `(status, next_attempt_at)` with claim semantics |
+| Outbox dispatch and retry | Separate dispatch/attempt rows (claim, visibility deadline, outcome, next_attempt_at); the event row itself stays immutable |
 | Search (name, phone, email, document number) | Normalized, indexed search surfaces, scope-aware |
 
 Partitioning/archival candidates: folio items, audit events, outbox/inbox records, stock movements, rate amounts — partitioned by property and business date where volume justifies.
@@ -90,7 +90,7 @@ Partitioning/archival candidates: folio items, audit events, outbox/inbox record
 
 - Reporting reads from projections, never from operational tables under load; every projection states its as-of point (ADR-003 class 4).
 - Every report reconciles to source and supports drill-down to the authoritative transaction (CAP-RPT-012).
-- Analytical extracts for BI (Ph15) are derived from closed, reconciled data; analytical figures never redefine operational truth.
+- Analytical extracts for BI (D15) are derived from closed, reconciled data; analytical figures never redefine operational truth.
 - Rebuild procedure: a documented, tested routine that reconstructs each projection from source classes 1–3; its success is an acceptance obligation.
 
 ## 9. Retention, archival and privacy
@@ -107,6 +107,8 @@ Retention periods are **open** (OQ-024) and must be set with counsel before prod
 | Derived/read models | Disposable | Rebuildable; no retention obligation |
 
 Archival preserves scope dimensions, identity and reconstructability (an archived record must still be resolvable to its human number and evidence).
+
+**Retention defaults pending counsel** are the OQ-024 recommended schedule (ID images 90 days; profiles 6 years; financial records 7 years; AML 5 years; audit/security logs 12 months+; CCTV 30 days), per-category configurable. **Lifecycle breadth (SEC-07/SEC-08 resolutions):** backup/PITR generations inherit retention and access rules; deletion is evidenced and covers derived copies; legal holds suspend deletion; erasure tests cover caches and projections.
 
 ## 10. Migration principles
 
@@ -132,3 +134,4 @@ Archival preserves scope dimensions, identity and reconstructability (an archive
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial data architecture issued with WP 0.2 pass 2 | PROPOSED |
+| 0.2 | 2026-09-23 | P1 resolutions: outbox dispatch state (TEC-03); retention defaults and lifecycle breadth incl. backups/caches/erasure (SEC-07/08) | PROPOSED |

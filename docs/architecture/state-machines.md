@@ -2,7 +2,7 @@
 doc-id: ARCH-STATES
 title: Target State Machines
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Domain Architect (drafted); Hotel Operations + Product Owner (approval)
 applies-to: full enterprise target
@@ -203,7 +203,7 @@ Items are immutable facts with a lifecycle expressed by linked records, never by
 | 2 | HELD → PARTIALLY_APPLIED/APPLIED | Application to charges | Front desk / system at close | Charges exist; allocation to responsibility window per routing | Liability reduces; folio balance reduces; `deposit.applied` | Application to a different party than the depositor requires authority |
 | 3 | HELD/partially applied → PARTIALLY_REFUNDED/REFUNDED | Refund on cancellation | Supervisor/finance per limits | Policy basis; cleared funds | Refund per SM-REFUND; `deposit.refunded` | — |
 | 4 | HELD → PARTIALLY_FORFEITED/FORFEITED | Forfeiture per cancellation/no-show policy | Supervisor + finance | Policy basis, authority, reason; guest communication evidence | Liability reduces to zero; revenue/posting per BR-FOL-009; `deposit.forfeited` | Forfeiture is never automatic beyond policy limits; disputes route to DisputeCase/goodwill adjustment |
-| 5 | HELD → HELD | Ageing review (unclaimed deposit) | Finance | Policy window; retention rules | Flagged for finance; escheatment/unclaimed-property handling per jurisdiction (Phase 1 research) | — |
+| 5 | HELD → HELD | Ageing review (unclaimed deposit) | Finance | Policy window; retention rules | Flagged for finance; escheatment/unclaimed-property handling per jurisdiction (Programme P1 research) | — |
 
 ### SM-CASHIER-SESSION
 
@@ -216,8 +216,8 @@ Items are immutable facts with a lifecycle expressed by linked records, never by
 | 1 | — → OPEN | Session open | Cashier | One open session per cashier/till (unique constraint); float assigned and evidenced | Float recorded; `cashier.session_opened` | Concurrent open attempts fail deterministically |
 | 2 | OPEN → OPEN | Receipts, payouts, drops | Cashier | Policy limits on payouts; drops evidenced | Payment lines, drop records; live totals | Void corrections per SM-PAYMENT #6 |
 | 3 | OPEN → CLOSING | Close initiated | Cashier | All lines finalised | System produces expected totals by method | — |
-| 4 | CLOSING → CLOSED | Count entered, variance within tolerance | Cashier | Float accounted; counts recorded | Session closed with evidence; `cashier.session_closed`; accounting variance posting if any | — |
-| 5 | CLOSING → PENDING_REVIEW | Variance beyond tolerance | System | — | Session held open for review; alerts to supervisor/finance (BR-CSH-003); close-window alert per BR-REL-005 | Night audit cannot advance with sessions in PENDING_REVIEW unless policy authorises flagged continuation |
+| 4 | CLOSING → CLOSED | Count entered; variance recorded (acceptance tolerance zero) and below the review threshold | Cashier | Float accounted; counts recorded | Session closed with evidence; `cashier.session_closed`; accounting variance posting if any | — |
+| 5 | CLOSING → PENDING_REVIEW | Variance at/above the review threshold (BR-CSH-002) or unexplained/unrecorded | System | — | Session held open for review; alerts to supervisor/finance (BR-CSH-003); close-window alert per BR-REL-005 | Night audit cannot advance with an unexplained/unrecorded variance; policy-flagged continuation applies only to explained variances |
 | 6 | PENDING_REVIEW → CLOSED | Variance approved | Supervisor/manager per limits | Reason; maker ≠ checker on own variance; accounting treatment selected | Variance posted per BR; review evidence; `cashier.variance_resolved` | Repeated variances escalate per BR-CSH-006 |
 | 7 | any → any (correction) | Correlated correction after close | Finance | Governance: closed sessions immutable; corrections are new adjusting entries | Linked adjustment evidence | Direct edits to closed sessions are prohibited |
 
@@ -347,4 +347,5 @@ Covers account lifecycle, credit profile and negotiated rate agreement as one go
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial state machine catalogue (18 machines) issued with WP 0.3 | PROPOSED |
 | 0.2 | 2026-09-23 | P0 resolutions: SM-ROOM saleability/statistics wording (TEC-01); SM-NIGHT-AUDIT close preconditions aligned to ADR-006 §3 (FIN-04) | PROPOSED |
+| 0.3 | 2026-09-23 | P1 resolution: SM-CASHIER-SESSION variance semantics aligned to BR-CSH-002 (FIN-06) | PROPOSED |
 

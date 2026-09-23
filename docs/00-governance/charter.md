@@ -2,7 +2,7 @@
 doc-id: GOV-CHARTER
 title: SuiteFlow Blueprint Charter
 status: PROPOSED
-version: 0.4
+version: 0.5
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: this repository
@@ -112,7 +112,7 @@ An ADR is required when a decision changes: domain ownership, source of truth, f
 
 Blueprint ADRs live in `docs/architecture/adr/` and use the standard structure: context, problem, target-state requirement, options, decision, reasoning, trade-offs, risks, consequences, implementation impact, migration impact, review trigger.
 
-The existing implementation-level ADR-001…004 and the proposed ADR-001…005 in the decision pack are inputs to be validated during Phase 0/1. Validation outcomes will be recorded as one of: CONFIRMED (and promoted), MODIFIED (superseding ADR issued here), REPLACED, or REJECTED — each with reasoning.
+The existing implementation-level ADR-001…004 and the proposed ADR-001…005 in the decision pack are inputs to be validated during Programme P0/P1. Validation outcomes will be recorded as one of: CONFIRMED (and promoted), MODIFIED (superseding ADR issued here), REPLACED, or REJECTED — each with reasoning.
 
 ## 9. Review protocol
 
@@ -198,7 +198,7 @@ Planned structure; documents appear as their work packages execute. Only files t
 
 ```text
 docs/
-├── TARGET-STATE-BLUEPRINT.md          [present — master index v1.2]
+├── TARGET-STATE-BLUEPRINT.md          [present — master index v1.3]
 ├── 00-governance/
 │   ├── charter.md                     [present]
 │   ├── inputs-register.md             [present]
@@ -211,7 +211,7 @@ docs/
 │   ├── scope.md                       [present — WP 0.1]
 │   ├── personas-and-roles.md          [present — WP 0.1]
 │   ├── capability-map.md              [present — WP 0.1]
-│   └── roadmap.md                     [present — v1.1 with per-phase exit criteria]
+│   └── roadmap.md                     [present — v1.2 with per-phase exit criteria]
 ├── architecture/                      [WP 0.2 complete — pending review]
 │   ├── target-state.md                [present — WP 0.2]
 │   ├── domain-model.md                [present — WP 0.2]
@@ -247,14 +247,16 @@ docs/
 
 ## 14. Phase model
 
+Two named series are used, never bare numbers (TEC-05 resolution): **Programme phases P0–P4** and **Delivery phases D1–D20**.
+
 | Phase | Content | Gate to exit |
 |---|---|---|
-| 0 | Target product definition (this repository, WP 0.1–0.8) | Blueprint ACCEPTED (current version) |
-| 1 | External research and benchmark validation | Research register complete; blueprint claims labelled with sources |
-| 2 | Current-state audit of implementation and ecosystem | Evidence-based capability classifications |
-| 3 | Target vs current gap matrix | Every capability mapped with an action and priority |
-| 4 | Transition architecture | Per-domain keep/extend/refactor/wrap/replace decisions |
-| 5+ | Implementation through small, testable tickets | Ticket-level Definition of Ready/Done |
+| **P0** | Target product definition (this repository, WP 0.1–0.8) | Blueprint ACCEPTED (current version); pilot capability set frozen |
+| **P1** | External research and benchmark validation | Research register complete; blueprint claims labelled with sources |
+| **P2** | Current-state audit of implementation and ecosystem | Evidence-based capability classifications |
+| **P3** | Target vs current gap matrix | Every capability mapped with an action and priority |
+| **P4** | Transition architecture | Per-domain keep/extend/refactor/wrap/replace decisions |
+| **D1–D20** | Delivery phases (D1–D9 pilot; D10–D20 enterprise) | Ticket-level Definition of Ready/Done; see `product/roadmap.md` |
 
 ## 15. Standing constraints
 
@@ -271,3 +273,4 @@ docs/
 | 0.2 | 2026-09-23 | Version references updated for blueprint v1.1 after adoption of the industry-standard answers | PROPOSED |
 | 0.3 | 2026-09-23 | Operational-acceptance authority updated for the synthetic reference pilot (Product Owner acting; OQ-003 closed) | PROPOSED |
 | 0.4 | 2026-09-23 | Review-pass corrections: deliverable-map version references aligned (master index v1.2, roadmap v1.1) | PROPOSED |
+| 0.5 | 2026-09-23 | P1/TEC-05: phase model renamed Programme P0–P4 and Delivery D1–D20 | PROPOSED |

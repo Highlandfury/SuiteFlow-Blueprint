@@ -44,7 +44,7 @@ What contract must any payment provider satisfy, so the pilot can run with manua
 3. **Manual provider is first-class.** The pilot's manual reference path (recording POS terminal slips, transfers and cheques with references and evidence) implements the same contract, so switching to an automated provider changes the adapter, not the workflow.
 4. **State fidelity.** `PENDING_CLEARANCE` remains until acquirer/bank evidence matches (BR-CSH-004); the adapter provides the evidence or the exception path.
 5. **Webhooks and polling.** Inbound webhooks are verified (signature/credential), deduplicated by namespaced reference (ADR-004), retried with backoff, and reconciled; uncertain states are resolved by status query or by reconciliation case (ADR-010 §4/5). Polling is a supported alternative where a provider lacks webhooks.
-6. **Provider selection remains the intended open decision.** The pilot evidence matrix (Phase 1/3) evaluates UBA/Wema roles (OQ-004), terminal/acquirer settlement reports (OQ-006), statement access (OQ-007) and any online payment-link need (OQ-005 closed). Until selection completes, manual references plus bank reconciliation are the accepted scope (BR-MVP-005).
+6. **Provider selection remains the intended open decision.** The pilot evidence matrix (Programme P1/P3) evaluates UBA/Wema roles (OQ-004), terminal/acquirer settlement reports (OQ-006), statement access (OQ-007) and any online payment-link need (OQ-005 closed). Until selection completes, manual references plus bank reconciliation are the accepted scope (BR-MVP-005).
 7. **Multiple providers.** Configuration binds provider × property × method; adapters are versioned, feature-flagged and withdrawable without touching payment records.
 8. **Disputes.** Chargebacks and disputes flow through DisputeCase regardless of provider, with evidence held in SuiteFlow and outcome postings additive (FIN-ARCH §5.6, SM-PAYMENT #7).
 
@@ -77,7 +77,7 @@ What contract must any payment provider satisfy, so the pilot can run with manua
 
 ## Implementation impact
 
-No immediate change. The existing implementation's payments path is evidence for Phase 2.
+No immediate change. The existing implementation's payments path is evidence for Programme P2.
 
 ## Migration impact
 

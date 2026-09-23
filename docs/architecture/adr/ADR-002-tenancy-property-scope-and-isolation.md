@@ -80,7 +80,7 @@ What is the tenant boundary, and how is isolation between customers, properties 
 
 ## Implementation impact
 
-No immediate change. The pilot is a one-property tenant: the same model applies degenerately. Phase 4 transition architecture will decide how the current single-property assumptions migrate to property partitioning.
+No immediate change. The pilot is a one-property tenant: the same model applies degenerately. Programme P4 transition architecture will decide how the current single-property assumptions migrate to property partitioning.
 
 ## Migration impact
 

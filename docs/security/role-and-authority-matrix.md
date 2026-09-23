@@ -2,7 +2,7 @@
 doc-id: SEC-ROLES
 title: Role and Authority Matrix
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Security Engineer (drafted); Product Owner + Finance Controller (approval; OQ-002 open; OQ-003 closed — acting operations authority)
 applies-to: full enterprise target; pilot roles
@@ -23,6 +23,7 @@ All numeric limits are **PROPOSED defaults pending sign-off** (OQ-002 Finance Co
 |---|---|---|
 | General Manager | Property | Approves within top bands; owns property performance; no routine operational entry |
 | Duty Manager / Front Office Supervisor | Property | Runs the shift; approves overrides, adjustments and refunds within bands |
+| Front Office Manager | Property | Department head: desk-side service recovery, refunds/payouts in the FOM band, cancellation-penalty waivers within policy, comps within the monthly budget |
 | Front Desk Agent | Property | Arrivals, in-house service, departures, folios, payments within limits |
 | Reservations Agent | Property | Creates and amends bookings; no financial approvals |
 | Revenue Manager | Property (rates) | Owns rate plans, restrictions and inventory policy; no financial approvals |
@@ -73,9 +74,11 @@ Legend: **R** read, **C** create, **U** update within state machine, **A** appro
 | Exports (class A/B) | A* | — | — | — | — | — | — | — | — | — | — | — | A | — | — | — | — |
 | User provisioning | — | — | — | — | — | — | — | — | — | — | — | — | R | — | — | R/C/U/A | — |
 | Configuration (non-financial) | R/A | R | — | — | R (rates) | — | — | — | R (asset) | — | — | — | R (financial) | — | — | R/C/U/A | R |
-| Configuration (financial) | R/A* | — | — | — | — | — | — | — | — | — | R | — | R/C/U/A | — | — | R (execution) | R |
+| Configuration (financial) | R | — | — | — | — | — | — | — | — | — | R | — | R/C/U/A (tax rules require tax-adviser sign-off) | — | — | R (execution, no approval) | R |
 
-\* Requires second factor and is flagged in audit. Sys Admin executes configuration changes but never approves them (ADR-009 §8; personas §2.15).
+\* Requires second factor and is flagged in audit. Sys Admin executes configuration changes but never approves them (ADR-009 §8; personas §2.15). Where a Front Office Manager is staffed, the FOM holds the consolidated refund/payout/waiver bands below, separate from the shift supervisor.
+
+**Exports (SEC-06 resolution).** Export execution is separate from approval: class-B exports execute within role scope with approval recorded; class-A exports require an approver independent of the executor, are watermarked, logged and time-boxed; the external-auditor path delivers only to verified recipients.
 
 **Privileged grants (SEC-04 resolution).** User provisioning and role assignment run on the maker–checker mechanism: requester, approver and beneficiary are distinct identities. Finance roles additionally require Finance Controller approval; security/administrator roles and break-glass require the Security/Privacy Adviser (interim: Product Owner while OQ-033 is open). The quarterly privileged-access review is performed by a party independent of the administrator who executed the grants.
 
@@ -86,7 +89,7 @@ Legend: **R** read, **C** create, **U** update within state machine, **A** appro
 | Adjustment / allowance per item | — | ≤ 20,000 | ≤ 100,000 | Unlimited with reason + report | 100,000 |
 | Comp room per instance | — | ≤ 1 room-night, 20,000 value | Unlimited, monthly report | — | Unlimited GM items quarterly review |
 | Rate discount (off BAR) | — | ≤ 10% | ≤ 25% | — | > 25% (GM + Revenue) |
-| Refund | — | ≤ 20,000 | ≤ 100,000 | ≤ 500,000 | 500,000 (FC + GM) |
+| Refund / payout / waiver | — | — | — | — | Consolidated authority table below (single source) |
 | Deposit forfeiture | — | Policy formula only | Policy formula + deviations | Unlimited with evidence | Deviation from formula (FC) |
 | Cashier variance approval | — | ≤ 5,000 | ≤ 20,000 | Unlimited with reason | 20,000 (FC) |
 | Credit limit override / direct-bill exception | — | — | ≤ 100,000 exposure | Unlimited per policy | 100,000 (FC + GM) |
@@ -96,6 +99,18 @@ Legend: **R** read, **C** create, **U** update within state machine, **A** appro
 | Break-glass grant | — | — | Request only | Request only | Two-person grant: requester ≠ grantor ≠ beneficiary; no self-grant; independent 24h review by the alert recipient (Technical Lead; interim Product Owner while OQ-033 open) |
 
 These bands align with the pilot's ~200-room operation and are expected to be re-scoped with the Finance Controller (OQ-002). They are configuration, not code.
+
+**Consolidated refund / payout / waiver authority (FIN-08 resolution).** One authority source for refunds, cash payouts and waivers, by instrument; defaults PROPOSED until Finance Controller sign-off:
+
+| Band | Approver |
+|---|---|
+| ≤ ₦20,000 | Supervisor / Duty Manager |
+| > ₦20,000 – ≤ ₦50,000 | Front Office Manager |
+| > ₦50,000 – ≤ ₦100,000 | General Manager |
+| > ₦100,000 – ≤ ₦500,000 | Finance Controller |
+| > ₦500,000 | FC + GM dual control |
+
+Conditions: refunds to the original instrument; card/transfer refunds only from cleared funds; reason code and audit flag on every waiver; cancellation-penalty waivers within the FOM band per OQ-012 with GM/FC above; forfeiture deviations Finance Controller only; comps per OQ-036. Cash payouts follow this table's cash column — the OQ-037 thresholds are an input to it, not an additional approval layer.
 
 ## 5. Separation of duties
 
@@ -136,3 +151,4 @@ Exception principle: where staffing makes strict separation impossible (small ni
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial role and authority matrix issued with WP 0.5; all limits PROPOSED defaults | PROPOSED |
 | 0.2 | 2026-09-23 | P0 resolutions: privileged grants on maker–checker with independent review (SEC-04, §3/§5); break-glass two-person grant and named reviewer (SEC-02, §4) | PROPOSED |
+| 0.3 | 2026-09-23 | P1 resolutions: FOM role + consolidated refund/payout/waiver table (FIN-08); financial-config approval restricted to FC (FIN-11); export execute/approve split (SEC-06) | PROPOSED |

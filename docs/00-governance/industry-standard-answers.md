@@ -2,7 +2,7 @@
 doc-id: GOV-ANSWERS
 title: Open Question Answers — Industry-Standard and Best-Practice Positions
 status: PROPOSED
-version: 0.3
+version: 0.4
 date: 2026-09-23
 owner: Principal Architect (drafted at Product Owner direction); Product Owner (adoption)
 applies-to: resolution of the Open Questions Register (GOV-OQ)
@@ -20,7 +20,7 @@ This document records those answers. It does two things:
 1. Where industry practice determines a concrete answer, it gives the answer in an adoptable form (**ANSWERED-D**).
 2. Where only the hotel, a named person, a provider or professional advice can answer, it states the **evidence required** and a recommended interim default so design continues without inventing facts (**OPEN-FACT**, **OPEN-ADVICE**, **OPEN-APPROVAL**).
 
-**Authority and governance.** This document does not fabricate facts, does not name people, and does not close questions that require an accountable human. On **23 September 2026 the Product Owner adopted all `ANSWERED-D` answers in full**; the 25 questions are `CLOSED` in the register with a decision-log entry (GOV-OQ §4), and the affected documents carry the marker `OQ-nnn (closed)`. The named-approver sign-offs for the affected document sets remain part of blueprint acceptance (charter §12). `OPEN-FACT` and `OPEN-ADVICE` questions remain open until the evidence or advice exists. All statements are PROPOSED and carry the confidence labels of charter §6: industry-practice statements are ASSUMED unless evidenced; jurisdiction-specific legal and tax statements are **UNVERIFIED** pending Phase 1 primary-source research and professional advice, and are design positions — not compliance claims.
+**Authority and governance.** This document does not fabricate facts, does not name people, and does not close questions that require an accountable human. On **23 September 2026 the Product Owner adopted all `ANSWERED-D` answers in full**; the 25 questions are `CLOSED` in the register with a decision-log entry (GOV-OQ §4), and the affected documents carry the marker `OQ-nnn (closed)`. The named-approver sign-offs for the affected document sets remain part of blueprint acceptance (charter §12). `OPEN-FACT` and `OPEN-ADVICE` questions remain open until the evidence or advice exists. All statements are PROPOSED and carry the confidence labels of charter §6: industry-practice statements are ASSUMED unless evidenced; jurisdiction-specific legal and tax statements are **UNVERIFIED** pending Programme P1 primary-source research and professional advice, and are design positions — not compliance claims.
 
 ## 2. How to read the answers
 
@@ -58,7 +58,7 @@ Each answer states: **Answer**, **Basis**, **Still needed**, **Affects**.
 | OQ-017 | ANSWERED-D | Groups pilot-critical: blocks, cutoffs, rooming lists, master folio/routing, deposits, group statements, basic conference space booking |
 | OQ-018 | ANSWERED-D | Direct + corporate at pilot; manual OTA handling if unavoidable; channel manager later |
 | OQ-019 | ANSWERED-D | Capture ID type/number for adult guests; scan only if legally required; never store NIN images; Class-A handling |
-| OQ-020 | ANSWERED-D | Manual keys at pilot; lock-vendor research in Phase 1; integration in an enterprise phase |
+| OQ-020 | ANSWERED-D | Manual keys at pilot; lock-vendor research in Programme P1; integration in an enterprise phase |
 | OQ-021 | ANSWERED-D | 10% F&B service charge as a staff-distribution liability, never revenue; tax treatment per adviser |
 | OQ-022 | ANSWERED-D | Work orders + light preventive maintenance at pilot, coordinated with OOO rooms |
 | OQ-023 | ANSWERED-D | HRMS/directory is the identity source; SuiteFlow consumes an identity projection only; no payroll |
@@ -75,7 +75,7 @@ Each answer states: **Answer**, **Basis**, **Still needed**, **Affects**.
 | OQ-034 | ANSWERED-D | Inspect VIP/arrival-critical rooms plus ≥20% spot checks; daily stayover service; minibar only if operated, with posting and departure check |
 | OQ-035 | ANSWERED-D | Children ≤5 free; 6–12 sharing at 50%; early/late check-in/out banded at 50%/full night; amounts configurable |
 | OQ-036 | ANSWERED-D | Comps approved and reason-coded, target ≤2% of room nights, counted in occupancy at value with contra-revenue; house use excluded from occupancy/ADR |
-| OQ-037 | ANSWERED-D | Float ₦100,000 default; zero tolerance with investigation above 0.5%; cash payouts ≤₦50,000 require FOM; daily banking; dual custody |
+| OQ-037 | ANSWERED-D | Float ₦100,000 default; zero acceptance tolerance (all variances recorded), review above max(0.5%, ₦2,000) and always >₦20,000; refunds/payouts per the consolidated band table; daily banking; dual custody |
 | OQ-038 | OPEN-FACT | Site survey required; dual-path WAN + UPS mandatory; degraded read-only mode + manual fallback; no full offline financial mode |
 
 ## 4. Answers
@@ -114,7 +114,7 @@ Each answer states: **Answer**, **Basis**, **Still needed**, **Affects**.
 
 #### OQ-004 — Exact role of UBA and Wema Bank
 
-**Answer.** Both banks may serve, but best practice is a clear split: **one primary collections/operating account** per property for cash and card settlement, **one designated POS acquirer** selected on evidence (settlement timeliness, fees, terminal support, statement quality, API availability), transfers received into the operating account, and a secondary bank as contingency. Where offered, use **dedicated/virtual account references per payer** so transfer reconciliation is automatable. Roles are assigned after the Phase 1 evidence matrix; the interim model is both banks used manually with recorded references.
+**Answer.** Both banks may serve, but best practice is a clear split: **one primary collections/operating account** per property for cash and card settlement, **one designated POS acquirer** selected on evidence (settlement timeliness, fees, terminal support, statement quality, API availability), transfers received into the operating account, and a secondary bank as contingency. Where offered, use **dedicated/virtual account references per payer** so transfer reconciliation is automatable. Roles are assigned after the Programme P1 evidence matrix; the interim model is both banks used manually with recorded references.
 
 **Basis.** Treasury and reconciliation practice: minimise collection accounts, maximise referenceability, select acquirer competitively.
 
@@ -282,11 +282,11 @@ Each answer states: **Answer**, **Basis**, **Still needed**, **Affects**.
 
 #### OQ-020 — Door-lock integration
 
-**Answer.** Manual keys at pilot. Start lock-vendor research in Phase 1 (vendor APIs, RFID/BLE, audit trail, key issuing/return at the desk, PMS integration options); integration lands in an enterprise phase once a lock vendor and protocol are selected. Nothing in pilot scope depends on it; the key-issuance/return log applies regardless.
+**Answer.** Manual keys at pilot. Start lock-vendor research in Programme P1 (vendor APIs, RFID/BLE, audit trail, key issuing/return at the desk, PMS integration options); integration lands in an enterprise phase once a lock vendor and protocol are selected. Nothing in pilot scope depends on it; the key-issuance/return log applies regardless.
 
 **Basis.** Progressive integration practice: don't couple the pilot to a lock vendor before selection; defer is standard.
 
-**Still needed.** Phase 1 research; hotel preference recorded.
+**Still needed.** Programme P1 research; hotel preference recorded.
 
 **Affects.** Integration scope (INT-010), front-office workflows.
 
@@ -337,7 +337,7 @@ Retention is per-category configuration from day one (data model already support
 
 **Basis.** Nigerian data-protection principles plus common financial/AML record-keeping expectations (tax 7 y, AML 5 y, security logs 12 m). **UNVERIFIED** until counsel confirms.
 
-**Still needed.** Legal/counsel confirmation (Phase 1/2), before Class-A data goes live.
+**Still needed.** Legal/counsel confirmation (Programme P1/P2), before Class-A data goes live.
 
 **Affects.** Data model, security model, privacy controls, reporting retention, AI prompt/log retention.
 
@@ -349,17 +349,17 @@ Retention is per-category configuration from day one (data model already support
 
 **Still needed.** Inventory of incumbent systems/spreadsheets/paper, volumes, quality and history depth — **deferred to the First-Property Deployment Gate**; the reference pilot migrates synthetic opening data (guest profiles, reservations, deposits, AR balances) through the same tooling.
 
-**Affects.** Migration architecture, roadmap Phase 9, cutover plan.
+**Affects.** Migration architecture, roadmap D9, cutover plan.
 
 ### 4.3 Architecture and platform questions (OQ-026…OQ-038)
 
 #### OQ-026 — Cloud region, data residency, hosting
 
-**Answer.** Host the pilot **in-country (Nigeria)**, or in a region assessed as providing adequate protection under NDPA 2023, with primary data and backups in-country where available. Any offshore processing (support tooling, AI, email/text vendors) must be inventoried and covered by lawful transfer mechanisms and processor agreements. Data residency is a Phase 1 vendor-selection criterion. Specific provider/region availability and NDPC adequacy positions remain **UNVERIFIED** until checked.
+**Answer.** Host the pilot **in-country (Nigeria)**, or in a region assessed as providing adequate protection under NDPA 2023, with primary data and backups in-country where available. Any offshore processing (support tooling, AI, email/text vendors) must be inventoried and covered by lawful transfer mechanisms and processor agreements. Data residency is a Programme P1 vendor-selection criterion. Specific provider/region availability and NDPC adequacy positions remain **UNVERIFIED** until checked.
 
 **Basis.** NDPA 2023 cross-border transfer framework; enterprise data-residency practice.
 
-**Still needed.** Phase 1 verification of provider regions and NDPC positions.
+**Still needed.** Programme P1 verification of provider regions and NDPC positions.
 
 **Affects.** Deployment architecture, security model, vendor selection.
 
@@ -379,7 +379,7 @@ Retention is per-category configuration from day one (data model already support
 
 **Basis.** Open-source compliance practice; RSK-LIC-001; repository license position pending.
 
-**Still needed.** Legal counsel review (Phase 1/2) and a distribution-intent decision.
+**Still needed.** Legal counsel review (Programme P1/P2) and a distribution-intent decision.
 
 **Affects.** Release/distribution architecture, repository licensing, CI license gates.
 
@@ -389,7 +389,7 @@ Retention is per-category configuration from day one (data model already support
 
 **Basis.** FIRS e-invoicing direction (specifics **UNVERIFIED**); ADR-008 derived-document pattern.
 
-**Still needed.** Tax-adviser ruling (Phase 1) and monitoring of FIRS mandates.
+**Still needed.** Tax-adviser ruling (Programme P1) and monitoring of FIRS mandates.
 
 **Affects.** ADR-008, integrations (INT-014), document engine, tax configuration.
 
@@ -399,13 +399,13 @@ Retention is per-category configuration from day one (data model already support
 
 **Basis.** Payment-integration practice; provider-neutral adapter design (ADR-011).
 
-**Still needed.** Provider evidence matrix (Phase 1/3) per bank/acquirer.
+**Still needed.** Provider evidence matrix (Programme P1/P3) per bank/acquirer.
 
 **Affects.** ADR-011, integration architecture, income audit.
 
 #### OQ-031 — AI capability priorities and acceptability
 
-**Answer.** **No AI capability is enabled at pilot** (governance-first: AI proposes, governed services decide — charter §15). Candidate enterprise-phase priorities, in likely value order: (1) night-audit/income-audit anomaly detection (read-only analysis); (2) document extraction (IDs, vendor invoices) with Class-A handling; (3) guest-communication drafting with human send; (4) revenue/forecast recommendations surfaced to humans. Each capability passes evaluation gates (accuracy, privacy, abuse/bias checks, data-scope tests) before enablement; priorities are set with the Product Owner at Phase 19–20 planning.
+**Answer.** **No AI capability is enabled at pilot** (governance-first: AI proposes, governed services decide — charter §15). Candidate enterprise-phase priorities, in likely value order: (1) night-audit/income-audit anomaly detection (read-only analysis); (2) document extraction (IDs, vendor invoices) with Class-A handling; (3) guest-communication drafting with human send; (4) revenue/forecast recommendations surfaced to humans. Each capability passes evaluation gates (accuracy, privacy, abuse/bias checks, data-scope tests) before enablement; priorities are set with the Product Owner at D19–20 planning.
 
 **Basis.** AI governance practice; WP 0.7 AI architecture.
 
@@ -465,7 +465,7 @@ Retention is per-category configuration from day one (data model already support
 
 #### OQ-037 — Cash handling policy
 
-**Answer (recommended placements, configurable).** House-bank float per cashier, default **₦100,000**, verified at session start/end. **Zero variance tolerance**, with investigation and documented explanation required above **0.5% of session volume**. Cash payouts/refunds above **₦50,000** require Front Office Manager approval; above **₦150,000** require General Manager. **Daily banking** of cash next business morning with after-hours safe-drop; **dual custody** for safe access and deposit preparation. No IOUs, personal cheques or FX at the desk. Over/short posts to a dedicated account identifying operator and supervisor.
+**Answer (recommended placements, configurable; refined by PO decision 23 Sep 2026 — FIN-06/FIN-08).** House-bank float per cashier, default **₦100,000**, verified at session start/end. **Acceptance tolerance is zero**: every variance is recorded, reason-coded and posted over/short. Independent investigation and review apply when a variance exceeds **max(0.5% of session cash volume, ₦2,000)** — and in all cases above **₦20,000**, when unexplained or unrecorded, or on a repeat pattern (3+ variances by one cashier in 30 days). Refunds, cash payouts and waivers follow the role matrix's **consolidated authority table** (≤₦20,000 Supervisor/DM; ≤₦50,000 Front Office Manager; ≤₦100,000 GM; ≤₦500,000 Finance Controller; above — FC + GM dual control); the OQ-037 cash thresholds are an input to that table's cash column, not an additional layer. **Daily banking** of cash next business morning with after-hours safe-drop; **dual custody** for safe access and deposit preparation. No IOUs, personal cheques or FX at the desk. Over/short posts to a dedicated account identifying operator and supervisor.
 
 **Basis.** Cashiering control practice; BR-CSH-002/005 defaults.
 
@@ -490,7 +490,7 @@ Retention is per-category configuration from day one (data model already support
 **Still open — and what closes them:**
 
 1. **Facts** (`OPEN-FACT`, 8): programme-level — OQ-002 (Finance Controller) and OQ-033 (Technical Lead and Security/Privacy adviser); deferred to the First-Property Deployment Gate — OQ-001 (entity/tax documents), OQ-004 (bank roles), OQ-006 (acquirer/terminals/settlement reports), OQ-007 (statement formats), OQ-025 (existing data inventory), OQ-038 (site survey). Close when the evidence is recorded.
-2. **Advice** (`OPEN-ADVICE`, 3): OQ-024 (retention schedule), OQ-028 (open-source licensing), OQ-029 (fiscalisation/e-invoicing). Close with Phase 1 professional sign-off; the interim positions above keep design moving.
+2. **Advice** (`OPEN-ADVICE`, 3): OQ-024 (retention schedule), OQ-028 (open-source licensing), OQ-029 (fiscalisation/e-invoicing). Close with Programme P1 professional sign-off; the interim positions above keep design moving.
 3. **Approval** (`OPEN-APPROVAL`, 1): OQ-010 (24×7 staffing and recovery budget). Close with the Product Owner's approval.
 
 The accepted business-requirement amendment for the synthetic reference pilot is recorded in the inputs register §3.1 (BR-PILOT-001/005/008/009/010). All adopted answers remain consistent with the amended pilot boundaries and the charter's standing constraints. Where an adopted answer keeps a dependency (for example OQ-019 legal confirmation on scanning, OQ-021 tax treatment), the dependency is stated in the answer and tracked in the risk register — the adopted position is what design uses meanwhile.
@@ -502,3 +502,4 @@ The accepted business-requirement amendment for the synthetic reference pilot is
 | 0.1 | 2026-09-23 | Initial answer pack at Product Owner direction: 38 questions answered on industry-standard/best-practice basis (25 ANSWERED-D, 9 OPEN-FACT, 3 OPEN-ADVICE, 1 OPEN-APPROVAL) | PROPOSED |
 | 0.2 | 2026-09-23 | All 25 ANSWERED-D answers adopted by the Product Owner; register closed (§4 decision log) and affected documents marked `OQ-nnn (closed)` | PROPOSED |
 | 0.3 | 2026-09-23 | Synthetic reference pilot decision: OQ-003 closed by appointment; OQ-001/004/006/007/025/038 marked deferred to the First-Property Deployment Gate | PROPOSED |
+| 0.4 | 2026-09-23 | P1: OQ-037 refined — zero acceptance tolerance, review threshold, consolidated authority table (FIN-06/FIN-08) | PROPOSED |

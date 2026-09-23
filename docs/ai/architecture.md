@@ -2,10 +2,10 @@
 doc-id: AI-ARCH
 title: AI Governance and Assistance Architecture
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Principal Architect + Security Engineer (drafted); Product Owner (approval; OQ-031 closed)
-applies-to: enterprise target (Phase 19); pilot has no AI capabilities enabled by default
+applies-to: enterprise target (D19); pilot has no AI capabilities enabled by default
 depends-on: [ADR-009, SEC-MODEL, ARCH-DOMAIN]
 ---
 
@@ -53,7 +53,7 @@ Audit + evaluation telemetry
 | C (operational) | Allowed within scope | — |
 | D (config) | Allowed | — |
 
-Prompt and response logging follows security retention rules; logs redact class-A fields; guest consent for AI processing beyond operational necessity is not required for staff-assist use where processing is within the existing lawful basis, but marketing/CRM AI use must respect consent projection (CAP-CRM-003).
+Prompt and response logging follows security retention rules; logs redact class-A fields; guest consent for AI processing beyond operational necessity is not required for staff-assist use where processing is within the existing lawful basis — **STATUS: UNVERIFIED, pending counsel (SEC-09)** — and marketing/CRM AI use must respect consent projection (CAP-CRM-003).
 
 ## 4. Capability catalogue and gates
 
@@ -86,7 +86,7 @@ Pilot position: no AI capability is enabled by default (OQ-031 closed: no pilot 
 
 ## 6. Governance
 
-- **Enablement**: capability-by-capability, property-by-property configuration; each enablement requires the evaluation gate and Product Owner approval.
+- **Enablement**: capability-by-capability, property-by-property configuration; each enablement requires the evaluation gate and Product Owner approval. **Any capability touching class A or B additionally requires Security/Privacy Adviser sign-off and a DPIA, with injection-resistance and tool-authorization tests passing before enablement (SEC-09 resolution).**
 - **Change control**: prompt/tool changes are versioned; material changes re-run evaluations.
 - **Incident handling**: AI incidents (wrong output acted upon, leak, overreach) follow the same severity model; S0/S1 stop-the-line applies; root-cause includes prompt/tool design.
 - **Transparency**: users know when a suggestion is AI-generated; proposals show their inputs and confidence basis.
@@ -97,7 +97,7 @@ Pilot position: no AI capability is enabled by default (OQ-031 closed: no pilot 
 | Item | Owner |
 |---|---|
 | OQ-031 (closed) AI priorities for pilot/roadmap | Product Owner |
-| Model/provider selection and data-processing terms | Security + product (WP 0.8/Ph19) |
+| Model/provider selection and data-processing terms | Security + product (WP 0.8/D19) |
 | OQ-024 retention (prompt/log retention) | Security/Legal |
 | Evaluation suite content per capability | QA + product |
 
@@ -106,3 +106,4 @@ Pilot position: no AI capability is enabled by default (OQ-031 closed: no pilot 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial AI governance architecture issued with WP 0.7 | PROPOSED |
+| 0.2 | 2026-09-23 | P1 resolutions: lawful-basis claim labelled UNVERIFIED; A/B capabilities require adviser sign-off + DPIA + injection tests (SEC-09/10) | PROPOSED |

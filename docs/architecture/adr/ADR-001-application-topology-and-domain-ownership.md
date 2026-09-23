@@ -53,7 +53,7 @@ Which application topology and which ownership model give the target its require
 4. **External systems are reached only through adapters.** Adapters are infrastructure: they translate protocols and provider quirks; they hold no domain rules and no authoritative data. Provider-neutral interfaces are defined by the domain.
 5. **Financial effects have a single gateway.** No module writes accounting documents directly; all financial effects pass through the posting service with durable identity, idempotency and reconciliation links (detail in WP 0.4).
 6. **Module boundaries are enforced, not requested.** Internal dependency rules are verified by automated architectural tests; a violation fails the build.
-7. **Product binding is deferred and constrained.** This ADR defines roles and their contracts. Binding a concrete product to a role (operations core, accounting authority, control plane) is a Phase 3/4 decision that requires role-contract evidence. No existing product inherits architectural authority from its presence in the current implementation.
+7. **Product binding is deferred and constrained.** This ADR defines roles and their contracts. Binding a concrete product to a role (operations core, accounting authority, control plane) is a Programme P3/P4 decision that requires role-contract evidence. No existing product inherits architectural authority from its presence in the current implementation.
 
 ## Reasoning
 
@@ -76,7 +76,7 @@ Which application topology and which ownership model give the target its require
 | Module erosion over time | Dependency rules + architectural tests in CI; ownership map reviewed in governance cadence |
 | Monolith performance at chain scale | Read models for reporting; measured optimisation; extraction allowed with evidence |
 | Control-plane overreach | Every CTRL capability must state what it owns and what it must not duplicate; reviewed at WP 0.4 |
-| Product binding decided by convenience | Phase 3/4 evidence rule (decision 7) |
+| Product binding decided by convenience | Programme P3/P4 evidence rule (decision 7) |
 
 ## Consequences
 
@@ -87,7 +87,7 @@ Which application topology and which ownership model give the target its require
 
 ## Implementation impact
 
-No immediate implementation change. The current implementation remains evidence for Phase 2. Transition architecture (Phase 4) will decide per domain how existing modules map onto these layers.
+No immediate implementation change. The current implementation remains evidence for Programme P2. Transition architecture (Programme P4) will decide per domain how existing modules map onto these layers.
 
 ## Migration impact
 

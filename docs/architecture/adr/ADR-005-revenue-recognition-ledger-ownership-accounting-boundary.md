@@ -83,7 +83,7 @@ Which system owns which financial record, at what cadence are accounting effects
 
 ## Implementation impact
 
-No immediate implementation change. The current implementation's accounting adapter and control-document patterns are evidence for Phase 2; Phase 4 decides transition per domain.
+No immediate implementation change. The current implementation's accounting adapter and control-document patterns are evidence for Programme P2; Programme P4 decides transition per domain.
 
 ## Migration impact
 

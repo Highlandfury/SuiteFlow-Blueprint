@@ -91,7 +91,7 @@ Additional rules:
 
 ## Implementation impact
 
-No immediate implementation change. The current implementation already exhibits partial versions of these patterns; Phase 2 will classify what exists, and Phase 4 decides per domain.
+No immediate implementation change. The current implementation already exhibits partial versions of these patterns; Programme P2 will classify what exists, and Programme P4 decides per domain.
 
 ## Migration impact
 

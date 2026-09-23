@@ -2,7 +2,7 @@
 doc-id: GOV-INPUTS
 title: Inputs Register — Accepted Requirements and Proposed Architecture Inputs
 status: PROPOSED
-version: 0.7
+version: 0.8
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: all blueprint work
@@ -38,7 +38,7 @@ This register records the external inputs the blueprint is allowed to treat as r
 | BR-PILOT-002 | One reference property, approximately 200 rooms (modelled) | Confirmed | VERIFIED |
 | BR-PILOT-003 | Timezone West Africa Time (UTC+1); all business dates and cutoff rules use hotel-local time, never server UTC | Confirmed | VERIFIED |
 | BR-PILOT-004 | Base currency Nigerian Naira (NGN) | Confirmed | VERIFIED |
-| BR-PILOT-005 | Delivery target: 24 weeks to the **pilot-ready reference release** (synthetic), gated by finance, audit, security, restore and role-played acceptance; first-property deployment follows when a property is secured | Amended (PO decision 23 Sep 2026) | VERIFIED |
+| BR-PILOT-005 | Delivery target: 24-week horizon from 23 Sep 2026 to the **pilot-ready reference release** (target 10 Mar 2027), covering Programme P0–P4 and Delivery D1–D9, gated by finance, audit, security, restore and role-played acceptance; pilot capability set freezes at Programme P0 acceptance; first-property deployment follows when a property is secured | Amended (PO decision 23 Sep 2026; TEC-04) | VERIFIED |
 | BR-PILOT-006 | Registered legal entity name and tax identifiers | **Open** (PO-001A); deferred to first property | UNVERIFIED |
 | BR-PILOT-007 | Named Finance Controller / pilot Finance representative | **Open** (PO-001B) | UNVERIFIED |
 | BR-PILOT-008 | Hotel Operations representative and acceptance approver: **Product Owner acts as interim operations authority** until a real property is secured (closes OQ-003) | Resolved (PO decision 23 Sep 2026) | VERIFIED (recorded decision) |
@@ -92,7 +92,7 @@ Operational interpretation recorded with the baseline: the one-property pilot do
 | BR-MVP-012 | Foreign currency | Defer; NGN only for MVP |
 | BR-MVP-013 | Multi-property reporting | Defer for the one-property pilot |
 
-Note on terminology: "Kamra" and "ERPNext" appear in the accepted boundary as the systems the Product Owner expects to fulfil the hotel-operations and accounting roles. The blueprint specifies the **roles and target ownership** by domain; whether those named products satisfy the target role is validated in Phase 1–3. Naming a product in the MVP boundary does not make its design authoritative (see §66 of the programme mandate).
+Note on terminology: "Kamra" and "ERPNext" appear in the accepted boundary as the systems the Product Owner expects to fulfil the hotel-operations and accounting roles. The blueprint specifies the **roles and target ownership** by domain; whether those named products satisfy the target role is validated in Programme P1–P3. Naming a product in the MVP boundary does not make its design authoritative (see §66 of the programme mandate).
 
 ### 3.4 Availability, support and recovery (SRC-001 §5)
 
@@ -132,12 +132,12 @@ Explicitly gated: bank API implementation, gateway adapters, final accounting do
 
 | Input | Title | Observed status | Blueprint treatment |
 |---|---|---|---|
-| IMPL-ADR-001 | Revenue and direct bill | Proposed Phase 1 accounting contract — proof and approval required | As above |
-| IMPL-ADR-002 | Reservation accounts, ledgers, cashiering, EOD and income audit | Proposed Phase 1 operational-financial close contract | As above |
+| IMPL-ADR-001 | Revenue and direct bill | Proposed Programme P1 accounting contract — proof and approval required | As above |
+| IMPL-ADR-002 | Reservation accounts, ledgers, cashiering, EOD and income audit | Proposed Programme P1 operational-financial close contract | As above |
 | IMPL-ADR-003 | Governed outlet inventory and consumption reconciliation | Accepted for Phase C (1 Sep 2026) | Level-5 acceptance; blueprint validation required before it is cited as target architecture |
 | IMPL-ADR-004 | Guest financial ledgers, documents and business-date reporting | Accepted for implementation (11 Sep 2026) | Level-5 acceptance; blueprint validation required |
 
-Observed statuses are working-tree observations and are recorded here for planning only. Phase 2 re-verifies them with commit evidence.
+Observed statuses are working-tree observations and are recorded here for planning only. Programme P2 re-verifies them with commit evidence.
 
 ### 4.3 Validation outcomes recorded to date
 
@@ -146,10 +146,10 @@ Observed statuses are working-tree observations and are recorded here for planni
 | DP-ADR-001 revenue/direct bill | **CONFIRMED WITH REFINEMENTS** | ADR-005: daily aggregated posting by family with item-level links; revenue once per business day; zero-revenue AR transfer | 2026-09-23 |
 | DP-ADR-002 business-day gate | **CONFIRMED WITH REFINEMENTS** | ADR-006: close gate confirmed; certification timing property-configurable; pilot default certification-before-advance; reopen governance and no-partial-advance defined | 2026-09-23 |
 | DP-ADR-003 outbox/idempotency | **CONFIRMED WITH REFINEMENTS** | ADR-010: transactional outbox, versioned envelopes, at-least-once delivery with idempotent effects, write-ahead provider intent, event registry | 2026-09-23 |
-| DP-ADR-004 payments adapter | **CONFIRMED WITH REFINEMENTS; PROVIDER SELECTION REMAINS OPEN** | ADR-011: provider-neutral contract with capability flags; manual path is a first-class provider; selection via Phase 1/3 evidence matrix | 2026-09-23 |
+| DP-ADR-004 payments adapter | **CONFIRMED WITH REFINEMENTS; PROVIDER SELECTION REMAINS OPEN** | ADR-011: provider-neutral contract with capability flags; manual path is a first-class provider; selection via Programme P1/P3 evidence matrix | 2026-09-23 |
 | DP-ADR-005 deposits | **CONFIRMED WITH REFINEMENTS** | ADR-007: obligation-linked liability; dedicated cancellation/no-show revenue for forfeiture; tax defaults flagged UNVERIFIED pending advice | 2026-09-23 |
 | DP-CTX-001 topology and tenancy | **MODIFIED** | ADR-002: tenant is the deployment unit with property partitions; optional dedicated deployment for hard-isolation customers. One site per hotel no longer the target default | 2026-09-23 |
-| DP-CTX-002 operations/accounting/control-plane split | **ROLES CONFIRMED, PRODUCT BINDING DEFERRED** | ADR-001: layered ownership adopted; which products fill the roles is decided in Phase 3/4 with role-contract evidence | 2026-09-23 |
+| DP-CTX-002 operations/accounting/control-plane split | **ROLES CONFIRMED, PRODUCT BINDING DEFERRED** | ADR-001: layered ownership adopted; which products fill the roles is decided in Programme P3/P4 with role-contract evidence | 2026-09-23 |
 | DP-CTX-003 revenue once / settlement as balance-sheet movement / guest-ledger control account | **CONFIRMED WITH REFINEMENTS** | ADR-005: confirmed; posting cadence daily-aggregated with drill-down; comp-at-value treatment; mapping completeness blocks close | 2026-09-23 |
 
 ## 5. Input conflicts carried forward
@@ -157,7 +157,7 @@ Observed statuses are working-tree observations and are recorded here for planni
 | Conflict | Statement A | Statement B | Handling |
 |---|---|---|---|
 | Product breadth | Accepted MVP defers multi-property, foreign currency and advanced analytics for the pilot (BR-MVP-012/013) | Product Owner direction (23 Sep 2026): enterprise target includes multi-property/chain, designed now, delivered pilot-first | Reconciled by scope.md: enterprise target vs pilot release scope; no capability dropped from the target |
-| Product naming | MVP boundary names Kamra/ERPNext as included systems | Blueprint must define target ownership independently of existing products | Named systems treated as candidate implementations of target roles; validation in Phase 1–3 |
+| Product naming | MVP boundary names Kamra/ERPNext as included systems | Blueprint must define target ownership independently of existing products | Named systems treated as candidate implementations of target roles; validation in Programme P1–P3 |
 | Accounting authority | Decision pack proposes ERPNext as accounting book of record | Blueprint must determine the correct financial architecture on its own merits | WP 0.4 validation with explicit ADR outcome |
 | Service objective | 99.5% planning baseline | Confirmation outstanding | Closed — adopted (OQ-009, 23 Sep 2026): 99.5% pilot / 99.9% enterprise target |
 
@@ -172,3 +172,4 @@ Observed statuses are working-tree observations and are recorded here for planni
 | 0.5 | 2026-09-23 | Service-objective status corrected to adopted (OQ-009 closed: 99.5% pilot / 99.9% enterprise target) | PROPOSED |
 | 0.6 | 2026-09-23 | Synthetic reference pilot decision recorded: BR-PILOT-001/005 amended, BR-PILOT-008 resolved, BR-PILOT-009/010 added; property-dependent items deferred to the First-Property Deployment Gate | PROPOSED |
 | 0.7 | 2026-09-23 | Review-pass corrections: front-matter version aligned; BR-PAY-009 and BR-REL-004 statuses resolved against adopted answers (OQ-005/OQ-009); malformed §5 row repaired | PROPOSED |
+| 0.8 | 2026-09-23 | P1/TEC-04: BR-PILOT-005 clock and target date recorded | PROPOSED |

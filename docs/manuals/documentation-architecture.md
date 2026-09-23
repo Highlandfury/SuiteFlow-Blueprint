@@ -46,7 +46,7 @@ Documentation is part of the product, not an artefact produced after it. Princip
 | 18 | Troubleshooting Guide (symptom → cause → action; close/integration/degraded modes) | Service desk, all | SRE | Incident learnings |
 | 19 | Training Materials (role curricula, exercises, certification checklist) | Hotel staff | Operations + product | Workflow/UI change |
 | 20 | Release Notes (versioned changes, migrations, known issues, rollback) | All | Release manager | Every release |
-| 21 | AI Manual *(Ph19)* (assistant capabilities, limits, governance) | All staff | Product + security | AI capability change |
+| 21 | AI Manual *(D19)* (assistant capabilities, limits, governance) | All staff | Product + security | AI capability change |
 
 ## 3. Repository mapping
 

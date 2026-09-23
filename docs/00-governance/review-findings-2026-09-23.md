@@ -2,7 +2,7 @@
 doc-id: GOV-REVIEW
 title: Acceptance-Readiness Review — Finance, Technical and Security Passes (23 Sep 2026)
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Product Owner (accountable); findings produced by the Finance Controller, Technical Lead and Security/Privacy Adviser role-assistant personas
 applies-to: blueprint v1.2 (PROPOSED) and the acceptance gate
@@ -346,9 +346,39 @@ The P0 findings from §2 are resolved in the documents as follows; each resoluti
 
 **Still open:** the P1 and P2 findings (33 items) and the input-dependent items (tax advice OQ-029; retention OQ-024; appointments OQ-002/OQ-033). Next resolution pass: P1.
 
-## 8. Version history
+## 8. Resolution log — P1 fixes applied (23 Sep 2026)
+
+P1 dispositions follow the delegated Product Owner decision record (`product-owner-decisions-2026-09-23.md`, D1–D12). Every resolution was applied through change control with a version increment.
+
+| Finding | Resolution | Evidence |
+|---|---|---|
+| FIN-03 | Bank/acquirer reconciliation added as daily checks 12–13; integration cross-reference corrected | financial-architecture v0.3 §10; integrations v0.2 §4.4 |
+| FIN-05 | Authority clarified: SuiteFlow issues all customer documents incl. corporate statements; statutory ledger documents are not customer invoices; fiscal series cross-reference rule | ADR-008 v0.3 decisions 1–3/6 |
+| FIN-06 | Acceptance tolerance zero; review above max(0.5%, ₦2,000) and always >₦20,000, unexplained/unrecorded or repeat pattern; state machine and matrix aligned | business-rules v0.5 (BR-CSH-002/003); state-machines v0.3; matrix v0.3; GOV-ANSWERS v0.4 (D4) |
+| FIN-07 | Single credit-exposure formula; suspension at 60-day overdue lifted only by FC; exception path bounded | business-rules v0.5 (BR-CRP-001/002, BR-FOL-013) |
+| FIN-08 | FOM added to the role catalogue; one consolidated refund/payout/waiver authority table by instrument | matrix v0.3 §2/§4; personas v0.5 (D5) |
+| FIN-11 | Financial-configuration approval restricted to FC; tax rules need adviser sign-off; GM read-only | matrix v0.3 §3; security-model v0.3 §7 (D6) |
+| FIN-12 | Tax point is a per-tax-type configuration attribute (delivery/invoice/payment/receipt), default marked UNVERIFIED | financial-architecture v0.3 §7 |
+| FIN-13 | First-Property Deployment Gate rows added: tax-adviser sign-off; FC-signed authority limits/table | roadmap v1.2; gate table (D7) |
+| TEC-02 | Slash-owner rows split to one owner per datum (stay/readiness; reconciliation state/exceptions) | target-state v0.3 §4 |
+| TEC-03 | Outbox event rows immutable; separate dispatch/attempt state | ADR-010 v0.2 decision 1; data-model v0.2 §7 |
+| TEC-04 | Dated horizon: start 23 Sep 2026, reference release 10 Mar 2027; includes P0–P4 + D1–D9; scope freeze at P0 acceptance; staffing assumption stated | scope v0.3; roadmap v1.2; inputs v0.8 (BR-PILOT-005); risk v0.5 (D1) |
+| TEC-05 | Programme P0–P4 / Delivery D1–D20 nomenclature; repository-wide consistency pass applied | charter v0.5 §14; all documents (D2) |
+| TEC-08 | Single-valued capability classification; counts 204 provisional pilot / 76 enterprise / 3 pending; deferred closed answers assigned (D16/D11); `Ph` markers retired | capability-map v0.3 (D3) |
+| SEC-03 | Incident/breach response section: severity, declaration, 1-hour containment, evidence, counsel decision tree, PIR, tabletop at D9 | security-model v0.3 §14; QA TO-SEC-006; roadmap D9 (D9) |
+| SEC-06 | Export execution split from approval; class-A approver independent; controlled auditor path | matrix v0.3 §3; security-model v0.3 §5; reporting v0.2 §7; personas v0.5 (D10) |
+| SEC-07 | At-rest lifecycle: A/B encryption, backup/PITR inheritance, cache purge, paper destruction, derived-copy deletion | security-model v0.3 §5; data-model v0.2 §9 |
+| SEC-08 | Privacy operations: DSAR, lawful-basis register, processor/transfer enablement gate, retention instantiation | security-model v0.3 §15; data-model v0.2 §9; integrations v0.2 §9 (D11) |
+| SEC-09/10 | AI gate (adviser sign-off + DPIA + injection tests for A/B); lawful-basis claim labelled UNVERIFIED; execution authority = intersection rule | ai v0.2; security-model v0.3 §8 (D12) |
+| SEC-13 | Independent append-only audit sink with hash-chaining; restore continuity check | security-model v0.3 §10 |
+| SEC-14 | Vulnerability release gate: no unfixed exploitable criticals; highs ≤30-day fix / ≤90-day recorded acceptance; SBOM per release | security-model v0.3 §13; deployment v0.3 §7; QA TO-SEC-007 (D8) |
+
+**Remaining:** 16 findings — FIN-09/10/14/15; TEC-06/07/09/10/11/12/13/14/15; SEC-11/12/15 — with TEC-14/15 and FIN-15 partly closed by the hygiene pass; plus the input-dependent items (tax OQ-029, retention OQ-024, appointments OQ-002/033, cost OQ-010). Next pass: P2.
+
+## 9. Version history
 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial review record: finance, technical and security passes executed by role-assistant personas over blueprint v1.2; 45 findings (3 critical, 13 high, 26 medium, 3 low); hygiene corrections applied | PROPOSED |
 | 0.2 | 2026-09-23 | P0 resolution log added: TEC-01, FIN-01/02/04, SEC-01/02/04/05 resolved via versioned document changes and new test obligations | PROPOSED |
+| 0.3 | 2026-09-23 | P1 resolution log added: 21 findings resolved per delegated PO decisions D1–D12; 16 remain | PROPOSED |

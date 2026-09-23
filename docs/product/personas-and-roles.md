@@ -2,7 +2,7 @@
 doc-id: PROD-PERSONAS
 title: Personas and Role Model
 status: PROPOSED
-version: 0.4
+version: 0.5
 date: 2026-09-23
 owner: Product Owner (accountable); operational validation with the acting operations authority (OQ-003 closed)
 applies-to: full enterprise target; pilot detail
@@ -144,6 +144,8 @@ At the pilot, this function may be performed by the GM or a remote group resourc
 
 At the pilot, front-desk agents rotate through the cashier role; the control model must still prevent self-approval of a variance.
 
+**Front Office Manager (department head).** Where the property staffs an FOM above the shift supervisor, the FOM holds the supervisor band plus the FOM band in the role matrix's consolidated refund/payout/waiver table (≤₦50,000), cancellation-penalty waivers within the OQ-012 band, and comps within the monthly budget (OQ-036).
+
 ### 2.11 Finance Controller / Accountant
 
 | Aspect | Detail |
@@ -224,7 +226,7 @@ Tier: Target; deferred from pilot (BR-MVP-013).
 |---|---|
 | Goal | Obtain evidence for an opinion |
 | Key activities | Sample transactions, trace postings, verify controls, inspect audit trails |
-| Needs | Read-only, time-boxed access to complete and immutable records; audit trail integrity; exportable evidence |
+| Needs | Read-only, time-boxed access to complete and immutable records; audit trail integrity; exportable evidence — via the controlled export path (watermarked, logged, time-boxed, delivered to verified recipients; SEC-06) |
 | Must never be able to | Modify anything; see data beyond the audit mandate |
 | Surfaces | Reporting/read-only access under contract |
 
@@ -301,3 +303,4 @@ Tier: Target; deferred from pilot (BR-MVP-013).
 | 0.2 | 2026-09-23 | Synthetic reference pilot: validation authority updated (acting operations authority; real-hotel validation at the First-Property Deployment Gate) | PROPOSED |
 | 0.3 | 2026-09-23 | Governance personas added (2.18 Technical Lead, 2.19 Security/Privacy Adviser); Finance Controller governance duties and reference-pilot account noted; role-based account rules added (§4.8) | PROPOSED |
 | 0.4 | 2026-09-23 | SEC-05 hardening: reference-pilot accounts MFA/exception, 30-day rotation, hard expiry at reference release, operator register, no real data | PROPOSED |
+| 0.5 | 2026-09-23 | P1 resolutions: FOM department-head authority noted (FIN-08); controlled auditor export path (SEC-06) | PROPOSED |

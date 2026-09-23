@@ -2,7 +2,7 @@
 doc-id: ARCH-TARGET
 title: Target-State Architecture Overview
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Principal Architect (drafted); Product Owner (approval)
 applies-to: full enterprise target
@@ -41,7 +41,7 @@ Related documents: `adr/ADR-001` (topology and ownership), `adr/ADR-002` (tenanc
 | Messaging providers (email, SMS, WhatsApp) | Outbound messages, inbound status | Adapter (INT-009) |
 | Door locks, ID devices, kiosks, RMS, fiscal systems | Provider-specific | Adapters (INT-010…014) |
 
-Products are bound to these roles only through Phase 3/4 evidence (ADR-001 decision 7). Nothing in this document presumes a specific product.
+Products are bound to these roles only through Programme P3/P4 evidence (ADR-001 decision 7). Nothing in this document presumes a specific product.
 
 ## 3. Layers and module map
 
@@ -102,21 +102,23 @@ Rule: exactly one authoritative owner per datum; every other occurrence is a der
 | Datum / decision | Authoritative owner | Authoritative form | Derived copies |
 |---|---|---|---|
 | Property, building, room type, room, features | Property & Inventory | Operational records, effective-dated where applicable | — |
-| OOO/OOS windows and maintenance holds | Property & Inventory (governed by Control for release) | Hold records | Availability projection |
+| OOO/OOS windows and maintenance holds | Property & Inventory (release evidence held by Control) | Hold records | Availability projection |
 | Inventory allocations (reservations, blocks, holds) | Property & Inventory | Allocation records | Availability projection |
 | Availability ("what can I sell") | — (derived) | Never authoritative | Projection rebuilt from allocations and holds; must reconcile to source |
 | Rate plan definitions, rate amounts, restrictions | Rates | Effective-dated records with full history | Published channel rates (adapter) |
 | Applied rate and tax on a folio item | Guest Financials | Immutable item snapshot at posting | Reporting |
 | Reservation and its lifecycle | Reservations | Reservation aggregate + transition evidence | Arrival lists |
-| Stay, room occupancy, room readiness | Front Office / Service Operations | Stay and room-state records | Room boards, availability inputs |
+| Stay and room occupancy | Front Office | Stay records | Room boards, availability inputs |
+| Room readiness | Service Operations | Readiness and room-state records | Housekeeping boards, availability inputs |
 | Guest profile, preferences, consent | Guests & Privacy | Profile records (tenant-scope); consent versions | CRM projection (consented subset only) |
 | Folio, charges, payments, deposits, refunds | Guest Financials | Immutable transaction items; balance derived from items | Reporting, reconciliation |
 | Cashier session, counted cash, variance | Guest Financials | Session records + count evidence | Accounting postings |
 | Business date (open/closed state) | Night Audit (Control) | Business-day record per property | All daily reports |
-| Policy versions (cancellation, credit, routing defaults, approval limits) | Platform configuration (governed by Control) | Effective-dated configuration records | Resolved policy per transaction, captured in evidence |
+| Policy versions (cancellation, credit, routing defaults, approval limits) | Platform configuration (approval evidence held by Control) | Effective-dated configuration records | Resolved policy per transaction, captured in evidence |
 | Transition evidence for governed actions | Control Plane | Immutable evidence records | Audit views |
 | Posting link and idempotency identity | Accounting Interface | Posting records | Reconciliation reports |
-| Reconciliation state and exceptions | Accounting Interface / Income Audit | Reconciliation records | Management and audit views |
+| Reconciliation state | Accounting Interface | Reconciliation records | Management and audit views |
+| Reconciliation exceptions | Income Audit | Exception cases with owner and age | Management and audit views |
 | GL entries, AR documents, tax documents, statutory books, period close | Accounting Authority | Accounting documents | Balances read back for reconciliation |
 | Statutory/customer-facing invoice | Customer documents: SuiteFlow issues the operative document; statutory/fiscal copy derives and links (OQ-011 closed; ADR-008) | Document records + linked statutory derivative | Document views, statutory-copy linkage |
 | Audit trail | Platform | Append-only audit store | Audit reporting |
@@ -179,7 +181,7 @@ Detail belongs to WP 0.7; the principles established here:
 | Proposed input | Outcome | Ruling |
 |---|---|---|
 | DP-CTX-001 (one isolated site per hotel) | **MODIFIED** | Tenant is the deployment unit; properties are first-class partitions with enforced scope; optional dedicated-property deployment remains available (ADR-002) |
-| DP-CTX-002 (Kamra operations / ERPNext accounting / control plane) | **ROLES CONFIRMED, PRODUCT BINDING DEFERRED** | The three-layer ownership model is adopted (ADR-001); which products fill the roles is a Phase 3/4 evidence decision |
+| DP-CTX-002 (Kamra operations / ERPNext accounting / control plane) | **ROLES CONFIRMED, PRODUCT BINDING DEFERRED** | The three-layer ownership model is adopted (ADR-001); which products fill the roles is a Programme P3/P4 evidence decision |
 | DP-CTX-003 (revenue recognised once; settlements as balance-sheet movements; guest-ledger control account) | **DEFERRED to WP 0.4** | Financial architecture validation is the subject of WP 0.4 |
 
 ## 9. Open items carried forward
@@ -195,3 +197,4 @@ Detail belongs to WP 0.7; the principles established here:
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial target-state overview issued with WP 0.2 pass 1 | PROPOSED |
 | 0.2 | 2026-09-23 | Invoice/document authority ruled (OQ-011 closed) in the ownership matrix | PROPOSED |
+| 0.3 | 2026-09-23 | P1/TEC-02: single-owner rows split for stay/readiness and reconciliation state/exceptions | PROPOSED |

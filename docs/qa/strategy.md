@@ -2,7 +2,7 @@
 doc-id: QA-STRATEGY
 title: Target QA and Acceptance Architecture
 status: PROPOSED
-version: 0.3
+version: 0.4
 date: 2026-09-23
 owner: QA Architect (drafted); Product Owner (approval)
 applies-to: full enterprise target; pilot acceptance
@@ -74,6 +74,8 @@ Every invariant, business rule and state machine produces test obligations `TO-<
 | TO-SEC-003 | Class-A masking and read logging; export approval | SEC-MODEL §5/§10 |
 | TO-SEC-004 | Break-glass cannot be self-granted; two-person grant; independent review; alerts at grant/expiry | SEC-MODEL §9, SEC-ROLES §4 |
 | TO-SEC-005 | Privileged grants on maker–checker (requester ≠ approver ≠ beneficiary); reference-pilot role accounts time-boxed, rotated and logged | SEC-ROLES §3/§5, personas §4.8 |
+| TO-SEC-006 | Incident/breach tabletop at the reference release; evidence preservation and notification decision tree exercised | SEC-MODEL §14 |
+| TO-SEC-007 | Vulnerability gate: no unfixed exploitable criticals; highs within the accepted time-box; SBOM/scans in the release pack | SEC-MODEL §13, deployment §7 |
 | TO-INT-001 | Duplicate delivery produces one effect; replay safe | ADR-010 |
 | TO-INT-002 | Provider timeout resolved by status/reconciliation, no blind resubmission | ADR-010 §4 |
 | TO-INT-003 | Acquirer batch reconciliation catches injected mismatch | INT-ARCH §6 |
@@ -89,7 +91,7 @@ Every invariant, business rule and state machine produces test obligations `TO-<
 |---|---|
 | Merge | Unit + module + API tests; architecture tests; no new unmapped posting families |
 | Release candidate | Full regression suites; financial suite; permission/scope pack; failure injection; UI key flows |
-| Reference release | Golden day acceptance on synthetic data; performance at scale; security test pack; timed restore drill; synthetic migration reconciliation; role-played UAT accepted by the Product Owner (acting operations authority) and finance; documentation updated; runbooks exercised |
+| Reference release | Golden day acceptance on synthetic data; performance at scale; security test pack; timed restore drill; synthetic migration reconciliation; role-played UAT accepted by the Product Owner (acting operations authority) and finance; incident/breach tabletop exercised; documentation updated; runbooks exercised |
 | First property | First-Property Deployment Gate: real-data migration reconciliation; hotel-staff UAT and acceptance; training completed; on-site readiness review |
 | Post-release | Monitored stabilization; defect triage; no S0/S1 open from previous release |
 
@@ -149,3 +151,4 @@ Promotion is by versioned artefact only; no environment-specific code branches; 
 | 0.1 | 2026-09-23 | Initial QA and acceptance architecture issued with WP 0.7 | PROPOSED |
 | 0.2 | 2026-09-23 | Synthetic reference pilot: UAT reframed as scripted role-played acceptance; release gates updated (reference release; First-Property Deployment Gate) | PROPOSED |
 | 0.3 | 2026-09-23 | P0 obligations registered: TO-AVL-001 (capacity divergence), TO-FOL-006/007 (no-show, forfeiture tax), TO-SEC-004/005 (break-glass, privileged grants); TO-SEC-001 covers framework-generic surfaces | PROPOSED |
+| 0.4 | 2026-09-23 | P1 obligations: TO-SEC-006/007 (incident tabletop, vulnerability gate); reference-release gates include the tabletop (SEC-03/14) | PROPOSED |

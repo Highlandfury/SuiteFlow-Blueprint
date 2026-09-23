@@ -48,7 +48,7 @@ How are deposits and prepayments recorded, applied, refunded, forfeited, taxed a
    - On application, tax follows the underlying supply's tax treatment for its business dates.
    - On forfeiture, the default assumption is that the amount **is taxable consideration** for the cancellation right, taxed at the applicable rate for the cancelled service; where tax advice concludes otherwise, the mapping changes by configuration with effect from the advice date. Guest-facing penalties and forfeitures are quoted **tax-inclusive** by default: tax is extracted as `amount × rate ÷ (1 + rate)` (for example, at 7.5%: ₦43,000 → ₦40,000 revenue + ₦3,000 tax), never added on top of the received amount. **STATUS: UNVERIFIED — tax adviser confirmation required (OQ-021 closed/OQ-029).**
 6. **Refunds** are executed only from cleared funds, ideally by the original method; bank-detail changes require enhanced verification (BR-FOL-012).
-7. **Unclaimed deposits** age under finance monitoring; treatment of genuinely unclaimed funds (escheatment, retention, or write-back) follows jurisdictional advice — **UNVERIFIED**, flagged for Phase 1 research.
+7. **Unclaimed deposits** age under finance monitoring; treatment of genuinely unclaimed funds (escheatment, retention, or write-back) follows jurisdictional advice — **UNVERIFIED**, flagged for Programme P1 research.
 8. **Deposit liability reporting** is a standard daily and month-end output: opening balance, receipts, applications, refunds, forfeitures, closing balance, reconciled to the control account.
 
 ## Reasoning
@@ -81,7 +81,7 @@ How are deposits and prepayments recorded, applied, refunded, forfeited, taxed a
 
 ## Implementation impact
 
-No immediate change. Phase 2 verifies current deposit behaviour; Phase 4 decides transition.
+No immediate change. Programme P2 verifies current deposit behaviour; Programme P4 decides transition.
 
 ## Migration impact
 

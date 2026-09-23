@@ -2,7 +2,7 @@
 doc-id: SEC-MODEL
 title: Target Security Model
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Security Engineer (drafted); Product Owner (approval)
 applies-to: full enterprise target
@@ -63,6 +63,8 @@ The role catalogue, permission summaries, authority-limit defaults and separatio
 
 Field-level rules: masking for class A in lists and search results; full view only within the permitted workflow (for example, check-in document verification); no class-A data in logs, error messages, analytics or AI prompts unless the AI use case is approved for that class and scoped accordingly.
 
+**Data-at-rest lifecycle (SEC-07 resolution).** Classes A and B are encrypted at rest with managed keys. Backup/PITR generations inherit the same retention and access rules (sealed, access-restricted, defined expiry, legal-hold exception; crypto-shred for class A where the platform supports it). Degraded-mode/device caches are encrypted and purged at session end. Paper fallback captures (identity, payments) follow a secure collection-and-destruction procedure. Deleting a record also covers derived copies covered by the retention policy.
+
 ## 6. Tenancy and scope enforcement
 
 Scope (tenant implicit at deployment level; property and company explicit) is enforced for **every surface class**:
@@ -93,7 +95,7 @@ The following are dual-control when configured (defaults in the role matrix; alw
 | Day reopen / period reopen | Require finance-controller authority with impact assessment |
 | Credit limit overrides; account suspension/reinstatement | Require finance authority |
 | Rate changes above revenue-defined bands; restriction overrides | Require revenue authority |
-| Configuration changes to tax rules, mappings, authority limits, number series | Require the authority they govern; maker–checker on limits |
+| Configuration changes to tax rules, mappings, authority limits, number series | **Finance Controller approval; tax rules additionally require tax-adviser sign-off**; maker–checker on limits; GM is read-only (FIN-11) |
 | Role assignment changes; break-glass grants | Require security/admin authority; logged prominently |
 
 Mechanism requirements per ADR-009 §4: approval bound to the exact intended payload; expiry; both identities recorded; approved execution re-validates preconditions at execution time.
@@ -102,7 +104,7 @@ Mechanism requirements per ADR-009 §4: approval bound to the exact intended pay
 
 - **Integration clients**: one named principal per provider interface; least-privilege operation allow-list; secrets rotatable without downtime; all calls logged with correlation; failures alertable; replay/idempotency per WP 0.7 contracts.
 - **Service identities**: no interactive login; scopes defined per job; job schedules and overrides audited.
-- **AI assistants**: read tools scoped to the invoker; state changes only through governed services under a human or service identity with its own authority; prompt and tool-call audit; evaluation gate before enabling each AI capability (WP 0.7).
+- **AI assistants**: read tools scoped to the invoker; state changes only through governed services. **Execution authority = intersection(invoker authority, service identity permissions, policy)**; execution above the invoker's own authority requires a named human approver (SEC-10 resolution). Prompt and tool-call audit; evaluation gate before enabling each AI capability (WP 0.7).
 - **Restore/DR procedures**: restored workers must run with duplicate-effect protection (BR-REL-007) — a security and financial control, not only an engineering detail.
 
 ## 9. Break-glass access
@@ -116,8 +118,7 @@ Mechanism requirements per ADR-009 §4: approval bound to the exact intended pay
 ## 10. Audit and monitoring
 
 | Event class | Logged content | Retention direction |
-|---|---|---|
-| Authentication (success/failure, lockout, MFA events) | Principal, method, source, outcome | Security retention policy |
+|---|---|---|| Authentication (success/failure, lockout, MFA events) | Principal, method, source, outcome | Security retention policy |
 | Authorization denials and limit breaches | Principal, action, resource, reason | As above |
 | Sensitive reads (class A) | Principal, record reference, purpose context | As above |
 | Maker–checker requests, approvals, rejections, expiries | Requester, approver, payload hash, outcome | Financial retention |
@@ -127,6 +128,8 @@ Mechanism requirements per ADR-009 §4: approval bound to the exact intended pay
 | Integration failures and reconciliation exceptions | Interface, volume/value, owner | Operational retention |
 
 Audit records are append-only (INV-PLT-4); access to audit data is itself scoped and logged; monitoring surfaces deny-bursts, lockout spikes, class-A read anomalies, break-glass use and reconciliation failures.
+
+**Independence (SEC-13 resolution).** Audit and security events ship to an **append-only sink outside administrator control** (WORM/object-lock or a separate credential domain), hash-chained for tamper evidence; audit continuity is verified in restore drills.
 
 ## 11. Secrets and key management
 
@@ -163,8 +166,33 @@ Audit records are append-only (INV-PLT-4); access to audit data is itself scoped
 | Secrets scanning in CI; dependency and image scanning | Continuous |
 | Restore drill including duplicate-effect protection | Pre-pilot (BR-REL-002/003) |
 | Independent penetration test focused on scope and money paths | Pre-pilot gate |
+| Vulnerability remediation gate: no unfixed exploitable criticals at any release; highs fixed ≤30 days or time-boxed recorded acceptance ≤90 days; SBOM + dependency/image scans in the release pack | Every release; reassessed at D9 and before the first property (SEC-14) |
 
-## 14. Open items and dependencies
+## 14. Incident and breach response
+
+Security incidents (scope leak, credential compromise, unauthorized access, data loss) and privacy breaches. Owner: Security/Privacy Adviser with the Technical Lead (interim: Product Owner with the Technical Lead until OQ-033).
+
+| Element | Requirement |
+|---|---|
+| Severity | Aligned to the programme defect scale S0–S3; scope leakage and class-A exposure are always S0 |
+| Declaration | Security/Privacy Adviser + Technical Lead (interim: PO + TL); on-call may declare and contain immediately |
+| Containment clocks | Scope leak, credential compromise or class-A exposure isolated/revoked within 1 hour of confirmation |
+| Evidence | Forensic copy and chain of custody; events exported to the append-only sink (§10); log rotation never destroys evidence |
+| Notification | Counsel decision tree: regulator, data subjects, insurers — timelines configured on counsel advice (NDPA duties UNVERIFIED); no legal position is asserted here |
+| Post-incident review | PIR within 10 business days, tracked actions, breach register maintained |
+| Rehearsal | Tabletop at the reference release (D9 evidence); repeated before first-property deployment |
+
+## 15. Privacy operations
+
+Legal specifics remain counsel-confirmed; the operating mechanics are design commitments.
+
+1. **DSAR workflow** — intake, identity verification, tracked clock (interim design default 30 days from verified request; counsel confirms the statutory clock), fulfilment evidence, refusal reasons.
+2. **Lawful-basis register** — per processing activity: purpose, lawful basis, retention category, recipients, storage location and cross-border status.
+3. **Processor and transfer register as an enablement gate** — no new processor or cross-border transfer touching personal data goes live without a recorded agreement, transfer mechanism and register entry (ties to the integration interfaces and OQ-026).
+4. **Retention instantiation** — per-category rules from the OQ-024 recommended schedule (UNVERIFIED pending counsel), evidenced deletion, legal-hold exception, and erasure tests covering derived copies and caches (§5).
+5. **Owner** — Security/Privacy Adviser (interim: Product Owner until OQ-033); evidence surfaced at the acceptance gate and reference release.
+
+## 16. Open items and dependencies
 
 | Item | Owner | Note |
 |---|---|---|
@@ -174,9 +202,10 @@ Audit records are append-only (INV-PLT-4); access to audit data is itself scoped
 | OQ-002/OQ-033 named Finance/Security approvers | Product Owner | Approval gates for this model |
 | Authenticator choice (MFA method) | Platform | Deployment-phase decision (WP 0.7) |
 
-## 15. Version history
+## 17. Version history
 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial security model issued with WP 0.5 | PROPOSED |
 | 0.2 | 2026-09-23 | P0 resolutions: framework-generic surfaces (SEC-01, §2.3); no-self-grant break-glass with named reviewer (SEC-02, §9); reference-pilot account rules (SEC-05, §3) | PROPOSED |
+| 0.3 | 2026-09-23 | P1 resolutions: data-at-rest lifecycle (SEC-07, §5); AI authority intersection (SEC-10, §8); audit sink (SEC-13, §10); vulnerability gate (SEC-14, §13); incident/breach response (§14) and privacy operations (§15) added; financial-config approval restriction (FIN-11, §7) | PROPOSED |

@@ -2,7 +2,7 @@
 doc-id: ADR-010
 title: Integration, event delivery and idempotency contract
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Integration Architect (drafted); Principal Architect (review); Product Owner (approval)
 applies-to: full enterprise target
@@ -40,7 +40,7 @@ How do state changes produce observable, reliable outside effects — internal c
 
 ## Decision
 
-1. **Transactional outbox.** Every governed state change writes its event(s) to an outbox table in the same database transaction as the state change. Delivery workers claim, publish and record attempts. Events are immutable.
+1. **Transactional outbox with separate dispatch state.** Every governed state change writes its event(s) to an outbox table in the same database transaction as the state change. The event row is **immutable**; delivery workers claim, publish and record attempts in a **separate dispatch/attempt table** (claim, visibility deadline, outcome, next attempt). Replay and evidence derive from dispatch state, never by mutating events.
 2. **Versioned envelope.** Every event carries: event identity (durable, unique), event type and version, occurrence time and business date, tenant/property scope, aggregate type and identity, actor/causation, correlation identity, and payload. Schema evolution is additive; breaking changes require a new version and a migration plan (ADR-003 §5).
 3. **At-least-once, with idempotent consumers.** Consumers deduplicate by event identity (inbox records) and by domain idempotency keys. The system claims *observable exactly-once effects*, never *exactly-once delivery*.
 4. **Write-ahead intent for outbound provider calls.** Before calling a provider, the intent is persisted (identity, payload hash, attempt); the outcome — success, failure, or uncertain — is recorded. Uncertain outcomes are resolved by status query or reconciliation, never by blind re-submission (BR-ACC-003).
@@ -83,7 +83,7 @@ How do state changes produce observable, reliable outside effects — internal c
 
 ## Implementation impact
 
-No immediate change. Phase 2 audits existing event/outbox practices; Phase 4 plans transition.
+No immediate change. Programme P2 audits existing event/outbox practices; Programme P4 plans transition.
 
 ## Migration impact
 
@@ -100,3 +100,4 @@ Existing events and integrations migrate to the registry with identities back-fi
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial decision issued with WP 0.7; rules on DP-ADR-003 | PROPOSED |
+| 0.2 | 2026-09-23 | P1 resolution: immutable outbox events with separate dispatch/attempt state (TEC-03) | PROPOSED |

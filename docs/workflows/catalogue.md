@@ -225,7 +225,7 @@ Detailed screen-level operational design (swim-lanes, information hierarchy, key
 
 ## 7. Coverage note
 
-This catalogue covers the pilot-critical workflows and the main enterprise patterns. Additional workflows (outlet operations, sales pipeline, channel distribution, CRM, purchasing) are added when their phases begin (Ph10+), under the same format and realism test. Screen-level design for every workflow above is produced in WP 0.6.
+This catalogue covers the pilot-critical workflows and the main enterprise patterns. Additional workflows (outlet operations, sales pipeline, channel distribution, CRM, purchasing) are added when their phases begin (D10+), under the same format and realism test. Screen-level design for every workflow above is produced in WP 0.6.
 
 ## 8. Version history
 

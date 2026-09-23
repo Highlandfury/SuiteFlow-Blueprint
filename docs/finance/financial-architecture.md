@@ -2,7 +2,7 @@
 doc-id: FIN-ARCH
 title: Target Financial Architecture
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Financial Systems Architect (drafted); Finance Controller (approval; OQ-002 open)
 applies-to: full enterprise target
@@ -183,7 +183,7 @@ Each clearing account ages visibly; unmatched items beyond policy windows are fi
 | Element | Treatment | Status |
 |---|---|---|
 | Tax engine | Effective-dated rules per tax type: rate, basis, applicability (service categories), exemptions, rounding, computation order | REQUIRED |
-| VAT | Applied per configured rate on applicable services; tax payable liability; tax point tied to service delivery/business date | Rate and treatment **UNVERIFIED** for the pilot jurisdiction pending Phase 1 primary-source research and tax advice (service-charge answer OQ-021 closed; tax advice OQ-029 open) |
+| VAT | Applied per configured rate on applicable services; tax payable liability; **tax point is a per-tax-type configuration attribute (delivery / invoice / payment / receipt), default service delivery/business date** | Rate and treatment **UNVERIFIED** for the pilot jurisdiction pending Programme P1 primary-source research and tax advice (service-charge answer OQ-021 closed; tax advice OQ-029 open) |
 | Consumption/levy taxes | Modelled as additional configurable tax types where applicable | **UNVERIFIED** applicability to this property |
 | Service charge | Default: collected as a liability for distribution (not revenue), distinct from tax | OQ-021 (closed); default per BR-FOL-010 context |
 | Withholding tax | Out of scope for guest operations at pilot; relevant to commissions/payables where applicable | **UNVERIFIED** |
@@ -223,6 +223,8 @@ Every item below runs daily; an **unexplained difference blocks the stage it pro
 | 9 | Link integrity | Every item has ≤1 posting link; every posting has source items | Posting records | no orphans either direction |
 | 10 | Cashier sessions | All sessions closed or explicitly excepted | Session records | as per policy |
 | 11 | Document series | Issued numbers gapless where required; no reuse | Series configuration | as per series policy |
+| 12 | Acquirer settlement | Terminal batch totals by acquirer/terminal | Acquirer settlement report (batch, fees, net credit) | zero after fees; unmatched batches aged |
+| 13 | Bank statement | Bank statement entries (credits/debits) | Cash deposits + POS settlement credits + transfer/cheque clearing expected | zero unexplained |
 
 ## 11. Close and period close
 
@@ -275,9 +277,9 @@ Every item below runs daily; an **unexplained difference blocks the stage it pro
 | OQ-021 (closed) service charge and tax treatment | Tax configuration finalisation | Finance / tax adviser |
 | OQ-029 fiscalisation requirements | Invoicing/integration scope | Legal / Finance |
 | OQ-001 legal entity and tax identifiers | Document templates, statutory reporting | Product Owner |
-| Nigeria tax primary-source research | Tax rule implementation (RSK-FIN-004) | Finance / Phase 1 research |
-| Opening-balance migration evidence | Go-live (Phase 9) | Finance / migration |
-| Golden-day financial acceptance fixture | Phase 7 exit gate | QA / Finance |
+| Nigeria tax primary-source research | Tax rule implementation (RSK-FIN-004) | Finance / Programme P1 research |
+| Opening-balance migration evidence | Go-live (D9) | Finance / migration |
+| Golden-day financial acceptance fixture | D7 exit gate | QA / Finance |
 
 ## 16. Version history
 
@@ -285,3 +287,4 @@ Every item below runs daily; an **unexplained difference blocks the stage it pro
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial financial architecture issued with WP 0.4; validates DP-CTX-003, DP-ADR-001/002/005 via ADR-005…008 | PROPOSED |
 | 0.2 | 2026-09-23 | P0 resolutions: no-show single-recognition rule + worked example (§5.6; FIN-01); tax-inclusive penalty/forfeiture computation (§7; FIN-02); closing/blocking semantics aligned to ADR-006 §3 (§10/§12; FIN-04) | PROPOSED |
+| 0.3 | 2026-09-23 | P1 resolutions: bank/acquirer reconciliation checks 12–13 (§10; FIN-03); configurable tax point (§7; FIN-12) | PROPOSED |

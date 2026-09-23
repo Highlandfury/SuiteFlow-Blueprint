@@ -50,7 +50,7 @@ What authorization model gives the target least-privilege access, deterministic 
 8. **Break-glass.** A time-boxed, alerted, post-reviewed elevation path (CAP-PLT-015); never a standing role; grants are logged with reason and reviewed within 24 hours.
 9. **Evidence.** Every authorization denial is logged; every approval, limit use and sensitive read is logged; audit records are append-only (CAP-PLT-006).
 10. **Testing is part of the decision.** The model is not implemented until negative tests exist per surface class (command, query, report, export, API, webhook, AI tool) proving cross-scope denial and self-approval denial.
-11. **Framework-generic surface closure (SEC-01 resolution).** The bound platform exposes framework-generated surfaces (REST `/api/resource/*`, report builder, file/attachment URLs, bulk import/export, Desk list/search, admin UI). These are enumerated in a maintained **surface inventory** and each is either disabled, mediated by the authorization service, or restricted by record-level permissions as defence in depth. A framework-generic surface that can read or write scoped data without scope enforcement is a critical defect; Phase 2 enumerates the surfaces and CI fails when routes or permissions change without inventory review.
+11. **Framework-generic surface closure (SEC-01 resolution).** The bound platform exposes framework-generated surfaces (REST `/api/resource/*`, report builder, file/attachment URLs, bulk import/export, Desk list/search, admin UI). These are enumerated in a maintained **surface inventory** and each is either disabled, mediated by the authorization service, or restricted by record-level permissions as defence in depth. A framework-generic surface that can read or write scoped data without scope enforcement is a critical defect; Programme P2 enumerates the surfaces and CI fails when routes or permissions change without inventory review.
 
 ## Reasoning
 
@@ -85,7 +85,7 @@ What authorization model gives the target least-privilege access, deterministic 
 
 ## Implementation impact
 
-No immediate change. Phase 2 audits current authorization practices; Phase 4 plans transition. Foundation-phase implementation (when authorized) starts with this model rather than retrofitting it.
+No immediate change. Programme P2 audits current authorization practices; Programme P4 plans transition. Foundation-phase implementation (when authorized) starts with this model rather than retrofitting it.
 
 ## Migration impact
 

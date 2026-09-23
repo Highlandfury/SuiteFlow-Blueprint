@@ -1,6 +1,6 @@
 # SuiteFlow Target-State Blueprint
 
-**Status:** Active — Phase 0 (Target Product Definition)
+**Status:** Active — Programme P0 (Target Product Definition)
 **Date opened:** 23 September 2026
 **Owner:** SuiteFlow programme (Product Owner accountable)
 
@@ -24,7 +24,7 @@ TRANSITION ARCHITECTURE
 IMPLEMENTATION ROADMAP
 ```
 
-The target blueprint is authored before, and independently of, any inspection of current code, databases, DocTypes, screens or workflows. Current-state analyses, when they happen (Phase 2), are recorded separately and compared against this blueprint — never used to silently redefine it.
+The target blueprint is authored before, and independently of, any inspection of current code, databases, DocTypes, screens or workflows. Current-state analyses, when they happen (Programme P2), are recorded separately and compared against this blueprint — never used to silently redefine it.
 
 ## What belongs here
 
@@ -39,7 +39,7 @@ The target blueprint is authored before, and independently of, any inspection of
 
 - Application code, DocType definitions, SQL, patches or infrastructure configuration
 - Confidential or proprietary material from any commercial vendor
-- Claims about the current SuiteFlow implementation (those belong to Phase 2 evidence records)
+- Claims about the current SuiteFlow implementation (those belong to Programme P2 evidence records)
 
 ## Related documents outside this repository
 
@@ -48,7 +48,7 @@ The target blueprint is authored before, and independently of, any inspection of
 | Product Owner Kickoff Decision Log v0.2 | `/home/suiteflow/docs/` (programme machine) | Accepted business requirement input, recorded in the inputs register |
 | Architecture and Financial Control Decision Pack v0.1 | `/home/suiteflow/docs/` | Proposed architecture input, subject to blueprint validation |
 | Product Owner Baseline | `Highlandfury/SuiteFlow` → `docs/` | Accepted pilot baseline, recorded in the inputs register |
-| Implementation repository | `Highlandfury/SuiteFlow` | Current-state implementation and evidence (Phase 2 audit target) |
+| Implementation repository | `Highlandfury/SuiteFlow` | Current-state implementation and evidence (Programme P2 audit target) |
 
 ## How to read this repository
 
@@ -56,12 +56,12 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 ## Current phase
 
-**Phase 0 complete — WP 0.8 Blueprint Consolidation delivered; awaiting Product Owner acceptance. Pilot redefined (23 Sep 2026) as a synthetic reference pilot — no real property; the Product Owner acts as operations authority and acceptance approver.**
+**Programme P0 complete — WP 0.8 Blueprint Consolidation delivered; awaiting Product Owner acceptance. Pilot redefined (23 Sep 2026) as a synthetic reference pilot — no real property; the Product Owner acts as operations authority and acceptance approver.**
 
-- `docs/TARGET-STATE-BLUEPRINT.md` v1.2 (PROPOSED): consolidated master index with inventory, architecture summaries, acceptance model (reference pilot + First-Property Deployment Gate), the Phase 0 exit gate and next steps.
-- `product/roadmap.md` v1.1: full roadmap with per-phase objectives, capabilities, inputs, dependencies, risks, tests and exit criteria for pilot phases 1–9 (synthetic migration, role-played UAT, reference release), the First-Property Deployment Gate and enterprise phases 10–20.
-- Phase 0 exit gate: 7 approval groups remain (Product Owner incl. acting operations acceptance; Finance via OQ-002; Security adviser via OQ-033; Technical Lead; ADR confirmations; open questions). See the blueprint §12.
-- Acceptance-readiness review recorded (`docs/00-governance/review-findings-2026-09-23.md`): 45 findings — 3 critical, 13 high — to resolve in the pre-acceptance fix pass.
+- `docs/TARGET-STATE-BLUEPRINT.md` v1.3 (PROPOSED): consolidated master index with inventory, architecture summaries, acceptance model (reference pilot + First-Property Deployment Gate), the Programme P0 exit gate and next steps.
+- `product/roadmap.md` v1.2: full roadmap with per-phase objectives, capabilities, inputs, dependencies, risks, tests and exit criteria for Delivery D1–D9 (synthetic migration, role-played UAT, reference release), the First-Property Deployment Gate and enterprise D10–D20; dated 24-week horizon (start 23 Sep 2026, target 10 Mar 2027) with the pilot scope freeze at P0 acceptance.
+- Programme P0 exit gate: 7 approval groups remain (Product Owner incl. acting operations acceptance; Finance via OQ-002; Security adviser via OQ-033; Technical Lead; ADR confirmations; open questions). See the blueprint §12.
+- Acceptance-readiness review recorded (`docs/00-governance/review-findings-2026-09-23.md`): 45 findings; P0 (3 criticals + 5 highs) and P1 (8 highs + 13 mediums) resolved under the Product Owner's delegated decision record (`docs/00-governance/product-owner-decisions-2026-09-23.md`); P2 remain.
 
 ### How we got here
 
@@ -78,7 +78,7 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 ### Programme next steps
 
-Phase 1 (external research and benchmark validation) → Phase 2 (current-state audit) → Phase 3 (gap matrix) → Phase 4 (transition architecture) → delivery phases 1–20. Governed proof spikes are permitted earlier with Product Owner approval.
+Programme P1 (external research and benchmark validation) → Programme P2 (current-state audit) → Programme P3 (gap matrix) → Programme P4 (transition architecture) → delivery D1–D20. Governed proof spikes are permitted earlier with Product Owner approval.
 
 **Open questions:** 26 of 38 closed (25 adopted industry-standard answers + OQ-003 operations authority, 23 Sep 2026); 12 remain — 8 facts (2 now: Finance Controller, Technical Lead/Security adviser; 6 deferred to the first property), 3 professional-advice items, 1 cost approval. See `docs/00-governance/industry-standard-answers.md` and the register; decision digest in `docs/00-governance/decisions-required.md`.
 

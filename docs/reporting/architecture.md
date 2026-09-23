@@ -2,7 +2,7 @@
 doc-id: RPT-ARCH
 title: Target Reporting Architecture
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Data Architect (drafted); Finance Controller (approval; OQ-002 open)
 applies-to: full enterprise target
@@ -29,9 +29,9 @@ Reporting is how the hotel steers; it must reconcile to the same numbers finance
 Operational records (folios, payments, stays, tasks)
         │  events / projections (idempotent)
         ▼
-Read models:   operational boards (live)  ·  daily aggregates (business-date)  ·  control expectations  ·  analytical extracts (Ph15)
+Read models:   operational boards (live)  ·  daily aggregates (business-date)  ·  control expectations  ·  analytical extracts (D15)
         ▼
-Reports:  operational · revenue · financial · audit · housekeeping/maintenance · management · chain (Ph14)
+Reports:  operational · revenue · financial · audit · housekeeping/maintenance · management · chain (D14)
         ▼
 Delivery: screen · print · export (permissioned) · scheduled
 ```
@@ -43,7 +43,7 @@ Read model classes:
 | Live boards | Room state, queues, tasks, cashier totals | Seconds | Direct events/projections |
 | Daily aggregates | Revenue by family, taxes, payments by method, deposits movement, statistics | At close (frozen), updated during open day as provisional | Posting runs and folio items |
 | Control expectations | Guest ledger, deposits, clearing, AR, tax expectations for reconciliation | Each posting run | Financial architecture §10 |
-| Analytical extracts | Historical, cross-property, BI | On schedule (Ph15) | Closed aggregates only |
+| Analytical extracts | Historical, cross-property, BI | On schedule (D15) | Closed aggregates only |
 
 ## 3. Report catalogue
 
@@ -70,7 +70,7 @@ Read model classes:
 | 19 | Document series audit | Number series | Monthly | Finance |
 | 20 | Group pickup and wash | Block vs pickup | Per group / weekly | Sales, revenue |
 | 21 | Guest history and production | Guests, stays, folios | On demand | Front office, sales |
-| 22 | Chain consolidation *(Ph14)* | Closed property results | Monthly | Group executives |
+| 22 | Chain consolidation *(D14)* | Closed property results | Monthly | Group executives |
 
 ## 4. Definitions governance
 
@@ -91,7 +91,7 @@ Every summary cell opens to contributing transactions (folio items, payments, wo
 
 ## 7. Exports and extracts
 
-Exports are permission-scoped, logged, and carry provenance (as-of, certification, scope, definition version). Class-A exports require approval. Bulk extracts for BI derive from closed, reconciled data only.
+Exports are permission-scoped, logged, and carry provenance (as-of, certification, scope, definition version). **Export execution is separate from approval (SEC-06 resolution):** class-B exports execute within role scope with approval recorded; class-A exports require approval **independent of the executor**, are watermarked, time-boxed and delivered only to verified recipients; the external-auditor path is read-only, time-boxed and fully logged. Bulk extracts for BI derive from closed, reconciled data only.
 
 ## 8. Performance and retention
 
@@ -125,3 +125,4 @@ Exports are permission-scoped, logged, and carry provenance (as-of, certificatio
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial reporting architecture issued with WP 0.7 | PROPOSED |
+| 0.2 | 2026-09-23 | P1 resolution: export execute/approve split and auditor path (SEC-06) | PROPOSED |

@@ -2,7 +2,7 @@
 doc-id: ADR-008
 title: Invoice and statutory document authority
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Financial Systems Architect (drafted); Finance Controller + tax adviser (approval; roles open)
 applies-to: full enterprise target
@@ -39,12 +39,12 @@ Which system issues which financial document, under what authority and numbering
 
 ## Decision
 
-1. **SuiteFlow is the issuing authority for guest-facing and corporate financial documents** — folio invoice, pro forma, receipts, in-house statements — produced from folio truth at settlement/checkout, numbered from configured series, and linked to their items.
-2. **The Accounting Authority produces statutory accounting documents** (AR invoices/credit notes, journals) where configured; these are **linked one-to-one** to the event and its SuiteFlow document, never an independent second invoice for the same supply.
-3. **One supply, one operative document.** Where a separate fiscal document is legally required (OQ-029), it is derived from and linked to the SuiteFlow document; both carry the same series reference and the mapping is testable.
+1. **SuiteFlow is the issuing authority for guest-facing and corporate financial documents** — folio invoice, pro forma, receipts, in-house statements, and corporate statements rendered from AR data — produced from folio truth at settlement/checkout, numbered from configured series, and linked to their items.
+2. **The Accounting Authority produces statutory ledger documents** (AR ledger entries, journals, credit notes) where configured; these are **not customer invoices** and are **linked one-to-one** to the event and its SuiteFlow document, never an independent second invoice for the same supply.
+3. **One supply, one operative document.** Where a separate fiscal document is legally required (OQ-029), it is derived from and linked to the SuiteFlow document; where law requires its own series regime it uses that series and carries a cross-reference to the operative document. The mapping is testable.
 4. **Numbering.** Per-property, per-series, configured (prefix, width, reset, gap policy), never reused; gapless allocation supported for series where law requires it (ADR-004 decision 2).
 5. **Particulars.** The document format is configuration carrying the particulars required by law (entity name, tax number, tax rate/amount, date, description, series number). Format changes are configuration changes with effective dates.
-6. **Corporate statements** are produced from AR by the Accounting Authority; their content reconciles to folio-level detail held in SuiteFlow; disputes reference the folio evidence.
+6. **Corporate statements** are produced from AR data and rendered as SuiteFlow customer documents (decision 1); their content reconciles to folio-level detail held in SuiteFlow; disputes reference the folio evidence.
 7. **Proformas are not invoices**: they carry a clear non-statutory marking and no series that implies tax invoicing.
 8. **This ADR is PROPOSED pending:**
    - Finance Controller confirmation at acceptance (OQ-002);
@@ -80,7 +80,7 @@ Which system issues which financial document, under what authority and numbering
 
 ## Implementation impact
 
-No immediate change. Phase 2 verifies current document behavior; Phase 4 plans transition.
+No immediate change. Programme P2 verifies current document behavior; Programme P4 plans transition.
 
 ## Migration impact
 
@@ -97,3 +97,4 @@ Historical document series migrate with numbering continuity preserved; no reuse
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial decision issued with WP 0.4; OQ-011 confirmation pending | PROPOSED |
 | 0.2 | 2026-09-23 | OQ-011 closed by Product Owner adoption (industry-standard answer); pending items restated (OQ-002, OQ-029, OQ-001) | PROPOSED |
+| 0.3 | 2026-09-23 | P1 resolution: authority clarified — SuiteFlow issues customer documents incl. corporate statements; statutory ledger documents are not customer invoices; fiscal series cross-reference (FIN-05) | PROPOSED |

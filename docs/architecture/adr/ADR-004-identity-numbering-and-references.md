@@ -107,7 +107,7 @@ How are entities identified internally, how are human-facing numbers allocated, 
 
 ## Implementation impact
 
-No immediate change. Phase 2 classifies current identity practices; Phase 4 decides migration per domain.
+No immediate change. Programme P2 classifies current identity practices; Programme P4 decides migration per domain.
 
 ## Migration impact
 

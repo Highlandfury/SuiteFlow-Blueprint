@@ -36,7 +36,7 @@ Labels (mandate §20): **REQUIRED** (contractual or confirmed), **TARGET** (engi
 
 | # | Requirement | Value | Label |
 |---|---|---|---|
-| C-1 | Concurrent staff sessions at 200 rooms | 50 simultaneous | TARGET (validate in Phase 2/7) |
+| C-1 | Concurrent staff sessions at 200 rooms | 50 simultaneous | TARGET (validate in Programme P2/D7) |
 | C-2 | Peak concurrent check-ins | 15 without lost updates | TARGET |
 | C-3 | Inventory double-booking under race | Deterministically prevented (unique constraints + transactional checks) | REQUIRED |
 | C-4 | Folio balance identity under concurrent posting | Holds at every observable moment | REQUIRED (INV-FOL-1) |
@@ -83,7 +83,7 @@ Labels (mandate §20): **REQUIRED** (contractual or confirmed), **TARGET** (engi
 | # | Requirement | Value | Label |
 |---|---|---|---|
 | S-1 | Pilot scale | One property, 200 rooms, 1–3M folio items/year | REQUIRED |
-| S-2 | Small group | 2–10 properties on the same tenant model | TARGET (Ph14) |
+| S-2 | Small group | 2–10 properties on the same tenant model | TARGET (D14) |
 | S-3 | Chain | 50+ properties, consolidated reporting | ASPIRATIONAL |
 
 ## 8. Security and auditability

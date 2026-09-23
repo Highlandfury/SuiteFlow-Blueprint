@@ -1,21 +1,21 @@
 ---
 doc-id: BP-V1
-title: SuiteFlow Target-State Blueprint v1.2
+title: SuiteFlow Target-State Blueprint v1.3
 status: PROPOSED
-version: 1.2
+version: 1.3
 date: 2026-09-23
 owner: Product Owner (acceptance); Principal Architect (maintainer)
 applies-to: all SuiteFlow work
 depends-on: [GOV-CHARTER, GOV-INPUTS]
 ---
 
-# SuiteFlow Target-State Blueprint v1.2
+# SuiteFlow Target-State Blueprint v1.3
 
 ## 1. What this is
 
 The consolidated target-state blueprint: the complete specification of the SuiteFlow hotel platform as it should exist, designed from hospitality requirements, enterprise PMS capability benchmarks, accounting principles, security principles and real operating workflows — before and independently of the current implementation.
 
-**Status: PROPOSED.** Nothing in this blueprint is yet ACCEPTED (charter §4). Acceptance requires the approvals and resolutions listed in §12. Until then, the blueprint is the working specification and the baseline against which the current implementation will be audited in Phase 2.
+**Status: PROPOSED.** Nothing in this blueprint is yet ACCEPTED (charter §4). Acceptance requires the approvals and resolutions listed in §12. Until then, the blueprint is the working specification and the baseline against which the current implementation will be audited in Programme P2.
 
 **How to use it:** start at the charter (governance, source-of-truth hierarchy, change control); use the capability map for scope and priorities; use the domain/state/rule documents for behaviour; use finance, security, UX, integration, reporting, NFR, QA, deployment and documentation architectures for their disciplines. Every artifact cites capability IDs; every requirement resolves to a test obligation.
 
@@ -23,7 +23,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 
 | Artifact class | Count | Location |
 |---|---|---|
-| Documents in this blueprint | 43 | `docs/` |
+| Documents in this blueprint | 44 | `docs/` |
 | Domains | 25 | capability map |
 | Capabilities (`CAP-*`) | 283 | `product/capability-map.md` |
 | Domain invariants (`INV-*`) | 80 | `architecture/domain-model.md` |
@@ -49,8 +49,8 @@ The consolidated target-state blueprint: the complete specification of the Suite
 ## 4. Product definition at a glance
 
 - **Vision:** an enterprise hotel operating platform running the commercial, operational and financial life of a hotel — deterministic, auditable, operationally realistic — first proven on a modelled 200-room Lagos property (synthetic reference pilot), designed for groups and chains without re-architecture.
-- **Scope tiers:** enterprise target (all 283 capabilities) / pilot release (160 capabilities marked `Yes`) / enterprise phases (72 + 51 hotel-reality decisions, of which 48 are resolved and 3 remain open).
-- **Pilot:** synthetic reference pilot — the modelled "Golfview profile" (200 rooms, WAT, NGN, conference property; cash/POS/transfer/cheque), 24-week horizon to the pilot-ready reference release, 24×7 support, 1 h RPO/RTO; real deployment follows the First-Property Deployment Gate.
+- **Scope tiers:** enterprise target (all 283 capabilities) / pilot release — **204 candidate pilot capabilities** (`Yes`, provisional until the P0 scope freeze) / enterprise delivery 76 (`D10`–`D20`) / 3 pending evidence (OQ-007/024/029).
+- **Pilot:** synthetic reference pilot — the modelled "Golfview profile" (200 rooms, WAT, NGN, conference property; cash/POS/transfer/cheque); 24-week horizon starting 23 Sep 2026, target reference release **10 Mar 2027**; pilot scope freezes at acceptance; 24×7 support, 1 h RPO/RTO; real deployment follows the First-Property Deployment Gate.
 - **Deferred by accepted boundary:** payroll, advanced CRM, advanced analytics, external POS business integration, foreign currency, multi-property reporting — all retained in the enterprise target with phases.
 
 ## 5. Architecture at a glance
@@ -59,7 +59,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 - **Tenancy (ADR-002):** tenant is the deployment unit; properties are first-class partitions; scope enforced platform-wide; optional dedicated deployment for hard-isolation customers.
 - **Temporal (ADR-003):** four classified temporal strategies; applied-basis snapshots; corrections additive; historical documents reproducible as issued.
 - **Identity (ADR-004):** opaque internal identity; separate human number series; namespaced external references; non-destructive merges.
-- **Product binding:** no existing product inherits architectural authority; binding to roles (operations core, accounting, control plane) is a Phase 3/4 evidence decision.
+- **Product binding:** no existing product inherits architectural authority; binding to roles (operations core, accounting, control plane) is a Programme P3/P4 evidence decision.
 
 ## 6. Financial model at a glance
 
@@ -69,7 +69,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 - **Close (ADR-006):** validation → postings → reconciliation → certification → advance; certification timing configurable with pilot default before advance; reopen governed and versioned; guest operations never freeze for financial degradation.
 - **Deposits (ADR-007):** obligation-linked liabilities with conservation; forfeiture to dedicated cancellation/no-show revenue; tax points flagged UNVERIFIED pending advice.
 - **Documents (ADR-008):** SuiteFlow issues guest/corporate documents; statutory documents derive and link one-to-one; ruled by OQ-011 (closed) — SuiteFlow issues the customer-facing document, statutory/fiscal documents derive from and link to it.
-- **Reconciliation:** 11 daily checks; zero unexplained difference; exceptions owned and aged.
+- **Reconciliation:** 13 daily checks (subledger, clearing, acquirer settlement, bank statement); zero unexplained difference; exceptions owned and aged.
 
 ## 7. Security at a glance
 
@@ -86,11 +86,11 @@ The consolidated target-state blueprint: the complete specification of the Suite
 - **NFRs:** labelled performance, concurrency, availability, recovery (1 h RPO/RTO REQUIRED), integrity, observability, scalability and accessibility requirements.
 - **Deployment:** versioned artefact promotion, dual-path connectivity and UPS as pilot requirements, warm recovery, worker duplicate-effect protection, release management and runbook catalogue.
 - **Documentation:** 21-document operational set with owners; docs-as-code; release-gated currency.
-- **AI:** governance-first; proposals only; no AI enabled at pilot by default; evaluation gates per capability (Phase 19).
+- **AI:** governance-first; proposals only; no AI enabled at pilot by default; evaluation gates per capability (D19).
 
 ## 9. Delivery plan
 
-Pilot phases 1–9 (foundation → property/rates → guests/reservations → front office → housekeeping/maintenance → folio/cashiering → close/finance → reporting/hardening → synthetic migration/role-played UAT/reference release), the First-Property Deployment Gate, and enterprise phases 10–20, each with objective, capabilities, inputs, dependencies, risks, tests and exit criteria: `product/roadmap.md` v1.1.
+Pilot D1–D9 (foundation → property/rates → guests/reservations → front office → housekeeping/maintenance → folio/cashiering → close/finance → reporting/hardening → synthetic migration/role-played UAT/reference release), the First-Property Deployment Gate, and enterprise D10–D20, each with objective, capabilities, inputs, dependencies, risks, tests and exit criteria: `product/roadmap.md` v1.1.
 
 ## 10. Acceptance model
 
@@ -109,7 +109,7 @@ Pilot phases 1–9 (foundation → property/rates → guests/reservations → fr
 - **Review record:** acceptance-readiness review (`00-governance/review-findings-2026-09-23.md`, GOV-REVIEW) — 45 findings (3 critical, 13 high) from the finance, technical and security passes; resolution belongs to the pre-acceptance fix pass.
 - **Adopted answers and interim defaults:** the closed questions' answers are in force and marked `OQ-nnn (closed)` in affected documents; open questions carry interim defaults, clearly marked, until their evidence, advice or approval exists. The synthetic reference pilot amendment (no real property; role-played acceptance) is recorded in the inputs register §3.1.
 
-## 12. Phase 0 exit gate — what remains for ACCEPTED status
+## 12. Programme P0 exit gate — what remains for ACCEPTED status
 
 | Requirement | Approver | Status |
 |---|---|---|
@@ -120,16 +120,17 @@ Pilot phases 1–9 (foundation → property/rates → guests/reservations → fr
 | UX, integration, reporting, NFR, QA, deployment, documentation, AI architectures | Technical Lead (OQ-033) + Product Owner | Pending |
 | All 11 ADRs confirmed as ACCEPTED or revised | Respective approvers per ADR | Pending |
 | Open questions closed or defaults formally adopted | Product Owner | 26 closed (adoption + OQ-003 appointment); 12 remain — 8 facts (6 deferred to the first property), 3 advice, 1 approval |
+| Pilot capability set frozen (candidate pilot scope accepted or de-scoped) | Product Owner | Pending — freeze at Programme P0 acceptance (TEC-08) |
 
-When the above complete, the blueprint is promoted to **ACCEPTED (current version, v1.2)** and becomes level 2 of the source-of-truth hierarchy — the baseline for Phase 2's audit, Phase 3's gap matrix and all implementation commitments.
+When the above complete, the blueprint is promoted to **ACCEPTED (current version, v1.3)** and becomes level 2 of the source-of-truth hierarchy — the baseline for Programme P2's audit, Programme P3's gap matrix and all implementation commitments.
 
 ## 13. What happens next
 
-1. **Phase 1 — External research:** OPERA Cloud public-doc benchmark review, Frappe/ERPNext/Kamra/Frappe Payments/CRM/HRMS capability verification, Nigerian tax/legal primary sources, provider evidence matrices. Outputs: research register with cited sources; blueprint claims upgraded from ASSUMED to VERIFIED where evidence supports.
-2. **Phase 2 — Current-state audit:** evidence-based classification of the implementation (implemented-and-verified / partial / defective / architecturally wrong / duplicated / missing) against this blueprint.
-3. **Phase 3 — Gap matrix:** every capability mapped with action and priority.
-4. **Phase 4 — Transition architecture:** per-domain keep/extend/refactor/wrap/replace rulings, product binding for roles, migration strategy.
-5. **Phases 1–20:** delivery per the roadmap, with governed proof spikes permitted earlier for the riskiest mechanisms.
+1. **Programme P1 — External research:** OPERA Cloud public-doc benchmark review, Frappe/ERPNext/Kamra/Frappe Payments/CRM/HRMS capability verification, Nigerian tax/legal primary sources, provider evidence matrices. Outputs: research register with cited sources; blueprint claims upgraded from ASSUMED to VERIFIED where evidence supports.
+2. **Programme P2 — Current-state audit:** evidence-based classification of the implementation (implemented-and-verified / partial / defective / architecturally wrong / duplicated / missing) against this blueprint.
+3. **Programme P3 — Gap matrix:** every capability mapped with action and priority.
+4. **Programme P4 — Transition architecture:** per-domain keep/extend/refactor/wrap/replace rulings, product binding for roles, migration strategy.
+5. **D1–D20:** delivery per the roadmap, with governed proof spikes permitted earlier for the riskiest mechanisms.
 
 ## 14. Version history
 
@@ -138,3 +139,4 @@ When the above complete, the blueprint is promoted to **ACCEPTED (current versio
 | 1.0 | 2026-09-23 | Consolidated blueprint issued at WP 0.8: inventory, architecture summaries, acceptance model, exit gate, next steps | PROPOSED |
 | 1.1 | 2026-09-23 | Industry-standard answers adopted (25 questions closed, register v0.3): inventory, ADR-008 summary, §11 and §12 updated | PROPOSED |
 | 1.2 | 2026-09-23 | Synthetic reference pilot recorded (OQ-003 closed; property-dependent items deferred): pilot definition, delivery plan, acceptance model (First-Property Deployment Gate) and §11/§12 updated | PROPOSED |
+| 1.3 | 2026-09-23 | P1: candidate pilot scope (204/76/3), dated horizon, P0 scope-freeze gate row; review references updated (TEC-04/05/08, FIN/SEC P1) | PROPOSED |

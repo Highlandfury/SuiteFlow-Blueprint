@@ -2,7 +2,7 @@
 doc-id: PROD-CAPMAP
 title: Enterprise Capability Map
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Product Owner (accountable); Domain Architecture (maintainer)
 applies-to: full enterprise target
@@ -56,7 +56,7 @@ Mapping these functional owners onto concrete components — including whether c
 
 ### 2.3 Pilot legend
 
-`Yes` — in pilot release scope. `Pend OQ-nnn` — pilot inclusion depends on the named open question (hotel operating reality). `Ph<n>` — targeted in enterprise phase n of the roadmap (phases 10+ run after the pilot; see `roadmap.md`). Pilot status never lowers target priority; a P1 enterprise capability can be deferred from the pilot by accepted MVP boundary.
+`Yes` — in pilot scope and Delivery D1–D9; provisional until the P0 scope-freeze gate (see `roadmap.md`). `D10`–`D20` — enterprise delivery phase. `Pend OQ-nnn` — pilot inclusion depends on the named open question; only OQ-007, OQ-024 and OQ-029 remain. Classification is single-valued: closed answers sit in exactly one bucket. Pilot status never lowers target priority; a P1 enterprise capability can be deferred from the pilot by accepted MVP boundary.
 
 ## 3. Summary
 
@@ -87,14 +87,13 @@ Mapping these functional owners onto concrete components — including whether c
 
 | Scope | Count |
 |---|---:|
-| Pilot release (`Yes`) | 160 |
-| Resolved hotel-reality decision (`OQ-0nn (closed)`) | 48 |
-| Pending hotel-reality decision (`Pend OQ-0nn`) | 3 |
-| Enterprise phase (after pilot) | 72 |
+| Pilot release (`Yes`) — provisional until the P0 scope-freeze gate | 204 |
+| Pending open question (`Pend OQ-007/024/029`) | 3 |
+| Enterprise delivery (`D10`–`D20`) | 76 |
 
 ### 3.4 Scope caution
 
-Of the 160 pilot-flagged capabilities, 156 are P0 or P1. That is a large commitment against a 24-week horizon and is a live risk (RSK-ARCH-003, RSK-PROD-001). This map does not shrink the pilot silently; de-scoping is a Product Owner decision, recorded explicitly against this map when the pilot release scope is frozen. The honest reading of this summary is: **the target is complete; the pilot is still to be negotiated.** The 48 resolved hotel-reality decisions (adopted 23 Sep 2026) fold into that freeze review; their scope effect is stated in `00-governance/industry-standard-answers.md`, and they do not silently enlarge the pilot.
+Of the 204 pilot-flagged capabilities, 187 are P0 or P1. That is a large commitment against the 24-week horizon and is a live risk (RSK-ARCH-003, RSK-PROD-001). The scope-freeze gate at blueprint acceptance (Programme P0) is the control: the pilot set is fixed there by explicit Product Owner decision, and overruns are resolved by de-scope or a recorded date change — never by silent drift. The honest reading of this summary is: **the target is complete; the pilot set enters the freeze review as a candidate, not as an accepted commitment.**
 
 ## 4. Domain index
 
@@ -136,7 +135,7 @@ The physical and commercial definition of what a hotel sells. Everything operati
 |---|---|---|---|---|---|---|
 | CAP-PM-001 | Property master record (identity, timezone, currency, contact, operating calendar) | Every operation, statistic and posting needs one authoritative property definition | PLAT | P0 | Yes | — |
 | CAP-PM-002 | Legal entity mapping (ownership, tax identity, reporting entity) | Hotels trade, tax and report through legal entities; the system must know which | PLAT | P0 | Yes | CAP-PM-001 |
-| CAP-PM-003 | Property groups and multi-property hierarchy | Groups and chains need an explicit organisational structure for configuration and reporting | PLAT | P2 | Ph14 | CAP-PM-001 |
+| CAP-PM-003 | Property groups and multi-property hierarchy | Groups and chains need an explicit organisational structure for configuration and reporting | PLAT | P2 | D14 | CAP-PM-001 |
 | CAP-PM-004 | Buildings, floors, wings and housekeeping zones | Housekeeping, maintenance and service delivery need physical structure | CORE | P0 | Yes | CAP-PM-001 |
 | CAP-PM-005 | Room type catalogue (capacity, bedding, default occupancy, classification) | Selling and pricing require stable, unambiguous product definitions | CORE | P0 | Yes | CAP-PM-004 |
 | CAP-PM-006 | Room inventory and numbering | Physical sellable units need identity, location and controlled number series | CORE | P0 | Yes | CAP-PM-004 |
@@ -144,7 +143,7 @@ The physical and commercial definition of what a hotel sells. Everything operati
 | CAP-PM-008 | Room operational status model (front office and housekeeping states, condition) | Two departments maintain room truth; unmanaged divergence causes sold-dirty rooms and false occupancy | CORE | P0 | Yes | CAP-PM-006 |
 | CAP-PM-009 | Out-of-order and out-of-service control with maintenance holds | Removing inventory for repair must be governed and reflected in availability immediately | CTRL | P0 | Yes | CAP-PM-006, CAP-MNT-007 |
 | CAP-PM-010 | Return-to-inventory governance | A repaired room must not be sold before verification and release | CTRL | P1 | Yes | CAP-PM-009, CAP-MNT-008 |
-| CAP-PM-011 | Pseudo rooms and auxiliary sellable items | Parking, day use and house accounts need sellable identities without physical rooms | CORE | P2 | Ph11 | CAP-PM-005 |
+| CAP-PM-011 | Pseudo rooms and auxiliary sellable items | Parking, day use and house accounts need sellable identities without physical rooms | CORE | P2 | D11 | CAP-PM-005 |
 | CAP-PM-012 | Room pools and assignment groups | Operational assignment quality improves when rooms can be grouped by suitability | CORE | P1 | Yes | CAP-PM-004 |
 | CAP-PM-013 | Property configuration and feature flags | Behaviour varies by property (policies, timings, controls) without code changes | PLAT | P0 | Yes | CAP-PM-001 |
 
@@ -159,14 +158,14 @@ The commercial contract of hospitality. Reservations must handle real party shap
 | CAP-RSV-003 | Reservation modification with amendment history | Changes must be traceable, price-correct and reversible in evidence | CORE | P0 | Yes | CAP-RSV-002 |
 | CAP-RSV-004 | Cancellation with deterministic policy application | Refunds, penalties and forfeitures must follow configured policy, not negotiation | CTRL | P1 | Yes | CAP-RSV-014, CAP-FOL-008 |
 | CAP-RSV-005 | No-show determination and processing | Guaranteed revenue must be secured and inventory released consistently | CTRL | P1 | Yes | CAP-RSV-014, CAP-NAU-001 |
-| CAP-RSV-006 | Waitlist management | Unfulfillable demand should convert automatically when inventory opens | CORE | P2 | Ph10 | CAP-AVL-001 |
+| CAP-RSV-006 | Waitlist management | Unfulfillable demand should convert automatically when inventory opens | CORE | P2 | D10 | CAP-AVL-001 |
 | CAP-RSV-007 | Walk-in and same-day booking | The front desk must create compliant bookings at the counter | CORE | P0 | Yes | CAP-RSV-002 |
 | CAP-RSV-008 | Room assignment and pre-assignment | Early, intelligent assignment raises service quality and operational speed | CORE | P0 | Yes | CAP-AVL-001, CAP-PM-012 |
 | CAP-RSV-009 | Room moves for pre-arrival and in-house stays | Moves must preserve rate, billing and stay history integrity | CORE | P0 | Yes | CAP-FO-004, CAP-FOL-004 |
 | CAP-RSV-010 | Upgrades and downgrades with pricing rules | Room-type changes must price and bill correctly and consistently | CTRL | P1 | Yes | CAP-RTM-001 |
-| CAP-RSV-011 | Shared reservations (co-occupants with separate billing) | Co-occupants often pay separately; one folio cannot represent the contract | CORE | P2 | Ph10 | CAP-FOL-002 |
-| CAP-RSV-012 | Split stays across room types or rooms | Stays may legitimately change product mid-stay without breaking billing continuity | CORE | P2 | Ph10 | CAP-RSV-009, CAP-FOL-004 |
-| CAP-RSV-013 | Merge, join and linked reservations | Related bookings (family, crew, agent) must be manageable as a set | CORE | P2 | Ph10 | CAP-RSV-002 |
+| CAP-RSV-011 | Shared reservations (co-occupants with separate billing) | Co-occupants often pay separately; one folio cannot represent the contract | CORE | P2 | D10 | CAP-FOL-002 |
+| CAP-RSV-012 | Split stays across room types or rooms | Stays may legitimately change product mid-stay without breaking billing continuity | CORE | P2 | D10 | CAP-RSV-009, CAP-FOL-004 |
+| CAP-RSV-013 | Merge, join and linked reservations | Related bookings (family, crew, agent) must be manageable as a set | CORE | P2 | D10 | CAP-RSV-002 |
 | CAP-RSV-014 | Guarantee and deposit scheduling | Securing a booking requires an explicit, enforceable guarantee instrument | CTRL | P1 | Yes | CAP-FOL-008, CAP-FOL-010 |
 | CAP-RSV-015 | Rate selection and negotiated-rate resolution | The right rate must apply automatically, defensibly and by eligibility | CORE | P0 | Yes | CAP-RTM-004 |
 | CAP-RSV-016 | Packages and fixed charges | Bundled offers must have their components posted correctly across the stay | CORE | P1 | Yes | CAP-RTM-005, CAP-FOL-003 |
@@ -188,12 +187,12 @@ The commercial inventory engine. Availability is a promise; the system must neve
 | CAP-AVL-002 | Sellable versus physical inventory | Availability must reflect rooms taken out of service and holds | CORE | P0 | Yes | CAP-PM-009 |
 | CAP-AVL-003 | Inventory rebuild and reconciliation | Derived counts must be rebuildable and provably consistent with source records | CTRL | P1 | Yes | CAP-AVL-001, CAP-PLT-006 |
 | CAP-AVL-004 | Restrictions and stop sell | Revenue controls (stop sell, closed to arrival/departure, LOS rules) must be deterministic | CORE | P0 | Yes | CAP-RTM-009 |
-| CAP-AVL-005 | Overbooking policy and limits | Deliberate oversell must be bounded, governed and reportable, never accidental | CORE | P2 | Ph10 | CAP-AVL-001 |
-| CAP-AVL-006 | Allotments and partner inventory | Contracted inventory must be protected and released on schedule | CORE | P2 | Ph13 | CAP-GRP-002, CAP-CRP-002 |
-| CAP-AVL-007 | Holds, blocks and group inventory | Group commitments must reserve inventory with explicit cutoffs and ownership | CORE | P1 | OQ-017 (closed) | CAP-GRP-002 |
-| CAP-AVL-008 | Channel availability and ARI publication | Channels must always see the currently approved sellable inventory | ADP | P2 | Ph13 | CAP-INT-002 |
+| CAP-AVL-005 | Overbooking policy and limits | Deliberate oversell must be bounded, governed and reportable, never accidental | CORE | P2 | D10 | CAP-AVL-001 |
+| CAP-AVL-006 | Allotments and partner inventory | Contracted inventory must be protected and released on schedule | CORE | P2 | D13 | CAP-GRP-002, CAP-CRP-002 |
+| CAP-AVL-007 | Holds, blocks and group inventory | Group commitments must reserve inventory with explicit cutoffs and ownership | CORE | P1 | Yes | CAP-GRP-002 |
+| CAP-AVL-008 | Channel availability and ARI publication | Channels must always see the currently approved sellable inventory | ADP | P2 | D13 | CAP-INT-002 |
 | CAP-AVL-009 | Inventory change audit | Every inventory change must be attributable to a person, policy or process | CTRL | P1 | Yes | CAP-PLT-006 |
-| CAP-AVL-010 | Function-space availability | Conference and banquet space is sellable inventory with its own competition | CORE | P2 | OQ-017 (closed) | CAP-GRP-012 |
+| CAP-AVL-010 | Function-space availability | Conference and banquet space is sellable inventory with its own competition | CORE | P2 | Yes | CAP-GRP-012 |
 
 ### 5.4 RTM — Rates & revenue management
 
@@ -212,8 +211,8 @@ Pricing is the highest-leverage commercial decision in a hotel. The system must 
 | CAP-RTM-009 | Minimum/maximum stay and CTA/CTD enforcement | Restrictions must be enforced at booking, at amendment and in channels | CORE | P0 | Yes | CAP-AVL-004 |
 | CAP-RTM-010 | Rate effectivity and history | Historical stays must retain the rate that actually applied | CORE | P0 | Yes | CAP-RTM-001 |
 | CAP-RTM-011 | Rate change authority and audit | Price changes are high-consequence and must be attributable and reversible in evidence | CTRL | P1 | Yes | CAP-PLT-006 |
-| CAP-RTM-012 | Rate management workspace with bulk operations | Revenue staff need speed without risking unintended mass changes | CTRL | P2 | Ph10 | CAP-RTM-002 |
-| CAP-RTM-013 | Forecast and recommendation inputs (advisory only) | Pricing decisions benefit from pace and forecast; a human still decides | CORE | P3 | Ph19 | CAP-RPT-005, CAP-AI-003 |
+| CAP-RTM-012 | Rate management workspace with bulk operations | Revenue staff need speed without risking unintended mass changes | CTRL | P2 | D10 | CAP-RTM-002 |
+| CAP-RTM-013 | Forecast and recommendation inputs (advisory only) | Pricing decisions benefit from pace and forecast; a human still decides | CORE | P3 | D19 | CAP-RPT-005, CAP-AI-003 |
 
 ### 5.5 FO — Front office
 
@@ -223,7 +222,7 @@ The operational heart of the hotel: arrival, stay and departure must be fast, co
 |---|---|---|---|---|---|---|
 | CAP-FO-001 | Arrivals list and readiness view | The day starts with knowing who is arriving and whether rooms will be ready | CORE | P0 | Yes | CAP-RSV-008, CAP-HSK-009 |
 | CAP-FO-002 | Governed check-in | The moment identity, room, rate, credit and terms must all be right at once | CTRL | P0 | Yes | CAP-RSV-021, CAP-FOL-002, CAP-GST-007 |
-| CAP-FO-003 | Registration evidence and identity capture | Legal registration and acceptance records must be captured once and retained lawfully | CTRL | P0 | OQ-019 (closed) | CAP-PLT-006 |
+| CAP-FO-003 | Registration evidence and identity capture | Legal registration and acceptance records must be captured once and retained lawfully | CTRL | P0 | Yes | CAP-PLT-006 |
 | CAP-FO-004 | Check-in policy gates with authorized overrides | Readiness, credit and policy must block bad check-ins with recorded exceptions | CTRL | P0 | Yes | CAP-FO-002, CAP-PLT-002 |
 | CAP-FO-005 | In-house management console | Staff must know exactly who is in the building for service and safety | CORE | P0 | Yes | CAP-FO-002 |
 | CAP-FO-006 | Room rack and operational board | Front desk needs an at-a-glance, always-current operational picture | CORE | P0 | Yes | CAP-PM-008, CAP-HSK-001 |
@@ -231,7 +230,7 @@ The operational heart of the hotel: arrival, stay and departure must be fast, co
 | CAP-FO-008 | Governed check-out | Balances must be settled or transferred correctly before room release | CTRL | P0 | Yes | CAP-FOL-012, CAP-CSH-002 |
 | CAP-FO-009 | Early check-in and late checkout | Extra time is a priced, policy-controlled concession, not a favour | CTRL | P1 | Yes | CAP-RTM-007 |
 | CAP-FO-010 | Stay extensions | Extending a stay must re-check availability, rate and credit immediately | CORE | P0 | Yes | CAP-AVL-001, CAP-RSV-003 |
-| CAP-FO-011 | Key/access issuance and lock integration | Physical access must follow authorized stay state and be revoked at checkout | ADP | P2 | OQ-020 (closed) | CAP-INT-010 |
+| CAP-FO-011 | Key/access issuance and lock integration | Physical access must follow authorized stay state and be revoked at checkout | ADP | P2 | D16 | CAP-INT-010 |
 | CAP-FO-012 | Guest requests and service tasks | Requests must have owners, deadlines and closure evidence | CORE | P1 | Yes | CAP-PLT-008 |
 | CAP-FO-013 | Wake-up calls and guest messages | Classic guest services must be reliable, scheduled and recorded | CORE | P1 | Yes | CAP-PLT-008 |
 | CAP-FO-014 | Incident and guest complaint management | Complaints are operational data with financial and reputational consequences | CORE | P1 | Yes | CAP-RSV-018 |
@@ -257,7 +256,7 @@ Hospitality is remembering people. Privacy is remembering them lawfully. This do
 | CAP-GST-008 | Consent and marketing preferences | Privacy law and guest trust require purpose-specific, versioned consent | CTRL | P1 | Yes | CAP-GST-001 |
 | CAP-GST-009 | Data retention and erasure | Legal retention and privacy rights must be reconcilable and provable | CTRL | P1 | Pend OQ-024 | CAP-GST-008, CAP-PLT-006 |
 | CAP-GST-010 | Guest history and production metrics | Lifetime value and history must reconcile to financial records | CORE | P1 | Yes | CAP-RPT-003 |
-| CAP-GST-011 | Loyalty membership (provider-neutral) | Recognition programs need a real domain, not a free-text field | CORE | P2 | Ph12 | CAP-GST-001 |
+| CAP-GST-011 | Loyalty membership (provider-neutral) | Recognition programs need a real domain, not a free-text field | CORE | P2 | D12 | CAP-GST-001 |
 | CAP-GST-012 | Guest 360 workspace | Service staff need one consolidated view with role-scoped access to sensitive fields | CORE | P1 | Yes | CAP-GST-001, CAP-PLT-002 |
 
 ### 5.7 GRP — Groups & events
@@ -266,18 +265,18 @@ Group and event business is often the profit centre of a full-service property, 
 
 | ID | Capability | Business problem | Owner | Pri | Pilot | Depends on |
 |---|---|---|---|---|---|---|
-| CAP-GRP-001 | Group account and group booking | A group is a commercial entity with its own terms, not a set of unrelated bookings | CORE | P1 | OQ-017 (closed) | CAP-CRP-001 |
-| CAP-GRP-002 | Room blocks and inventory holds | Committed inventory must be protected, released on cutoff and visible to revenue | CORE | P1 | OQ-017 (closed) | CAP-AVL-007 |
-| CAP-GRP-003 | Rooming list management | Named guests must replace anonymous occupancy before arrival day | CORE | P1 | OQ-017 (closed) | CAP-GRP-001, CAP-GST-001 |
-| CAP-GRP-004 | Pickup tracking and wash reporting | Commitments versus actuals drive deposit, attrition and future sales decisions | CORE | P1 | OQ-017 (closed) | CAP-GRP-002 |
-| CAP-GRP-005 | Group rates and contract terms | Contracted pricing must apply to eligible stays without dispute | CORE | P1 | OQ-017 (closed) | CAP-RTM-004 |
-| CAP-GRP-006 | Master account and group billing | Group charges must consolidate to the correct payer, not to a random room | CTRL | P1 | OQ-017 (closed) | CAP-FOL-002, CAP-FOL-005 |
-| CAP-GRP-007 | Group deposits and guarantees | Large commitments need secured financial consequences | CTRL | P1 | OQ-017 (closed) | CAP-FOL-008 |
-| CAP-GRP-008 | Group cancellation and attrition calculation | Attrition and cancellation terms must be calculated from data, not argued | CTRL | P2 | Ph10 | CAP-GRP-004, CAP-GRP-005 |
-| CAP-GRP-009 | Group adjustments with authority limits | Group goodwill has financial consequences and needs approval discipline | CTRL | P1 | OQ-017 (closed) | CAP-FOL-006 |
-| CAP-GRP-010 | Group activity and communication timeline | Sales, operations and finance must share one group history | CORE | P2 | Ph10 | CAP-GRP-001 |
-| CAP-GRP-011 | Event and banquet management | Functions combine space, catering, schedule and billing on their own account | CORE | P2 | Ph10 | CAP-GRP-012, CAP-POS-001 |
-| CAP-GRP-012 | Function-space inventory and event calendar | Space is sellable inventory and must not be double-booked | CORE | P2 | OQ-017 (closed) | CAP-AVL-010 |
+| CAP-GRP-001 | Group account and group booking | A group is a commercial entity with its own terms, not a set of unrelated bookings | CORE | P1 | Yes | CAP-CRP-001 |
+| CAP-GRP-002 | Room blocks and inventory holds | Committed inventory must be protected, released on cutoff and visible to revenue | CORE | P1 | Yes | CAP-AVL-007 |
+| CAP-GRP-003 | Rooming list management | Named guests must replace anonymous occupancy before arrival day | CORE | P1 | Yes | CAP-GRP-001, CAP-GST-001 |
+| CAP-GRP-004 | Pickup tracking and wash reporting | Commitments versus actuals drive deposit, attrition and future sales decisions | CORE | P1 | Yes | CAP-GRP-002 |
+| CAP-GRP-005 | Group rates and contract terms | Contracted pricing must apply to eligible stays without dispute | CORE | P1 | Yes | CAP-RTM-004 |
+| CAP-GRP-006 | Master account and group billing | Group charges must consolidate to the correct payer, not to a random room | CTRL | P1 | Yes | CAP-FOL-002, CAP-FOL-005 |
+| CAP-GRP-007 | Group deposits and guarantees | Large commitments need secured financial consequences | CTRL | P1 | Yes | CAP-FOL-008 |
+| CAP-GRP-008 | Group cancellation and attrition calculation | Attrition and cancellation terms must be calculated from data, not argued | CTRL | P2 | D10 | CAP-GRP-004, CAP-GRP-005 |
+| CAP-GRP-009 | Group adjustments with authority limits | Group goodwill has financial consequences and needs approval discipline | CTRL | P1 | Yes | CAP-FOL-006 |
+| CAP-GRP-010 | Group activity and communication timeline | Sales, operations and finance must share one group history | CORE | P2 | D10 | CAP-GRP-001 |
+| CAP-GRP-011 | Event and banquet management | Functions combine space, catering, schedule and billing on their own account | CORE | P2 | D10 | CAP-GRP-012, CAP-POS-001 |
+| CAP-GRP-012 | Function-space inventory and event calendar | Space is sellable inventory and must not be double-booked | CORE | P2 | Yes | CAP-AVL-010 |
 
 ### 5.8 CRP — Corporate & travel trade
 
@@ -290,11 +289,11 @@ Credit and contracts turn rooms into receivables. The failure modes are financia
 | CAP-CRP-003 | Billing instructions and default routing | Corporate billing expectations must translate into deterministic charge routing | CTRL | P1 | Yes | CAP-FOL-005 |
 | CAP-CRP-004 | Credit limits, holds and exposure monitoring | Unsecured exposure must be bounded before it becomes bad debt | CTRL | P1 | Yes | CAP-ACC-004 |
 | CAP-CRP-005 | Direct-bill origination and AR transfer | Settling to a corporate account must be a governed financial event, not a button | CTRL | P1 | Yes | CAP-FOL-012, CAP-ACC-004 |
-| CAP-CRP-006 | Travel-agent commission lifecycle | Agent commissions must be calculated, approved, paid and reported | CORE | P2 | Ph10 | CAP-ACC-004 |
-| CAP-CRP-007 | Account production and review | Account value must be visible to justify terms and review them | CORE | P2 | Ph10 | CAP-RPT-003 |
-| CAP-CRP-008 | Account hierarchy (global/local links) | Chains and groups negotiate centrally and bill locally | CORE | P3 | Ph14 | CAP-CRP-001 |
-| CAP-CRP-009 | Account contacts and sales activities | Commercial relationships must outlive individual salespeople | CORE | P2 | Ph10 | CAP-SAL-002 |
-| CAP-CRP-010 | Corporate statements and reporting | Corporate customers need invoices and statements that match their records | ACC | P2 | OQ-011 (closed) | CAP-ACC-011 |
+| CAP-CRP-006 | Travel-agent commission lifecycle | Agent commissions must be calculated, approved, paid and reported | CORE | P2 | D10 | CAP-ACC-004 |
+| CAP-CRP-007 | Account production and review | Account value must be visible to justify terms and review them | CORE | P2 | D10 | CAP-RPT-003 |
+| CAP-CRP-008 | Account hierarchy (global/local links) | Chains and groups negotiate centrally and bill locally | CORE | P3 | D14 | CAP-CRP-001 |
+| CAP-CRP-009 | Account contacts and sales activities | Commercial relationships must outlive individual salespeople | CORE | P2 | D10 | CAP-SAL-002 |
+| CAP-CRP-010 | Corporate statements and reporting | Corporate customers need invoices and statements that match their records | ACC | P2 | Yes | CAP-ACC-011 |
 
 ### 5.9 HSK — Housekeeping
 
@@ -307,13 +306,13 @@ Rooms are the inventory; readiness is the product. Housekeeping quality and hone
 | CAP-HSK-003 | Attendant assignment and workload balancing | Fair, efficient distribution determines whether rooms are ready on time | CORE | P1 | Yes | CAP-HSK-002, CAP-PM-012 |
 | CAP-HSK-004 | Attendant console (mobile-first) | Room attendants work on their feet; software must fit the job | CORE | P1 | Yes | CAP-HSK-003 |
 | CAP-HSK-005 | Stayover and departure cleaning workflows | Standard sequences with status transitions prevent skipped steps | CORE | P1 | Yes | CAP-HSK-002 |
-| CAP-HSK-006 | Deep-clean programs | Periodic intensive work must be scheduled without surprising the desk | CORE | P2 | Ph11 | CAP-HSK-005, CAP-PM-009 |
+| CAP-HSK-006 | Deep-clean programs | Periodic intensive work must be scheduled without surprising the desk | CORE | P2 | D11 | CAP-HSK-005, CAP-PM-009 |
 | CAP-HSK-007 | Priority, rush and VIP room handling | High-value arrivals must not be left waiting behind routine work | CORE | P1 | Yes | CAP-HSK-002, CAP-GST-003 |
-| CAP-HSK-008 | Minibar and in-room consumption capture | In-room sales must be posted before checkout, every time | CORE | P1 | OQ-014 (closed) | CAP-FOL-003 |
+| CAP-HSK-008 | Minibar and in-room consumption capture | In-room sales must be posted before checkout, every time | CORE | P1 | Yes | CAP-FOL-003 |
 | CAP-HSK-009 | Inspection, readiness approval and release to sale | Untrusted readiness destroys the front desk's ability to sell with confidence | CTRL | P1 | Yes | CAP-HSK-005, CAP-PM-010 |
 | CAP-HSK-010 | Room discrepancy resolution | Housekeeping and front office must reconcile physical vs system truth daily | CTRL | P1 | Yes | CAP-PM-008, CAP-NAU-002 |
-| CAP-HSK-011 | Productivity, workload and standard reporting | Labour cost and quality need measurement without surveillance excess | CORE | P2 | Ph11 | CAP-HSK-003 |
-| CAP-HSK-012 | Lost and found tracking | Guest property must be traceable, returnable and lawfully handled | CORE | P2 | Ph11 | CAP-GST-001 |
+| CAP-HSK-011 | Productivity, workload and standard reporting | Labour cost and quality need measurement without surveillance excess | CORE | P2 | D11 | CAP-HSK-003 |
+| CAP-HSK-012 | Lost and found tracking | Guest property must be traceable, returnable and lawfully handled | CORE | P2 | D11 | CAP-GST-001 |
 
 ### 5.10 MNT — Maintenance & engineering
 
@@ -321,14 +320,14 @@ Assets fail. The difference between a hotel that repairs and one that degrades i
 
 | ID | Capability | Business problem | Owner | Pri | Pilot | Depends on |
 |---|---|---|---|---|---|---|
-| CAP-MNT-001 | Work-order intake from any source | Issues reported by staff or guests must become tracked work, not lost messages | CORE | P1 | OQ-022 (closed) | CAP-FO-014, CAP-HSK-004 |
-| CAP-MNT-002 | Assignment, priority and SLA tracking | Work must reach the right trade with a defined urgency | CORE | P1 | OQ-022 (closed) | CAP-MNT-001 |
-| CAP-MNT-003 | Work execution and completion evidence | Completion claims need evidence (notes, parts, photos) for accountability | CORE | P1 | OQ-022 (closed) | CAP-MNT-002 |
-| CAP-MNT-004 | Asset and equipment register | Preventive maintenance and capital planning require knowing what exists | CORE | P2 | Ph11 | CAP-PM-004 |
-| CAP-MNT-005 | Preventive maintenance schedules | Failure prevention is cheaper than repair and lost inventory | CORE | P2 | Ph11 | CAP-MNT-004 |
-| CAP-MNT-006 | Parts, materials and cost capture | Maintenance cost must reach the accounts, not vanish into purchases | CORE | P2 | Ph11 | CAP-INV-005, CAP-ACC-001 |
-| CAP-MNT-007 | OOO/OOS request and hold integration | Maintenance holds must instantly affect sellable inventory | CTRL | P1 | OQ-022 (closed) | CAP-PM-009 |
-| CAP-MNT-008 | Verification and return-to-service sign-off | A room must pass verification before it is sold again | CTRL | P1 | OQ-022 (closed) | CAP-MNT-003, CAP-PM-010 |
+| CAP-MNT-001 | Work-order intake from any source | Issues reported by staff or guests must become tracked work, not lost messages | CORE | P1 | Yes | CAP-FO-014, CAP-HSK-004 |
+| CAP-MNT-002 | Assignment, priority and SLA tracking | Work must reach the right trade with a defined urgency | CORE | P1 | Yes | CAP-MNT-001 |
+| CAP-MNT-003 | Work execution and completion evidence | Completion claims need evidence (notes, parts, photos) for accountability | CORE | P1 | Yes | CAP-MNT-002 |
+| CAP-MNT-004 | Asset and equipment register | Preventive maintenance and capital planning require knowing what exists | CORE | P2 | D11 | CAP-PM-004 |
+| CAP-MNT-005 | Preventive maintenance schedules | Failure prevention is cheaper than repair and lost inventory | CORE | P2 | D11 | CAP-MNT-004 |
+| CAP-MNT-006 | Parts, materials and cost capture | Maintenance cost must reach the accounts, not vanish into purchases | CORE | P2 | D11 | CAP-INV-005, CAP-ACC-001 |
+| CAP-MNT-007 | OOO/OOS request and hold integration | Maintenance holds must instantly affect sellable inventory | CTRL | P1 | Yes | CAP-PM-009 |
+| CAP-MNT-008 | Verification and return-to-service sign-off | A room must pass verification before it is sold again | CTRL | P1 | Yes | CAP-MNT-003, CAP-PM-010 |
 
 ### 5.11 FOL — Folio & billing
 
@@ -345,8 +344,8 @@ The financial heart of a stay. Every naira a guest owes or has paid must live in
 | CAP-FOL-007 | Payment capture for all accepted methods | Cash, POS, transfer and cheque must each be recorded with their true state | CORE | P0 | Yes | CAP-CSH-003 |
 | CAP-FOL-008 | Deposits and prepayment application | Money held before arrival is a liability until correctly applied | CTRL | P1 | Yes | CAP-ACC-006 |
 | CAP-FOL-009 | Refunds and reversals | Returning money requires authority, method fidelity and a complete trail | CTRL | P1 | Yes | CAP-FOL-007, CAP-CSH-006 |
-| CAP-FOL-010 | Tax and service-charge calculation | Statutory and policy charges must be calculated deterministically and dated correctly | CTRL | P0 | OQ-021 (closed) | CAP-PLT-014, CAP-ACC-005 |
-| CAP-FOL-011 | Folio invoice and pro forma documents | Guests and corporates need accurate documents in the required legal form | CORE | P1 | OQ-011 (closed) | CAP-ACC-011 |
+| CAP-FOL-010 | Tax and service-charge calculation | Statutory and policy charges must be calculated deterministically and dated correctly | CTRL | P0 | Yes | CAP-PLT-014, CAP-ACC-005 |
+| CAP-FOL-011 | Folio invoice and pro forma documents | Guests and corporates need accurate documents in the required legal form | CORE | P1 | Yes | CAP-ACC-011 |
 | CAP-FOL-012 | Folio balance integrity and reconciliation | The balance must always equal charges minus payments minus adjustments, provably | CTRL | P0 | Yes | CAP-FOL-003, CAP-FOL-007 |
 | CAP-FOL-013 | Folio lock, checkout close and post-stay correction path | Closed accounts must be immutable except through a governed correction workflow | CTRL | P1 | Yes | CAP-FO-008, CAP-NAU-009 |
 
@@ -397,7 +396,7 @@ Independent verification is the control that makes every other control credible.
 | CAP-INA-005 | Deposit, refund and forfeiture audit | Guest money held and returned needs independent scrutiny | CTRL | P1 | Yes | CAP-FOL-008, CAP-FOL-009 |
 | CAP-INA-006 | Exception register with ownership and follow-up | Findings must have owners, deadlines and closure evidence, not just be printed | CTRL | P1 | Yes | CAP-NAU-006 |
 | CAP-INA-007 | Day certification (pass/hold) | A day must be independently certifiable before it is relied upon | CTRL | P1 | Yes | CAP-INA-002 |
-| CAP-INA-008 | Audit reporting and trend analysis | Repeated findings must escalate to management, not repeat silently | CTRL | P2 | Ph11 | CAP-INA-006, CAP-RPT-008 |
+| CAP-INA-008 | Audit reporting and trend analysis | Repeated findings must escalate to management, not repeat silently | CTRL | P2 | D11 | CAP-INA-006, CAP-RPT-008 |
 
 ### 5.15 ACC — Accounting & finance integration
 
@@ -409,13 +408,13 @@ The platform's financial output must be complete, correctly classified and recon
 | CAP-ACC-002 | Revenue recognition and GL posting | Revenue must be recognised once, on the correct business day, to the correct accounts | ACC | P0 | Yes | CAP-ACC-001, CAP-NAU-003 |
 | CAP-ACC-003 | Guest-ledger control account | The folio subledger must reconcile to a control account in the books, always | ACC | P1 | Yes | CAP-FOL-012, CAP-ACC-002 |
 | CAP-ACC-004 | City ledger / AR accounting | Corporate and agent receivables need ageing, statements and credit control | ACC | P1 | Yes | CAP-CRP-005 |
-| CAP-ACC-005 | Tax accounting and filing support | Collected taxes are liabilities to authorities, not income | ACC | P1 | OQ-021 (closed) | CAP-FOL-010 |
+| CAP-ACC-005 | Tax accounting and filing support | Collected taxes are liabilities to authorities, not income | ACC | P1 | Yes | CAP-FOL-010 |
 | CAP-ACC-006 | Deposit liability accounting | Money held before service is a liability until earned, refunded or forfeited | ACC | P1 | Yes | CAP-FOL-008, CAP-RSV-014 |
-| CAP-ACC-007 | Service-charge accounting and distribution | Service charges have distinct rules from revenue and tax | ACC | P2 | OQ-021 (closed) | CAP-FOL-010 |
+| CAP-ACC-007 | Service-charge accounting and distribution | Service charges have distinct rules from revenue and tax | ACC | P2 | Yes | CAP-FOL-010 |
 | CAP-ACC-008 | Payment clearing and bank accounting | Cash, card and transfer takings must each clear to the bank correctly | ACC | P1 | Yes | CAP-CSH-007, CAP-CSH-010 |
 | CAP-ACC-009 | Reconciliation suite (control accounts and interfaces) | Unreconciled differences are how financial systems fail silently | ACC | P1 | Yes | CAP-ACC-002, CAP-ACC-008 |
 | CAP-ACC-010 | Period close and financial calendar | Books must close on a defined calendar with controls and reopen discipline | ACC | P1 | Yes | CAP-ACC-009 |
-| CAP-ACC-011 | Statutory and management reporting | Finance must produce required statements from reconciled data | ACC | P1 | OQ-011 (closed) | CAP-ACC-009 |
+| CAP-ACC-011 | Statutory and management reporting | Finance must produce required statements from reconciled data | ACC | P1 | Yes | CAP-ACC-009 |
 | CAP-ACC-012 | Accounting-system integration contract | Operational and accounting systems must exchange documents with identity and reconciliation | CTRL | P0 | Yes | CAP-PLT-007, CAP-ACC-002 |
 
 ### 5.16 POS — Outlets & F&B
@@ -424,16 +423,16 @@ Restaurant and bar revenue is fast, high-volume and easy to lose. Outlet operati
 
 | ID | Capability | Business problem | Owner | Pri | Pilot | Depends on |
 |---|---|---|---|---|---|---|
-| CAP-POS-001 | Outlet configuration (restaurants, bars, room service as applicable) | Each outlet has its own pricing, taxes and settlement behaviour | CORE | P1 | OQ-014 (closed) | CAP-PM-013 |
-| CAP-POS-002 | Menus, products and prices | Outlet pricing must be maintained centrally with effective dates | CORE | P1 | OQ-014 (closed) | CAP-POS-001 |
-| CAP-POS-003 | Tables and order management | Table service needs a live order model tied to physical tables | CORE | P1 | OQ-014 (closed) | CAP-POS-001 |
-| CAP-POS-004 | Bill/check management and splitting | Real tables split bills; the system must follow | CORE | P1 | OQ-014 (closed) | CAP-POS-003 |
-| CAP-POS-005 | Discounts and comps with authority | Outlet giveaways are a leakage point and need the same discipline as front office | CTRL | P1 | OQ-014 (closed) | CAP-PLT-002 |
-| CAP-POS-006 | Outlet tax handling | F&B tax treatment may differ from accommodation and must be configured | CTRL | P1 | OQ-014 (closed) | CAP-PLT-014 |
-| CAP-POS-007 | Outlet payment capture and settlement | Outlet takings must reconcile to cashiers and acquirer records | CORE | P1 | OQ-014 (closed) | CAP-FOL-007, CAP-CSH-003 |
-| CAP-POS-008 | Room posting with validation | Posting to a room must verify the stay and respect credit controls | CTRL | P1 | OQ-014 (closed) | CAP-FO-005, CAP-CRP-004 |
-| CAP-POS-009 | Outlet cashiering and shift close | Outlet cash needs its own session discipline | CTRL | P1 | OQ-014 (closed) | CAP-CSH-002 |
-| CAP-POS-010 | Outlet revenue and reconciliation reporting | Outlet revenue must reconcile to orders, postings and cash | CORE | P1 | OQ-014 (closed) | CAP-RPT-002, CAP-ACC-009 |
+| CAP-POS-001 | Outlet configuration (restaurants, bars, room service as applicable) | Each outlet has its own pricing, taxes and settlement behaviour | CORE | P1 | Yes | CAP-PM-013 |
+| CAP-POS-002 | Menus, products and prices | Outlet pricing must be maintained centrally with effective dates | CORE | P1 | Yes | CAP-POS-001 |
+| CAP-POS-003 | Tables and order management | Table service needs a live order model tied to physical tables | CORE | P1 | Yes | CAP-POS-001 |
+| CAP-POS-004 | Bill/check management and splitting | Real tables split bills; the system must follow | CORE | P1 | Yes | CAP-POS-003 |
+| CAP-POS-005 | Discounts and comps with authority | Outlet giveaways are a leakage point and need the same discipline as front office | CTRL | P1 | Yes | CAP-PLT-002 |
+| CAP-POS-006 | Outlet tax handling | F&B tax treatment may differ from accommodation and must be configured | CTRL | P1 | Yes | CAP-PLT-014 |
+| CAP-POS-007 | Outlet payment capture and settlement | Outlet takings must reconcile to cashiers and acquirer records | CORE | P1 | Yes | CAP-FOL-007, CAP-CSH-003 |
+| CAP-POS-008 | Room posting with validation | Posting to a room must verify the stay and respect credit controls | CTRL | P1 | Yes | CAP-FO-005, CAP-CRP-004 |
+| CAP-POS-009 | Outlet cashiering and shift close | Outlet cash needs its own session discipline | CTRL | P1 | Yes | CAP-CSH-002 |
+| CAP-POS-010 | Outlet revenue and reconciliation reporting | Outlet revenue must reconcile to orders, postings and cash | CORE | P1 | Yes | CAP-RPT-002, CAP-ACC-009 |
 
 ### 5.17 INV — Inventory & purchasing
 
@@ -441,14 +440,14 @@ What leaves the store must match what is sold and consumed. Without this chain, 
 
 | ID | Capability | Business problem | Owner | Pri | Pilot | Depends on |
 |---|---|---|---|---|---|---|
-| CAP-INV-001 | Item and recipe master | Consumption can only be deducted from sales if recipes are known | CORE | P2 | OQ-015 (closed) | CAP-POS-002 |
-| CAP-INV-002 | Stores and warehouses | Physical storage locations must exist as inventory boundaries | CORE | P2 | OQ-015 (closed) | CAP-PM-001 |
-| CAP-INV-003 | Suppliers and purchasing | Controlled ordering prevents uncontrolled spending | CORE | P2 | OQ-015 (closed) | CAP-INV-002 |
-| CAP-INV-004 | Receiving and supplier invoice capture | Goods must be received against orders before they are paid | CORE | P2 | OQ-015 (closed) | CAP-INV-003 |
-| CAP-INV-005 | Transfers and issues between stores and outlets | Movement between locations must be recorded or counts will never reconcile | CORE | P2 | OQ-015 (closed) | CAP-INV-002 |
-| CAP-INV-006 | Consumption and recipe deduction | Theoretical consumption must be derived from actual sales | CORE | P2 | OQ-015 (closed) | CAP-INV-001, CAP-POS-003 |
-| CAP-INV-007 | Stock counts and variance control | Physical counts are the proof; variance needs authority and explanation | CTRL | P2 | OQ-015 (closed) | CAP-INV-005 |
-| CAP-INV-008 | Costing and inventory valuation integration | Stock value must reach the accounts correctly | ACC | P2 | Ph11 | CAP-INV-004, CAP-ACC-001 |
+| CAP-INV-001 | Item and recipe master | Consumption can only be deducted from sales if recipes are known | CORE | P2 | Yes | CAP-POS-002 |
+| CAP-INV-002 | Stores and warehouses | Physical storage locations must exist as inventory boundaries | CORE | P2 | Yes | CAP-PM-001 |
+| CAP-INV-003 | Suppliers and purchasing | Controlled ordering prevents uncontrolled spending | CORE | P2 | Yes | CAP-INV-002 |
+| CAP-INV-004 | Receiving and supplier invoice capture | Goods must be received against orders before they are paid | CORE | P2 | Yes | CAP-INV-003 |
+| CAP-INV-005 | Transfers and issues between stores and outlets | Movement between locations must be recorded or counts will never reconcile | CORE | P2 | Yes | CAP-INV-002 |
+| CAP-INV-006 | Consumption and recipe deduction | Theoretical consumption must be derived from actual sales | CORE | P2 | D11 | CAP-INV-001, CAP-POS-003 |
+| CAP-INV-007 | Stock counts and variance control | Physical counts are the proof; variance needs authority and explanation | CTRL | P2 | Yes | CAP-INV-005 |
+| CAP-INV-008 | Costing and inventory valuation integration | Stock value must reach the accounts correctly | ACC | P2 | D11 | CAP-INV-004, CAP-ACC-001 |
 
 ### 5.18 SAL — Sales & catering
 
@@ -456,16 +455,16 @@ Revenue is won before the guest arrives. Sales must convert promises into operat
 
 | ID | Capability | Business problem | Owner | Pri | Pilot | Depends on |
 |---|---|---|---|---|---|---|
-| CAP-SAL-001 | Lead and opportunity management | Enquiries must be tracked from first contact to conversion or loss | CORE | P2 | Ph10 | CAP-CRP-001 |
-| CAP-SAL-002 | Sales accounts and contacts | Commercial relationships need structure beyond a salesperson's inbox | CORE | P2 | Ph10 | CAP-CRP-001 |
-| CAP-SAL-003 | Sales activities and task management | Follow-ups must be scheduled, visible and accountable | CORE | P2 | Ph10 | CAP-SAL-001 |
-| CAP-SAL-004 | Proposal and quotation preparation | Proposals must price from real availability and rate rules | CORE | P2 | Ph10 | CAP-AVL-001, CAP-RTM-004 |
-| CAP-SAL-005 | Sales contract lifecycle | Won business needs contract terms that operations and finance can execute | CORE | P2 | Ph10 | CAP-SAL-004 |
-| CAP-SAL-006 | Event calendar and coordination | Events involve multiple departments on one timeline | CORE | P2 | Ph10 | CAP-GRP-011 |
-| CAP-SAL-007 | Block creation and conversion to booking | A won event must become protected inventory and reservations without re-entry | CORE | P2 | Ph10 | CAP-GRP-002, CAP-RSV-002 |
-| CAP-SAL-008 | Commission tracking and agreement terms | Intermediary terms must be honoured and controlled | CORE | P2 | Ph10 | CAP-CRP-006 |
-| CAP-SAL-009 | Pipeline and production reporting | Sales effort and conversion need honest measurement | CORE | P2 | Ph10 | CAP-RPT-003 |
-| CAP-SAL-010 | Targets, quotas and performance management | Commercial objectives must be trackable against reality | CORE | P3 | Ph14 | CAP-SAL-009 |
+| CAP-SAL-001 | Lead and opportunity management | Enquiries must be tracked from first contact to conversion or loss | CORE | P2 | D10 | CAP-CRP-001 |
+| CAP-SAL-002 | Sales accounts and contacts | Commercial relationships need structure beyond a salesperson's inbox | CORE | P2 | D10 | CAP-CRP-001 |
+| CAP-SAL-003 | Sales activities and task management | Follow-ups must be scheduled, visible and accountable | CORE | P2 | D10 | CAP-SAL-001 |
+| CAP-SAL-004 | Proposal and quotation preparation | Proposals must price from real availability and rate rules | CORE | P2 | D10 | CAP-AVL-001, CAP-RTM-004 |
+| CAP-SAL-005 | Sales contract lifecycle | Won business needs contract terms that operations and finance can execute | CORE | P2 | D10 | CAP-SAL-004 |
+| CAP-SAL-006 | Event calendar and coordination | Events involve multiple departments on one timeline | CORE | P2 | D10 | CAP-GRP-011 |
+| CAP-SAL-007 | Block creation and conversion to booking | A won event must become protected inventory and reservations without re-entry | CORE | P2 | D10 | CAP-GRP-002, CAP-RSV-002 |
+| CAP-SAL-008 | Commission tracking and agreement terms | Intermediary terms must be honoured and controlled | CORE | P2 | D10 | CAP-CRP-006 |
+| CAP-SAL-009 | Pipeline and production reporting | Sales effort and conversion need honest measurement | CORE | P2 | D10 | CAP-RPT-003 |
+| CAP-SAL-010 | Targets, quotas and performance management | Commercial objectives must be trackable against reality | CORE | P3 | D14 | CAP-SAL-009 |
 
 ### 5.19 RPT — Reporting
 
@@ -476,13 +475,13 @@ Reporting is how the hotel steers. It must reconcile to the same numbers the acc
 | CAP-RPT-001 | Operational reports (arrivals, in-house, departures, cancels, no-shows) | The daily operation runs on lists that must always be current | CORE | P0 | Yes | CAP-FO-001, CAP-FO-007 |
 | CAP-RPT-002 | Financial reports (day close, revenue, payments, taxes, trial balance) | Finance must close and explain the day from the system, not from spreadsheets | ACC | P1 | Yes | CAP-NAU-007 |
 | CAP-RPT-003 | Revenue and performance metrics (occupancy, ADR, RevPAR, segmentation) | Managers need agreed definitions, not five competing spreadsheets | CORE | P1 | Yes | CAP-PM-002, CAP-ACC-002 |
-| CAP-RPT-004 | Forecast and budget comparison | Planning requires actual-versus-plan visibility | CORE | P2 | Ph15 | CAP-RPT-003 |
-| CAP-RPT-005 | Pace and pickup reporting | Commercial decisions depend on how demand is building, not only on final numbers | CORE | P2 | Ph15 | CAP-RSV-002 |
+| CAP-RPT-004 | Forecast and budget comparison | Planning requires actual-versus-plan visibility | CORE | P2 | D15 | CAP-RPT-003 |
+| CAP-RPT-005 | Pace and pickup reporting | Commercial decisions depend on how demand is building, not only on final numbers | CORE | P2 | D15 | CAP-RSV-002 |
 | CAP-RPT-006 | Housekeeping and maintenance reports | Room readiness and asset workload need evidence-based management | CORE | P1 | Yes | CAP-HSK-011, CAP-MNT-002 |
 | CAP-RPT-007 | Management dashboards | The GM should open one screen, not assemble one | CORE | P1 | Yes | CAP-RPT-002, CAP-RPT-003 |
 | CAP-RPT-008 | Audit and exception reports | Controls are only real if exceptions resurface until resolved | CTRL | P1 | Yes | CAP-INA-006, CAP-CSH-009 |
-| CAP-RPT-009 | Custom report building | Hotels need their own views without vendor involvement | CORE | P2 | Ph15 | CAP-PLT-009 |
-| CAP-RPT-010 | Scheduled report delivery | Daily packs must arrive by themselves, on time, to the right inbox | CORE | P2 | Ph15 | CAP-PLT-008 |
+| CAP-RPT-009 | Custom report building | Hotels need their own views without vendor involvement | CORE | P2 | D15 | CAP-PLT-009 |
+| CAP-RPT-010 | Scheduled report delivery | Daily packs must arrive by themselves, on time, to the right inbox | CORE | P2 | D15 | CAP-PLT-008 |
 | CAP-RPT-011 | Exports and data extracts | Finance, auditors and owners need controlled raw data | CORE | P1 | Yes | CAP-PLT-002 |
 | CAP-RPT-012 | Report reconciliation and drill-down guarantee | Every summary figure must reconcile to and open its underlying transactions | CTRL | P1 | Yes | CAP-PLT-006, CAP-ACC-009 |
 
@@ -492,12 +491,12 @@ Beyond daily reporting: understanding trends, comparisons and portfolios. Deferr
 
 | ID | Capability | Business problem | Owner | Pri | Pilot | Depends on |
 |---|---|---|---|---|---|---|
-| CAP-BI-001 | Analytical data model and warehouse | Analysis must not run against the operational database | PLAT | P3 | Ph15 | CAP-PLT-007 |
-| CAP-BI-002 | Multi-property comparison | Groups need apples-to-apples property comparison | PLAT | P3 | Ph14 | CAP-PM-003, CAP-BI-001 |
-| CAP-BI-003 | Chain consolidation reporting | Ownership and management reporting need consolidated views | PLAT | P3 | Ph14 | CAP-BI-002, CAP-ACC-010 |
-| CAP-BI-004 | Self-service analytics | Managers must answer their own questions safely | PLAT | P3 | Ph15 | CAP-BI-001 |
-| CAP-BI-005 | Historical trend and seasonality analysis | Pricing and planning need history, not recollection | PLAT | P3 | Ph15 | CAP-BI-001 |
-| CAP-BI-006 | External BI tool integration | Real portfolios already run BI tools | ADP | P4 | Ph16 | CAP-INT-001 |
+| CAP-BI-001 | Analytical data model and warehouse | Analysis must not run against the operational database | PLAT | P3 | D15 | CAP-PLT-007 |
+| CAP-BI-002 | Multi-property comparison | Groups need apples-to-apples property comparison | PLAT | P3 | D14 | CAP-PM-003, CAP-BI-001 |
+| CAP-BI-003 | Chain consolidation reporting | Ownership and management reporting need consolidated views | PLAT | P3 | D14 | CAP-BI-002, CAP-ACC-010 |
+| CAP-BI-004 | Self-service analytics | Managers must answer their own questions safely | PLAT | P3 | D15 | CAP-BI-001 |
+| CAP-BI-005 | Historical trend and seasonality analysis | Pricing and planning need history, not recollection | PLAT | P3 | D15 | CAP-BI-001 |
+| CAP-BI-006 | External BI tool integration | Real portfolios already run BI tools | ADP | P4 | D16 | CAP-INT-001 |
 
 ### 5.21 CRM & communication
 
@@ -505,13 +504,13 @@ Guest relationships extend beyond the stay. SuiteFlow supports marketing and com
 
 | ID | Capability | Business problem | Owner | Pri | Pilot | Depends on |
 |---|---|---|---|---|---|---|
-| CAP-CRM-001 | Guest segmentation | Relevant communication requires structured segments, not manual lists | CORE | P3 | Ph12 | CAP-GST-001 |
-| CAP-CRM-002 | Campaign management | Marketing activity must be traceable to consent and results | CORE | P3 | Ph12 | CAP-CRM-001, CAP-CRM-003 |
-| CAP-CRM-003 | Consent, preference and suppression projection | Marketing systems must respect the guest's actual choices, not stale copies | CTRL | P2 | OQ-014 (closed) | CAP-GST-008 |
-| CAP-CRM-004 | Communication history | Staff must see what the guest was told and when | CORE | P2 | OQ-014 (closed) | CAP-GST-001 |
-| CAP-CRM-005 | Lifecycle and stay-based triggers | Birthday, post-stay and win-back moments must happen automatically and lawfully | CORE | P3 | Ph12 | CAP-CRM-003 |
+| CAP-CRM-001 | Guest segmentation | Relevant communication requires structured segments, not manual lists | CORE | P3 | D12 | CAP-GST-001 |
+| CAP-CRM-002 | Campaign management | Marketing activity must be traceable to consent and results | CORE | P3 | D12 | CAP-CRM-001, CAP-CRM-003 |
+| CAP-CRM-003 | Consent, preference and suppression projection | Marketing systems must respect the guest's actual choices, not stale copies | CTRL | P2 | Yes | CAP-GST-008 |
+| CAP-CRM-004 | Communication history | Staff must see what the guest was told and when | CORE | P2 | Yes | CAP-GST-001 |
+| CAP-CRM-005 | Lifecycle and stay-based triggers | Birthday, post-stay and win-back moments must happen automatically and lawfully | CORE | P3 | D12 | CAP-CRM-003 |
 | CAP-CRM-006 | Guest messaging channels (email, SMS, WhatsApp) | Guests communicate through channels the hotel must meet them on | ADP | P2 | Yes | CAP-INT-009 |
-| CAP-CRM-007 | Marketing performance reporting | Marketing spend must be defensible | CORE | P3 | Ph12 | CAP-CRM-002 |
+| CAP-CRM-007 | Marketing performance reporting | Marketing spend must be defensible | CORE | P3 | D12 | CAP-CRM-002 |
 
 ### 5.22 HRM — Workforce & HR boundary
 
@@ -521,9 +520,9 @@ SuiteFlow is not an HR system. It must, however, link the people who act in the 
 |---|---|---|---|---|---|---|
 | CAP-HRM-001 | Employee records boundary | Staff identity must come from one authoritative employment source | PLAT | P1 | Yes | CAP-PM-001 |
 | CAP-HRM-002 | User identity and role linkage | System access must follow employment state (joiners, movers, leavers) | PLAT | P1 | Yes | CAP-HRM-001, CAP-PLT-001 |
-| CAP-HRM-003 | Department and position structure | Approval chains and reporting need organisational context | PLAT | P2 | Ph14 | CAP-HRM-001 |
-| CAP-HRM-004 | Staff scheduling | Rota planning affects 24×7 control coverage | CORE | P3 | Ph13 | CAP-HRM-003 |
-| CAP-HRM-005 | Commission and payroll boundary | Payroll is out of scope; commission inputs must still reach it | ADP | P3 | Ph13 | CAP-CRP-006 |
+| CAP-HRM-003 | Department and position structure | Approval chains and reporting need organisational context | PLAT | P2 | D14 | CAP-HRM-001 |
+| CAP-HRM-004 | Staff scheduling | Rota planning affects 24×7 control coverage | CORE | P3 | D13 | CAP-HRM-003 |
+| CAP-HRM-005 | Commission and payroll boundary | Payroll is out of scope; commission inputs must still reach it | ADP | P3 | D13 | CAP-CRP-006 |
 
 ### 5.23 INT — Integrations
 
@@ -532,18 +531,18 @@ No hotel is an island. Every external connection is a reliability, security and 
 | ID | Capability | Business problem | Owner | Pri | Pilot | Depends on |
 |---|---|---|---|---|---|---|
 | CAP-INT-001 | Adapter framework with contracts, retries, idempotency and reconciliation | Each integration cannot reinvent reliability; failures must be visible and recoverable | ADP | P1 | Yes | CAP-PLT-007 |
-| CAP-INT-002 | Channel manager / OTA distribution | Third-party channels are a primary demand source and a primary oversell risk | ADP | P2 | Ph13 | CAP-INT-001, CAP-AVL-008 |
-| CAP-INT-003 | Booking engine / web direct | Direct demand avoids commission and captures guest data | ADP | P3 | Ph13 | CAP-INT-001 |
-| CAP-INT-004 | Payment gateway / acquirer integration | Card acceptance must be integrateable without storing card data | ADP | P2 | OQ-005 (closed) | CAP-INT-001 |
+| CAP-INT-002 | Channel manager / OTA distribution | Third-party channels are a primary demand source and a primary oversell risk | ADP | P2 | D13 | CAP-INT-001, CAP-AVL-008 |
+| CAP-INT-003 | Booking engine / web direct | Direct demand avoids commission and captures guest data | ADP | P3 | D13 | CAP-INT-001 |
+| CAP-INT-004 | Payment gateway / acquirer integration | Card acceptance must be integrateable without storing card data | ADP | P2 | D16 | CAP-INT-001 |
 | CAP-INT-005 | Banking and statement ingestion | Settlement and reconciliation need bank records in usable form | ADP | P2 | Pend OQ-007 | CAP-INT-001 |
-| CAP-INT-006 | POS system integration | Outlets may run external POS platforms | ADP | P2 | Ph11 | CAP-INT-001, CAP-POS-008 |
+| CAP-INT-006 | POS system integration | Outlets may run external POS platforms | ADP | P2 | D11 | CAP-INT-001, CAP-POS-008 |
 | CAP-INT-007 | Accounting system integration | Operational-to-accounting exchange must be governed and reconcilable | CTRL | P0 | Yes | CAP-INT-001, CAP-ACC-012 |
-| CAP-INT-008 | CRM system integration | Marketing systems need consented, current guest data | ADP | P3 | Ph12 | CAP-INT-001, CAP-CRM-003 |
+| CAP-INT-008 | CRM system integration | Marketing systems need consented, current guest data | ADP | P3 | D12 | CAP-INT-001, CAP-CRM-003 |
 | CAP-INT-009 | Email, SMS and WhatsApp providers | Guest communication needs reliable providers with delivery evidence | ADP | P2 | Yes | CAP-INT-001 |
-| CAP-INT-010 | Door-lock systems | Physical access must follow stay state and checkout | ADP | P3 | OQ-020 (closed) | CAP-INT-001, CAP-FO-011 |
-| CAP-INT-011 | ID scanners and document capture devices | Front desk speed and accuracy benefit from device capture | ADP | P3 | OQ-019 (closed) | CAP-INT-001, CAP-FO-003 |
-| CAP-INT-012 | Kiosks and self-service | Guest self-service reduces queue pressure where the property wants it | ADP | P4 | Ph16 | CAP-INT-001, CAP-FO-002 |
-| CAP-INT-013 | Revenue management systems | Dedicated RMS platforms need rate, restriction and pickup interfaces | ADP | P4 | Ph16 | CAP-INT-001, CAP-RTM-013 |
+| CAP-INT-010 | Door-lock systems | Physical access must follow stay state and checkout | ADP | P3 | D16 | CAP-INT-001, CAP-FO-011 |
+| CAP-INT-011 | ID scanners and document capture devices | Front desk speed and accuracy benefit from device capture | ADP | P3 | D16 | CAP-INT-001, CAP-FO-003 |
+| CAP-INT-012 | Kiosks and self-service | Guest self-service reduces queue pressure where the property wants it | ADP | P4 | D16 | CAP-INT-001, CAP-FO-002 |
+| CAP-INT-013 | Revenue management systems | Dedicated RMS platforms need rate, restriction and pickup interfaces | ADP | P4 | D16 | CAP-INT-001, CAP-RTM-013 |
 | CAP-INT-014 | Government and fiscal systems | Statutory reporting or fiscalisation may be mandatory | ADP | P2 | Pend OQ-029 | CAP-INT-001 |
 
 ### 5.24 PLT — Platform & administration
@@ -565,9 +564,9 @@ The foundation every capability stands on. Platform failures are total failures,
 | CAP-PLT-011 | Observability (logs, metrics, traces, health) | Silent failure is the worst failure in a hotel | PLAT | P1 | Yes | CAP-PLT-007 |
 | CAP-PLT-012 | Backup, restore and point-in-time recovery | 1-hour RPO/RTO demands continuous, proven recovery | PLAT | P1 | Yes | CAP-PLT-011 |
 | CAP-PLT-013 | Upgrade and migration framework | The platform must evolve without forking or data loss | PLAT | P1 | Yes | CAP-PLT-012 |
-| CAP-PLT-014 | Localization, tax and calendar configuration | Tax rules, fiscal calendars and formats vary by jurisdiction | PLAT | P1 | OQ-021 (closed) | CAP-PLT-004 |
-| CAP-PLT-015 | Break-glass and emergency access controls | Emergencies need access that is possible, visible and reviewed | PLAT | P2 | Ph17 | CAP-PLT-002, CAP-PLT-006 |
-| CAP-PLT-016 | Data import and export tooling | Onboarding, migration and exit all need controlled bulk data movement | PLAT | P2 | Ph9 | CAP-PLT-006 |
+| CAP-PLT-014 | Localization, tax and calendar configuration | Tax rules, fiscal calendars and formats vary by jurisdiction | PLAT | P1 | Yes | CAP-PLT-004 |
+| CAP-PLT-015 | Break-glass and emergency access controls | Emergencies need access that is possible, visible and reviewed | PLAT | P2 | D17 | CAP-PLT-002, CAP-PLT-006 |
+| CAP-PLT-016 | Data import and export tooling | Onboarding, migration and exit all need controlled bulk data movement | PLAT | P2 | Yes | CAP-PLT-006 |
 
 ### 5.25 AI — AI assistance
 
@@ -575,16 +574,16 @@ AI is architected as a governed assistant layer from the start: useful, bounded 
 
 | ID | Capability | Business problem | Owner | Pri | Pilot | Depends on |
 |---|---|---|---|---|---|---|
-| CAP-AI-001 | Front desk assistant | Agents ask operational questions in natural language instead of navigating screens | CTRL | P3 | Ph19 | CAP-PLT-002, CAP-PLT-009 |
-| CAP-AI-002 | Reservation assistant | Booking enquiry handling needs speed without pricing authority errors | CTRL | P3 | Ph19 | CAP-RSV-001, CAP-RTM-004 |
-| CAP-AI-003 | Management reporting assistant | Managers want explanations of numbers they can trust and drill into | CTRL | P3 | Ph19 | CAP-RPT-012, CAP-BI-001 |
-| CAP-AI-004 | Housekeeping assistant | Supervisors need workload and priority guidance in the flow of work | CTRL | P4 | Ph19 | CAP-HSK-003 |
-| CAP-AI-005 | Maintenance assistant | Fault triage and history lookup speed up repairs | CTRL | P4 | Ph19 | CAP-MNT-003 |
-| CAP-AI-006 | Document extraction (IDs, invoices, vouchers) | Manual typing is slow and error-prone at the desk and in finance | CTRL | P3 | Ph19 | CAP-FO-003, CAP-INV-004 |
-| CAP-AI-007 | Financial and operational anomaly detection | Fraud and error surface through patterns, not individual reviews | CTRL | P3 | Ph19 | CAP-INA-006, CAP-ACC-009 |
-| CAP-AI-008 | Operational summaries and shift handover drafting | Shift change loses context; summaries restore it | CTRL | P3 | Ph19 | CAP-FO-016, CAP-PLT-006 |
-| CAP-AI-009 | Guest communication drafting | Consistent, on-brand, policy-aware replies save time | CTRL | P4 | Ph19 | CAP-CRM-006 |
-| CAP-AI-010 | AI governance and tool authorization layer | Without governance, AI becomes an unmonitored privileged user | CTRL | P3 | Ph19 | CAP-PLT-002, CAP-PLT-006 |
+| CAP-AI-001 | Front desk assistant | Agents ask operational questions in natural language instead of navigating screens | CTRL | P3 | D19 | CAP-PLT-002, CAP-PLT-009 |
+| CAP-AI-002 | Reservation assistant | Booking enquiry handling needs speed without pricing authority errors | CTRL | P3 | D19 | CAP-RSV-001, CAP-RTM-004 |
+| CAP-AI-003 | Management reporting assistant | Managers want explanations of numbers they can trust and drill into | CTRL | P3 | D19 | CAP-RPT-012, CAP-BI-001 |
+| CAP-AI-004 | Housekeeping assistant | Supervisors need workload and priority guidance in the flow of work | CTRL | P4 | D19 | CAP-HSK-003 |
+| CAP-AI-005 | Maintenance assistant | Fault triage and history lookup speed up repairs | CTRL | P4 | D19 | CAP-MNT-003 |
+| CAP-AI-006 | Document extraction (IDs, invoices, vouchers) | Manual typing is slow and error-prone at the desk and in finance | CTRL | P3 | D19 | CAP-FO-003, CAP-INV-004 |
+| CAP-AI-007 | Financial and operational anomaly detection | Fraud and error surface through patterns, not individual reviews | CTRL | P3 | D19 | CAP-INA-006, CAP-ACC-009 |
+| CAP-AI-008 | Operational summaries and shift handover drafting | Shift change loses context; summaries restore it | CTRL | P3 | D19 | CAP-FO-016, CAP-PLT-006 |
+| CAP-AI-009 | Guest communication drafting | Consistent, on-brand, policy-aware replies save time | CTRL | P4 | D19 | CAP-CRM-006 |
+| CAP-AI-010 | AI governance and tool authorization layer | Without governance, AI becomes an unmonitored privileged user | CTRL | P3 | D19 | CAP-PLT-002, CAP-PLT-006 |
 
 ## 6. Notable additions beyond the mandate's initial list
 
@@ -620,7 +619,7 @@ Some capabilities only deliver their value as a connected chain. These chains ar
 
 ## 8. Pilot dependencies in this map
 
-Capabilities marked `OQ-0nn (closed)` had a hotel-reality dependency resolved by the adopted answers (23 Sep 2026); capabilities marked `Pend OQ-0nn` still depend on the three open items below. All are fully designed in the target regardless of the pilot answer:
+Resolved hotel-reality answers are folded into the classification above (23 Sep 2026): closed answers in pilot scope are `Yes`; closed answers that defer are placed in their enterprise delivery phase. Only the three questions below remain pending. All capabilities are fully designed in the target regardless of the pilot answer:
 
 | Question | Capabilities affected |
 |---|---|
@@ -634,7 +633,9 @@ Capabilities marked `OQ-0nn (closed)` had a hotel-reality dependency resolved by
 | OQ-021 (closed; service charge/tax policy) | CAP-FOL-010, CAP-ACC-005/007, CAP-PLT-014 |
 | OQ-022 (closed; maintenance at pilot) | CAP-MNT-001…008, CAP-PM-009/010 |
 | OQ-024 (retention periods) | CAP-GST-009 |
-| OQ-005 (closed: payment links later) / OQ-007, OQ-029 (open: bank and fiscal interfaces) | CAP-INT-004/005/014 |
+| OQ-005 (closed: payment gateway deferred) / OQ-007, OQ-029 (open) | CAP-INT-004 → D16; CAP-INT-005, CAP-INT-014 pending evidence |
+
+Closed answers that defer scope: OQ-020 → CAP-FO-011, CAP-INT-010 (D16); OQ-019 scanning hardware → CAP-INT-011 (D16); OQ-005 payment gateway → CAP-INT-004 (D16); OQ-015 recipe deduction → CAP-INV-006 (D11).
 
 ## 9. Version history
 
@@ -642,3 +643,4 @@ Capabilities marked `OQ-0nn (closed)` had a hotel-reality dependency resolved by
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial capability map issued with WP 0.1 pass 2 | PROPOSED |
 | 0.2 | 2026-09-23 | Hotel-reality decisions reclassified after adoption of the industry-standard answers: 48 resolved (`OQ-0nn (closed)`), 3 pending (OQ-007/024/029) | PROPOSED |
+| 0.3 | 2026-09-23 | TEC-08 + TEC-05 resolutions: single-valued classification (`Yes` 204 provisional / `D10`–`D20` 76 / `Pend` 3); `Ph<n>` markers renamed `D<n>`; deferred closed answers assigned (D16/D11) | PROPOSED |

@@ -57,7 +57,7 @@ Resolution statuses:
 | OQ-017 | Are group/event and conference business material at the pilot hotel (conference center in the property name)? Which group workflows must be pilot-ready? | Hotel Operations | Group/event capability priorities (WP 0.1 pass 2) | B | CLOSED |
 | OQ-018 | Channel/distribution requirement at pilot: direct-only, or OTA/channel-manager integration required? | Product Owner | Distribution capability priority | I | CLOSED |
 | OQ-019 | Identity capture requirements for guest registration (ID document scanning, retention, Nigeria regulatory expectations) | Hotel Operations / Security | Front-office workflows, privacy design (WP 0.3/0.5) | B | CLOSED |
-| OQ-020 | Door-lock integration expectations for the pilot | Hotel Operations | Integration scope | D (Phase 1 research first) | CLOSED |
+| OQ-020 | Door-lock integration expectations for the pilot | Hotel Operations | Integration scope | D (Programme P1 research first) | CLOSED |
 | OQ-021 | Service charge policy (rate, distribution, accounting treatment) | Finance Controller | Financial architecture (WP 0.4) | B | CLOSED |
 | OQ-022 | Maintenance/engineering scope at pilot: work orders, preventive maintenance, or out of pilot scope? | Hotel Operations | Maintenance capability priority, state machines | I | CLOSED |
 | OQ-023 | Which employee/user data is authoritative from HRMS, and is HRMS required at all beyond user identity? | Product Owner | Platform identity design (WP 0.2/0.5) | I | CLOSED |
@@ -75,7 +75,7 @@ Resolution statuses:
 | OQ-028 | Licensing position for upstream open-source dependencies and commercial distribution | Legal counsel | Release and distribution architecture | I | OPEN-ADVICE |
 | OQ-029 | Fiscalisation / e-invoicing requirements in Nigeria that would require integration with tax authority systems | Finance / Legal | Integration architecture, invoicing | I | OPEN-ADVICE |
 | OQ-030 | Do payment gateway webhooks and bank interfaces provide idempotent, referenceable confirmations suitable for automated reconciliation, or is manual reconciliation the pilot baseline? | Platform / Finance | Payments and reconciliation design (WP 0.7) | I | CLOSED |
-| OQ-031 | AI capability priorities and acceptability for hotel staff at pilot; which AI assistance, if any, is desired at launch? | Product Owner | AI capability priorities (pass 2) | D (Phase 20 target) | CLOSED |
+| OQ-031 | AI capability priorities and acceptability for hotel staff at pilot; which AI assistance, if any, is desired at launch? | Product Owner | AI capability priorities (pass 2) | D (Programme P20 target) | CLOSED |
 | OQ-032 | Accessibility and language requirements for staff facing interfaces (English-only assumption?) | Product Owner | UX architecture (WP 0.6) | D (WP 0.6) | CLOSED |
 | OQ-034 | Housekeeping service standards: is formal supervisor inspection required before sale (all rooms or VIP/rush only), stayover service frequency, and does the property operate minibar/in-room consumption? | Hotel Operations | Housekeeping workflows and rules (BR-HSK-002/005) | I | CLOSED |
 | OQ-035 | Pricing policy details: child age bound for free stays, extra-person and sharing pricing, early check-in / late-checkout charges, early-departure rules | Product Owner / Hotel Operations | Rate and front-office rules (BR-RTM-005, BR-FO-004/005) | I | CLOSED |
@@ -104,7 +104,7 @@ The Product Owner adopted all `ANSWERED-D` answers in full on 23 September 2026 
 | OQ-017 | Groups pilot-critical: blocks, cutoffs, rooming lists, master folio/routing, deposits, group statements, basic conference space booking | GOV-ANSWERS §4.2 | Product Owner | 2026-09-23 | GRP/SAL priorities; group workflows |
 | OQ-018 | Direct + corporate at pilot; manual OTA handling if unavoidable; channel manager later | GOV-ANSWERS §4.2 | Product Owner | 2026-09-23 | Distribution priority |
 | OQ-019 | ID type/number for all adults; scan only if legally required; never NIN images; Class-A handling | GOV-ANSWERS §4.2 | Product Owner | 2026-09-23 | BR-FO-001; security model; INT-011 |
-| OQ-020 | Manual keys at pilot; lock research Phase 1; integration later | GOV-ANSWERS §4.2 | Product Owner | 2026-09-23 | INT-010; front-office workflows |
+| OQ-020 | Manual keys at pilot; lock research Programme P1; integration later | GOV-ANSWERS §4.2 | Product Owner | 2026-09-23 | INT-010; front-office workflows |
 | OQ-021 | 10% F&B service charge as staff-distribution liability, never revenue; tax treatment per adviser | GOV-ANSWERS §4.2 | Product Owner | 2026-09-23 | Financial architecture; tax configuration; reporting |
 | OQ-022 | Work orders + light preventive maintenance at pilot with OOO coordination | GOV-ANSWERS §4.2 | Product Owner | 2026-09-23 | MNT priority; maintenance workflows |
 | OQ-023 | HRMS/directory owns employee identity; SuiteFlow consumes an identity projection; no payroll | GOV-ANSWERS §4.2 | Product Owner | 2026-09-23 | Identity design; security model |

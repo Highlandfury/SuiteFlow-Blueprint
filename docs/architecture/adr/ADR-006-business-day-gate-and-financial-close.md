@@ -83,7 +83,7 @@ What gates must pass before a hotel's operating day advances, in what order, and
 
 ## Implementation impact
 
-No immediate change. The implementation's stricter pre-advance posture aligns with the pilot default; Phase 2 verifies actual behaviour under load, and Phase 4 decides transitions.
+No immediate change. The implementation's stricter pre-advance posture aligns with the pilot default; Programme P2 verifies actual behaviour under load, and Programme P4 decides transitions.
 
 ## Migration impact
 

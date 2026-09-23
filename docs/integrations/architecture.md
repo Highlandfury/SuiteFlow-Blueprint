@@ -2,7 +2,7 @@
 doc-id: INT-ARCH
 title: Target Integration Architecture
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Integration Architect (drafted); Product Owner (approval)
 applies-to: full enterprise target; pilot interfaces marked
@@ -30,7 +30,7 @@ Per ADR-010: transactional outbox for outbound effects; inbound endpoints (webho
 
 ## 4. Interface catalogue
 
-### 4.1 Channel manager / OTA distribution (INT-002) — Ph13
+### 4.1 Channel manager / OTA distribution (INT-002) — D13
 
 | Field | Specification |
 |---|---|
@@ -43,7 +43,7 @@ Per ADR-010: transactional outbox for outbound effects; inbound endpoints (webho
 | Versioning | Provider API version pinned per adapter; schema changes tested against conformance suite |
 | Rate limits | Respect provider quotas; batch/backoff; never retry storms |
 
-### 4.2 Booking engine / web direct (INT-003) — Ph13
+### 4.2 Booking engine / web direct (INT-003) — D13
 
 | Field | Specification |
 |---|---|
@@ -74,9 +74,9 @@ Per ADR-010: transactional outbox for outbound effects; inbound endpoints (webho
 | Identity | Bank reference + value date; `(provider, reference)` uniqueness for dedupe |
 | Guarantees | Transfer/cheque clearing states change only on bank evidence (BR-CSH-004) |
 | Failure | Formats and access constraints are the primary risk (OQ-007); manual ingestion path with dual review |
-| Reconciliation | Daily: transfer clearing and cheque clearing vs bank lines; cash deposits vs bank credits (FIN-ARCH §10) |
+| Reconciliation | Daily: transfer and cheque clearing vs bank statement entries; cash deposits vs bank credits; acquirer settlement vs terminal batches with fees (FIN-ARCH §10 checks 3, 4, 12, 13) |
 
-### 4.5 External POS (INT-006) — Ph11
+### 4.5 External POS (INT-006) — D11
 
 | Field | Specification |
 |---|---|
@@ -97,7 +97,7 @@ Per ADR-010: transactional outbox for outbound effects; inbound endpoints (webho
 | Failure | Uncertain external outcome resolved by reconciliation, never blind re-post (BR-ACC-003) |
 | Reconciliation | Daily control accounts and interface value comparison (FIN-ARCH §10) |
 
-### 4.7 CRM projection (INT-008) — Ph12
+### 4.7 CRM projection (INT-008) — D12
 
 | Field | Specification |
 |---|---|
@@ -136,7 +136,7 @@ Per ADR-010: transactional outbox for outbound effects; inbound endpoints (webho
 | Auth | Local device pairing |
 | Guarantees | Class-A handling (SEC-MODEL §5); retention per OQ-024; device images never leave the platform's storage controls except approved exports |
 
-### 4.11 Kiosks / self-service (INT-012) — Ph16
+### 4.11 Kiosks / self-service (INT-012) — D16
 
 | Field | Specification |
 |---|---|
@@ -144,7 +144,7 @@ Per ADR-010: transactional outbox for outbound effects; inbound endpoints (webho
 | Auth | Kiosk service identity scoped to check-in operations |
 | Guarantees | Same gates as desk check-in (BR-FO-001); overrides unavailable; escalation to desk |
 
-### 4.12 Revenue management systems (INT-013) — Ph13
+### 4.12 Revenue management systems (INT-013) — D13
 
 | Field | Specification |
 |---|---|
@@ -161,7 +161,7 @@ Per ADR-010: transactional outbox for outbound effects; inbound endpoints (webho
 | Guarantees | Documents derive from the operative SuiteFlow document (ADR-008 §3); one supply, one operative document |
 | Failure | Submission retried; unresolved submission surfaced as a compliance exception with owner, never hidden |
 
-### 4.14 External BI (BI-006) — Ph16
+### 4.14 External BI (BI-006) — D16
 
 | Field | Specification |
 |---|---|
@@ -218,12 +218,14 @@ Each interface is "done" only with: contract conformance tests; failure-scenario
 |---|---|---|
 | OQ-004/005/006/007 bank and acquirer facts | Product Owner / Finance | Payments and banking interfaces |
 | OQ-029 fiscalisation | Legal / Finance | Fiscal adapter necessity |
-| OQ-018 (closed) channel strategy | Product Owner | Channel manager timing (Ph13) |
+| OQ-018 (closed) channel strategy | Product Owner | Channel manager timing (D13) |
 | OQ-020 (closed) locks | Hotel Ops | Lock interface in/out of pilot |
 | OQ-030 (closed) provider capability evidence | Platform / Finance | ADR-011 binding |
+| Cross-cutting: processor/transfer gate (SEC-08) | Security/Privacy Adviser (interim: Product Owner) | No new processor or cross-border transfer touching personal data without a recorded agreement, transfer mechanism and register entry (SEC-MODEL §15) |
 
 ## 10. Version history
 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial integration architecture issued with WP 0.7 | PROPOSED |
+| 0.2 | 2026-09-23 | P1 resolutions: reconciliation cross-references corrected (FIN-03); processor/transfer enablement gate (SEC-08) | PROPOSED |
