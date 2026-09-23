@@ -210,16 +210,16 @@ docs/
 │   ├── personas-and-roles.md          [present — WP 0.1]
 │   ├── capability-map.md              [present — WP 0.1]
 │   └── roadmap.md                     [present — WP 0.1 skeleton; full in WP 0.8]
-├── architecture/                      [WP 0.2]
-│   ├── target-state.md
-│   ├── domain-model.md
-│   ├── data-model.md
+├── architecture/                      [WP 0.2 in progress]
+│   ├── target-state.md                [present — WP 0.2 pass 1]
+│   ├── domain-model.md                [WP 0.2 pass 2]
+│   ├── data-model.md                  [WP 0.2 pass 2]
 │   ├── state-machines.md              [WP 0.3]
 │   ├── security-model.md              [WP 0.5]
 │   ├── integration-architecture.md    [WP 0.7]
 │   ├── reporting-architecture.md      [WP 0.7]
 │   ├── non-functional-requirements.md [WP 0.7]
-│   └── adr/
+│   └── adr/                           [present — ADR-001, ADR-002; WP 0.2 pass 2 adds ADR-003, ADR-004]
 ├── workflows/                         [WP 0.3]
 │   ├── reservations/  front-desk/  housekeeping/  maintenance/  finance/  night-audit/
 ├── finance/                           [WP 0.4]

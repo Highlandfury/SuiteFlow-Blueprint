@@ -126,6 +126,19 @@ Explicitly gated: bank API implementation, gateway adapters, final accounting do
 
 Observed statuses are working-tree observations and are recorded here for planning only. Phase 2 re-verifies them with commit evidence.
 
+### 4.3 Validation outcomes recorded to date
+
+| Input | Outcome | Ruling | Date |
+|---|---|---|---|
+| DP-ADR-001 revenue/direct bill | Reserved | To be ruled in WP 0.4 | — |
+| DP-ADR-002 business-day gate | Reserved | To be ruled in WP 0.4 | — |
+| DP-ADR-003 outbox/idempotency | Reserved | To be ruled in WP 0.7 | — |
+| DP-ADR-004 payments adapter | Reserved | To be ruled in WP 0.7 | — |
+| DP-ADR-005 deposits | Reserved | To be ruled in WP 0.4 | — |
+| DP-CTX-001 topology and tenancy | **MODIFIED** | ADR-002: tenant is the deployment unit with property partitions; optional dedicated deployment for hard-isolation customers. One site per hotel no longer the target default | 2026-09-23 |
+| DP-CTX-002 operations/accounting/control-plane split | **ROLES CONFIRMED, PRODUCT BINDING DEFERRED** | ADR-001: layered ownership adopted; which products fill the roles is decided in Phase 3/4 with role-contract evidence | 2026-09-23 |
+| DP-CTX-003 revenue once / settlement as balance-sheet movement / guest-ledger control account | **RESERVED** | To be ruled in WP 0.4 | — |
+
 ## 5. Input conflicts carried forward
 
 | Conflict | Statement A | Statement B | Handling |
@@ -140,3 +153,4 @@ Observed statuses are working-tree observations and are recorded here for planni
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial register: SRC-001…004; BR requirements; proposed inputs | PROPOSED |
+| 0.2 | 2026-09-23 | Validation outcomes §4.3 added: DP-CTX-001 MODIFIED (ADR-002); DP-CTX-002 roles confirmed, binding deferred (ADR-001); DP-CTX-003 reserved for WP 0.4 | PROPOSED |
