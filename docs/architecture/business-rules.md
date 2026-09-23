@@ -38,7 +38,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | BR-RTM-002 | Rate resolution precedence for eligible plans: negotiated rate (valid agreement) > package/promo (conditions met) > BAR. Ties resolve by lowest price for the guest unless flag `prefer_margin` is set by revenue policy. | CAP-RTM-004/006 |
 | BR-RTM-003 | Rate and restriction changes require rate-change authority; changes are effective-dated and never alter past dates or posted items. Bulk changes preview affected dates and occupancy before confirmation. | INV-RTM-1/5; CAP-RTM-011/012 |
 | BR-RTM-004 | Derived rates recompute from base rate and rule; recomputation only affects dates not yet posted; floors/ceilings clamp results; negative results are invalid. | INV-RTM-4; CAP-RTM-003 |
-| BR-RTM-005 | Occupancy pricing: extra adult/child, sharing and single-occupancy rules are per rate plan; children at or below the property's child age bound [OQ-012] are free unless the plan states otherwise. | CAP-RTM-007 |
+| BR-RTM-005 | Occupancy pricing: extra adult/child, sharing and single-occupancy rules are per rate plan; children at or below the property's child age bound [OQ-035] are free unless the plan states otherwise. | CAP-RTM-007 |
 | BR-RTM-006 | LOS pricing applies when the stay length meets the plan's thresholds; the applicable LOS price recomputes when stay dates change and is recorded at booking. | CAP-RTM-008 |
 | BR-RTM-007 | Every charge captures the applied rate basis (plan version, amount, rule) as evidence at posting time. | INV-RTM-2; ADR-003 |
 | BR-RTM-008 | "Best rate" claims (BAR guarantees) are only made where the property configures them; the system never invents a rate comparison at booking time. | Scope discipline |
@@ -50,8 +50,8 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | BR-FO-001 | Check-in requires all of: reservation confirmed for the arrival date (or walk-in creation), room assigned and readiness acceptable, identity/registration captured per policy [OQ-019], credit/payment position acceptable per policy, and no blocking alert. Failures block; overrides require the specific authority and are audit-flagged. | INV-FO-2; CAP-FO-002/004 |
 | BR-FO-002 | Checkout requires the folio invariant: balance zero, transferred, or explicitly authorised to remain with reason and owner. Keys/access revoke on checkout. | INV-FO-3; BR-FOL-001; CAP-FO-008 |
 | BR-FO-003 | A stay extension requires availability for added nights, re-resolved rate, and credit re-check; failure blocks or requires supervisor authority with recorded reason. | CAP-FO-010 |
-| BR-FO-004 | Early check-in and late checkout are priced per configured policy [OQ-012] and require the same authority as a rate override when free of charge. | CAP-FO-009 |
-| BR-FO-005 | Early departure applies the rate plan's early-departure rule; where no rule exists, remaining nights are cancelled without penalty unless the plan or contract states otherwise. | CAP-FO-019 |
+| BR-FO-004 | Early check-in and late checkout are priced per configured policy [OQ-035] and require the same authority as a rate override when free of charge. | CAP-FO-009 |
+| BR-FO-005 | Early departure applies the rate plan's early-departure rule; where no rule exists, remaining nights are cancelled without penalty unless the plan or contract states otherwise. [OQ-035] | CAP-FO-019 |
 | BR-FO-006 | Relocation (walking) requires a relocation record, destination confirmation, and cost approval per policy; the guest's original terms are honoured and the cost is posted to the relocation account, not silently spread. | CAP-FO-018 |
 | BR-FO-007 | A room move changes the assigned room, not the contract; pricing consequences follow the room-type change rules and are recorded as amendments. | INV-RSV-9 |
 
@@ -80,7 +80,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | ID | Rule | Basis / dependencies |
 |---|---|---|
 | BR-CSH-001 | One open session per cashier and till; opening requires an evidenced float. | SM-CASHIER-SESSION #1 |
-| BR-CSH-002 | Session close requires counts by method and produces a variance; variance tolerance is configured [OQ-012 default: zero tolerance with review above 0.5% of session volume]. | CAP-CSH-005/006 |
+| BR-CSH-002 | Session close requires counts by method and produces a variance; variance tolerance is configured [OQ-037 default: zero tolerance with review above 0.5% of session volume]. | CAP-CSH-005/006 |
 | BR-CSH-003 | A variance beyond tolerance requires independent review (maker ≠ checker) with reason and selected accounting treatment before close completes. | INV-FOL-10 |
 | BR-CSH-004 | Cash clears at count; POS clears against acquirer batch; transfer clears against bank confirmation; cheque clears against bank value confirmation. No other state counts as settled. | BR-PAY-006; CAP-CSH-010 |
 | BR-CSH-005 | Drops are evidenced and reconciled; cash-in-transit is tracked to bank deposit. | CAP-CSH-004 |
@@ -172,7 +172,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 |---|---|---|
 | BR-RPT-001 | Report figures reconcile to source transactions and drill down; a report that cannot reconcile is a defect. | CAP-RPT-012 |
 | BR-RPT-002 | Available room nights for a date = sellable capacity (all rooms minus OOO; OOS rooms included). | BR-AVL-003 |
-| BR-RPT-003 | Occupied room nights = rooms with an active stay on the night, excluding house use, including comps; [OQ-012 default; to be confirmed by hotel]. | Comp/house policy |
+| BR-RPT-003 | Occupied room nights = rooms with an active stay on the night, excluding house use, including comps; [OQ-036 default; to be confirmed by hotel]. | Comp/house policy |
 | BR-RPT-004 | Occupancy % = occupied room nights ÷ available room nights for the period. | — |
 | BR-RPT-005 | ADR = room revenue ÷ occupied room nights (comps included at zero revenue; ADR effect stated wherever reported). | — |
 | BR-RPT-006 | RevPAR = room revenue ÷ available room nights. | — |
@@ -181,7 +181,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 
 ## 14. Rules awaiting decisions
 
-The following rules contain `[OQ-nnn]` defaults that must be confirmed before ACCEPTED: BR-RTM-005 (child age), BR-FO-001 (identity capture), BR-FO-004 (early/late pricing), BR-FOL-009/010/011 (deposit, no-show, cancellation), BR-CSH-002 (tolerance), BR-GRP-003 (attrition), BR-HSK-002 (inspection policy, OQ-034), BR-HSK-005 (minibar, OQ-014), BR-RPT-003 (comp/house). Each default is chosen to match common hotel practice and Nigerian-market pilot expectations; all remain PROPOSED.
+The following rules contain `[OQ-nnn]` defaults that must be confirmed before ACCEPTED: BR-RTM-005/BR-FO-004/BR-FO-005 (child age, early/late pricing, early departure; OQ-035), BR-FO-001 (identity capture; OQ-019), BR-FOL-009/010/011 (deposit, no-show, cancellation; OQ-012), BR-CSH-002 (variance tolerance; OQ-037), BR-GRP-003 (attrition; OQ-017), BR-HSK-002 (inspection policy; OQ-034), BR-HSK-005 (minibar; OQ-014), BR-RPT-003 (comp/house; OQ-036). Each default is chosen to match common hotel practice and Nigerian-market pilot expectations; all remain PROPOSED.
 
 ## 15. Version history
 
