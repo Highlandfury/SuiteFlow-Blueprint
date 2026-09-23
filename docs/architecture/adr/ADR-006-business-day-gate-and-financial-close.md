@@ -2,7 +2,7 @@
 doc-id: ADR-006
 title: Business-day gate and financial close
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Financial Systems Architect (drafted); Finance Controller and Hotel Operations (approval; roles open)
 applies-to: full enterprise target
@@ -41,7 +41,13 @@ What gates must pass before a hotel's operating day advances, in what order, and
 
 1. **Business-date discipline.** Every financial item carries the open business date; posting to a closed date is rejected; the day is the atomic unit of advancement.
 2. **Close sequence (target):** pre-close validation → nightly postings → control-total reconciliation → income-audit certification → day advance → reports. Each step is idempotent and checkpointed; failures leave the day `CLOSING` and resumable.
-3. **Blocking conditions** are exactly those in BR-NAU-001; every blocked condition is resolvable through a defined, authorised path (for example: pending departure, variance review, mapping gap, unresolved discrepancy) rather than by override of the control itself.
+3. **Blocking conditions (canonical).** A control failure blocks the stage it protects. A ReconciliationCase is the tracking object for a **known, policy-defined** difference with an owner and a due date — not a way around a control. Unexplained differences never advance a stage; every blocked condition is resolvable only through a defined, authorised path (for example: pending departure, variance review, mapping gap, unresolved discrepancy), never by overriding the control itself.
+
+| Stage | Blocks | May remain open (policy-defined, owner + due date) |
+|---|---|---|
+| Day advance (`CLOSING → CLOSED`) | Unposted charges; open cashier sessions unless policy permits flagged continuation; pending departures; unresolved occupancy discrepancies; failed posting queues; unmapped posting families; **failed control-total reconciliation with an unexplained difference** | Timing differences defined by policy (for example, acquirer settlement legitimately in transit), tracked as cases and shown on the close checklist |
+| Day certification / reporting | Any failed daily reconciliation check (FIN-ARCH §10) without a resolved case; missing families; required-series gaps | Non-blocking cases above; a day issued before certification is marked "pending certification" |
+| Period close | Any open ReconciliationCase of any age; unreconciled control accounts; open remediation | — |
 4. **Certification timing is property-configurable** with the same control result: the pilot default is certification before advance (option C), matching a control-first posture; a property with legitimate morning-only audit staffing may configure option B, in which case reporting for that day is explicitly marked "pending certification" until certified.
 5. **Reopen and remediation.** A closed day reopens only under finance-controller authority with reason and impact assessment; corrections are posted on the remediation basis defined in BR-NAU-005; reclosed control totals are versioned, originals preserved; affected reports are reissued as new versions (BR-NAU-006).
 6. **No partial advancement.** Partial close (some postings committed, day not advanced) is a recoverable state, never a publishable one: reports produced mid-close are marked provisional and unreleasable.
@@ -94,3 +100,4 @@ Historical day states and reopen events migrate with their evidence; no reconstr
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial decision issued with WP 0.4 | PROPOSED |
+| 0.2 | 2026-09-23 | FIN-04 resolution: canonical stage-by-stage blocking-conditions table (day advance / certification / period close) | PROPOSED |

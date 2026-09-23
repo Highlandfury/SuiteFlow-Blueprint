@@ -2,7 +2,7 @@
 doc-id: ARCH-RULES
 title: Target Business Rules
 status: PROPOSED
-version: 0.3
+version: 0.4
 date: 2026-09-23
 owner: Hospitality Domain Architect (drafted); Finance Controller + Hotel Operations (approval; roles open)
 applies-to: full enterprise target; adopted OQ answers marked closed, remaining dependencies noted
@@ -23,9 +23,9 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 
 | ID | Rule | Basis / dependencies |
 |---|---|---|
-| BR-AVL-001 | Availability for a date and room type = sellable capacity (physical rooms of that type minus active OOO windows) − active commercial allocations (reservations, blocks, holds). Derived, never edited. | INV-PM-4; CAP-AVL-001/002 |
+| BR-AVL-001 | Availability for a date and room type = sellable capacity (physical rooms of that type minus active OOO and OOS windows) − active commercial allocations (reservations, blocks, holds). Derived, never edited. | INV-PM-4; CAP-AVL-001/002 |
 | BR-AVL-002 | A booking that would make any night's availability negative is rejected unless an active OverbookingPolicy permits it; permitted oversell is reported nightly as exposure. | INV-PM-6; CAP-AVL-005 |
-| BR-AVL-003 | OOO removes a room from both capacity and occupancy statistics; OOS removes sellability but remains in capacity and available-room statistics. | Statistical definitions (BR-RPT-002/003) |
+| BR-AVL-003 | OOO removes a room from sellable capacity and from available-room statistics; OOS removes sellability but remains in available-room statistics. Sellable capacity = physical − OOO − OOS; statistical capacity (available room nights) = physical − OOO. | Statistical definitions (BR-RPT-002/003) |
 | BR-AVL-004 | Restrictions resolve by explicit precedence: stop sell > closed to arrival/departure > min/max LOS > advance purchase. Most restrictive wins; resolution is reproducible and recorded. | INV-RTM-3; CAP-AVL-004 |
 | BR-AVL-005 | Block inventory releases automatically at cutoff; late extension requires revenue authority and is reported. | INV-GRP-2; CAP-GRP-002 |
 | BR-AVL-006 | Every allocation state change records its owning entity and reason; allocations are never deleted, only released/expired/consumed. | INV-PM-5; CAP-AVL-009 |
@@ -67,8 +67,8 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | BR-FOL-006 | Voids are permitted only before the business day closes (or through the governed reopen path). Voids preserve the original item and create a linked reversal. | INV-FOL-2; SM-FOLIO-ITEM |
 | BR-FOL-007 | Transfers between folios/windows require an open target container, a responsible party, and produce a linked transfer pair. | SM-FOLIO-ITEM #4 |
 | BR-FOL-008 | Deposits are liabilities: applied only against charges, refunded only from cleared funds, and never recognised as revenue before application, forfeiture or expiry per policy. | INV-FOL-7; CAP-ACC-006 |
-| BR-FOL-009 | Forfeiture requires the governing cancellation/no-show policy basis, authority per limits, and recorded guest communication; partial forfeiture proportions follow the policy calculation, not the operator's judgement. [OQ-012 (closed)] | CAP-RSV-004/005 |
-| BR-FOL-010 | No-show charging: guaranteed reservations charge the first night plus tax (default) unless the guarantee terms state otherwise; non-guaranteed no-shows charge nothing; deposit disposition follows BR-FOL-009. [OQ-012 (closed)] | CAP-RSV-005 |
+| BR-FOL-009 | Forfeiture requires the governing cancellation/no-show policy basis, authority per limits, and recorded guest communication; partial forfeiture proportions follow the policy calculation, not the operator's judgement. Application and forfeiture are mutually exclusive for the same amount (one penalty, one recognition). [OQ-012 (closed)] | CAP-RSV-004/005 |
+| BR-FOL-010 | No-show charging: guaranteed reservations charge the first night plus tax (default) as cancellation/no-show revenue — never room revenue — and the no-show night is suppressed from the nightly room-charge run. Where a deposit exists it is applied to the penalty first (settlement), and only the policy-computed remainder is charged or forfeited — never both. Non-guaranteed no-shows charge nothing. One penalty, one recognition (FIN-ARCH §5.6). [OQ-012 (closed)] | CAP-RSV-005 |
 | BR-FOL-011 | Cancellation penalty windows and percentages follow the resolved policy captured at booking plus any subsequently-effective statutory rule; the applied basis is recorded. [OQ-012 (closed)] | INV-RSV-6 |
 | BR-FOL-012 | Refunds never exceed cleared, un-refunded funds; method fidelity applies (same method where possible); bank-detail changes for refunds require enhanced verification. | INV-FOL-8; CAP-FOL-009 |
 | BR-FOL-013 | Direct-bill transfer requires credit eligibility per BR-CRP-001 or a recorded authorised exception; each transfer produces exactly one AR document (idempotent). | INV-FOL-9; CAP-CRP-005 |
@@ -128,7 +128,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 
 | ID | Rule | Basis / dependencies |
 |---|---|---|
-| BR-NAU-001 | Close cannot advance while any blocking exception is unresolved: unposted charges, open cashier sessions in OPEN/CLOSING/PENDING_REVIEW (unless policy permits flagged continuation), pending departures, unresolved discrepancies, failed posting queues, open deposit liabilities requiring disposition. | INV-NAU-3; CAP-NAU-002 |
+| BR-NAU-001 | Close cannot advance while any blocking exception is unresolved: unposted charges, open cashier sessions in OPEN/CLOSING/PENDING_REVIEW (unless policy permits flagged continuation), pending departures, unresolved discrepancies, failed posting queues, **failed control-total reconciliation with an unexplained difference**, open deposit liabilities requiring disposition. Canonical stage-by-stage blocking table: ADR-006 §3. | INV-NAU-3; CAP-NAU-002 |
 | BR-NAU-002 | All postings are dated to the open business date; posting to a closed date is rejected; governed remediation runs only through a reopened day. | INV-NAU-1 |
 | BR-NAU-003 | Nightly runs (room/package charges, tax, recurring charges) are idempotent per (property, business date, run type): re-execution posts no duplicates. | INV-NAU-2 |
 | BR-NAU-004 | Day advance is atomic with close completion; partial advancement is impossible. Close failures leave the day CLOSING and resumable from checkpoint. | SM-NIGHT-AUDIT #4 |
@@ -148,7 +148,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | BR-ACC-001 | Revenue is recognised once, on the approved business day, to the mapped accounts; settlement movements are balance-sheet only. | ADR-005; CAP-ACC-002 |
 | BR-ACC-002 | Every posting carries a durable idempotency identity; retries resolve to the original outcome; duplicate posting is a P0 defect. | INV-ACC-1; CAP-INT-007 |
 | BR-ACC-003 | Uncertain external outcomes (timeout after submission) are resolved by reconciliation, never by blind re-submission. | INV-ACC-2 |
-| BR-ACC-004 | Control accounts (guest ledger, deposits, AR, tax, cash-in-transit) reconcile daily; unreconciled differences block financial close reporting, not operational operation. | CAP-ACC-009 |
+| BR-ACC-004 | Control accounts (guest ledger, deposits, AR, tax, cash-in-transit) reconcile daily; a failed check with an unexplained difference blocks day certification/advance per ADR-006 §3; known policy-defined differences stay open as ReconciliationCases with owner and due date and must be resolved before period close. | CAP-ACC-009 |
 | BR-ACC-005 | Reversals and corrections are additive linked documents; posted journals are never edited. | INV-ACC-4 |
 | BR-ACC-006 | Tax is calculated from the effective rule for each business date; tax liabilities are never netted against revenue in reporting. | INV-FOL-5; CAP-ACC-005 |
 | BR-ACC-007 | Period close freezes the period; reopen follows governance akin to day reopen (BR-NAU-005) with stronger authority. | CAP-ACC-010 |
@@ -172,7 +172,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | ID | Rule | Basis / dependencies |
 |---|---|---|
 | BR-RPT-001 | Report figures reconcile to source transactions and drill down; a report that cannot reconcile is a defect. | CAP-RPT-012 |
-| BR-RPT-002 | Available room nights for a date = sellable capacity (all rooms minus OOO; OOS rooms included). | BR-AVL-003 |
+| BR-RPT-002 | Available room nights for a date = statistical capacity (all rooms minus OOO; OOS rooms included). | BR-AVL-003 |
 | BR-RPT-003 | Occupied room nights = rooms with an active stay on the night, excluding house use, including comps; [OQ-036 closed: adopted default]. | Comp/house policy |
 | BR-RPT-004 | Occupancy % = occupied room nights ÷ available room nights for the period. | — |
 | BR-RPT-005 | ADR = room revenue ÷ occupied room nights (comps included at zero revenue; ADR effect stated wherever reported). | — |
@@ -191,3 +191,4 @@ The following rules carried `[OQ-nnn]` defaults; all were closed by Product Owne
 | 0.1 | 2026-09-23 | Initial business-rules catalogue (15 domains, 101 rules) issued with WP 0.3 | PROPOSED |
 | 0.2 | 2026-09-23 | OQ defaults adopted (23 Sep 2026) and marked closed; BR-HSK-002 refined with the adopted ≥20% spot-check default; §14 rewritten | PROPOSED |
 | 0.3 | 2026-09-23 | Review-pass corrections: front-matter scope wording, §14 preamble, BR-FOL-015 typo, BR-ACC-001 citation | PROPOSED |
+| 0.4 | 2026-09-23 | P0 resolutions: capacity definitions (BR-AVL-001/003, BR-RPT-002; TEC-01); no-show single-recognition and deposit exclusivity (BR-FOL-009/010; FIN-01); close blocking conditions (BR-NAU-001, BR-ACC-004; FIN-04) | PROPOSED |

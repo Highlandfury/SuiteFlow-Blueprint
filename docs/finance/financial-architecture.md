@@ -2,7 +2,7 @@
 doc-id: FIN-ARCH
 title: Target Financial Architecture
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Financial Systems Architect (drafted); Finance Controller (approval; OQ-002 open)
 applies-to: full enterprise target
@@ -58,7 +58,7 @@ Every posting run aggregates by **family**; every family maps to configured acco
 | 7 | Deposit receipts | Bank / Cash | Deposit Liability |
 | 8 | Deposit applications | Deposit Liability | Guest Ledger Control |
 | 9 | Deposit refunds | Deposit Liability | Bank / Cash |
-| 10 | Deposit forfeitures | Deposit Liability | Cancellation/No-show Revenue (+ tax per ADR-007 §5) |
+| 10 | Cancellation/no-show charges and deposit forfeitures | Guest Ledger Control (folio-path charge) / Deposit Liability (direct forfeiture) | Cancellation/No-show Revenue (+ tax per ADR-007 §5) |
 | 11 | Refunds (overpayment/service failure) | Guest Ledger Control | Bank / Cash |
 | 12 | Direct bill transfers (zero revenue) | AR Control | Guest Ledger Control |
 | 13 | AR settlements | Bank | AR Control |
@@ -136,9 +136,23 @@ Allowance:          Dr Comp/Allowance (contra) / Cr Guest Ledger Control
 Net folio balance:  zero; revenue and cost both visible
 ```
 
-### 5.6 No-show and cancellation
+### 5.6 No-show and cancellation (one penalty, one recognition)
 
-Guaranteed no-show: first night charged per terms (BR-FOL-010) as cancellation/no-show revenue, not room revenue; deposit disposition per ADR-007. Cancellation penalties likewise; statistics keep room revenue clean.
+**Rule.** For any one night, at most one revenue recognition occurs. A no-show determination completes before the nightly posting run and **suppresses the room charge** for that reservation's night. The penalty posts once — either charged to the folio (family 10, debit Guest Ledger Control) or satisfied from the deposit — never both. Where a deposit exists, it is **applied** to the penalty first (settlement, family 8); only a policy-computed excess is forfeited, and only if the policy says it is non-refundable. Application and forfeiture are mutually exclusive for the same amount, and a folio charge and a forfeiture are mutually exclusive for the same amount. Cancellation penalties follow the same rule. Room-revenue statistics stay clean.
+
+**Worked example — guaranteed no-show, first night ₦40,000 + 7.5% VAT, deposit ₦43,000 (illustrative; tax position UNVERIFIED pending OQ-029):**
+
+```text
+1. No-show determined before the room-charge run → the night's room charge is suppressed.
+2. Penalty charged (family 10):  Dr Guest Ledger Control         43,000
+                                Cr Cancellation/No-show Revenue  40,000
+                                Cr Tax Payable                    3,000
+3. Deposit applied (family 8):  Dr Deposit Liability            43,000
+                                Cr Guest Ledger Control           43,000
+Total revenue recognised: ₦40,000 once. No room revenue for the night. Deposit liability zero.
+```
+
+Partial deposit: the application reduces the folio balance; the remaining balance is settled or transferred per policy. Deposit exceeding a refundable penalty: refund per policy, otherwise the non-refundable remainder is forfeited — never also charged.
 
 ### 5.7 Refund of guest overpayment
 
@@ -178,6 +192,8 @@ Each clearing account ages visibly; unmatched items beyond policy windows are fi
 
 No tax rule enters implementation without a cited statutory source and Finance/tax-adviser sign-off (RSK-FIN-004).
 
+**Penalty and forfeiture computation (FIN-02 resolution).** Guest-facing penalties and forfeitures are quoted **tax-inclusive** by default: tax is extracted as `amount × rate ÷ (1 + rate)` (for example, at 7.5%: ₦43,000 → ₦40,000 revenue + ₦3,000 tax), never added on top of the received amount. The extraction rule and mapping are effective-dated configuration, **UNVERIFIED** until the tax adviser rules on OQ-029; a ruling that changes the basis is applied by configuration with effect from its date.
+
 ## 8. Deposits
 
 As per ADR-007: obligation-linked liability, conservation invariant, dedicated forfeiture revenue, partial operations exact, tax defaults flagged, unclaimed-deposit treatment pending jurisdictional advice.
@@ -192,7 +208,7 @@ As per ADR-007: obligation-linked liability, conservation invariant, dedicated f
 
 ## 10. Reconciliation suite (daily)
 
-Every item below runs daily; a difference produces a ReconciliationCase with owner, age and escalation. The close gate consumes this suite (BR-NAU-001).
+Every item below runs daily; an **unexplained difference blocks the stage it protects (ADR-006 §3)** — day certification/advance for control-total checks, period close for any open case. A known, policy-defined difference produces a ReconciliationCase with owner, due date and escalation. The close gate consumes this suite (BR-NAU-001).
 
 | # | Reconciliation | Left side | Right side | Tolerance |
 |---|---|---|---|---|
@@ -226,7 +242,8 @@ Every item below runs daily; a difference produces a ReconciliationCase with own
 | Incorrect refund | Cleared-funds limit; authority bands; method fidelity | §10.3; refund report | Recovery process if funds overpaid; fraud review if indicated |
 | Incorrect allocation | Payment/allocation tracking; deposit conservation | §10.2/10.3 | Re-allocation with approval; evidence retained |
 | Duplicate payment (external) | Idempotent ingestion by namespaced reference | §10.3; webhook dedupe tests | Return/reverse with acquirer/bank; exception documented |
-| Failed reconciliation | Daily run with owners and ageing | §10 dashboard | Case resolution before close of the affected period |
+| Double-recognised no-show/cancellation penalty | No-show suppression before the room-charge run; one-penalty-one-recognition rule; application/forfeiture exclusivity | §10.7 family check; TO-FOL-006 | Reverse the erroneous posting with authority; restate statistics if published |
+| Failed reconciliation | Daily run with owners and ageing; unexplained differences block per ADR-006 §3 | §10 dashboard | Case resolution before day certification and before period close |
 
 ## 13. Financial reporting outputs
 
@@ -267,3 +284,4 @@ Every item below runs daily; a difference produces a ReconciliationCase with own
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial financial architecture issued with WP 0.4; validates DP-CTX-003, DP-ADR-001/002/005 via ADR-005…008 | PROPOSED |
+| 0.2 | 2026-09-23 | P0 resolutions: no-show single-recognition rule + worked example (§5.6; FIN-01); tax-inclusive penalty/forfeiture computation (§7; FIN-02); closing/blocking semantics aligned to ADR-006 §3 (§10/§12; FIN-04) | PROPOSED |

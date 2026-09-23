@@ -2,7 +2,7 @@
 doc-id: SEC-ROLES
 title: Role and Authority Matrix
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Security Engineer (drafted); Product Owner + Finance Controller (approval; OQ-002 open; OQ-003 closed — acting operations authority)
 applies-to: full enterprise target; pilot roles
@@ -77,6 +77,8 @@ Legend: **R** read, **C** create, **U** update within state machine, **A** appro
 
 \* Requires second factor and is flagged in audit. Sys Admin executes configuration changes but never approves them (ADR-009 §8; personas §2.15).
 
+**Privileged grants (SEC-04 resolution).** User provisioning and role assignment run on the maker–checker mechanism: requester, approver and beneficiary are distinct identities. Finance roles additionally require Finance Controller approval; security/administrator roles and break-glass require the Security/Privacy Adviser (interim: Product Owner while OQ-033 is open). The quarterly privileged-access review is performed by a party independent of the administrator who executed the grants.
+
 ## 4. Authority-limit defaults (PROPOSED — NGN)
 
 | Action | Front Desk Agent | Supervisor / DM | GM | Finance Controller | Dual control required above |
@@ -91,7 +93,7 @@ Legend: **R** read, **C** create, **U** update within state machine, **A** appro
 | AR write-off | — | — | ≤ 50,000 | ≤ 250,000 | 250,000 (FC + GM) |
 | Day reopen | — | — | — | Required authority (reason + impact) | — |
 | Period reopen | — | — | Co-approval | Co-approval | FC + GM |
-| Break-glass grant | — | — | Request only | Request only | Security/Admin grant + 24h review |
+| Break-glass grant | — | — | Request only | Request only | Two-person grant: requester ≠ grantor ≠ beneficiary; no self-grant; independent 24h review by the alert recipient (Technical Lead; interim Product Owner while OQ-033 open) |
 
 These bands align with the pilot's ~200-room operation and are expected to be re-scoped with the Finance Controller (OQ-002). They are configuration, not code.
 
@@ -106,7 +108,7 @@ These bands align with the pilot's ~200-room operation and are expected to be re
 | 5 | Technical admin ≠ business authority | System administrators have no financial/operational approval rights | None |
 | 6 | Rate changer ≠ over-band approver | Discounts/rate overrides above bands require Revenue/GM | Recorded approval |
 | 7 | Booking agent ≠ refund approver | Agents cannot approve refunds on their own bookings | Supervisor/FC |
-| 8 | Role grantor ≠ role beneficiary | No user may grant themselves a role or limit change | Security/Admin + FC for finance roles |
+| 8 | Role grantor ≠ role beneficiary | No user may grant themselves a role or limit change; privileged grants require maker–checker with requester ≠ approver ≠ beneficiary | Finance roles: FC approval; security/admin and break-glass: Security/Privacy Adviser (interim: Product Owner); independent review |
 
 Exception principle: where staffing makes strict separation impossible (small night team), the exception must be **explicitly configured, recorded, flagged in audit and reviewed monthly** — never silent (BR-PLT-004).
 
@@ -133,3 +135,4 @@ Exception principle: where staffing makes strict separation impossible (small ni
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial role and authority matrix issued with WP 0.5; all limits PROPOSED defaults | PROPOSED |
+| 0.2 | 2026-09-23 | P0 resolutions: privileged grants on maker–checker with independent review (SEC-04, §3/§5); break-glass two-person grant and named reviewer (SEC-02, §4) | PROPOSED |

@@ -2,7 +2,7 @@
 doc-id: ARCH-STATES
 title: Target State Machines
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Domain Architect (drafted); Hotel Operations + Product Owner (approval)
 applies-to: full enterprise target
@@ -94,9 +94,9 @@ Room has two independent state dimensions plus derived occupancy; a single "room
 | 3 | Readiness | CLEAN → INSPECTED → READY | Inspection pass | Supervisor | Inspector ≠ cleaner where policy requires (self-inspection exception only with recorded authority) | Room becomes sellable input; `room.readiness.changed` |
 | 4 | Readiness | CLEAN → VACANT_DIRTY | Inspection fail | Supervisor | Findings recorded | Task reopened; failure reason recorded; repeat-failure escalation |
 | 5 | Readiness | any → BLOCKED | DND / access refused | Attendant / supervisor | Task evidence | Room not sellable until unblocked; visible on board; discrepancy check remains open |
-| 6 | Saleability | SELLABLE → OOS | Short hold (maintenance or other) | Supervisor / maintenance | Reason, expected return, authority per policy | Inventory reduced (capacity, not allocation); `room.saleability.changed`; existing assignments reviewed |
-| 7 | Saleability | SELLABLE/OOS → OOO | Out-of-order | Supervisor with authority | Reason, duration, impact check on committed reservations | Sellable capacity reduced; conflicts with assignments require relocation workflow; `room.saleability.changed` |
-| 8 | Saleability | OOO/OOS → SELLABLE | Return to service | Supervisor | WorkOrder verified (INV-SVC-2); readiness READY/CLEAN per policy | Capacity restored; availability projection refreshed |
+| 6 | Saleability | SELLABLE → OOS | Short hold (maintenance or other) | Supervisor / maintenance | Reason, expected return, authority per policy | Sellability removed (not in sellable capacity; still in available-room statistics); allocation unchanged; `room.saleability.changed`; existing assignments reviewed |
+| 7 | Saleability | SELLABLE/OOS → OOO | Out-of-order | Supervisor with authority | Reason, duration, impact check on committed reservations | Sellable and statistical capacity reduced; conflicts with assignments require relocation workflow; `room.saleability.changed` |
+| 8 | Saleability | OOO/OOS → SELLABLE | Return to service | Supervisor | WorkOrder verified (INV-SVC-2); readiness READY/CLEAN per policy | Sellable capacity restored (statistical capacity where returning from OOO); availability projection refreshed |
 | 9 | Saleability | SELLABLE → HELD_FOR_BLOCK | Block hold | System (block) | Block allocation active | Never sold outside the block; release at cutoff |
 
 ### SM-ROOM-ASSIGNMENT
@@ -326,7 +326,7 @@ Covers account lifecycle, credit profile and negotiated rate agreement as one go
 |---|---|---|---|---|---|---|
 | 1 | — → OPEN | First day open / advance | System | Prior day CLOSED or initial provisioning | Posting window open; `day.opened` | — |
 | 2 | OPEN → CLOSING | Close initiated | Night auditor | Pre-close checklist passes or blocking exceptions resolved (BR-NAU-001): unposted charges, open cashier sessions, departure folios, discrepancies, posting queues | Close run starts; posting restricted to close processes; `day.closing` | Failed checklist blocks advancement unless each blocking item is resolved; authorized continue with flags only where policy allows and is reported to finance |
-| 3 | CLOSING → CLOSED | Close completes | System | Nightly postings complete; control totals reconcile or exceptions recorded; close run COMPLETED | Revenue/tax posted to business date; control totals frozen; reports generated; next day opened; `day.closed` | Partial failure: close run FAILED → resumable; no partial day advancement; recovery per SM rule 4 |
+| 3 | CLOSING → CLOSED | Close completes | System | Nightly postings complete; control totals reconcile per ADR-006 §3 (only policy-defined cases with owner and due date may remain; unexplained differences block); close run COMPLETED | Revenue/tax posted to business date; control totals frozen; reports generated; next day opened; `day.closed` | Partial failure: close run FAILED → resumable; no partial day advancement; recovery per SM rule 4 |
 | 4 | CLOSING → (FAILED, remain CLOSING) | Failure mid-close | System | — | Recovery checkpoint retained; alerts to on-call (BR-REL-005) | Re-run resumes from checkpoint; idempotency prevents double-posting (INV-NAU-2) |
 | 5 | CLOSED → REOPENED | Reopen for correction | Finance controller with authority | Reason, authority, accounting impact assessment; within policy window | Remediation window; corrections dated to remediation rules, originals immutable; `day.reopened` | Reopen during a later open day allowed only when policy permits; concurrent-close conflicts are prevented by property-level lock |
 | 6 | REOPENED → CLOSED | Remediation complete | Finance controller | Remediation evidence; control totals restated with version | New frozen totals version; `day.reclosed` | Restatement is versioned, never overwrites the original totals |
@@ -346,4 +346,5 @@ Covers account lifecycle, credit profile and negotiated rate agreement as one go
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial state machine catalogue (18 machines) issued with WP 0.3 | PROPOSED |
+| 0.2 | 2026-09-23 | P0 resolutions: SM-ROOM saleability/statistics wording (TEC-01); SM-NIGHT-AUDIT close preconditions aligned to ADR-006 §3 (FIN-04) | PROPOSED |
 

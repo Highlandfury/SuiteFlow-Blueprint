@@ -2,7 +2,7 @@
 doc-id: SEC-MODEL
 title: Target Security Model
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Security Engineer (drafted); Product Owner (approval)
 applies-to: full enterprise target
@@ -19,7 +19,7 @@ This document specifies how the target architecture authenticates principals, au
 
 1. **Deny by default.** Nothing is permitted unless explicitly granted to the principal attempting it.
 2. **Server-side control.** The UI may hide what a user cannot do; only the server decides. Client-supplied scope, role or amount fields are never trusted.
-3. **Single enforcement point.** Authorization is evaluated in one place for every command, query, report, export, API call, webhook consumption and AI tool invocation (ADR-009).
+3. **Single enforcement point.** Authorization is evaluated in one place for every command, query, report, export, API call, webhook consumption and AI tool invocation (ADR-009). Framework-generated surfaces (REST routes, report builder, attachments, imports/exports, Desk search) are inventoried and closed or mediated — see ADR-009 §11.
 4. **Least privilege with explicit authority.** Money-moving actions carry numeric limits; above them, maker–checker. No one widens their own authority.
 5. **One incident class is never tolerated: scope leakage.** Cross-property/cross-company exposure is treated as a critical defect regardless of who noticed.
 6. **Sensitive by default, masked by default.** Identity documents, watchlist data and bank details are restricted, masked, read-logged and export-controlled.
@@ -32,7 +32,7 @@ This document specifies how the target architecture authenticates principals, au
 
 | Principal | Authentication | Notes |
 |---|---|---|
-| Staff user | Unique account, password policy, session management; second factor required for privileged roles (finance controller, system administrator, manager) and for break-glass | Sessions expire; concurrent session policy per configuration |
+| Staff user | Unique account, password policy, session management; second factor required for privileged roles (finance controller, system administrator, manager) and for break-glass. Reference-pilot role accounts follow personas §4.8 (time-boxed, rotated, logged) | Sessions expire; concurrent session policy per configuration |
 | Service identity (batch, workers) | Managed credential bound to a named service role | Least-privilege scopes; no interactive authority; rotation policy |
 | Integration client (bank, acquirer, channel, messaging) | Per-adapter credentials (key/token/allow-listed network), rotatable | Allow-listed operations only; rate limited; full audit |
 | AI assistant | Service identity with explicit tool allow-list and read scopes | No state-changing authority except via proposal flows executed under a human or governed service identity |
@@ -108,8 +108,9 @@ Mechanism requirements per ADR-009 §4: approval bound to the exact intended pay
 ## 9. Break-glass access
 
 - Time-boxed elevation with a stated reason, granting the minimum additional permission.
-- Alerts security and finance at grant and expiry.
-- Every action under break-glass is flagged in audit; review within 24 hours by a second person; repeat use triggers investigation.
+- **No self-grant (SEC-02 resolution).** A principal can never request and grant its own break-glass or any role: request, grant and beneficiary are distinct identities; elevation is granted by two-person rule.
+- Alerts security and finance at grant and expiry. The alert and 24-hour review recipient is a named role independent of the grantor — the Technical Lead (interim: Product Owner while OQ-033 is open); until a recipient is named, break-glass is disabled by policy.
+- Every action under break-glass is flagged in audit; review within 24 hours by a second person independent of the grant and use; repeat use triggers investigation.
 - Break-glass never grants financial approval authority; it may unblock access to perform an action that still requires normal authority for its approval steps.
 
 ## 10. Audit and monitoring
@@ -178,3 +179,4 @@ Audit records are append-only (INV-PLT-4); access to audit data is itself scoped
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial security model issued with WP 0.5 | PROPOSED |
+| 0.2 | 2026-09-23 | P0 resolutions: framework-generic surfaces (SEC-01, §2.3); no-self-grant break-glass with named reviewer (SEC-02, §9); reference-pilot account rules (SEC-05, §3) | PROPOSED |

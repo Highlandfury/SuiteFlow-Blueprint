@@ -2,7 +2,7 @@
 doc-id: GOV-REVIEW
 title: Acceptance-Readiness Review — Finance, Technical and Security Passes (23 Sep 2026)
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Product Owner (accountable); findings produced by the Finance Controller, Technical Lead and Security/Privacy Adviser role-assistant personas
 applies-to: blueprint v1.2 (PROPOSED) and the acceptance gate
@@ -329,8 +329,26 @@ Implementation reality (enforcement point existence, generic route exposure, UAT
 ### Security pass — strengths
 Deny-by-default with one enforcement point and effective-dated limits; payload-bound maker–checker with execution-time re-validation; scope leakage treated as the top defect class with per-surface negative tests; Class-A masking/read-logging/export prohibition; break-glass design intent (time-box, alerts, review); outbox/idempotency/reconciliation discipline with restored-worker protection; QA stop-the-line for security; honest confidence labelling and documented UAT-account rules.
 
-## 7. Version history
+## 7. Resolution log — P0 fixes applied (23 Sep 2026)
+
+The P0 findings from §2 are resolved in the documents as follows; each resolution was applied through change control with a version increment.
+
+| Finding | Resolution | Evidence |
+|---|---|---|
+| TEC-01 | Capacity definitions made single-valued: sellable capacity = physical − OOO − OOS; statistical capacity = physical − OOO | glossary v0.2; business-rules v0.4 (BR-AVL-001/003, BR-RPT-002); state-machines v0.2 (SM-ROOM); TO-AVL-001 |
+| FIN-01 | One-penalty-one-recognition rule; no-show night suppressed from room charges; application/forfeiture exclusivity; posting family 10 extended; worked example | financial-architecture v0.2 §3/§5.6; business-rules v0.4 (BR-FOL-009/010); ADR-007 v0.2; TO-FOL-006 |
+| FIN-02 | Penalty/forfeiture tax extracted tax-inclusive with worked example; effective-dated; UNVERIFIED pending OQ-029 | financial-architecture v0.2 §7; ADR-007 v0.2 §5; TO-FOL-007 |
+| FIN-04 | Canonical stage-by-stage blocking table (day advance / certification / period close); unexplained differences never advance | ADR-006 v0.2 §3; business-rules v0.4 (BR-NAU-001, BR-ACC-004); financial-architecture v0.2 §10/§12; state-machines v0.2 (SM-NIGHT-AUDIT); workflows v0.2 (WF-NA-001) |
+| SEC-01 | Framework-generic surface closure invariant; surface inventory; CI route/permission test; Phase 2 enumeration obligation | ADR-009 v0.2 §11 + risks; security-model v0.2 §2.3; TO-SEC-001 extended |
+| SEC-02 | No-self-grant; two-person break-glass grant; named independent reviewer (Technical Lead; interim Product Owner); alerts at grant/expiry | security-model v0.2 §9; role-matrix v0.2 §4; TO-SEC-004 |
+| SEC-04 | Privileged grants on maker–checker (requester ≠ approver ≠ beneficiary); independent quarterly review; finance/security approvals defined | role-matrix v0.2 §3/§5; TO-SEC-005 |
+| SEC-05 | Reference-pilot account hardening: MFA or recorded time-boxed exception with network restriction and session logging; 30-day rotation; hard expiry at the reference release; named operator register; no real data | personas v0.4 §4.8; security-model v0.2 §3; implementation repo `docs/ROLE_BASED_UAT_ACCOUNTS.md` |
+
+**Still open:** the P1 and P2 findings (33 items) and the input-dependent items (tax advice OQ-029; retention OQ-024; appointments OQ-002/OQ-033). Next resolution pass: P1.
+
+## 8. Version history
 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial review record: finance, technical and security passes executed by role-assistant personas over blueprint v1.2; 45 findings (3 critical, 13 high, 26 medium, 3 low); hygiene corrections applied | PROPOSED |
+| 0.2 | 2026-09-23 | P0 resolution log added: TEC-01, FIN-01/02/04, SEC-01/02/04/05 resolved via versioned document changes and new test obligations | PROPOSED |

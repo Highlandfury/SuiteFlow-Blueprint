@@ -2,7 +2,7 @@
 doc-id: QA-STRATEGY
 title: Target QA and Acceptance Architecture
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: QA Architect (drafted); Product Owner (approval)
 applies-to: full enterprise target; pilot acceptance
@@ -54,11 +54,14 @@ Every invariant, business rule and state machine produces test obligations `TO-<
 | TO-RTM-002 | Past-date rate edit is impossible; forward version required | BR-RTM-003 |
 | TO-FO-001 | Every check-in gate blocks when failing; override requires authority and is audited | BR-FO-001 |
 | TO-FO-002 | Checkout refuses unbalanced/untended folios per invariant | BR-FO-002, INV-FOL-1 |
+| TO-AVL-001 | OOS rooms are unsellable but remain in available-room statistics; OOO removes both | BR-AVL-001/003, BR-RPT-002 |
 | TO-FOL-001 | Folio balance identity holds under concurrent posting and crash injection | INV-FOL-1 |
 | TO-FOL-002 | Corrections are additive; original items immutable | INV-FOL-2 |
 | TO-FOL-003 | Tax snapshots match effective rules per business date | INV-FOL-5 |
 | TO-FOL-004 | Deposit conservation holds through partial apply/refund/forfeit | INV-FOL-7 |
 | TO-FOL-005 | Refund cannot exceed cleared, un-refunded funds | INV-FOL-8 |
+| TO-FOL-006 | No-show/cancellation penalty recognised once: room charge suppressed; application and forfeiture mutually exclusive | BR-FOL-009/010, FIN-ARCH §5.6 |
+| TO-FOL-007 | Penalty/forfeiture tax extracted tax-inclusive; journal balances | ADR-007 §5, FIN-ARCH §7 |
 | TO-CSH-001 | One open session per till; variance beyond tolerance requires independent approval | BR-CSH-001/003 |
 | TO-NAU-001 | Close is idempotent and resumable; no partial advancement | INV-NAU-2, ADR-006 |
 | TO-NAU-002 | Reopen creates versioned restatement; originals preserved | INV-NAU-4/5 |
@@ -66,9 +69,11 @@ Every invariant, business rule and state machine produces test obligations `TO-<
 | TO-ACC-002 | Direct-bill transfer posts zero revenue lines | ADR-005 §5 |
 | TO-ACC-003 | Mapping gap blocks close | ADR-005 §7; FIN-ARCH §3 |
 | TO-ACC-004 | Control accounts reconcile to zero on golden day | FIN-ARCH §10 |
-| TO-SEC-001 | Cross-scope denial per surface class (command/query/report/export/API/webhook/AI tool) | SEC-MODEL §6 |
+| TO-SEC-001 | Cross-scope denial per surface class (command/query/report/export/API/webhook/AI tool), including framework-generic surfaces (REST, report builder, attachments, imports/exports, Desk search) | SEC-MODEL §6, ADR-009 §11 |
 | TO-SEC-002 | Self-approval denial across maker–checker catalogue | SEC-ROLES §5 |
 | TO-SEC-003 | Class-A masking and read logging; export approval | SEC-MODEL §5/§10 |
+| TO-SEC-004 | Break-glass cannot be self-granted; two-person grant; independent review; alerts at grant/expiry | SEC-MODEL §9, SEC-ROLES §4 |
+| TO-SEC-005 | Privileged grants on maker–checker (requester ≠ approver ≠ beneficiary); reference-pilot role accounts time-boxed, rotated and logged | SEC-ROLES §3/§5, personas §4.8 |
 | TO-INT-001 | Duplicate delivery produces one effect; replay safe | ADR-010 |
 | TO-INT-002 | Provider timeout resolved by status/reconciliation, no blind resubmission | ADR-010 §4 |
 | TO-INT-003 | Acquirer batch reconciliation catches injected mismatch | INT-ARCH §6 |
@@ -143,3 +148,4 @@ Promotion is by versioned artefact only; no environment-specific code branches; 
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial QA and acceptance architecture issued with WP 0.7 | PROPOSED |
 | 0.2 | 2026-09-23 | Synthetic reference pilot: UAT reframed as scripted role-played acceptance; release gates updated (reference release; First-Property Deployment Gate) | PROPOSED |
+| 0.3 | 2026-09-23 | P0 obligations registered: TO-AVL-001 (capacity divergence), TO-FOL-006/007 (no-show, forfeiture tax), TO-SEC-004/005 (break-glass, privileged grants); TO-SEC-001 covers framework-generic surfaces | PROPOSED |

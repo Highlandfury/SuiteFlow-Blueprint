@@ -2,7 +2,7 @@
 doc-id: PROD-PERSONAS
 title: Personas and Role Model
 status: PROPOSED
-version: 0.3
+version: 0.4
 date: 2026-09-23
 owner: Product Owner (accountable); operational validation with the acting operations authority (OQ-003 closed)
 applies-to: full enterprise target; pilot detail
@@ -278,7 +278,13 @@ Tier: Target; deferred from pilot (BR-MVP-013).
 5. **Authority limits are configuration.** Numeric limits, thresholds and approval chains are property-configurable with effective dates and audit, not hard-coded assumptions.
 6. **Override discipline.** Overrides are first-class actions: reason required, authority checked, before/after recorded, reportable.
 7. **Emergency access.** Any break-glass access is time-boxed, extremely visible, and reviewed afterwards; it cannot be a standing role.
-8. **Role-based accounts (reference pilot only).** Role-played UAT uses one role-based functional account per role that needs a scripted login (finance controller and governance roles first), named by role and carrying only that role's permissions. Role-based accounts are for scripted sessions only: not shared between people for day-to-day work, never used for production operations, with rotated credentials, and disabled at the First-Property Deployment Gate. Production access is personal — one named account per person (SEC-MODEL §9) — with MFA for privileged roles (Finance Controller, Technical Lead/administrator, Security/Privacy Adviser). Every action is audited to the account; leaver deactivation is immediate.
+8. **Role-based accounts (reference pilot only — SEC-05 hardened).** Role-played UAT uses one role-based functional account per role that needs a scripted login, named by role and carrying only that role's permissions. Rules:
+   - **MFA** is required where the platform supports it; where it does not, a **recorded time-boxed exception** applies with compensating controls: network-restricted access (LAN/loopback only), session logging, and a named operator register.
+   - **Rotation** at least every 30 days and before any demonstration outside the core team; passwords never committed to any repository.
+   - **Hard expiry at the reference release** (not the First-Property Deployment Gate) and immediate disablement on expiry or operator request, whichever is first.
+   - **No real guest, financial or personal data** in the reference environment.
+   - Every session and action is audited to the account; role accounts are used one operator at a time and never shared for day-to-day work.
+   Production access remains personal — one named account per person (SEC-MODEL §9) — with MFA for privileged roles and immediate leaver deactivation.
 
 ## 5. Validation and next steps
 
@@ -294,3 +300,4 @@ Tier: Target; deferred from pilot (BR-MVP-013).
 | 0.1 | 2026-09-23 | Initial personas and role-model requirements issued with WP 0.1 pass 1 | PROPOSED |
 | 0.2 | 2026-09-23 | Synthetic reference pilot: validation authority updated (acting operations authority; real-hotel validation at the First-Property Deployment Gate) | PROPOSED |
 | 0.3 | 2026-09-23 | Governance personas added (2.18 Technical Lead, 2.19 Security/Privacy Adviser); Finance Controller governance duties and reference-pilot account noted; role-based account rules added (§4.8) | PROPOSED |
+| 0.4 | 2026-09-23 | SEC-05 hardening: reference-pilot accounts MFA/exception, 30-day rotation, hard expiry at reference release, operator register, no real data | PROPOSED |

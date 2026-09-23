@@ -2,7 +2,7 @@
 doc-id: GOV-GLOSSARY
 title: SuiteFlow Glossary
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Domain Architecture (drafted); Product Owner (approval)
 applies-to: all blueprint work
@@ -32,7 +32,9 @@ Terms are defined as **SuiteFlow uses them**, which may differ from a specific v
 | Sellable inventory | Physical inventory minus rooms taken out of sale (OOO/OOS, maintenance holds), plus overbooking allowance policy. |
 | Overbooking | Deliberate sale beyond physical inventory under a configured policy; a target-state capability with control and reporting, not a defect. |
 | OOO (Out of Order) | Room removed from inventory; nights are not counted as available for availability or occupancy statistics. |
-| OOS (Out of Service) | Room temporarily not sellable but still counted as available inventory; used for light maintenance and short holds. |
+| OOS (Out of Service) | Room temporarily not sellable but still counted in available-room statistics (it is not in sellable capacity); used for light maintenance and short holds. |
+| Sellable capacity (per date) | Physical rooms minus active OOO and active OOS rooms — what may be sold before commercial allocations. OOO and OOS both remove sellability. |
+| Statistical capacity / available room nights (per date) | Physical rooms minus active OOO only; OOS rooms remain in available-room statistics even though they are not sellable. Used for occupancy and available-room reporting. |
 | Room condition | Physical condition reported by housekeeping or engineering (clean, dirty, inspected, damaged, etc.), distinct from sale status. |
 | Room status | Sale state of a room (vacant clean, vacant dirty, occupied, blocked, OOO/OOS, due out, etc.). |
 | Discrepancy | Conflict between housekeeping-reported occupancy/condition and front-office/system state that requires resolution. |
@@ -206,3 +208,4 @@ Terms are defined as **SuiteFlow uses them**, which may differ from a specific v
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial glossary issued with WP 0.1 pass 1 | PROPOSED |
+| 0.2 | 2026-09-23 | TEC-01 resolution: sellable-capacity and statistical-capacity definitions added; OOS wording aligned | PROPOSED |

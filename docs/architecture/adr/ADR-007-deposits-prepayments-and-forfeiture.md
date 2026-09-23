@@ -2,7 +2,7 @@
 doc-id: ADR-007
 title: Deposits, prepayments and forfeiture accounting
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Financial Systems Architect (drafted); Finance Controller (approval; OQ-002 open)
 applies-to: full enterprise target
@@ -41,12 +41,12 @@ How are deposits and prepayments recorded, applied, refunded, forfeited, taxed a
 
 1. **Deposit is a liability with an owning obligation.** Every deposit references the reservation or group agreement that entitled it. Unlinked receipts are exceptions requiring finance resolution, not silent credits.
 2. **Application is settlement, not revenue.** Applying a deposit reduces the folio balance and transfers between liability and guest ledger control within the daily posting (ADR-005).
-3. **Forfeiture is a recognition event** posted to a dedicated **cancellation/no-show revenue** account — never silently into room revenue — preserving room statistics. Forfeiture requires policy basis, authority and recorded guest communication (BR-FOL-009).
+3. **Forfeiture is a recognition event** posted to a dedicated **cancellation/no-show revenue** account — never silently into room revenue — preserving room statistics. Forfeiture requires policy basis, authority and recorded guest communication (BR-FOL-009). **Application and forfeiture are mutually exclusive for the same amount**: where a deposit settles a penalty it is applied, not forfeited; only a policy-computed non-refundable excess is forfeited, and a folio charge and a forfeiture are likewise mutually exclusive (one penalty, one recognition; FIN-ARCH §5.6).
 4. **Partial lifecycle operations** (partial application, partial refund, partial forfeiture) follow the policy calculation recorded at booking; operator judgement is not a calculation method (BR-FOL-011).
 5. **Tax defaults (pending tax advice):**
    - VAT is **not** charged on deposit receipt (it is not consideration for a supply yet).
    - On application, tax follows the underlying supply's tax treatment for its business dates.
-   - On forfeiture, the default assumption is that the amount **is taxable consideration** for the cancellation right, taxed at the applicable rate for the cancelled service; where tax advice concludes otherwise, the mapping changes by configuration with effect from the advice date. **STATUS: UNVERIFIED — tax adviser confirmation required (OQ-021 closed/OQ-029).**
+   - On forfeiture, the default assumption is that the amount **is taxable consideration** for the cancellation right, taxed at the applicable rate for the cancelled service; where tax advice concludes otherwise, the mapping changes by configuration with effect from the advice date. Guest-facing penalties and forfeitures are quoted **tax-inclusive** by default: tax is extracted as `amount × rate ÷ (1 + rate)` (for example, at 7.5%: ₦43,000 → ₦40,000 revenue + ₦3,000 tax), never added on top of the received amount. **STATUS: UNVERIFIED — tax adviser confirmation required (OQ-021 closed/OQ-029).**
 6. **Refunds** are executed only from cleared funds, ideally by the original method; bank-detail changes require enhanced verification (BR-FOL-012).
 7. **Unclaimed deposits** age under finance monitoring; treatment of genuinely unclaimed funds (escheatment, retention, or write-back) follows jurisdictional advice — **UNVERIFIED**, flagged for Phase 1 research.
 8. **Deposit liability reporting** is a standard daily and month-end output: opening balance, receipts, applications, refunds, forfeitures, closing balance, reconciled to the control account.
@@ -98,3 +98,4 @@ Legacy deposit balances migrate as liabilities with obligation links where recov
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial decision issued with WP 0.4 | PROPOSED |
+| 0.2 | 2026-09-23 | FIN-01/FIN-02 resolutions: application/forfeiture exclusivity (decision 3); tax-inclusive penalty/forfeiture computation (§5) | PROPOSED |

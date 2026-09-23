@@ -2,7 +2,7 @@
 doc-id: ADR-009
 title: Authorization and enforcement model
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Security Engineer (drafted); Principal Architect (review); Product Owner (approval)
 applies-to: full enterprise target
@@ -50,6 +50,7 @@ What authorization model gives the target least-privilege access, deterministic 
 8. **Break-glass.** A time-boxed, alerted, post-reviewed elevation path (CAP-PLT-015); never a standing role; grants are logged with reason and reviewed within 24 hours.
 9. **Evidence.** Every authorization denial is logged; every approval, limit use and sensitive read is logged; audit records are append-only (CAP-PLT-006).
 10. **Testing is part of the decision.** The model is not implemented until negative tests exist per surface class (command, query, report, export, API, webhook, AI tool) proving cross-scope denial and self-approval denial.
+11. **Framework-generic surface closure (SEC-01 resolution).** The bound platform exposes framework-generated surfaces (REST `/api/resource/*`, report builder, file/attachment URLs, bulk import/export, Desk list/search, admin UI). These are enumerated in a maintained **surface inventory** and each is either disabled, mediated by the authorization service, or restricted by record-level permissions as defence in depth. A framework-generic surface that can read or write scoped data without scope enforcement is a critical defect; Phase 2 enumerates the surfaces and CI fails when routes or permissions change without inventory review.
 
 ## Reasoning
 
@@ -71,7 +72,7 @@ What authorization model gives the target least-privilege access, deterministic 
 |---|---|
 | Authorization component outage blocks operations | Availability design; bounded fail-closed behaviour for financial actions, explicit degraded-mode policy for read paths reviewed with security |
 | Permission catalogue drift | Versioned permission catalogue; architecture tests assert every command/query declares a permission |
-| Scope bypass through a new surface (report, export, tool) | Surface registration requirement: an unregistered surface fails tests and cannot ship |
+| Scope bypass through a new surface (report, export, tool) | Surface registration requirement: an unregistered surface fails tests and cannot ship. Includes framework-generic surfaces (REST routes, report builder, attachments, imports/exports, Desk search) — inventory, close or mediate each, and add a route/permission inventory test (§11) |
 | Cached-decision staleness after limit changes | Invalidation on configuration change; short TTLs for financial permissions |
 | Maker–checker honour-system | Payload binding + execution-time verification that the payload matches the approval |
 
@@ -101,3 +102,4 @@ Roles, role assignments and any existing limits are migrated with mapping eviden
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial decision issued with WP 0.5 | PROPOSED |
+| 0.2 | 2026-09-23 | SEC-01 resolution: framework-generic surface closure (decision 11) and CI route/permission inventory test in risks | PROPOSED |

@@ -2,7 +2,7 @@
 doc-id: WF-CATALOGUE
 title: Workflow Catalogue
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Hospitality Domain Architect (drafted); operational validation by the acting operations authority (OQ-003 closed)
 applies-to: full enterprise target; pilot workflows marked
@@ -193,7 +193,7 @@ Detailed screen-level operational design (swim-lanes, information hierarchy, key
 
 - **Trigger:** end of operating day (cutoff configured; OQ-008 (closed)).
 - **Actors:** night auditor (execution), supervisor/manager (exception approvals), on-call (failures), income auditor (next morning).
-- **Steps:** pre-close checklist (unposted charges, open sessions, pending departures, discrepancies, queues) → resolve or escalate each blocker (BR-NAU-001) → initiate close → nightly postings run idempotently (BR-NAU-003) → control totals reconcile (BR-ACC-004) → day CLOSED, next day OPENED atomically → day reports generated and distributed → handover notes for morning.
+- **Steps:** pre-close checklist (unposted charges, open sessions, pending departures, discrepancies, queues) → resolve or escalate each blocker (BR-NAU-001; ADR-006 §3) → initiate close → nightly postings run idempotently (BR-NAU-003) → control totals reconcile per ADR-006 §3 (unexplained differences block; only policy-defined cases with owner and due date may remain) → day CLOSED, next day OPENED atomically → day reports generated and distributed → handover notes for morning.
 - **Controls:** blocking checklist; idempotent resumable runs; control-total reconciliation; alerts around the close window (BR-REL-005).
 - **Failure modes:** mid-close failure (recoverable resume, no partial advancement); control mismatch (exception with owner, day may not falsely certify); power/network loss (checkpointed recovery).
 - **Links:** CAP-NAU-001…010; SM-NIGHT-AUDIT; BR-NAU-001…006.
@@ -232,3 +232,4 @@ This catalogue covers the pilot-critical workflows and the main enterprise patte
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial workflow catalogue (22 workflows) issued with WP 0.3 | PROPOSED |
+| 0.2 | 2026-09-23 | FIN-04 alignment: WF-NA-001 close steps reference the canonical blocking table (ADR-006 §3) | PROPOSED |
