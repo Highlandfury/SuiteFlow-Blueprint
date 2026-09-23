@@ -56,7 +56,12 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 ## Current phase
 
-Phase 0, work package 0.1 (Product Foundation). See the charter's deliverable map for the full planned structure.
+Phase 0, work package 0.1 (Product Foundation) — **complete, pending Product Owner review**:
+
+- Pass 1: governance charter, inputs register, glossary, open questions, risk register, product vision, scope, personas and role model.
+- Pass 2: enterprise capability map (283 capabilities across 25 domains) and roadmap skeleton.
+
+Next: WP 0.2 — domain, ownership and data architecture, once pass 1 and pass 2 are reviewed. See the charter's deliverable map for the full planned structure.
 
 ## Licensing
 

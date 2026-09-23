@@ -152,7 +152,7 @@ A workflow that only makes sense in a data model is rejected.
 | Artifact | Pattern | Example |
 |---|---|---|
 | Capability | `CAP-<DOMAIN>-NNN` | `CAP-RSV-014` |
-| Domain | three-letter code | RSV, FO, HSK, FOL, FIN, NAU, RTM, GRP, CRP, POS, SAL, RPT, INT, PLT, AI |
+| Domain | two-to-three-letter code (table below) | RSV |
 | Business rule | `BR-<DOMAIN>-NNN` | `BR-FOL-007` |
 | State machine | `SM-<ENTITY>` | `SM-RESERVATION` |
 | Workflow | `WF-<DOMAIN>-NNN` | `WF-FO-002` |
@@ -161,6 +161,21 @@ A workflow that only makes sense in a data model is rejected.
 | Risk | `RSK-<CATEGORY>-NNN` | `RSK-FIN-003` |
 | ADR | `ADR-NNN` | `ADR-006` |
 | Test obligation | `TO-<DOMAIN>-NNN` | `TO-FIN-004` |
+
+**Domain codes** (25 domains; codes are stable and never reassigned):
+
+| Code | Domain | Code | Domain | Code | Domain |
+|---|---|---|---|---|---|
+| PM | Property & inventory | CSH | Cashiering | BI | Analytics & BI |
+| RSV | Reservations | NAU | Night audit & business date | CRM | CRM & communication |
+| AVL | Availability & inventory control | INA | Income audit | HRM | Workforce & HR boundary |
+| RTM | Rates & revenue management | ACC | Accounting & finance integration | INT | Integrations |
+| FO | Front office | POS | Outlets & F&B | PLT | Platform & administration |
+| GST | Guest profiles & privacy | INV | Inventory & purchasing | AI | AI assistance |
+| GRP | Groups & events | SAL | Sales & catering | | |
+| CRP | Corporate & travel trade | RPT | Reporting | | |
+| HSK | Housekeeping | MNT | Maintenance & engineering | | |
+| FOL | Folio & billing | | | | |
 
 Identifiers are never reused. Retired identifiers remain reserved.
 
@@ -193,8 +208,8 @@ docs/
 │   ├── vision.md                      [present — WP 0.1]
 │   ├── scope.md                       [present — WP 0.1]
 │   ├── personas-and-roles.md          [present — WP 0.1]
-│   ├── capability-map.md              [WP 0.1 pass 2]
-│   └── roadmap.md                     [WP 0.1 pass 2 skeleton; full in WP 0.8]
+│   ├── capability-map.md              [present — WP 0.1]
+│   └── roadmap.md                     [present — WP 0.1 skeleton; full in WP 0.8]
 ├── architecture/                      [WP 0.2]
 │   ├── target-state.md
 │   ├── domain-model.md
