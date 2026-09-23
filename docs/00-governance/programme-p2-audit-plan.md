@@ -2,7 +2,7 @@
 doc-id: GOV-P2PLAN
 title: Programme P2 — Current-State Audit Plan
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Technical Lead (audit owner at appointment); interim: Product Owner; prepared under delegated PO direction
 applies-to: current-state audit of the implementation and ecosystem (charter §14 P2)
@@ -10,6 +10,10 @@ depends-on: [GOV-CHARTER, GOV-REVIEW, GOV-RESEARCH, GOV-INPUTS]
 ---
 
 # Programme P2 — Current-State Audit Plan
+
+## 0. Execution status
+
+**Entered 23 Sep 2026 under P0 conditional completion** (GOV-PO-DEC §G). Workspace: `/home/suiteflow/suiteflow-audit` (separate from both repositories, per charter). Pass 1 complete: baseline pinned (implementation `c8daa6440d7d`; image sha256:f1fb23…; stack versions) and inventory generated (71 DocTypes, 4 pages, 73 tests, 19 patches, 20 docs). Capability-mapping scaffold ready for all 204 frozen pilot capabilities; evidence register seeded with the carried obligations. Passes 2+ proceed next.
 
 ## 1. Purpose and gate
 
@@ -113,3 +117,4 @@ If appointments are delayed, interim role assistants execute the passes; **sign-
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial P2 audit plan prepared under delegated PO direction (scope, evidence rules, rubric, passes, obligations, timeline) | PROPOSED |
+| 0.2 | 2026-09-23 | Audit entered under conditional completion; workspace created; pass 1 (baseline + inventory) complete | PROPOSED |

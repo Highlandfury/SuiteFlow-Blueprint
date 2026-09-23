@@ -2,7 +2,7 @@
 doc-id: GOV-PO-DEC
 title: Product Owner Decisions — P1 Acceptance-Readiness Items (23 Sep 2026, delegated)
 status: PROPOSED
-version: 0.5
+version: 0.6
 date: 2026-09-23
 owner: Product Owner (accountable); decisions taken by the Product Owner persona under explicit delegation of 23 Sep 2026
 applies-to: P1 findings in GOV-REVIEW and the affected blueprint documents
@@ -131,6 +131,18 @@ The four next actions were executed to the programme-side maximum under delegati
 
 All actions are tracked in `action-register.md` (GOV-ACTIONS) with owner, due date, trigger and evidence.
 
+
+### G. P0 conditional completion recorded (23 Sep 2026)
+
+**Product Owner direction (delegated):** with no appointments, adviser contacts or sitting date available yet, the Product Owner directed the programme to defer the human actions and proceed:
+
+1. **P0 recorded as conditionally complete** (Path 2 of the sitting pack), effective 23 Sep 2026.
+2. **Pilot capability set frozen** at 204 candidates; additions require a PO-approved trade-out.
+3. **Interim acting capacities continue** until human appointments (A-02/A-03); the sitting remains available for Path 1 when appointees are seated.
+4. **Human actions remain open and tracked, not blocking:** A-02…A-06 (appointments, adviser engagements, RFQ/contract) and A-07 (sitting) — see `product-owner-checklist.md`.
+5. **Programme work proceeds:** Programme P2 current-state audit started (workspace `/home/suiteflow/suiteflow-audit`; baseline pinned; pass 1 complete); P3/P4 follow. **Committed delivery (D1) remains gated** on the outstanding human sign-offs (FC/TL/Security); governed proof spikes remain available on request.
+6. Tax/legal positions remain UNVERIFIED pending adviser engagement.
+
 ## Version history
 
 | Version | Date | Change | Status |
@@ -140,3 +152,4 @@ All actions are tracked in `action-register.md` (GOV-ACTIONS) with owner, due da
 | 0.3 | 2026-09-23 | Execution artifacts issued: interim appointments (GOV-APPOINT), support procurement pack (OPS-SUPPORT), engagement emails (GOV-BRIEFS v0.2), sitting pack (GOV-SITTING), action register (GOV-ACTIONS) | PROPOSED |
 | 0.4 | 2026-09-23 | Interim appointment instruments countersigned by recorded Product Owner direction (A-01 complete) | PROPOSED |
 | 0.5 | 2026-09-23 | Candidate-facing appointment packs published for the three human roles | PROPOSED |
+| 0.6 | 2026-09-23 | P0 conditional completion recorded; human actions deferred (tracked); P2 audit started | PROPOSED |

@@ -2,7 +2,7 @@
 doc-id: GOV-SITTING
 title: P0 Acceptance Sitting Pack (target ≤14 Oct 2026)
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Product Owner (chair; convening and sign-offs are human steps); pack prepared under delegated PO direction
 applies-to: Programme P0 acceptance gate (charter §12/§14)
@@ -12,6 +12,8 @@ depends-on: [GOV-PO-DEC, GOV-REVIEW, GOV-APPOINT]
 # P0 Acceptance Sitting Pack
 
 Prepared under **Product Owner direction (delegated), 23 Sep 2026**. Human-only items — appointments, sign-offs, spend, legal/tax conclusions — remain human-only; **no acceptance is pre-claimed.**
+
+> **Update 23 Sep 2026:** P0 **conditional completion** was recorded (GOV-PO-DEC §G) — scope freeze effective, programme proceeding to P2. This pack remains the instrument for the **Path 1** sitting when the human appointees are seated.
 
 ## 1. Invitation (draft to send)
 
@@ -79,3 +81,4 @@ GOV-PO-DEC v0.2 · GOV-BRIEFS · GOV-OQ v0.5 · GOV-REVIEW v0.4 · GOV-CHARTER �
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial sitting pack prepared under delegated PO direction (invitation, agenda, checklists, minute template, outcome paths) | PROPOSED |
 | 0.2 | 2026-09-23 | Role sign-off packs linked | PROPOSED |
+| 0.3 | 2026-09-23 | Conditional completion recorded; pack retained for the Path 1 sitting | PROPOSED |
