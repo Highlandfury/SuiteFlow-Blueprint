@@ -1,0 +1,23 @@
+# SuiteFlow Blueprint — repository ignores
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+*.code-workspace
+
+# Temporary renders and exports
+*.tmp
+*.bak
+_render/
+export/
+
+# Never commit secrets or customer data
+*.pem
+*.key
+.env*
+secrets/
+customer-data/
