@@ -70,3 +70,4 @@ Impact and likelihood ratings are **planning judgments (ASSUMED)**, to be re-rat
 | 0.3 | 2026-09-23 | Controls updated after OQ adoption: RSK-PROD-002 and RSK-INT-002 reflect closed questions (OQ-014/017/018); RSK-FIN-001/004 partly unblocked (OQ-011/012/021 closed) | PROPOSED |
 | 0.4 | 2026-09-23 | Synthetic reference pilot: RSK-DOM-001 reframed (role-played validation); RSK-DEP-003 site trigger deferred to first property; RSK-PROD-003 added (33 risks) | PROPOSED |
 | 0.5 | 2026-09-23 | P1/TEC-04: RSK-ARCH-003 and RSK-PROD-001 mitigations updated with dated horizon and P0 scope freeze | PROPOSED |
+| 0.6 | 2026-09-23 | P1 evidence: RSK-LIC-001 updated with the licence inventory (Kamra AGPL-3.0; hotel_integration undeclared) | PROPOSED |
