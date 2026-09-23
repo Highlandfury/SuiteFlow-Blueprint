@@ -1,15 +1,15 @@
 ---
 doc-id: BP-V1
-title: SuiteFlow Target-State Blueprint v1.8
+title: SuiteFlow Target-State Blueprint v1.9
 status: PROPOSED
-version: 1.8
+version: 1.9
 date: 2026-09-23
 owner: Product Owner (acceptance); Principal Architect (maintainer)
 applies-to: all SuiteFlow work
 depends-on: [GOV-CHARTER, GOV-INPUTS]
 ---
 
-# SuiteFlow Target-State Blueprint v1.8
+# SuiteFlow Target-State Blueprint v1.9
 
 ## 1. What this is
 
@@ -23,7 +23,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 
 | Artifact class | Count | Location |
 |---|---|---|
-| Documents in this blueprint | 58 | `docs/` |
+| Documents in this blueprint | 61 | `docs/` |
 | Domains | 25 | capability map |
 | Capabilities (`CAP-*`) | 283 | `product/capability-map.md` |
 | Domain invariants (`INV-*`) | 80 | `architecture/domain-model.md` |
@@ -64,7 +64,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 ## 6. Financial model at a glance
 
 - **Ownership (ADR-005):** SuiteFlow is the subledger of record (folios, payments, deposits, cashier); the Accounting Authority owns GL, AR, tax and period close.
-- **Posting:** one daily aggregated run per property per business day, 16 posting families, item-level drill-down, idempotent, unmapped family blocks close.
+- **Posting:** one daily aggregated run per property per business day, 18 posting families, item-level drill-down, idempotent, unmapped family blocks close.
 - **Revenue:** recognised once, on the correct business day; settlements and deposits are balance-sheet movements; direct-bill transfer is zero-revenue; comps post at value with contra-revenue.
 - **Close (ADR-006):** validation → postings → reconciliation → certification → advance; certification timing configurable with pilot default before advance; reopen governed and versioned; guest operations never freeze for financial degradation.
 - **Deposits (ADR-007):** obligation-linked liabilities with conservation; forfeiture to dedicated cancellation/no-show revenue; tax points flagged UNVERIFIED pending advice.
@@ -84,7 +84,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 - **Integrations:** 14 interfaces with full failure models; transactional outbox and idempotency contract (ADR-010); provider-neutral payments with manual baseline (ADR-011).
 - **Reporting:** read-model architecture with as-of semantics, 22-report catalogue, definitions governance, drill-down guarantee.
 - **NFRs:** labelled performance, concurrency, availability, recovery (1 h RPO/RTO REQUIRED), integrity, observability, scalability and accessibility requirements.
-- **Deployment:** versioned artefact promotion, dual-path connectivity and UPS as pilot requirements, warm recovery, worker duplicate-effect protection, release management and runbook catalogue.
+- **Deployment:** versioned artefact promotion, dual-path connectivity and UPS as **first-property deployment requirements** (reference pilot runs hosted; DEP-ARCH v0.4), warm recovery, worker duplicate-effect protection, release management and runbook catalogue.
 - **Documentation:** 21-document operational set with owners; docs-as-code; release-gated currency.
 - **AI:** governance-first; proposals only; no AI enabled at pilot by default; evaluation gates per capability (D19).
 
@@ -122,7 +122,7 @@ Pilot D1–D9 (foundation → property/rates → guests/reservations → front o
 | Open questions closed or defaults formally adopted | Product Owner | 26 closed (adoption + OQ-003 appointment); 12 remain — 8 facts (6 deferred to the first property), 3 advice, 1 approval |
 | Pilot capability set frozen (candidate pilot scope accepted or de-scoped) | Product Owner | Pending — freeze at Programme P0 acceptance (TEC-08) |
 
-When the above complete, the blueprint is promoted to **ACCEPTED (current version, v1.3)** and becomes level 2 of the source-of-truth hierarchy — the baseline for Programme P2's audit, Programme P3's gap matrix and all implementation commitments.
+When the above complete, the blueprint is promoted to **ACCEPTED (current version, v1.8)** and becomes level 2 of the source-of-truth hierarchy — the baseline for Programme P2's audit, Programme P3's gap matrix and all implementation commitments.
 
 ## 13. What happens next
 
@@ -145,3 +145,4 @@ When the above complete, the blueprint is promoted to **ACCEPTED (current versio
 | 1.6 | 2026-09-23 | Programme P2 audit plan added (51 documents); P1 research progress referenced | PROPOSED |
 | 1.7 | 2026-09-23 | Send-ready engagement artifacts: three standalone adviser briefs and the 24x7 RFQ pack (55 documents) | PROPOSED |
 | 1.8 | 2026-09-23 | Candidate-facing appointment packs for the three human roles (58 documents) | PROPOSED |
+| 1.9 | 2026-09-23 | Role sign-off packs published; freeze-clean corrections applied (61 documents) | PROPOSED |

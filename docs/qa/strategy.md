@@ -2,7 +2,7 @@
 doc-id: QA-STRATEGY
 title: Target QA and Acceptance Architecture
 status: PROPOSED
-version: 0.5
+version: 0.6
 date: 2026-09-23
 owner: QA Architect (drafted); Product Owner (approval)
 applies-to: full enterprise target; pilot acceptance
@@ -54,7 +54,7 @@ Every invariant, business rule and state machine produces test obligations `TO-<
 | TO-RTM-002 | Past-date rate edit is impossible; forward version required | BR-RTM-003 |
 | TO-FO-001 | Every check-in gate blocks when failing; override requires authority and is audited | BR-FO-001 |
 | TO-FO-002 | Checkout refuses unbalanced/untended folios per invariant | BR-FO-002, INV-FOL-1 |
-| TO-AVL-001 | OOS rooms are unsellable but remain in available-room statistics; OOO removes both | BR-AVL-001/003, BR-RPT-002 |
+| TO-AVL-003 | Capacity divergence: OOS rooms are unsellable but remain in available-room statistics; OOO removes both | BR-AVL-001/003, BR-RPT-002 |
 | TO-FOL-001 | Folio balance identity holds under concurrent posting and crash injection | INV-FOL-1 |
 | TO-FOL-002 | Corrections are additive; original items immutable | INV-FOL-2 |
 | TO-FOL-003 | Tax snapshots match effective rules per business date | INV-FOL-5 |
@@ -157,6 +157,7 @@ Promotion is by versioned artefact only; no environment-specific code branches; 
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial QA and acceptance architecture issued with WP 0.7 | PROPOSED |
 | 0.2 | 2026-09-23 | Synthetic reference pilot: UAT reframed as scripted role-played acceptance; release gates updated (reference release; First-Property Deployment Gate) | PROPOSED |
-| 0.3 | 2026-09-23 | P0 obligations registered: TO-AVL-001 (capacity divergence), TO-FOL-006/007 (no-show, forfeiture tax), TO-SEC-004/005 (break-glass, privileged grants); TO-SEC-001 covers framework-generic surfaces | PROPOSED |
+| 0.3 | 2026-09-23 | P0 obligations registered: TO-AVL-003 (capacity divergence), TO-FOL-006/007 (no-show, forfeiture tax), TO-SEC-004/005 (break-glass, privileged grants); TO-SEC-001 covers framework-generic surfaces | PROPOSED |
+| 0.6 | 2026-09-23 | Freeze-clean fixes: TO-AVL-003 renumbered (capacity divergence) and roadmap reference aligned; sign-off packs recorded | PROPOSED |
 | 0.4 | 2026-09-23 | P1 obligations: TO-SEC-006/007 (incident tabletop, vulnerability gate); reference-release gates include the tabletop (SEC-03/14) | PROPOSED |
 | 0.5 | 2026-09-23 | P2: role-played UAT wording (TEC-10); TO-RTM-003, TO-ACC-005, TO-REL-003, TO-SEC-008…011 registered | PROPOSED |

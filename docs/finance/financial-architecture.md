@@ -2,7 +2,7 @@
 doc-id: FIN-ARCH
 title: Target Financial Architecture
 status: PROPOSED
-version: 0.4
+version: 0.5
 date: 2026-09-23
 owner: Financial Systems Architect (drafted); Finance Controller (approval; OQ-002 open)
 applies-to: full enterprise target
@@ -212,7 +212,7 @@ As per ADR-007: obligation-linked liability, conservation invariant, dedicated f
 
 ## 10. Reconciliation suite (daily)
 
-Every item below runs daily; an **unexplained difference blocks the stage it protects (ADR-006 §3)** — day certification/advance for control-total checks, period close for any open case. A known, policy-defined difference produces a ReconciliationCase with owner, due date and escalation. The close gate consumes this suite (BR-NAU-001).
+Every item below runs daily unless marked otherwise (**check 14 is monthly**); an **unexplained difference blocks the stage it protects (ADR-006 §3)** — day certification/advance for control-total checks, period close for any open case. A known, policy-defined difference produces a ReconciliationCase with owner, due date and escalation. The close gate consumes this suite (BR-NAU-001).
 
 | # | Reconciliation | Left side | Right side | Tolerance |
 |---|---|---|---|---|
@@ -298,3 +298,4 @@ Chargebacks are matched against the original method clearing within check 3; dis
 | 0.2 | 2026-09-23 | P0 resolutions: no-show single-recognition rule + worked example (§5.6; FIN-01); tax-inclusive penalty/forfeiture computation (§7; FIN-02); closing/blocking semantics aligned to ADR-006 §3 (§10/§12; FIN-04) | PROPOSED |
 | 0.3 | 2026-09-23 | P1 resolutions: bank/acquirer reconciliation checks 12–13 (§10; FIN-03); configurable tax point (§7; FIN-12) | PROPOSED |
 | 0.4 | 2026-09-23 | P2 resolutions: service-charge lifecycle and charging example (FIN-09), refund instrument fidelity and chargebacks (FIN-14), series semantics (TEC-12) | PROPOSED |
+| 0.5 | 2026-09-23 | Freeze-clean fix: reconciliation cadence wording (check 14 monthly) | PROPOSED |

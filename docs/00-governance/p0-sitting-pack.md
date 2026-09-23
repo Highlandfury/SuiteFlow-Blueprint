@@ -2,7 +2,7 @@
 doc-id: GOV-SITTING
 title: P0 Acceptance Sitting Pack (target ≤14 Oct 2026)
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Product Owner (chair; convening and sign-offs are human steps); pack prepared under delegated PO direction
 applies-to: Programme P0 acceptance gate (charter §12/§14)
@@ -52,6 +52,9 @@ Registers (GOV-OQ, risk, inputs); GOV-REVIEW with P0/P1/P2 logs; charter; master
 
 ## 5. Per-approver checklists (compact)
 
+**Role sign-off packs (prepared by the interim capacities):** `signoff-packs/finance.md`, `signoff-packs/technical.md`, `signoff-packs/security-privacy.md` — each contains reviewed documents, conclusions, outstanding conditions and proposed sign-off wording for the human appointee.
+
+
 - **Product Owner:** vision/scope/priorities; classification (204/76/3 provisional) and freeze; D1–D12, A1–A16; OQ-010 in-principle; interim arrangements.
 - **Finance Controller:** financial architecture; ADR-005…008; authority limits and consolidated refund/payout/waiver table; reconciliation (checks 1–14); golden-day cases; tax items explicitly **UNVERIFIED**.
 - **Technical Lead:** target/domain/data/state; ADR-001…004/010/011; NFR/DEP/QA; sequencing (TEC-06/07).
@@ -75,3 +78,4 @@ GOV-PO-DEC v0.2 · GOV-BRIEFS · GOV-OQ v0.5 · GOV-REVIEW v0.4 · GOV-CHARTER �
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial sitting pack prepared under delegated PO direction (invitation, agenda, checklists, minute template, outcome paths) | PROPOSED |
+| 0.2 | 2026-09-23 | Role sign-off packs linked | PROPOSED |

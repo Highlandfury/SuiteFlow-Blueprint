@@ -53,7 +53,7 @@ The roadmap follows the programme path: this blueprint (Programme P0) → extern
 | Deliverables | Room inventory and numbering; types/features/pools; OOO/OOS control; rate plans, amounts, derives, restrictions; capacity and availability calculation; tax/localisation configuration framework |
 | Dependencies | D1 |
 | Risks | RSK-FIN-004 (tax correctness), RSK-PROD-002 (hotel reality mismatch) |
-| Tests | TO-RTM-001/002 (history immutability, past-date edit impossibility); derived-rate worked examples; restriction precedence reproducibility; availability rebuild/reconciliation; OOO capacity effect (TO-AVL-002) |
+| Tests | TO-RTM-001/002 (history immutability, past-date edit impossibility); derived-rate worked examples; restriction precedence reproducibility; OOO capacity effect (TO-AVL-003); availability rebuild/reconciliation |
 | Exit criteria | Rate determinism proven with worked examples; rate history immutable; availability rebuilt and reconciled to zero difference; restrictions reproducible; hotel inventory loaded and accepted by operations representative |
 
 ### D3 — Guests and reservations

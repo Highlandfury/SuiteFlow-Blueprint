@@ -2,7 +2,7 @@
 doc-id: SEC-ROLES
 title: Role and Authority Matrix
 status: PROPOSED
-version: 0.4
+version: 0.5
 date: 2026-09-23
 owner: Security Engineer (drafted); Security/Privacy Adviser + Technical Lead (approval; pending appointment, OQ-033); Product Owner (interim)
 applies-to: full enterprise target; pilot roles
@@ -92,7 +92,7 @@ Legend: **R** read, **C** create, **U** update within state machine, **A** appro
 | Comp room per instance | — | ≤ 1 room-night, 20,000 value | Unlimited, monthly report | — | Unlimited GM items quarterly review |
 | Rate discount (off BAR) | — | ≤ 10% | ≤ 25% | — | > 25% (GM + Revenue) |
 | Refund / payout / waiver | — | — | — | — | Consolidated authority table below (single source) |
-| Deposit forfeiture | — | Policy formula only | Policy formula + deviations | Unlimited with evidence | Deviation from formula (FC) |
+| Deposit forfeiture | — | Policy formula only | Policy formula only | Unlimited with evidence | Deviation from formula (FC) |
 | Cashier variance approval | — | ≤ 5,000 | ≤ 20,000 | Unlimited with reason | 20,000 (FC) |
 | Credit limit override / direct-bill exception | — | — | ≤ 100,000 exposure | Unlimited per policy | 100,000 (FC + GM) |
 | AR write-off | — | — | ≤ 50,000 | ≤ 250,000 | 250,000 (FC + GM) |
@@ -159,3 +159,4 @@ Exception principle: where staffing makes strict separation impossible (small ni
 | 0.2 | 2026-09-23 | P0 resolutions: privileged grants on maker–checker with independent review (SEC-04, §3/§5); break-glass two-person grant and named reviewer (SEC-02, §4) | PROPOSED |
 | 0.3 | 2026-09-23 | P1 resolutions: FOM role + consolidated refund/payout/waiver table (FIN-08); financial-config approval restricted to FC (FIN-11); export execute/approve split (SEC-06) | PROPOSED |
 | 0.4 | 2026-09-23 | P2: governance roles added; approval lines aligned; cumulative/split limits (SEC-11/12) | PROPOSED |
+| 0.5 | 2026-09-23 | Freeze-clean fix: deposit-forfeiture GM cell aligned (deviations are FC-only) | PROPOSED |

@@ -2,7 +2,7 @@
 doc-id: GOV-ANSWERS
 title: Open Question Answers — Industry-Standard and Best-Practice Positions
 status: PROPOSED
-version: 0.4
+version: 0.5
 date: 2026-09-23
 owner: Principal Architect (drafted at Product Owner direction); Product Owner (adoption)
 applies-to: resolution of the Open Questions Register (GOV-OQ)
@@ -504,4 +504,3 @@ The accepted business-requirement amendment for the synthetic reference pilot is
 | 0.3 | 2026-09-23 | Synthetic reference pilot decision: OQ-003 closed by appointment; OQ-001/004/006/007/025/038 marked deferred to the First-Property Deployment Gate | PROPOSED |
 | 0.4 | 2026-09-23 | P1: OQ-037 refined — zero acceptance tolerance, review threshold, consolidated authority table (FIN-06/FIN-08) | PROPOSED |
 | 0.5 | 2026-09-23 | P2: OQ-010 approved in principle (delegated); all review findings resolved | PROPOSED |
-| 0.4 | 2026-09-23 | P1: OQ-037 refined — zero acceptance tolerance, review threshold, consolidated authority table (FIN-06/FIN-08) | PROPOSED |
