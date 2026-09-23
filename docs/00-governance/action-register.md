@@ -2,7 +2,7 @@
 doc-id: GOV-ACTIONS
 title: Action Register — Human and Programme Actions
 status: PROPOSED
-version: 0.6
+version: 0.7
 date: 2026-09-23
 owner: Product Owner (accountable); maintained by the programme
 applies-to: execution actions arising from GOV-PO-DEC and GOV-REVIEW
@@ -27,6 +27,8 @@ Every action arising from the delegated Product Owner record and the review reso
 | A-10 | Discharge or extend interim arrangements at the sitting | Real Product Owner | At P0 sitting | Sitting minute; GOV-APPOINT status update | OPEN — human |
 | A-11 | Execute the Programme P2 current-state audit per the plan | Technical Lead (at appointment); interim: Programme | Entry at P0 acceptance/conditional completion | `programme-p2-audit-plan.md`; audit report + evidence register; IMPL-ADR re-verifications | OPEN — ready |
 
+**One-page human checklist:** `product-owner-checklist.md`.
+
 ## Version history
 
 | Version | Date | Change | Status |
@@ -37,3 +39,4 @@ Every action arising from the delegated Product Owner record and the review reso
 | 0.4 | 2026-09-23 | Send-ready artifacts: three standalone adviser briefs and the 24x7 RFQ pack | PROPOSED |
 | 0.5 | 2026-09-23 | Candidate-facing appointment packs prepared for A-02/A-03 | PROPOSED |
 | 0.6 | 2026-09-23 | Role sign-off packs published (finance, technical, security) and linked; freeze-clean corrections applied | PROPOSED |
+| 0.7 | 2026-09-23 | Human-action checklist published and cross-linked | PROPOSED |
