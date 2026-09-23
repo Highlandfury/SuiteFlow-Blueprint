@@ -56,12 +56,13 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 ## Current phase
 
-**WP 0.2 — Domain, ownership and data architecture** (in progress):
+**WP 0.2 — Domain, ownership and data architecture** — complete, pending Product Owner review:
 
-- Pass 1 complete: target-state architecture overview; ADR-001 (application topology and domain ownership); ADR-002 (tenancy, property scope and isolation); inputs register validation outcomes.
-- Pass 2 next: target domain model; data model; ADR-003 (temporal/effective-dating strategy); ADR-004 (identity and numbering).
+- Target-state architecture overview; ADR-001 (topology and ownership); ADR-002 (tenancy and scope); ADR-003 (temporal strategy); ADR-004 (identity and numbering); target domain model (80 invariants, 8 worked financial-responsibility scenarios); data architecture.
+- Inputs register validation outcomes recorded: DP-CTX-001 MODIFIED; DP-CTX-002 roles confirmed, product binding deferred; DP-CTX-003 reserved for WP 0.4.
+- New risk recorded: RSK-MIG-002 (tenancy migration).
 
-WP 0.1 (Product Foundation) is complete: governance charter, inputs register, glossary, open questions, risk register, product vision, scope, personas, enterprise capability map (283 capabilities across 25 domains) and roadmap skeleton. See the charter's deliverable map for the full planned structure.
+Next: WP 0.3 — state machines, workflows and business rules. WP 0.1 (Product Foundation) is complete: governance, vision, scope, personas, capability map (283 capabilities), roadmap skeleton.
 
 ## Licensing
 
