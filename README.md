@@ -61,6 +61,7 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 - `docs/TARGET-STATE-BLUEPRINT.md` v1.2 (PROPOSED): consolidated master index with inventory, architecture summaries, acceptance model (reference pilot + First-Property Deployment Gate), the Phase 0 exit gate and next steps.
 - `product/roadmap.md` v1.1: full roadmap with per-phase objectives, capabilities, inputs, dependencies, risks, tests and exit criteria for pilot phases 1–9 (synthetic migration, role-played UAT, reference release), the First-Property Deployment Gate and enterprise phases 10–20.
 - Phase 0 exit gate: 7 approval groups remain (Product Owner incl. acting operations acceptance; Finance via OQ-002; Security adviser via OQ-033; Technical Lead; ADR confirmations; open questions). See the blueprint §12.
+- Acceptance-readiness review recorded (`docs/00-governance/review-findings-2026-09-23.md`): 45 findings — 3 critical, 13 high — to resolve in the pre-acceptance fix pass.
 
 ### How we got here
 

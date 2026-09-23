@@ -2,7 +2,7 @@
 doc-id: GOV-INPUTS
 title: Inputs Register — Accepted Requirements and Proposed Architecture Inputs
 status: PROPOSED
-version: 0.1
+version: 0.7
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: all blueprint work
@@ -70,7 +70,7 @@ Operational interpretation recorded with the baseline: the one-property pilot do
 | BR-PAY-006 | POS authorization slip is not bank settlement; POS clearing remains open until matched to acquirer/bank settlement | Confirmed |
 | BR-PAY-007 | SuiteFlow stores POS/transfer/cheque/settlement references, never PAN or CVV | Confirmed |
 | BR-PAY-008 | UBA and Wema Bank are candidates; exact roles (operating bank, POS acquirer, transfer destination, settlement bank, API provider) are **open** (PAY-001) | Open |
-| BR-PAY-009 | Guest-facing online payment links: requirement **open** (PAY-002) | Open |
+| BR-PAY-009 | Guest-facing online payment links: enterprise target yes; pilot at most one provider path if required (OQ-005 closed) | Resolved (OQ-005, 23 Sep 2026) |
 | BR-PAY-010 | POS terminal/acquirer and settlement-report details **open** (PAY-003) | Open |
 | BR-PAY-011 | Bank statement formats and access/integration constraints **open** (PAY-004) | Open |
 
@@ -101,7 +101,7 @@ Note on terminology: "Kamra" and "ERPNext" appear in the accepted boundary as th
 | BR-REL-001 | 24×7 support coverage with named on-call rota, severity model, escalation contacts, monitoring and runbooks before pilot | Confirmed |
 | BR-REL-002 | RPO 1 hour — requires continuous database recovery (binlog/PITR or equivalent replication) and frequent file/config replication | Confirmed |
 | BR-REL-003 | RTO 1 hour — requires warm recovery capacity, automated restore, current image/config/secrets, rehearsed failover | Confirmed |
-| BR-REL-004 | Service objective 99.5% remains the planning baseline; confirmation or replacement **open** (REL-001) | Pending |
+| BR-REL-004 | Service objective: 99.5% pilot / 99.9% enterprise target (OQ-009 closed) | Resolved (OQ-009, 23 Sep 2026) |
 | BR-REL-005 | Daily close support within 24×7; financial-integrity and queue alerts must page the on-call owner around the close window | Confirmed |
 | BR-REL-006 | Periodic four-hour backups are incompatible with the 1-hour RPO | Confirmed |
 | BR-REL-007 | Restored workers must not duplicate external payments or ERP documents | Confirmed |
@@ -159,7 +159,7 @@ Observed statuses are working-tree observations and are recorded here for planni
 | Product breadth | Accepted MVP defers multi-property, foreign currency and advanced analytics for the pilot (BR-MVP-012/013) | Product Owner direction (23 Sep 2026): enterprise target includes multi-property/chain, designed now, delivered pilot-first | Reconciled by scope.md: enterprise target vs pilot release scope; no capability dropped from the target |
 | Product naming | MVP boundary names Kamra/ERPNext as included systems | Blueprint must define target ownership independently of existing products | Named systems treated as candidate implementations of target roles; validation in Phase 1–3 |
 | Accounting authority | Decision pack proposes ERPNext as accounting book of record | Blueprint must determine the correct financial architecture on its own merits | WP 0.4 validation with explicit ADR outcome |
-| Service objective | 99.5% pilot / 99.9% enterprise target | Closed — adopted (OQ-009, 23 Sep 2026) |
+| Service objective | 99.5% planning baseline | Confirmation outstanding | Closed — adopted (OQ-009, 23 Sep 2026): 99.5% pilot / 99.9% enterprise target |
 
 ## 6. Version history
 
@@ -171,3 +171,4 @@ Observed statuses are working-tree observations and are recorded here for planni
 | 0.4 | 2026-09-23 | §4.3 outcomes completed: DP-ADR-003 confirmed with refinements (ADR-010); DP-ADR-004 confirmed with refinements, provider selection remains open (ADR-011). All proposed inputs now have recorded outcomes | PROPOSED |
 | 0.5 | 2026-09-23 | Service-objective status corrected to adopted (OQ-009 closed: 99.5% pilot / 99.9% enterprise target) | PROPOSED |
 | 0.6 | 2026-09-23 | Synthetic reference pilot decision recorded: BR-PILOT-001/005 amended, BR-PILOT-008 resolved, BR-PILOT-009/010 added; property-dependent items deferred to the First-Property Deployment Gate | PROPOSED |
+| 0.7 | 2026-09-23 | Review-pass corrections: front-matter version aligned; BR-PAY-009 and BR-REL-004 statuses resolved against adopted answers (OQ-005/OQ-009); malformed §5 row repaired | PROPOSED |

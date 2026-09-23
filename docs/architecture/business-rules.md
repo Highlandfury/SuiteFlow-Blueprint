@@ -2,10 +2,10 @@
 doc-id: ARCH-RULES
 title: Target Business Rules
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Hospitality Domain Architect (drafted); Finance Controller + Hotel Operations (approval; roles open)
-applies-to: full enterprise target; values marked [OQ-nnn] pending product decisions
+applies-to: full enterprise target; adopted OQ answers marked closed, remaining dependencies noted
 depends-on: [ARCH-DOMAIN, ARCH-STATES, PROD-CAPMAP]
 ---
 
@@ -15,7 +15,7 @@ depends-on: [ARCH-DOMAIN, ARCH-STATES, PROD-CAPMAP]
 
 This document is the authoritative catalogue of **deterministic business rules**: statements that must produce the same result for the same inputs, every time, and whose exceptions are explicit and authorised.
 
-Rules here are requirements for the target. Where a number or policy depends on an open Product Owner or hotel decision, the rule is marked `[OQ-nnn]` and carries a stated default for design purposes. No rule may be implemented from a guess; `[OQ-nnn]` markers must be resolved or the stated default accepted before the rule is ACCEPTED.
+Rules here are requirements for the target. Where a number or policy depended on a product decision, the adopted answer is marked `OQ-nnn (closed)` and is in force; rules that cite a still-open question (such as the OQ-002 role) keep their stated interim defaults until that question closes. No rule may be implemented from a guess; open markers must be resolved or the stated default accepted before the rule is ACCEPTED.
 
 Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, state machines and invariants from the other architecture documents.
 
@@ -73,7 +73,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | BR-FOL-012 | Refunds never exceed cleared, un-refunded funds; method fidelity applies (same method where possible); bank-detail changes for refunds require enhanced verification. | INV-FOL-8; CAP-FOL-009 |
 | BR-FOL-013 | Direct-bill transfer requires credit eligibility per BR-CRP-001 or a recorded authorised exception; each transfer produces exactly one AR document (idempotent). | INV-FOL-9; CAP-CRP-005 |
 | BR-FOL-014 | A folio closes only when settled or transferred; pending-clearance payments with zero balance close with a tracked clearance flag per policy, never as silent settled money. | SM-FOLIO #2 |
-| BR-FOL-015 | Positing to a folio owned by a different property is prohibited except through governed inter-property agreements (future phase) with explicit evidence. | ADR-002; scope |
+| BR-FOL-015 | Posting to a folio owned by a different property is prohibited except through governed inter-property agreements (future phase) with explicit evidence. | ADR-002; scope |
 
 ## 6. Cashiering (CSH)
 
@@ -145,7 +145,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 
 | ID | Rule | Basis / dependencies |
 |---|---|---|
-| BR-ACC-001 | Revenue is recognised once, on the approved business day, to the mapped accounts; settlement movements are balance-sheet only. | DP-CTX-003 (reserved for WP 0.4); CAP-ACC-002 |
+| BR-ACC-001 | Revenue is recognised once, on the approved business day, to the mapped accounts; settlement movements are balance-sheet only. | ADR-005; CAP-ACC-002 |
 | BR-ACC-002 | Every posting carries a durable idempotency identity; retries resolve to the original outcome; duplicate posting is a P0 defect. | INV-ACC-1; CAP-INT-007 |
 | BR-ACC-003 | Uncertain external outcomes (timeout after submission) are resolved by reconciliation, never by blind re-submission. | INV-ACC-2 |
 | BR-ACC-004 | Control accounts (guest ledger, deposits, AR, tax, cash-in-transit) reconcile daily; unreconciled differences block financial close reporting, not operational operation. | CAP-ACC-009 |
@@ -190,3 +190,4 @@ The following rules carried `[OQ-nnn]` defaults; all were closed by Product Owne
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial business-rules catalogue (15 domains, 101 rules) issued with WP 0.3 | PROPOSED |
 | 0.2 | 2026-09-23 | OQ defaults adopted (23 Sep 2026) and marked closed; BR-HSK-002 refined with the adopted ≥20% spot-check default; §14 rewritten | PROPOSED |
+| 0.3 | 2026-09-23 | Review-pass corrections: front-matter scope wording, §14 preamble, BR-FOL-015 typo, BR-ACC-001 citation | PROPOSED |

@@ -253,7 +253,7 @@ Every item below runs daily; a difference produces a ReconciliationCase with own
 
 | Item | Blocks | Owner |
 |---|---|---|
-| OQ-011 (closed) invoice authority confirmation | Invoicing implementation (ADR-008 provisional) | Finance Controller |
+| OQ-011 closed — invoice authority settled (operative document per ADR-008) | Invoicing implementation per ADR-008; Finance Controller confirmation at acceptance | Finance Controller |
 | OQ-012 (closed) deposit/cancellation/no-show policy | Rule ACCEPTED status (defaults in force) | Product Owner / Finance |
 | OQ-021 (closed) service charge and tax treatment | Tax configuration finalisation | Finance / tax adviser |
 | OQ-029 fiscalisation requirements | Invoicing/integration scope | Legal / Finance |

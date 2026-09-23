@@ -6,7 +6,7 @@ version: 0.1
 date: 2026-09-23
 owner: Data Architect (drafted); Finance Controller (approval; OQ-002 open)
 applies-to: full enterprise target
-depends-on: [FIN-ARCH, ADR-003, ADR-005, SEC-MODEL, BR-RPT]
+depends-on: [FIN-ARCH, ADR-003, ADR-005, SEC-MODEL, ARCH-RULES]
 ---
 
 # Target Reporting Architecture

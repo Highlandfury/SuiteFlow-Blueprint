@@ -50,7 +50,7 @@ Per ADR-010: transactional outbox for outbound effects; inbound endpoints (webho
 | Direction | Inbound reservations and payments; outbound availability and rate display |
 | Auth | Public surface with rate limiting; payment via provider adapter (4.3) |
 | Identity | Booking reference + provider payment reference |
-| Guarantees | Same validation path as any booking (BR-RSV) — the booking engine gets no special shortcuts |
+| Guarantees | Same validation path as any booking (BR-AVL-002) — the booking engine gets no special shortcuts |
 | Failure | Failed payment releases the hold per policy; abandoned bookings release inventory on timeout |
 | Reconciliation | Daily: bookings vs payments vs inventory movements |
 
@@ -82,7 +82,7 @@ Per ADR-010: transactional outbox for outbound effects; inbound endpoints (webho
 |---|---|
 | Direction | Inbound orders/checks, discounts, settlements; outbound room validation and posting confirmations |
 | Auth | Per-terminal credentials |
-| Identity | POS check identity + SuiteFlow posting identity (idempotent room posting, BR-POS-2) |
+| Identity | POS check identity + SuiteFlow posting identity (idempotent room posting; ADR-010) |
 | Guarantees | Room posting validates stay and credit (CAP-POS-008); no duplicate posts on retry |
 | Reconciliation | Daily: POS settlements vs folio postings vs outlet revenue (CAP-POS-010) |
 

@@ -64,7 +64,7 @@ Every invariant, business rule and state machine produces test obligations `TO-<
 | TO-NAU-002 | Reopen creates versioned restatement; originals preserved | INV-NAU-4/5 |
 | TO-ACC-001 | Exactly one posting per source event per dimension under retry | INV-ACC-1 |
 | TO-ACC-002 | Direct-bill transfer posts zero revenue lines | ADR-005 §5 |
-| TO-ACC-003 | Mapping gap blocks close | BR-ACC-007 context, FIN-ARCH §3 |
+| TO-ACC-003 | Mapping gap blocks close | ADR-005 §7; FIN-ARCH §3 |
 | TO-ACC-004 | Control accounts reconcile to zero on golden day | FIN-ARCH §10 |
 | TO-SEC-001 | Cross-scope denial per surface class (command/query/report/export/API/webhook/AI tool) | SEC-MODEL §6 |
 | TO-SEC-002 | Self-approval denial across maker–checker catalogue | SEC-ROLES §5 |

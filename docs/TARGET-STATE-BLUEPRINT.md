@@ -23,7 +23,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 
 | Artifact class | Count | Location |
 |---|---|---|
-| Documents in this blueprint | 42 | `docs/` |
+| Documents in this blueprint | 43 | `docs/` |
 | Domains | 25 | capability map |
 | Capabilities (`CAP-*`) | 283 | `product/capability-map.md` |
 | Domain invariants (`INV-*`) | 80 | `architecture/domain-model.md` |
@@ -36,7 +36,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 | Test obligations (`TO-*`) | 29 representative | `qa/strategy.md` |
 | Architecture decisions (`ADR-*`) | 11 | `architecture/adr/` |
 | Risks (`RSK-*`) | 33 | `00-governance/risk-register.md` |
-| Open questions (`OQ-*`) | 38 (25 closed, 13 open) | `00-governance/open-questions.md` |
+| Open questions (`OQ-*`) | 38 (26 closed, 12 open) | `00-governance/open-questions.md` |
 | Accepted requirements (`BR-PILOT/PAY/MVP/REL-*`) | 33 | `00-governance/inputs-register.md` |
 
 ## 3. Governance summary
@@ -120,7 +120,7 @@ Pilot phases 1–9 (foundation → property/rates → guests/reservations → fr
 | All 11 ADRs confirmed as ACCEPTED or revised | Respective approvers per ADR | Pending |
 | Open questions closed or defaults formally adopted | Product Owner | 26 closed (adoption + OQ-003 appointment); 12 remain — 8 facts (6 deferred to the first property), 3 advice, 1 approval |
 
-When the above complete, the blueprint is promoted to **ACCEPTED (current version, v1.1)** and becomes level 2 of the source-of-truth hierarchy — the baseline for Phase 2's audit, Phase 3's gap matrix and all implementation commitments.
+When the above complete, the blueprint is promoted to **ACCEPTED (current version, v1.2)** and becomes level 2 of the source-of-truth hierarchy — the baseline for Phase 2's audit, Phase 3's gap matrix and all implementation commitments.
 
 ## 13. What happens next
 

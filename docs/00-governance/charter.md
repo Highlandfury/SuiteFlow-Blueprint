@@ -2,7 +2,7 @@
 doc-id: GOV-CHARTER
 title: SuiteFlow Blueprint Charter
 status: PROPOSED
-version: 0.3
+version: 0.4
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: this repository
@@ -198,7 +198,7 @@ Planned structure; documents appear as their work packages execute. Only files t
 
 ```text
 docs/
-├── TARGET-STATE-BLUEPRINT.md          [present — master index v1.1]
+├── TARGET-STATE-BLUEPRINT.md          [present — master index v1.2]
 ├── 00-governance/
 │   ├── charter.md                     [present]
 │   ├── inputs-register.md             [present]
@@ -211,7 +211,7 @@ docs/
 │   ├── scope.md                       [present — WP 0.1]
 │   ├── personas-and-roles.md          [present — WP 0.1]
 │   ├── capability-map.md              [present — WP 0.1]
-│   └── roadmap.md                     [present — v1.0 with per-phase exit criteria]
+│   └── roadmap.md                     [present — v1.1 with per-phase exit criteria]
 ├── architecture/                      [WP 0.2 complete — pending review]
 │   ├── target-state.md                [present — WP 0.2]
 │   ├── domain-model.md                [present — WP 0.2]
@@ -270,3 +270,4 @@ docs/
 | 0.1 | 2026-09-23 | Initial charter issued with WP 0.1 pass 1 | PROPOSED |
 | 0.2 | 2026-09-23 | Version references updated for blueprint v1.1 after adoption of the industry-standard answers | PROPOSED |
 | 0.3 | 2026-09-23 | Operational-acceptance authority updated for the synthetic reference pilot (Product Owner acting; OQ-003 closed) | PROPOSED |
+| 0.4 | 2026-09-23 | Review-pass corrections: deliverable-map version references aligned (master index v1.2, roadmap v1.1) | PROPOSED |

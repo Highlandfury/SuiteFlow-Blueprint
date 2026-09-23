@@ -60,7 +60,6 @@ Mapping these functional owners onto concrete components — including whether c
 
 ## 3. Summary
 
-<!-- COUNTS -->
 
 **Total: 283 capabilities across 25 domains.**
 
