@@ -56,13 +56,16 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 ## Current phase
 
-**WP 0.2 — Domain, ownership and data architecture** — complete, pending Product Owner review:
+**WP 0.3 — State machines, workflows and business rules** — complete, pending Product Owner review:
 
-- Target-state architecture overview; ADR-001 (topology and ownership); ADR-002 (tenancy and scope); ADR-003 (temporal strategy); ADR-004 (identity and numbering); target domain model (80 invariants, 8 worked financial-responsibility scenarios); data architecture.
-- Inputs register validation outcomes recorded: DP-CTX-001 MODIFIED; DP-CTX-002 roles confirmed, product binding deferred; DP-CTX-003 reserved for WP 0.4.
-- New risk recorded: RSK-MIG-002 (tenancy migration).
+- 18 state machines with transition tables (actor, authority, preconditions, effects, exceptions) and a common transition contract.
+- 22-workflow catalogue with operational-realism analysis and pilot markings.
+- 100-rule deterministic business-rule catalogue across 15 domains, with `[OQ-nnn]` defaults explicitly marked.
+- Cross-reference verification: capability, invariant and rule references machine-checked.
 
-Next: WP 0.3 — state machines, workflows and business rules. WP 0.1 (Product Foundation) is complete: governance, vision, scope, personas, capability map (283 capabilities), roadmap skeleton.
+Previous: WP 0.2 (target-state, ownership, tenancy, domain model with 80 invariants, data architecture, ADR-001…004) and WP 0.1 (governance, vision, scope, personas, 283-capability map, roadmap skeleton) are complete.
+
+Next: WP 0.4 — financial architecture (folio → settlement → posting → reconciliation), including validation of the reserved financial inputs (DP-ADR-001/002/005, DP-CTX-003).
 
 ## Licensing
 
