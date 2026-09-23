@@ -62,6 +62,7 @@ One line is enough. I record each answer in the register, update the affected ru
 | OQ-035 | Free-stay child age, extra-person pricing, early check-in / late-checkout charges | Children ≤ 5 free; early/late charged per policy |
 | OQ-036 | Comp rooms and staff house use: who approves, limits, and do they count in occupancy statistics? | Comps need manager approval and count in occupancy; house use excluded |
 | OQ-037 | Cash policy: till float size, variance tolerance, payout limits | Zero tolerance with review above 0.5% of session volume |
+| OQ-038 | What is the internet and power reality at the hotel (links, redundancy, UPS)? | One link with graceful degradation; offline mode designed in WP 0.7 |
 | OQ-004 | Which bank/POS acquirer does what (UBA, Wema roles)? | Both banks used manually at pilot |
 | OQ-006 | Which POS terminals/acquirer, and what does a settlement report look like? | Manual batch reconciliation from terminal printouts |
 | OQ-007 | Can we get bank statements electronically, and in what format? | Manual statement review |

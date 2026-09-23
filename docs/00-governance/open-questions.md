@@ -64,6 +64,7 @@ Priority: **B** = blocking for its work package; **I** = important, not blocking
 | OQ-035 | Pricing policy details: child age bound for free stays, extra-person and sharing pricing, early check-in / late-checkout charges, early-departure rules | Product Owner / Hotel Operations | Rate and front-office rules (BR-RTM-005, BR-FO-004/005) | I | OPEN |
 | OQ-036 | Comp and house-use policy: who may authorise, limits, and statistical treatment (are comps counted in occupancy? is house use excluded from ADR?) | Product Owner / Hotel Operations | Statistics and reporting rules (BR-RPT-003, BR-FOL-005) | I | OPEN |
 | OQ-037 | Cash handling policy: house-bank size, cashier variance tolerance, payout limits, deposit-to-safe rules | Finance | Cashiering rules (BR-CSH-002/005) | I | OPEN |
+| OQ-038 | Connectivity and power reality at the property: WAN links and redundancy, power stability/UPS coverage, appetite for on-site equipment. Directly determines the offline/degraded-mode design (a front desk that stops when the internet drops is not viable) | Product Owner / Platform | Offline strategy, deployment architecture (WP 0.7) | I | OPEN |
 | OQ-033 | Named Technical Lead and Security/Privacy adviser for blueprint approval gates; no such named roles exist yet | Product Owner | Blueprint ACCEPTED status (charter §12) | I | OPEN |
 
 ## 4. Governance
