@@ -56,16 +56,15 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 ## Current phase
 
-**WP 0.3 — State machines, workflows and business rules** — complete, pending Product Owner review:
+**WP 0.4 — Financial architecture** — complete, pending Product Owner review:
 
-- 18 state machines with transition tables (actor, authority, preconditions, effects, exceptions) and a common transition contract.
-- 22-workflow catalogue with operational-realism analysis and pilot markings.
-- 100-rule deterministic business-rule catalogue across 15 domains, with `[OQ-nnn]` defaults explicitly marked.
-- Cross-reference verification: capability, invariant and rule references machine-checked.
+- `finance/financial-architecture.md`: books of record, 16 posting families, posting model, worked money flows with journal sketches, payment clearing, tax architecture (Nigeria items explicitly UNVERIFIED), deposits, AR, an 11-point daily reconciliation suite, failure model, reporting outputs.
+- ADR-005 (revenue recognition, ledger ownership, accounting boundary), ADR-006 (business-day gate and close), ADR-007 (deposits and forfeiture), ADR-008 (invoice and statutory document authority).
+- Inputs register outcomes updated: DP-CTX-003, DP-ADR-001, DP-ADR-002, DP-ADR-005 confirmed with refinements.
 
-Previous: WP 0.2 (target-state, ownership, tenancy, domain model with 80 invariants, data architecture, ADR-001…004) and WP 0.1 (governance, vision, scope, personas, 283-capability map, roadmap skeleton) are complete.
+**Hard dependencies flagged for the Product Owner:** OQ-011 (invoice authority — ADR-008 is provisional), OQ-012 (deposit/cancellation policy defaults in force), OQ-021/OQ-029 (tax and fiscalisation — UNVERIFIED), OQ-001/OQ-002 (legal entity, Finance Controller).
 
-Next: WP 0.4 — financial architecture (folio → settlement → posting → reconciliation), including validation of the reserved financial inputs (DP-ADR-001/002/005, DP-CTX-003).
+Next: WP 0.5 — security model, tenancy enforcement and role/authority matrix.
 
 ## Licensing
 

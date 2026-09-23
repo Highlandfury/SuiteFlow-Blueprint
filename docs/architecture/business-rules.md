@@ -139,6 +139,7 @@ Rule format: `BR-<DOMAIN>-NNN`. Rules are cross-referenced by capabilities, stat
 | BR-INA-002 | Adjustment/void/comp reporting is produced daily per user and amount band; repeated patterns escalate regardless of individual authorisation. | CAP-INA-003 |
 | BR-INA-003 | Audit findings carry owner and deadline; unresolved findings remain visible to management and are not closed by day advancement. | INV-INA-2 |
 | BR-INA-004 | Certification status (pass/hold) is recorded with findings; a held day is reported to finance even if operations must proceed per policy. | CAP-INA-006 |
+| BR-INA-005 | Deposit movements (receipts, applications, refunds, forfeitures) are verified daily against the conservation invariant and authority evidence. | CAP-INA-005; INV-FOL-7 |
 
 ## 11. Accounting interface (ACC)
 
@@ -187,4 +188,4 @@ The following rules contain `[OQ-nnn]` defaults that must be confirmed before AC
 
 | Version | Date | Change | Status |
 |---|---|---|---|
-| 0.1 | 2026-09-23 | Initial business-rules catalogue (15 domains, 100 rules) issued with WP 0.3 | PROPOSED |
+| 0.1 | 2026-09-23 | Initial business-rules catalogue (15 domains, 101 rules) issued with WP 0.3 | PROPOSED |
