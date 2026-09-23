@@ -56,11 +56,11 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 ## Current phase
 
-**Phase 0 complete — WP 0.8 Blueprint Consolidation delivered; awaiting Product Owner acceptance.**
+**Phase 0 complete — WP 0.8 Blueprint Consolidation delivered; awaiting Product Owner acceptance. Pilot redefined (23 Sep 2026) as a synthetic reference pilot — no real property; the Product Owner acts as operations authority and acceptance approver.**
 
-- `docs/TARGET-STATE-BLUEPRINT.md` v1.1 (PROPOSED): consolidated master index with inventory, architecture summaries, acceptance model, the Phase 0 exit gate and next steps.
-- `product/roadmap.md` v1.0: full roadmap with per-phase objectives, capabilities, inputs, dependencies, risks, tests and exit criteria for pilot phases 1–9 and enterprise phases 10–20, plus the governed proof-spike provision and the path to first code.
-- Phase 0 exit gate: 7 approval groups remain (Product Owner; Hotel Operations via OQ-003; Finance via OQ-002; Security adviser via OQ-033; Technical Lead; ADR confirmations; open questions). See the blueprint §12.
+- `docs/TARGET-STATE-BLUEPRINT.md` v1.2 (PROPOSED): consolidated master index with inventory, architecture summaries, acceptance model (reference pilot + First-Property Deployment Gate), the Phase 0 exit gate and next steps.
+- `product/roadmap.md` v1.1: full roadmap with per-phase objectives, capabilities, inputs, dependencies, risks, tests and exit criteria for pilot phases 1–9 (synthetic migration, role-played UAT, reference release), the First-Property Deployment Gate and enterprise phases 10–20.
+- Phase 0 exit gate: 7 approval groups remain (Product Owner incl. acting operations acceptance; Finance via OQ-002; Security adviser via OQ-033; Technical Lead; ADR confirmations; open questions). See the blueprint §12.
 
 ### How we got here
 
@@ -79,7 +79,7 @@ Start with [`docs/00-governance/charter.md`](docs/00-governance/charter.md) for 
 
 Phase 1 (external research and benchmark validation) → Phase 2 (current-state audit) → Phase 3 (gap matrix) → Phase 4 (transition architecture) → delivery phases 1–20. Governed proof spikes are permitted earlier with Product Owner approval.
 
-**Open questions:** industry-standard answers adopted for 25 of 38 questions (Product Owner, 23 Sep 2026); 13 remain — 9 hotel/provider facts, 3 professional-advice items, 1 cost approval. See `docs/00-governance/industry-standard-answers.md` and the register; decision digest in `docs/00-governance/decisions-required.md`.
+**Open questions:** 26 of 38 closed (25 adopted industry-standard answers + OQ-003 operations authority, 23 Sep 2026); 12 remain — 8 facts (2 now: Finance Controller, Technical Lead/Security adviser; 6 deferred to the first property), 3 professional-advice items, 1 cost approval. See `docs/00-governance/industry-standard-answers.md` and the register; decision digest in `docs/00-governance/decisions-required.md`.
 
 ## Licensing
 

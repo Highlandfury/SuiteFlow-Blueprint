@@ -4,7 +4,7 @@ title: Target UX Architecture
 status: PROPOSED
 version: 0.1
 date: 2026-09-23
-owner: Frontend Engineering + Hospitality Domain Architect (drafted); Hotel Operations (validation; OQ-003 open)
+owner: Frontend Engineering + Hospitality Domain Architect (drafted); operational validation by the acting operations authority (OQ-003 closed)
 applies-to: full enterprise target; pilot screens marked
 depends-on: [ARCH-STATES, ARCH-RULES, WF-CATALOGUE, SEC-MODEL, SEC-ROLES]
 ---
@@ -408,12 +408,12 @@ Screens are listed in §14–§29. Each states: purpose; users; information hier
 
 | Item | Owner | Effect |
 |---|---|---|
-| OQ-003 operations representative | Product Owner | Workflow and screen validation with the hotel |
+| OQ-003 closed — acting operations authority (Product Owner) | Product Owner | Workflow and screen validation; real-hotel validation at the first property |
 | OQ-011 (closed) invoice formats | Finance | Document layout and particulars |
 | OQ-014 (closed)/017/022 outlets, groups, maintenance pilot depth | Product Owner / Hotel Ops | Which screens are pilot-live vs configured off |
 | OQ-032 (closed) accessibility/language scope | Product Owner | Localisation, assistive requirements beyond WCAG AA |
 | OQ-034 (closed) housekeeping standards | Hotel Ops | Board defaults, inspection affordances |
-| Device strategy and network reality at the property | Hotel Ops / Platform | Responsive priorities, offline tolerance design |
+| Device strategy and network reality | Acting operations authority (OQ-003 closed) / Platform | Responsive priorities, offline tolerance design; site details deferred to the first property |
 | UX copy deck and hotel terminology review | Domain + Hotel Ops | Wording in all screens (glossary normative) |
 
 ## 32. Version history

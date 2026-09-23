@@ -2,7 +2,7 @@
 doc-id: GOV-ANSWERS
 title: Open Question Answers — Industry-Standard and Best-Practice Positions
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Principal Architect (drafted at Product Owner direction); Product Owner (adoption)
 applies-to: resolution of the Open Questions Register (GOV-OQ)
@@ -35,13 +35,13 @@ Each answer states: **Answer**, **Basis**, **Still needed**, **Affects**.
 
 ## 3. Summary of outcomes
 
-25 questions are answered on an industry-standard basis and were adopted by the Product Owner on 23 September 2026 (now `CLOSED` in the register); 9 need facts; 3 need professional advice; 1 needs the Product Owner's cost approval.
+25 questions were answered on an industry-standard basis and adopted by the Product Owner on 23 September 2026 (now `CLOSED` in the register); OQ-003 closed by the Product Owner's appointment as operations authority; 8 need facts (six deferred to the first-property deployment); 3 need professional advice; 1 needs the Product Owner's cost approval.
 
 | ID | Class | Answer in one line |
 |---|---|---|
 | OQ-001 | OPEN-FACT | Legal identity cannot be invented: CAC/TIN/VAT documents required; identity is parameterised; no statutory document issues until recorded |
 | OQ-002 | OPEN-FACT | Appoint a named Finance Controller + deputy; interim financial approvals stay with the Product Owner |
-| OQ-003 | OPEN-FACT | Appoint a named Hotel Operations representative (acceptance approver) + deputy |
+| OQ-003 | CLOSED | Product Owner acts as operations authority and acceptance approver until a real property is secured (appointment 23 Sep 2026) |
 | OQ-004 | OPEN-FACT | One primary collections bank + acquirer chosen on evidence; virtual accounts for transfers; two-bank contingency acceptable |
 | OQ-005 | ANSWERED-D | Yes at enterprise target; pilot keeps at most one provider path if prepayment is needed |
 | OQ-006 | OPEN-FACT | Provide acquirer/terminal/settlement-report facts; design reconciles terminal → acquirer → bank daily from a clearing account |
@@ -88,7 +88,7 @@ Each answer states: **Answer**, **Basis**, **Still needed**, **Affects**.
 
 **Basis.** Statutory invoicing requires the supplier's legal name and tax particulars; configuration-driven entity identity is standard PMS practice.
 
-**Still needed.** The certificates/documents from the hotel.
+**Still needed.** The certificates/documents from the first property's operating entity — **deferred to the First-Property Deployment Gate** (the reference pilot has no legal entity; documentation uses placeholder configuration).
 
 **Affects.** ADR-008 document templates, financial architecture, invoicing and statutory reporting.
 
@@ -104,11 +104,11 @@ Each answer states: **Answer**, **Basis**, **Still needed**, **Affects**.
 
 #### OQ-003 — Named Hotel Operations representative and acceptance approver
 
-**Answer.** A named individual (General Manager or a delegate with operational authority) accountable for validating workflows against real hotel practice and accepting the pilot on the hotel's behalf, with a named deputy. The role charter requires authority to speak for front office, housekeeping and F&B practice.
+**Answer.** Under the synthetic reference pilot (PO decision, 23 Sep 2026) the **Product Owner acts as the operations authority and acceptance approver** until a real property is secured; real hotel staff validate at the first-property deployment. The role requires authority to speak for front office, housekeeping and F&B practice.
 
 **Basis.** Standard UAT and operational-acceptance practice; the blueprint's operational-realism test (charter §10) is unenforceable without a named hotel counterpart.
 
-**Still needed.** Appointment by the Product Owner, target Week 1. Until then, workflow validation proceeds against industry defaults (RSK-DOM-001 stays open).
+**Resolved.** Appointment recorded 23 Sep 2026 (inputs register BR-PILOT-008; register decision log §4). Workflow validation now runs as role-played operational-realism tests; real-hotel validation is a First-Property Deployment Gate item.
 
 **Affects.** Workflow/UAT gates, business-rules confirmation, `[OQ-003]` references.
 
@@ -118,7 +118,7 @@ Each answer states: **Answer**, **Basis**, **Still needed**, **Affects**.
 
 **Basis.** Treasury and reconciliation practice: minimise collection accounts, maximise referenceability, select acquirer competitively.
 
-**Still needed.** Account structure (operating vs settlement), merchant IDs, whether either bank offers API or virtual accounts, statement formats.
+**Still needed.** Account structure (operating vs settlement), merchant IDs, whether either bank offers API or virtual accounts, statement formats — **deferred to the First-Property Deployment Gate**; the reference pilot uses the simulated manual provider path.
 
 **Affects.** ADR-011, payments/banking interfaces (INT-002/003), reconciliation design.
 
@@ -138,7 +138,7 @@ Each answer states: **Answer**, **Basis**, **Still needed**, **Affects**.
 
 **Basis.** Standard card-clearing and income-audit control; BR-PAY-002/006.
 
-**Still needed.** Hotel finance provides the acquirer/terminal/settlement facts (Week 1).
+**Still needed.** Acquirer/terminal/settlement facts — **deferred to the First-Property Deployment Gate**; the reference pilot reconciles synthetic settlement batches.
 
 **Affects.** Payments architecture, income audit, cashiering, RSK-FIN-003.
 
@@ -148,7 +148,7 @@ Each answer states: **Answer**, **Basis**, **Still needed**, **Affects**.
 
 **Basis.** Bank reconciliation practice; NFR integrity requirements.
 
-**Still needed.** Statement samples and access details (Week 1–2).
+**Still needed.** Statement samples and access details — **deferred to the First-Property Deployment Gate**; the reference pilot uses synthetic statement files.
 
 **Affects.** Bank reconciliation design, cashiering, income audit.
 
@@ -347,7 +347,7 @@ Retention is per-category configuration from day one (data model already support
 
 **Basis.** Standard PMS migration methodology; RSK-DATA-001 controls.
 
-**Still needed.** Inventory of incumbent systems/spreadsheets/paper, volumes, quality and history depth (Hotel Operations/PO).
+**Still needed.** Inventory of incumbent systems/spreadsheets/paper, volumes, quality and history depth — **deferred to the First-Property Deployment Gate**; the reference pilot migrates synthetic opening data (guest profiles, reservations, deposits, AR balances) through the same tooling.
 
 **Affects.** Migration architecture, roadmap Phase 9, cutover plan.
 
@@ -475,25 +475,25 @@ Retention is per-category configuration from day one (data model already support
 
 #### OQ-038 — Connectivity and power reality
 
-**Answer.** The facts (ISP links, redundancy, power stability, UPS coverage, appetite for on-site equipment) must come from the hotel — schedule a **site survey in Week 1** covering: ISP(s), link types/speeds and failover, generator/changeover behaviour, UPS coverage, and equipment-room conditions. Design requirements apply regardless: **dual-path WAN (wired + mobile failover)** and **UPS for desk/network equipment** are launch requirements (NFR A-7/A-8); degraded mode = read-only cache of operational essentials plus a scripted manual fallback with same-day reconciliation. **No full offline financial operation is offered** — a front desk that stops when the internet drops is a launch blocker (RSK-DEP-003).
+**Answer.** At the first property: the facts (ISP links, redundancy, power stability, UPS coverage, appetite for on-site equipment) must come from the hotel — a **site survey at the First-Property Deployment Gate** (PO decision, 23 Sep 2026; the synthetic reference pilot has no site) covering: ISP(s), link types/speeds and failover, generator/changeover behaviour, UPS coverage, and equipment-room conditions. The reference pilot runs on a hosted environment with the mandated controls assumed. Design requirements apply regardless: **dual-path WAN (wired + mobile failover)** and **UPS for desk/network equipment** are launch requirements (NFR A-7/A-8); degraded mode = read-only cache of operational essentials plus a scripted manual fallback with same-day reconciliation. **No full offline financial operation is offered** — a front desk that stops when the internet drops is a launch blocker (RSK-DEP-003).
 
 **Basis.** Deployment architecture requirements; accepted availability/recovery baseline.
 
-**Still needed.** Site survey results and cost consequences (Product Owner/Platform).
+**Still needed.** Site survey results and cost consequences at the first property — **deferred to the First-Property Deployment Gate** (Product Owner/Platform).
 
 **Affects.** Deployment architecture, NFR A-7/A-8, offline strategy, risk RSK-DEP-003.
 
 ## 5. Adoption record and next steps
 
-**Adopted.** On 23 September 2026 the Product Owner adopted all `ANSWERED-D` answers in full. The register records the closure and decision log (GOV-OQ §4), and the affected documents now mark these questions `OQ-nnn (closed)`; documents whose rules were refined by an adopted answer (business rules, NFR, capability map, target state, ADR-008, master index) carry a version increment, and marker-only updates are recorded in the commit history.
+**Adopted.** On 23 September 2026 the Product Owner adopted all `ANSWERED-D` answers in full and closed OQ-003 by appointment (Product Owner as acting operations authority). The register records the closures and decision log (GOV-OQ §4), and the affected documents now mark closed questions `OQ-nnn (closed)`; documents whose rules were refined by an adopted answer (business rules, NFR, capability map, target state, ADR-008, master index) carry a version increment, and marker-only updates are recorded in the commit history.
 
 **Still open — and what closes them:**
 
-1. **Facts** (`OPEN-FACT`): OQ-001 (entity/tax documents), OQ-002 (Finance Controller), OQ-003 (Operations representative), OQ-004 (bank roles), OQ-006 (acquirer/terminals/settlement reports), OQ-007 (statement formats), OQ-025 (existing data inventory), OQ-033 (Technical Lead and Security/Privacy adviser), OQ-038 (site survey). Close when the evidence is recorded.
-2. **Advice** (`OPEN-ADVICE`): OQ-024 (retention schedule), OQ-028 (open-source licensing), OQ-029 (fiscalisation/e-invoicing). Close with Phase 1 professional sign-off; the interim positions above keep design moving.
-3. **Approval** (`OPEN-APPROVAL`): OQ-010 (24×7 staffing and recovery budget). Close with the Product Owner's approval.
+1. **Facts** (`OPEN-FACT`, 8): programme-level — OQ-002 (Finance Controller) and OQ-033 (Technical Lead and Security/Privacy adviser); deferred to the First-Property Deployment Gate — OQ-001 (entity/tax documents), OQ-004 (bank roles), OQ-006 (acquirer/terminals/settlement reports), OQ-007 (statement formats), OQ-025 (existing data inventory), OQ-038 (site survey). Close when the evidence is recorded.
+2. **Advice** (`OPEN-ADVICE`, 3): OQ-024 (retention schedule), OQ-028 (open-source licensing), OQ-029 (fiscalisation/e-invoicing). Close with Phase 1 professional sign-off; the interim positions above keep design moving.
+3. **Approval** (`OPEN-APPROVAL`, 1): OQ-010 (24×7 staffing and recovery budget). Close with the Product Owner's approval.
 
-Nothing adopted here changes accepted business requirements (level 1); all answers are consistent with the accepted MVP boundaries and the charter's standing constraints. Where an adopted answer keeps a dependency (for example OQ-019 legal confirmation on scanning, OQ-021 tax treatment), the dependency is stated in the answer and tracked in the risk register — the adopted position is what design uses meanwhile.
+The accepted business-requirement amendment for the synthetic reference pilot is recorded in the inputs register §3.1 (BR-PILOT-001/005/008/009/010). All adopted answers remain consistent with the amended pilot boundaries and the charter's standing constraints. Where an adopted answer keeps a dependency (for example OQ-019 legal confirmation on scanning, OQ-021 tax treatment), the dependency is stated in the answer and tracked in the risk register — the adopted position is what design uses meanwhile.
 
 ## 6. Version history
 
@@ -501,3 +501,4 @@ Nothing adopted here changes accepted business requirements (level 1); all answe
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial answer pack at Product Owner direction: 38 questions answered on industry-standard/best-practice basis (25 ANSWERED-D, 9 OPEN-FACT, 3 OPEN-ADVICE, 1 OPEN-APPROVAL) | PROPOSED |
 | 0.2 | 2026-09-23 | All 25 ANSWERED-D answers adopted by the Product Owner; register closed (§4 decision log) and affected documents marked `OQ-nnn (closed)` | PROPOSED |
+| 0.3 | 2026-09-23 | Synthetic reference pilot decision: OQ-003 closed by appointment; OQ-001/004/006/007/025/038 marked deferred to the First-Property Deployment Gate | PROPOSED |

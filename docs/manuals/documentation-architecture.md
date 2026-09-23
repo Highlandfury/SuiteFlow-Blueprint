@@ -2,7 +2,7 @@
 doc-id: DOC-ARCH
 title: Target Documentation Architecture
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Technical Documentation (drafted); Product Owner (approval)
 applies-to: full enterprise target and programme
@@ -65,7 +65,7 @@ Every release note states: version, date, affected capabilities (`CAP-*`), migra
 
 ## 5. Training materials
 
-Training is role-based (per personas and roles): job-shadow scripts, scenario exercises using UAT data, competency checklist per role, and refresher triggers when a workflow materially changes. Certification of staff competency is part of post-go-live acceptance for the pilot.
+Training is role-based (per personas and roles): job-shadow scripts, scenario exercises using synthetic UAT data, competency checklist per role, and refresher triggers when a workflow materially changes. Certification of staff competency is part of the First-Property Deployment Gate (the reference pilot uses role-played scenarios).
 
 ## 6. Localisation
 
@@ -74,7 +74,7 @@ English at pilot (OQ-032 closed scope); documentation architecture supports tran
 ## 7. Governance and review
 
 - Every material feature change triggers documentation impact assessment in its ticket (Definition of Done includes documentation).
-- Manuals are reviewed with the role that uses them before go-live; the hotel's acceptance includes documentation usefulness.
+- Manuals are reviewed with the role that uses them before the reference release; hotel-staff review and acceptance of documentation is a First-Property Deployment Gate item.
 - Quarterly documentation health review: freshness, gaps found during incidents, user feedback.
 - Incidents must yield documentation improvements (troubleshooting entries, runbook updates) as a post-incident action.
 
@@ -82,7 +82,7 @@ English at pilot (OQ-032 closed scope); documentation architecture supports tran
 
 | Item | Owner |
 |---|---|
-| OQ-003 operations representative (manual validation) | Product Owner |
+| OQ-003 closed — acting operations authority (manual validation) | Product Owner |
 | OQ-011 (closed) document formats for finance/guest documents | Finance |
 | Operations documentation hosting decision | WP 0.8 |
 | OQ-024 retention (documentation of data handling) | Security/Legal |
@@ -92,3 +92,4 @@ English at pilot (OQ-032 closed scope); documentation architecture supports tran
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial documentation architecture issued with WP 0.7 | PROPOSED |
+| 0.2 | 2026-09-23 | Synthetic reference pilot: training certification and manual acceptance moved to the First-Property Deployment Gate | PROPOSED |

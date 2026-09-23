@@ -2,7 +2,7 @@
 doc-id: GOV-CHARTER
 title: SuiteFlow Blueprint Charter
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: this repository
@@ -183,7 +183,7 @@ Identifiers are never reused. Retired identifiers remain reserved.
 
 | Content area | Approvers |
 |---|---|
-| Product vision, scope, capability priorities | Product Owner; Hotel General Manager (pilot hotel) for operational acceptance |
+| Product vision, scope, capability priorities | Product Owner (acting operations acceptance authority until a hotel is secured; OQ-003 closed) |
 | Domain model, state machines, workflows | Product Owner; Hotel Operations representative; Technical Lead |
 | Financial architecture | Finance Controller; external tax adviser where applicable; Technical Lead |
 | Security and privacy | Security/Privacy adviser; Technical Lead |
@@ -269,3 +269,4 @@ docs/
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial charter issued with WP 0.1 pass 1 | PROPOSED |
 | 0.2 | 2026-09-23 | Version references updated for blueprint v1.1 after adoption of the industry-standard answers | PROPOSED |
+| 0.3 | 2026-09-23 | Operational-acceptance authority updated for the synthetic reference pilot (Product Owner acting; OQ-003 closed) | PROPOSED |

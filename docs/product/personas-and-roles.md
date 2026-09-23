@@ -2,9 +2,9 @@
 doc-id: PROD-PERSONAS
 title: Personas and Role Model
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
-owner: Product Owner (accountable); operational validation with Hotel Operations (OQ-003 open)
+owner: Product Owner (accountable); operational validation with the acting operations authority (OQ-003 closed)
 applies-to: full enterprise target; pilot detail
 depends-on: [PROD-SCOPE]
 ---
@@ -23,7 +23,7 @@ Three different things are often called "roles" and must stay separate:
 
 Personas inform workflow design. System roles implement least privilege. Authority is explicit, configurable and auditable — never implied by seniority in conversation, and never granted merely because someone is a system administrator.
 
-All personas below are **ASSUMED** from hospitality practice and the accepted pilot profile. They must be validated with the named Hotel Operations representative (OQ-003) and through on-site workflow walkthroughs before workflows are ACCEPTED.
+All personas below are **ASSUMED** from hospitality practice and the accepted pilot profile. They are validated by the acting operations authority (Product Owner; OQ-003 closed) through role-played workflow scenarios before the reference release; real-hotel validation and on-site walkthroughs are First-Property Deployment Gate items.
 
 ## 2. Persona catalogue
 
@@ -251,7 +251,7 @@ Tier: Target; deferred from pilot (BR-MVP-013).
 
 ## 5. Validation and next steps
 
-- Validate personas and separation-of-duties expectations with the hotel (OQ-003) before workflows are ACCEPTED.
+- Validate personas and separation-of-duties expectations with the acting operations authority (OQ-003 closed) before the reference release; real-hotel validation at the First-Property Deployment Gate.
 - Produce the full role × permission × limit matrix in WP 0.5 (security model), traced to capability IDs and test obligations.
 - Confirm staffing reality (who can perform which duty at 03:00, Sundays, and public holidays) — staffing assumptions that fail in practice become control failures (RSK-OPS-001).
 
@@ -260,3 +260,4 @@ Tier: Target; deferred from pilot (BR-MVP-013).
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial personas and role-model requirements issued with WP 0.1 pass 1 | PROPOSED |
+| 0.2 | 2026-09-23 | Synthetic reference pilot: validation authority updated (acting operations authority; real-hotel validation at the First-Property Deployment Gate) | PROPOSED |

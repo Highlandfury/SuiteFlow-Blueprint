@@ -17,7 +17,7 @@ depends-on: [GOV-CHARTER, GOV-INPUTS]
 
 SuiteFlow is not a booking calendar with invoicing attached, and not an accounting system with rooms bolted on. It is an operating platform: it encodes how a hotel actually works — availability, rate, reservation, arrival, stay, departure, charge, settlement, close, audit, reporting — with the discipline an enterprise demands: deterministic calculations, server-enforced control, complete audit trails, and financial records that reconcile to the naira.
 
-The first delivery is a single 200-room property in Lagos. The product that is designed and built is the enterprise platform; the pilot is its first proving ground, not its boundary.
+The first delivery proves the platform on a single 200-room Lagos property profile — delivered first as a synthetic reference pilot (modelled property, role-played acceptance) and then at a real property through the First-Property Deployment Gate. The product that is designed and built is the enterprise platform; the pilot is its first proving ground, not its boundary.
 
 ## 2. The problem
 

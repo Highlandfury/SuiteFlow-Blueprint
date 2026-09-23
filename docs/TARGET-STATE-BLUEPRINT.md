@@ -1,15 +1,15 @@
 ---
 doc-id: BP-V1
-title: SuiteFlow Target-State Blueprint v1.1
+title: SuiteFlow Target-State Blueprint v1.2
 status: PROPOSED
-version: 1.1
+version: 1.2
 date: 2026-09-23
 owner: Product Owner (acceptance); Principal Architect (maintainer)
 applies-to: all SuiteFlow work
 depends-on: [GOV-CHARTER, GOV-INPUTS]
 ---
 
-# SuiteFlow Target-State Blueprint v1.1
+# SuiteFlow Target-State Blueprint v1.2
 
 ## 1. What this is
 
@@ -35,7 +35,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 | Interfaces | 14 | `integrations/architecture.md` |
 | Test obligations (`TO-*`) | 29 representative | `qa/strategy.md` |
 | Architecture decisions (`ADR-*`) | 11 | `architecture/adr/` |
-| Risks (`RSK-*`) | 32 | `00-governance/risk-register.md` |
+| Risks (`RSK-*`) | 33 | `00-governance/risk-register.md` |
 | Open questions (`OQ-*`) | 38 (25 closed, 13 open) | `00-governance/open-questions.md` |
 | Accepted requirements (`BR-PILOT/PAY/MVP/REL-*`) | 33 | `00-governance/inputs-register.md` |
 
@@ -48,9 +48,9 @@ The consolidated target-state blueprint: the complete specification of the Suite
 
 ## 4. Product definition at a glance
 
-- **Vision:** an enterprise hotel operating platform running the commercial, operational and financial life of a hotel — deterministic, auditable, operationally realistic — first proven on a 200-room Lagos property, designed for groups and chains without re-architecture.
-- **Scope tiers:** enterprise target (all 283 capabilities) / pilot release (160 capabilities marked `Yes`) / enterprise phases (72 + 51 pending hotel decisions).
-- **Pilot:** Golfview Suites and Conference Center, ~200 rooms, WAT, NGN, cash/POS/transfer/cheque, 24-week horizon, 24×7 support, 1 h RPO/RTO.
+- **Vision:** an enterprise hotel operating platform running the commercial, operational and financial life of a hotel — deterministic, auditable, operationally realistic — first proven on a modelled 200-room Lagos property (synthetic reference pilot), designed for groups and chains without re-architecture.
+- **Scope tiers:** enterprise target (all 283 capabilities) / pilot release (160 capabilities marked `Yes`) / enterprise phases (72 + 51 hotel-reality decisions, of which 48 are resolved and 3 remain open).
+- **Pilot:** synthetic reference pilot — the modelled "Golfview profile" (200 rooms, WAT, NGN, conference property; cash/POS/transfer/cheque), 24-week horizon to the pilot-ready reference release, 24×7 support, 1 h RPO/RTO; real deployment follows the First-Property Deployment Gate.
 - **Deferred by accepted boundary:** payroll, advanced CRM, advanced analytics, external POS business integration, foreign currency, multi-property reporting — all retained in the enterprise target with phases.
 
 ## 5. Architecture at a glance
@@ -90,7 +90,7 @@ The consolidated target-state blueprint: the complete specification of the Suite
 
 ## 9. Delivery plan
 
-Pilot phases 1–9 (foundation → property/rates → guests/reservations → front office → housekeeping/maintenance → folio/cashiering → close/finance → reporting/hardening → migration/UAT/cutover) and enterprise phases 10–20, each with objective, capabilities, inputs, dependencies, risks, tests and exit criteria: `product/roadmap.md` v1.0.
+Pilot phases 1–9 (foundation → property/rates → guests/reservations → front office → housekeeping/maintenance → folio/cashiering → close/finance → reporting/hardening → synthetic migration/role-played UAT/reference release), the First-Property Deployment Gate, and enterprise phases 10–20, each with objective, capabilities, inputs, dependencies, risks, tests and exit criteria: `product/roadmap.md` v1.1.
 
 ## 10. Acceptance model
 
@@ -98,26 +98,27 @@ Pilot phases 1–9 (foundation → property/rates → guests/reservations → fr
 |---|---|
 | Capability | Behaviour per state machines, rules and invariants; test obligations pass; documentation updated |
 | Phase | Exit criteria met; evidence pack signed; no open S0/S1; approvers per charter §12 |
-| Pilot | Golden-day financial acceptance; security test pack; timed restore drill; UAT with hotel and finance; runbooks exercised; 24×7 rota live; go/no-go approval |
+| Pilot (reference) | Golden-day financial acceptance on synthetic data; security test pack; timed restore drill; role-played UAT accepted by the Product Owner (acting operations authority) and finance; runbooks exercised; 24×7 rota live; reference-release go/no-go approval |
+| First property | First-Property Deployment Gate closed: entity/bank/site/migration facts, hotel-staff UAT and acceptance, training, on-site readiness review |
 | Blueprint | This document ACCEPTED with the sign-offs in §12 |
 
 ## 11. Open questions and risks
 
-- **Open questions:** 38 in the register (`00-governance/open-questions.md`); **25 are closed** by Product Owner adoption of the industry-standard answers on 23 Sep 2026 (`00-governance/industry-standard-answers.md`; decision log in the register §4). The 13 open items are hotel/provider facts (OQ-001/002/003/004/006/007/025/033/038), professional advice (OQ-024/028/029) and one cost approval (OQ-010). The financially blocking ones now: **OQ-001/002/003** (entity and named representatives) and **OQ-038** (connectivity/power).
-- **Risks:** 32 in the register (`00-governance/risk-register.md`); highest: blueprint drift (RSK-GOV-001), financial/tax correctness (RSK-FIN-001/004), scope leakage (RSK-SEC-001), tenancy migration (RSK-MIG-002), connectivity/power (RSK-DEP-003), operational adoption (RSK-OPS-001).
-- **Adopted answers and interim defaults:** the 25 closed questions' answers are in force and marked `OQ-nnn (closed)` in affected documents; the 13 open questions carry interim defaults, clearly marked, until their evidence, advice or approval exists.
+- **Open questions:** 38 in the register (`00-governance/open-questions.md`); **26 are closed** (25 by Product Owner adoption of the industry-standard answers on 23 Sep 2026, plus OQ-003 by the Product Owner acting as operations authority; decision log in the register §4). The 12 open items: **8 facts** — OQ-002 and OQ-033 now, OQ-001/004/006/007/025/038 deferred to the First-Property Deployment Gate — **3 professional-advice** items (OQ-024/028/029) and **one cost approval** (OQ-010). The non-deferred blockers are **OQ-002/033** (Finance Controller; Technical Lead and Security adviser).
+- **Risks:** 33 in the register (`00-governance/risk-register.md`); highest: blueprint drift (RSK-GOV-001), financial/tax correctness (RSK-FIN-001/004), scope leakage (RSK-SEC-001), tenancy migration (RSK-MIG-002), connectivity/power (RSK-DEP-003), reference-vs-reality gap (RSK-PROD-003), operational adoption (RSK-OPS-001).
+- **Adopted answers and interim defaults:** the closed questions' answers are in force and marked `OQ-nnn (closed)` in affected documents; open questions carry interim defaults, clearly marked, until their evidence, advice or approval exists. The synthetic reference pilot amendment (no real property; role-played acceptance) is recorded in the inputs register §3.1.
 
 ## 12. Phase 0 exit gate — what remains for ACCEPTED status
 
 | Requirement | Approver | Status |
 |---|---|---|
 | Product vision, scope, capability priorities (incl. pilot de-scope decision) | Product Owner | Pending |
-| Domain model, state machines, workflows, business rules (incl. adopted `[OQ]` answers) | Product Owner + Hotel Operations rep (OQ-003) | Pending |
+| Domain model, state machines, workflows, business rules (incl. adopted `[OQ]` answers) | Product Owner (acting operations authority, OQ-003 closed) | Pending |
 | Financial architecture, posting/close/deposit/invoice rules | Finance Controller (OQ-002) + tax adviser (OQ-029) | Pending — invoice/deposit/service-charge answers adopted (OQ-011/012/021 closed) |
 | Security model, role matrix, authority-limit defaults | Security/Privacy adviser (OQ-033) + Product Owner | Pending |
 | UX, integration, reporting, NFR, QA, deployment, documentation, AI architectures | Technical Lead (OQ-033) + Product Owner | Pending |
 | All 11 ADRs confirmed as ACCEPTED or revised | Respective approvers per ADR | Pending |
-| Open questions closed or defaults formally adopted | Product Owner | 25 closed by adoption (23 Sep 2026); 13 remain (9 facts, 3 advice, 1 approval) |
+| Open questions closed or defaults formally adopted | Product Owner | 26 closed (adoption + OQ-003 appointment); 12 remain — 8 facts (6 deferred to the first property), 3 advice, 1 approval |
 
 When the above complete, the blueprint is promoted to **ACCEPTED (current version, v1.1)** and becomes level 2 of the source-of-truth hierarchy — the baseline for Phase 2's audit, Phase 3's gap matrix and all implementation commitments.
 
@@ -135,3 +136,4 @@ When the above complete, the blueprint is promoted to **ACCEPTED (current versio
 |---|---|---|---|
 | 1.0 | 2026-09-23 | Consolidated blueprint issued at WP 0.8: inventory, architecture summaries, acceptance model, exit gate, next steps | PROPOSED |
 | 1.1 | 2026-09-23 | Industry-standard answers adopted (25 questions closed, register v0.3): inventory, ADR-008 summary, §11 and §12 updated | PROPOSED |
+| 1.2 | 2026-09-23 | Synthetic reference pilot recorded (OQ-003 closed; property-dependent items deferred): pilot definition, delivery plan, acceptance model (First-Property Deployment Gate) and §11/§12 updated | PROPOSED |

@@ -2,7 +2,7 @@
 doc-id: PROD-SCOPE
 title: Product Scope
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: full enterprise target
@@ -18,7 +18,7 @@ Three scope tiers are distinguished, and they must never be confused:
 | Tier | Meaning |
 |---|---|
 | **T — Target** | In the enterprise product end-state. The blueprint designs all of it. |
-| **P — Pilot release** | Required for the Golfview pilot production rollout. Subset of Target. |
+| **P — Pilot release** | Required for the synthetic reference pilot release and the first-property deployment. Subset of Target. |
 | **D — Deferred** | In the Target, deliberately not in the Pilot release. Has a phase in the roadmap. |
 
 The accepted Product Owner MVP boundaries (BR-MVP-001…013) are the authority for what may be deferred from the Pilot release. The Product Owner direction of 23 September 2026 (enterprise target, pilot-first delivery) is the authority for designing T fully.
@@ -69,12 +69,12 @@ Nothing in tier D may be silently removed from tier T. Removal requires change c
 
 | Constraint | Value | Source |
 |---|---|---|
-| Pilot property | Golfview Suites and Conference Center, GRA Ikeja, Lagos | BR-PILOT-001 |
+| Reference property (modelled) | "Golfview profile": 200-room NGN/WAT conference property, GRA Ikeja, Lagos — synthetic reference pilot, no contracted site | BR-PILOT-001 (amended 23 Sep 2026) |
 | Pilot scope | One property, ~200 rooms | BR-PILOT-002 |
 | Timezone | Africa/Lagos (WAT, UTC+1); business date always hotel-local | BR-PILOT-003 |
 | Currency | NGN only at pilot; foreign currency deferred | BR-PILOT-004, BR-MVP-012 |
 | Payment methods | Cash, POS terminal, bank transfer, cheque | BR-PAY-001…004 |
-| Delivery horizon | 24 weeks to pilot production rollout, acceptance-gated | BR-PILOT-005 |
+| Delivery horizon | 24 weeks to the pilot-ready reference release (synthetic), acceptance-gated; first-property deployment follows the First-Property Deployment Gate | BR-PILOT-005 (amended 23 Sep 2026) |
 | Support | 24×7 | BR-REL-001 |
 | RPO / RTO | 1 hour / 1 hour | BR-REL-002/003 |
 | Service objective | 99.5% pilot; 99.9% enterprise target (OQ-009 closed) | BR-REL-004 |
@@ -95,10 +95,12 @@ No financial or tax rule enters the blueprint as VERIFIED without a cited primar
 
 ## 6. Assumptions (ASSUMED)
 
-1. The property operates a 24-hour front desk with a night audit function.
+**Pilot model (PO decision, 23 Sep 2026):** the pilot is a **synthetic reference pilot**. The operating assumptions below describe the modelled reference property and its scripted operation; they are validated through role-played scenarios, and real-hotel validation is part of the First-Property Deployment Gate. The Product Owner acts as operations authority and acceptance approver until a real property is secured (OQ-003 closed).
+
+1. The reference property operates a 24-hour front desk with a night audit function; these are modelled in the scripted golden day.
 2. Internet connectivity may be interrupted; the system must degrade gracefully without corrupting financial state.
 3. Finance staff are on-site and can perform daily cashier and close duties; income audit independence can be staffed.
-4. The pilot hotel accepts that financial configuration (taxes, service charge, routing) is subject to Finance sign-off rather than ad-hoc change.
+4. The reference pilot accepts that financial configuration (taxes, service charge, routing) is subject to Finance sign-off rather than ad-hoc change; the real hotel adopts the signed configuration at deployment.
 5. Existing operational data (if any) will be made available for migration assessment (OQ-025).
 6. Hotel outlets (restaurant/bar/conference) exist; they run inside SuiteFlow at pilot (OQ-014 closed).
 7. No guest-facing self-service is required at pilot.
@@ -106,7 +108,7 @@ No financial or tax rule enters the blueprint as VERIFIED without a cited primar
 
 ## 7. Dependencies
 
-- **Hotel participation**: named Operations representative and acceptance approver (OQ-003), Finance representative (OQ-002), business-day cutoff (OQ-008 closed).
+- **Hotel participation**: acting operations authority (Product Owner; OQ-003 closed), Finance representative (OQ-002), business-day cutoff (OQ-008 closed); real hotel staff at the First-Property Deployment Gate.
 - **Banking/payment context**: roles of UBA/Wema (OQ-004), POS/acquirer settlement reports (OQ-006), statement formats (OQ-007).
 - **Regulatory clarity**: tax and data-protection positions (section 5).
 - **Implementation ecosystem**: the existing SuiteFlow implementation and its external dependencies are the subject of Phase 2/3; their current capabilities do not constrain this scope.
@@ -121,3 +123,4 @@ This document defines scope, not ownership. The question "which system owns whic
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial scope issued with WP 0.1 pass 1 | PROPOSED |
+| 0.2 | 2026-09-23 | Synthetic reference pilot recorded (PO decision): pilot/reference scope tiers, property and horizon amended; operational assumptions marked as modelled | PROPOSED |

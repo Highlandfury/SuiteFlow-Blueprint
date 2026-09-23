@@ -2,7 +2,7 @@
 doc-id: PROD-ROADMAP
 title: Product Roadmap
 status: PROPOSED
-version: 1.0
+version: 1.1
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: full enterprise target; pilot-first delivery
@@ -14,7 +14,7 @@ supersedes: PROD-ROADMAP 0.1 (skeleton)
 
 ## 1. Purpose
 
-The delivery plan from target blueprint to pilot production and beyond. Phase 1–9 deliver the Golfview pilot; phases 10–20 deliver the enterprise target without re-architecting what the pilot builds. Every phase is expressed as capabilities, with dependencies, risks, tests and **exit criteria** (mandate §61). Work that cannot cite a capability does not belong in a phase until the capability map changes through change control.
+The delivery plan from target blueprint to the pilot-ready reference release and beyond. Phases 1–9 deliver the **synthetic reference pilot** (the modelled "Golfview profile"); phases 10–20 deliver the enterprise target without re-architecting what the pilot builds. Deployment to a real property is a separate gated step after Phase 9 (First-Property Deployment Gate). Every phase is expressed as capabilities, with dependencies, risks, tests and **exit criteria** (mandate §61). Work that cannot cite a capability does not belong in a phase until the capability map changes through change control.
 
 The roadmap follows the programme path: this blueprint (Phase 0) → external research (Phase 1) → current-state audit (Phase 2) → gap matrix (Phase 3) → transition architecture (Phase 4) → these delivery phases. Delivery phases only begin with ACCEPTED capabilities and a transition architecture ruling for each affected domain.
 
@@ -47,7 +47,7 @@ The roadmap follows the programme path: this blueprint (Phase 0) → external re
 |---|---|
 | Objective | The property's sellable existence: rooms, types, features, zones, rate plans, restrictions, effective-dated pricing |
 | Capabilities | CAP-PM-005…012; CAP-RTM-001…012; CAP-AVL-001/002/004; CAP-PLT-014 |
-| Inputs | OQ-021 (closed; tax/service charge) before tax configuration is final; hotel room inventory data |
+| Inputs | OQ-021 (closed; tax/service charge) before tax configuration is final; reference property inventory data (synthetic) |
 | Deliverables | Room inventory and numbering; types/features/pools; OOO/OOS control; rate plans, amounts, derives, restrictions; capacity and availability calculation; tax/localisation configuration framework |
 | Dependencies | Phase 1 |
 | Risks | RSK-FIN-004 (tax correctness), RSK-PROD-002 (hotel reality mismatch) |
@@ -132,18 +132,32 @@ The roadmap follows the programme path: this blueprint (Phase 0) → external re
 | Tests | Report acceptance obligations; scope non-leak on reports/exports; performance budgets P-1…P-9 at production-scale synthetic volume; alert paging (TO-OPS-001) |
 | Exit criteria | Every pilot report reconciles and drills down; scope tests pass; performance budgets met at 200-room scale; close-window alerts page correctly; management accepts dashboards |
 
-### Phase 9 — Migration, UAT and production cutover
+### Phase 9 — Synthetic migration, role-played UAT and reference release
 
 | Aspect | Detail |
 |---|---|
-| Objective | Operate the hotel in production with rehearsal-proven cutover, rollback and recovery |
-| Capabilities | CAP-PLT-012/016; migration of guests, reservations, in-house stays, folios, deposits, opening balances; CAP-HSK-010 as migration control |
-| Inputs | OQ-025 (existing data), OQ-010 (support cost), all prior phases |
-| Deliverables | Migration tooling and dry-runs; opening-balance reconciliation; cutover and rollback plans; UAT execution; training; runbooks; 24×7 rota; go/no-go decision |
-| Dependencies | Phases 1–8; connectivity/power requirements (OQ-038) in place |
-| Risks | RSK-MIG-001, RSK-MIG-002, RSK-DEP-001/002/003, RSK-LIC-001 |
-| Tests | Migration dry-runs with reconciliation; TO-REL-001/002 (timed restore, worker safety); TO-SEC-001…003 (security pack); UAT scripts with real roles; degradation drills; manual fallback rehearsal |
-| Exit criteria | Dry-run migration reconciles opening balances, in-house guests and deposits to zero difference; timed restore meets 1 h RTO with post-restore reconciliation; security test pack passed; hotel and finance sign UAT; training completed; 24×7 rota live; rollback exercised; **go-live approved by Product Owner, Finance, QA, SRE and hotel acceptance** |
+| Objective | Release the pilot-ready reference build with rehearsal-proven migration, rollback and recovery on synthetic data; prepare the First-Property Deployment Gate |
+| Capabilities | CAP-PLT-012/016; migration tooling exercised on synthetic guests, reservations, in-house stays, folios, deposits and opening balances; CAP-HSK-010 as migration control |
+| Inputs | OQ-010 (support cost); synthetic opening-data set; all prior phases (OQ-025 deferred to the first property) |
+| Deliverables | Migration tooling and dry-runs on synthetic data; opening-balance reconciliation; cutover and rollback plans; role-played UAT scripts and execution; runbooks; 24×7 rota; First-Property Deployment Gate checklist; reference-release go/no-go decision |
+| Dependencies | Phases 1–8; hosted reference environment (site connectivity is a first-property item, OQ-038 deferred) |
+| Risks | RSK-MIG-001/002, RSK-DEP-001/002/003, RSK-LIC-001, RSK-PROD-003 |
+| Tests | Migration dry-runs with reconciliation on synthetic volumes; TO-REL-001/002 (timed restore, worker safety); TO-SEC-001…003 (security pack); scripted UAT with role-played personas (Product Owner as acting operations authority; finance review); degradation drills; manual fallback rehearsal |
+| Exit criteria | Synthetic dry-run migration reconciles opening balances, in-house guests and deposits to zero difference; timed restore meets 1 h RTO with post-restore reconciliation; security test pack passed; role-played UAT executed with evidence and accepted by the Product Owner (acting operations authority) and finance; runbooks exercised; 24×7 rota live; rollback exercised; **reference release approved by Product Owner, Finance, QA and SRE** |
+
+### First-Property Deployment Gate (after Phase 9)
+
+Deployment to a real property is a separate gated step. The gate closes the items deferred from the reference pilot; a real deployment may not start until each item is closed and its evidence recorded:
+
+| Gate item | Source |
+|---|---|
+| Legal entity and tax identifiers recorded; statutory document templates finalised | OQ-001 |
+| Bank roles, POS acquirer/terminals, settlement reports and statement access verified | OQ-004/006/007 |
+| Site survey completed — links/failover, power/generator, UPS, equipment room; connectivity design confirmed | OQ-038 |
+| Existing-data inventory assessed; migration dry-runs on real data reconcile | OQ-025 |
+| Hotel-staff UAT and acceptance executed with real roles; training completed | BR-PILOT-010; OQ-003 |
+| Financial configuration (taxes, service charge, routing) signed by the Finance Controller | OQ-002 |
+| Operational-readiness review: runbooks, rota, escalation, rollback rehearsal on site | RSK-DEP-001/002 |
 
 ## 4. Enterprise phases (10–20)
 
@@ -177,3 +191,4 @@ Phase 0 (this blueprint) → Phase 1 research → Phase 2 audit → Phase 3 gap 
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Skeleton roadmap issued with WP 0.1 | SUPERSEDED |
 | 1.0 | 2026-09-23 | Full roadmap with per-phase objectives, capabilities, inputs, dependencies, risks, tests and exit criteria; proof-spike provision; path to code | PROPOSED |
+| 1.1 | 2026-09-23 | Synthetic reference pilot: Phase 9 renamed and rescoped (synthetic migration, role-played UAT, reference release); First-Property Deployment Gate added; property-dependent inputs deferred | PROPOSED |

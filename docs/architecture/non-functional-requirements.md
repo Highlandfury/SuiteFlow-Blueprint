@@ -2,7 +2,7 @@
 doc-id: ARCH-NFR
 title: Non-Functional Requirements
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Principal Architect + SRE (drafted); Product Owner (approval)
 applies-to: pilot and enterprise target; values labelled REQUIRED / TARGET / ASPIRATIONAL / TBD
@@ -52,7 +52,7 @@ Labels (mandate §20): **REQUIRED** (contractual or confirmed), **TARGET** (engi
 | A-4 | Restore drill cadence | Pre-release and quarterly, timed | REQUIRED | BR-REL-002/003 |
 | A-5 | Post-restore financial reconciliation | Within the hour after service restoration | REQUIRED | BR-REL-007 |
 | A-6 | Worker duplicate-effect protection after restore | Proven by drill | REQUIRED | BR-REL-007 |
-| A-7 | Connectivity redundancy | Dual-path WAN (wired + mobile failover) with UPS for desk equipment | REQUIRED for pilot viability | OQ-038; degraded-mode design |
+| A-7 | Connectivity redundancy | Dual-path WAN (wired + mobile failover) with UPS for desk equipment | REQUIRED at first property (reference pilot runs hosted) | OQ-038 deferred; degraded-mode design |
 | A-8 | Degraded mode | Non-financial captures queue and reconcile; financial actions blocked with clear UI | REQUIRED | UX-ARCH §12 |
 | A-9 | Guest operations during financial degradation | Continue; only financial advancement is held | REQUIRED | ADR-006 §7 |
 
@@ -120,7 +120,7 @@ Per SEC-MODEL: deny by default; server-side enforcement on all surfaces; MFA for
 | OQ-024 retention periods | Security/Legal | O-6, retention design |
 | OQ-026 (closed) hosting/region | Product Owner | Deployment topology, residency |
 | OQ-032 (closed) accessibility/language scope | Product Owner | X-1, X-4 |
-| OQ-038 connectivity/power | Product Owner | A-7/A-8 design |
+| OQ-038 connectivity/power (deferred to first property) | Product Owner | A-7/A-8 design at deployment |
 
 ## 12. Version history
 
@@ -128,3 +128,4 @@ Per SEC-MODEL: deny by default; server-side enforcement on all surfaces; MFA for
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial NFRs issued with WP 0.7 | PROPOSED |
 | 0.2 | 2026-09-23 | Adopted answers applied: OQ-008 close window and OQ-009 availability (99.5% pilot, 99.9% enterprise target) marked closed | PROPOSED |
+| 0.3 | 2026-09-23 | Synthetic reference pilot: A-7 connectivity requirement reframed as first-property deployment (OQ-038 deferred); availability objective unchanged | PROPOSED |

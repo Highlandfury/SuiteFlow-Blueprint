@@ -2,9 +2,9 @@
 doc-id: DEP-ARCH
 title: Target Deployment and Operations Architecture
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
-owner: DevOps / SRE (drafted); Product Owner (approval; OQ-010 and OQ-038 open; OQ-026 closed)
+owner: DevOps / SRE (drafted); Product Owner (approval; OQ-010 open; OQ-038 deferred to first property; OQ-026 closed)
 applies-to: pilot and enterprise target
 depends-on: [ADR-001, ADR-002, ARCH-NFR, SEC-MODEL, ARCH-RULES]
 ---
@@ -56,7 +56,7 @@ Adapters → external providers (bank, acquirer, channels, messaging, fiscal)
 
 ## 4. Connectivity, power and degraded operation
 
-The pilot property's reality (OQ-038) shapes this section; the requirements below are mandatory for pilot viability:
+The synthetic reference pilot has no site; it runs on a hosted reference environment. The requirements below describe first-property deployment conditions (OQ-038 deferred to the First-Property Deployment Gate) and the degradation behaviour the product must support; D-1/D-2 become mandatory at the first property, D-3…D-6 apply to the product regardless of site:
 
 | # | Requirement | Label |
 |---|---|---|
@@ -129,7 +129,7 @@ Per SEC-MODEL §11: central secret management; no production secrets outside pro
 
 | Item | Owner | Effect |
 |---|---|---|
-| OQ-038 connectivity/power facts | Product Owner | D-1…D-6 validation and cost |
+| OQ-038 connectivity/power facts | Product Owner | D-1/D-2 validation and cost at the first property; **deferred to the First-Property Deployment Gate** |
 | OQ-010 support and recovery cost approval | Product Owner | 24×7 rota, warm capacity |
 | OQ-026 (closed) hosting region | Product Owner | Topology, residency, latency |
 | OQ-009 (closed) availability objective | Product Owner | A-1 measurement |
@@ -140,3 +140,4 @@ Per SEC-MODEL §11: central secret management; no production secrets outside pro
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial deployment and operations architecture issued with WP 0.7 | PROPOSED |
+| 0.2 | 2026-09-23 | Synthetic reference pilot: connectivity/power requirements reframed for first-property deployment (OQ-038 deferred); reference pilot runs hosted | PROPOSED |

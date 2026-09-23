@@ -2,7 +2,7 @@
 doc-id: GOV-OQ
 title: Open Questions Register
 status: PROPOSED
-version: 0.3
+version: 0.4
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: all blueprint work
@@ -12,7 +12,7 @@ applies-to: all blueprint work
 
 Questions that materially affect the blueprint, with the accountable owner and what they block. Questions from the accepted Product Owner decision log keep their original identifiers in brackets. Nothing in this register is decided by assumption: unresolved items stay `OPEN` until an accountable human answers.
 
-On 23 September 2026 the Product Owner directed that the pending questions be answered on an industry-standard/best-practice basis, and adopted all industry-standard answers. The answers are recorded in `industry-standard-answers.md` (GOV-ANSWERS): **25 questions are `CLOSED`** (adopted 23 Sep 2026; decision log §4), **9 remain `OPEN-FACT`** (hotel/provider facts), **3 remain `OPEN-ADVICE`** (professional confirmation) and **1 remains `OPEN-APPROVAL`** (cost/staffing).
+On 23 September 2026 the Product Owner directed that the pending questions be answered on an industry-standard/best-practice basis, and adopted all industry-standard answers. The answers are recorded in `industry-standard-answers.md` (GOV-ANSWERS): **26 questions are `CLOSED`** (25 by adoption on 23 Sep 2026, plus OQ-003 by the Product Owner acting as operations authority; decision log §4), **8 remain `OPEN-FACT`** (hotel/provider facts; several deferred to the first-property deployment), **3 remain `OPEN-ADVICE`** (professional confirmation) and **1 remains `OPEN-APPROVAL`** (cost/staffing). On the same date the Product Owner redefined the pilot as a **synthetic reference pilot** (no real property); property-dependent questions are deferred to the First-Property Deployment Gate (inputs register §3.1).
 
 Priority: **B** = blocking for its work package; **I** = important, not blocking; **D** = defer to the phase noted.
 
@@ -31,16 +31,18 @@ Resolution statuses:
 
 | ID | Question | Owner | Needed by | Blocks | Priority | Status |
 |---|---|---|---|---|---|---|
-| OQ-001 | Registered legal entity name and tax identifiers (TIN, VAT registration) [PO-001A] | Product Owner | Week 1 | Financial architecture, invoicing, tax configuration (WP 0.4) | B | OPEN-FACT |
+| OQ-001 | Registered legal entity name and tax identifiers (TIN, VAT registration) [PO-001A] | Product Owner | First property | Financial architecture, invoicing, tax configuration (WP 0.4) | B | OPEN-FACT |
 | OQ-002 | Named Finance Controller / pilot Finance representative [PO-001B] | Product Owner | Week 1 | Financial approvals, blueprint sign-off | B | OPEN-FACT |
-| OQ-003 | Named Hotel Operations representative and hotel acceptance approver [PO-001C] | Product Owner | Week 1 | Workflow validation, UAT acceptance (WP 0.3) | B | OPEN-FACT |
-| OQ-004 | Exact role of UBA and Wema Bank (operating, acquirer, transfer, settlement, API) [PAY-001] | Product Owner / Finance | Week 1 | Payments architecture (WP 0.7) | I | OPEN-FACT |
+| OQ-003 | Named Hotel Operations representative and hotel acceptance approver [PO-001C] | Product Owner | Week 1 | Workflow validation, UAT acceptance (WP 0.3) | B | CLOSED |
+| OQ-004 | Exact role of UBA and Wema Bank (operating, acquirer, transfer, settlement, API) [PAY-001] | Product Owner / Finance | First property | Payments architecture (WP 0.7) | I | OPEN-FACT |
 | OQ-005 | Are guest-facing online payment links required? [PAY-002] | Product Owner | Week 1 | Payments architecture scope | I | CLOSED |
-| OQ-006 | POS terminal/acquirer and settlement-report details [PAY-003] | Hotel Finance | Week 1 | POS clearing and reconciliation design | B | OPEN-FACT |
-| OQ-007 | Bank statement formats and access/integration constraints [PAY-004] | Hotel Finance | Week 1–2 | Bank reconciliation design | I | OPEN-FACT |
+| OQ-006 | POS terminal/acquirer and settlement-report details [PAY-003] | Hotel Finance | First property | POS clearing and reconciliation design | B | OPEN-FACT |
+| OQ-007 | Bank statement formats and access/integration constraints [PAY-004] | Hotel Finance | First property | Bank reconciliation design | I | OPEN-FACT |
 | OQ-008 | Hotel business-day cutoff and expected close deadline in WAT [OPS-001] | Hotel Operations | Week 1 | Night-audit timing, staffing model (WP 0.3/0.4) | B | CLOSED |
 | OQ-009 | Confirm or replace the 99.5% service objective [REL-001] | Product Owner | Week 2 | Non-functional requirements (WP 0.7) | I | CLOSED |
 | OQ-010 | Approve cost and staffing consequences of 24×7 support and 1-hour RPO/RTO [REL-002] | Product Owner | Week 3 | Deployment/operations architecture (WP 0.7) | I | OPEN-APPROVAL |
+
+*Deferrals (PO decision, 23 Sep 2026): OQ-001, OQ-004, OQ-006 and OQ-007 are deferred to the First-Property Deployment Gate; the synthetic reference pilot uses recorded placeholders and simulated providers.*
 
 ## 2. Business and policy questions
 
@@ -62,6 +64,8 @@ Resolution statuses:
 | OQ-024 | Guest data retention periods, especially ID documents and financial records | Security / Legal | Data model, privacy controls (WP 0.2/0.5) | I | OPEN-ADVICE |
 | OQ-025 | Existing data to migrate: incumbent PMS, spreadsheets, or paper records; volume, quality and history depth | Hotel Operations / Product Owner | Migration architecture (WP 0.7), roadmap | B | OPEN-FACT |
 
+*Deferral (PO decision, 23 Sep 2026): OQ-025 is deferred to the First-Property Deployment Gate; the reference pilot uses synthetic data only.*
+
 ## 3. Architecture and platform questions
 
 | ID | Question | Owner | Blocks | Priority | Status |
@@ -80,9 +84,11 @@ Resolution statuses:
 | OQ-038 | Connectivity and power reality at the property: WAN links and redundancy, power stability/UPS coverage, appetite for on-site equipment. Directly determines the offline/degraded-mode design (a front desk that stops when the internet drops is not viable) | Product Owner / Platform | Offline strategy, deployment architecture (WP 0.7) | I | OPEN-FACT |
 | OQ-033 | Named Technical Lead and Security/Privacy adviser for blueprint approval gates; no such named roles exist yet | Product Owner | Blueprint ACCEPTED status (charter §12) | I | OPEN-FACT |
 
-## 4. Decision log — adopted answers (23 September 2026)
+*Deferral (PO decision, 23 Sep 2026): OQ-038 is deferred to the First-Property Deployment Gate; the reference pilot has no site and runs on a hosted environment with the mandated connectivity/UPS controls assumed at deployment.*
 
-The Product Owner adopted all `ANSWERED-D` answers in full on 23 September 2026. Each question below is closed by recording its adopted answer; the full answer text, rationale and evidence requirements are in `industry-standard-answers.md` (GOV-ANSWERS). In the affected documents, a closed question is marked `OQ-nnn (closed)`; open questions keep their `OPEN-FACT` / `OPEN-ADVICE` / `OPEN-APPROVAL` status until their evidence, advice or approval exists.
+## 4. Decision log — adopted answers and closures (23 September 2026)
+
+The Product Owner adopted all `ANSWERED-D` answers in full on 23 September 2026 and took the operations-authority appointment for OQ-003. Each question below is closed by recording its adopted answer or appointment; the full answer text, rationale and evidence requirements are in `industry-standard-answers.md` (GOV-ANSWERS). In the affected documents, a closed question is marked `OQ-nnn (closed)`; open questions keep their `OPEN-FACT` / `OPEN-ADVICE` / `OPEN-APPROVAL` status until their evidence, advice or approval exists.
 
 | ID | Adopted answer (summary) | Answer ref | Authority | Date | Affected documents |
 |---|---|---|---|---|---|
@@ -111,12 +117,13 @@ The Product Owner adopted all `ANSWERED-D` answers in full on 23 September 2026.
 | OQ-035 | Children ≤5 free; 6–12 sharing at 50%; early/late check-in/out banded; amounts configurable | GOV-ANSWERS §4.3 | Product Owner | 2026-09-23 | BR-RTM-005; BR-FO-004/005 |
 | OQ-036 | Comps approved/reason-coded, ≤2% target, counted in occupancy at value; house use excluded from occupancy/ADR | GOV-ANSWERS §4.3 | Product Owner | 2026-09-23 | BR-RPT-003; BR-FOL-005; reporting |
 | OQ-037 | Float ₦100,000 default; zero tolerance with investigation >0.5%; payouts ≤₦50,000 FOM; daily banking; dual custody | GOV-ANSWERS §4.3 | Product Owner | 2026-09-23 | BR-CSH-002/005; cashiering; income audit |
+| OQ-003 | Hotel Operations representative and acceptance approver: Product Owner acts as interim operations authority until a real property is secured; real hotel staff validate at first-property deployment | Inputs register §3.1 (BR-PILOT-008) | Product Owner (appointment) | 2026-09-23 | Personas/workflow validation; UAT acceptance gates; charter §12 |
 
 ## 5. Governance
 
 Every question above is closed by recording: the answer, the answering authority, the date, and the affected documents. Closed questions remain in the register with status `CLOSED` and a link to the decision record; they are never deleted.
 
-For the industry-standard answers of 23 September 2026 (GOV-ANSWERS): an `ANSWERED-D` item closes when (a) the Product Owner formally adopts it, or (b) the named approver per charter §12 signs the affected document set; the decision record then cites the adopted answer and the `[OQ-nnn]` markers in the affected documents are updated through change control. `OPEN-FACT` items close when the required evidence is recorded; `OPEN-ADVICE` items when the adviser's position is minuted; `OPEN-APPROVAL` when the Product Owner approves the cost/staffing model. The 25 items in §4 were closed by formal Product Owner adoption on 23 September 2026; the named-approver sign-offs for the affected document sets remain part of blueprint acceptance (charter §12). Adopted answers that retain an advice dependency (OQ-019 legal confirmation, OQ-021 tax treatment, OQ-024/028/029) or an evidence dependency (OQ-004/006/007 providers, OQ-001/002/003/033 appointments, OQ-025 data inventory, OQ-038 site survey) are noted in GOV-ANSWERS.
+For the industry-standard answers of 23 September 2026 (GOV-ANSWERS): an `ANSWERED-D` item closes when (a) the Product Owner formally adopts it, or (b) the named approver per charter §12 signs the affected document set; the decision record then cites the adopted answer and the `[OQ-nnn]` markers in the affected documents are updated through change control. `OPEN-FACT` items close when the required evidence is recorded; `OPEN-ADVICE` items when the adviser's position is minuted; `OPEN-APPROVAL` when the Product Owner approves the cost/staffing model. The 26 items in §4 were closed by formal Product Owner adoption or appointment on 23 September 2026; the named-approver sign-offs for the affected document sets remain part of blueprint acceptance (charter §12). Adopted answers that retain an advice dependency (OQ-019 legal confirmation, OQ-021 tax treatment, OQ-024/028/029) or an evidence dependency (OQ-004/006/007 providers, OQ-001 entity, OQ-002 appointment, OQ-025 data inventory, OQ-038 site survey) are noted in GOV-ANSWERS; the property-dependent evidence items are deferred to the First-Property Deployment Gate.
 
 ## 6. Version history
 
@@ -125,3 +132,4 @@ For the industry-standard answers of 23 September 2026 (GOV-ANSWERS): an `ANSWER
 | 0.1 | 2026-09-23 | Initial register seeded from SRC-001 §6 and blueprint analysis | PROPOSED |
 | 0.2 | 2026-09-23 | Answers classified against GOV-ANSWERS: 25 ANSWERED-D, 9 OPEN-FACT, 3 OPEN-ADVICE, 1 OPEN-APPROVAL; resolution-status legend added | PROPOSED |
 | 0.3 | 2026-09-23 | 25 questions closed by Product Owner adoption of the industry-standard answers; decision log added; statuses flipped to CLOSED | PROPOSED |
+| 0.4 | 2026-09-23 | Synthetic reference pilot: OQ-003 closed (Product Owner acting operations authority); OQ-001/004/006/007/025/038 deferred to the First-Property Deployment Gate | PROPOSED |

@@ -34,14 +34,27 @@ This register records the external inputs the blueprint is allowed to treat as r
 
 | Req ID | Requirement | Status | Confidence |
 |---|---|---|---|
-| BR-PILOT-001 | Pilot hotel: Golfview Suites and Conference Center, GRA Ikeja, Lagos, Nigeria | Confirmed | VERIFIED (recorded decision) |
-| BR-PILOT-002 | One property, approximately 200 rooms | Confirmed | VERIFIED |
+| BR-PILOT-001 | Pilot model: **synthetic reference property** — a modelled 200-room NGN/WAT conference hotel (the "Golfview profile", GRA Ikeja, Lagos). No contracted property at pilot; real-site validation is a first-property deployment gate | Amended (PO decision 23 Sep 2026) | VERIFIED (recorded decision) |
+| BR-PILOT-002 | One reference property, approximately 200 rooms (modelled) | Confirmed | VERIFIED |
 | BR-PILOT-003 | Timezone West Africa Time (UTC+1); all business dates and cutoff rules use hotel-local time, never server UTC | Confirmed | VERIFIED |
 | BR-PILOT-004 | Base currency Nigerian Naira (NGN) | Confirmed | VERIFIED |
-| BR-PILOT-005 | Delivery target: 24 weeks to pilot production rollout, gated by finance, audit, security, restore and hotel acceptance | Confirmed | VERIFIED |
-| BR-PILOT-006 | Registered legal entity name and tax identifiers | **Open** (PO-001A) | UNVERIFIED |
+| BR-PILOT-005 | Delivery target: 24 weeks to the **pilot-ready reference release** (synthetic), gated by finance, audit, security, restore and role-played acceptance; first-property deployment follows when a property is secured | Amended (PO decision 23 Sep 2026) | VERIFIED |
+| BR-PILOT-006 | Registered legal entity name and tax identifiers | **Open** (PO-001A); deferred to first property | UNVERIFIED |
 | BR-PILOT-007 | Named Finance Controller / pilot Finance representative | **Open** (PO-001B) | UNVERIFIED |
-| BR-PILOT-008 | Named Hotel Operations representative and hotel acceptance approver | **Open** (PO-001C) | UNVERIFIED |
+| BR-PILOT-008 | Hotel Operations representative and acceptance approver: **Product Owner acts as interim operations authority** until a real property is secured (closes OQ-003) | Resolved (PO decision 23 Sep 2026) | VERIFIED (recorded decision) |
+| BR-PILOT-009 | Synthetic Reference Pilot: production-like synthetic data, a scripted golden hotel day, simulated external interfaces (payments, statements, POS batches, ID capture) and role-played UAT | Confirmed (PO decision 23 Sep 2026) | VERIFIED (recorded decision) |
+| BR-PILOT-010 | First-Property Deployment Gate: site survey (OQ-038), legal entity (OQ-001), bank/acquirer facts (OQ-004/006/007), migration data (OQ-025), hotel-staff UAT and acceptance, staff training — all required before any real deployment | Confirmed (PO decision 23 Sep 2026) | VERIFIED (recorded decision) |
+
+**Decision record — synthetic reference pilot (Product Owner, 23 Sep 2026).** No real property is available for the pilot. The pilot is redefined as follows:
+
+| Aspect | Decision |
+|---|---|
+| Pilot model | Synthetic reference pilot: the modelled "Golfview profile" (200 rooms, NGN, WAT, conference property) as the reference configuration; no contracted site |
+| Validation | Production-like synthetic data; scripted golden hotel day; simulated external interfaces; role-played UAT |
+| Operations authority | Product Owner acts as Hotel Operations representative and acceptance approver until a real property is secured (closes OQ-003) |
+| Delivery target | Week 24 delivers the pilot-ready reference release; first-property deployment follows when a property is secured |
+| Property-dependent decisions | OQ-001 (entity), OQ-004/006/007 (banks/POS/statements), OQ-025 (migration data), OQ-038 (site survey) are deferred to the First-Property Deployment Gate; they do not block the reference pilot |
+| Acceptance value | The reference pilot validates functional, financial, security and recovery behaviour; it does not validate real-world operations, connectivity, settlement or staff adoption — those are first-property gates (RSK-PROD-003) |
 
 Operational interpretation recorded with the baseline: the one-property pilot does not require cross-property operational workflows. The blueprint nonetheless designs the enterprise target including multi-property (Product Owner direction, 23 Sep 2026) with pilot-first delivery phasing.
 
@@ -157,3 +170,4 @@ Observed statuses are working-tree observations and are recorded here for planni
 | 0.3 | 2026-09-23 | §4.3 outcomes updated: DP-CTX-003, DP-ADR-001, DP-ADR-002, DP-ADR-005 confirmed with refinements (ADR-005…007); invoice authority ruled provisionally (ADR-008, pending OQ-011) | PROPOSED |
 | 0.4 | 2026-09-23 | §4.3 outcomes completed: DP-ADR-003 confirmed with refinements (ADR-010); DP-ADR-004 confirmed with refinements, provider selection remains open (ADR-011). All proposed inputs now have recorded outcomes | PROPOSED |
 | 0.5 | 2026-09-23 | Service-objective status corrected to adopted (OQ-009 closed: 99.5% pilot / 99.9% enterprise target) | PROPOSED |
+| 0.6 | 2026-09-23 | Synthetic reference pilot decision recorded: BR-PILOT-001/005 amended, BR-PILOT-008 resolved, BR-PILOT-009/010 added; property-dependent items deferred to the First-Property Deployment Gate | PROPOSED |

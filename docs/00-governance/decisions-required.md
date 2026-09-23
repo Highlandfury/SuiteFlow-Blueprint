@@ -2,7 +2,7 @@
 doc-id: GOV-DECISIONS
 title: Decisions Required from the Product Owner and Hotel
 status: PROPOSED
-version: 0.3
+version: 0.4
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: plain-language digest of the Open Questions Register
@@ -15,34 +15,40 @@ depends-on: [GOV-OQ, GOV-ANSWERS]
 
 The blueprint has an **Open Questions Register** (`open-questions.md`) containing every question that only you, the hotel, or the finance team can answer. It is numbered `OQ-001`, `OQ-002`, … — "OQ" means **Open Question**. The register remains the authoritative record; if this digest and the register ever disagree, the register wins.
 
-## Update — answers adopted (23 Sep 2026)
+## Update — answers adopted, pilot redefined (23 Sep 2026)
 
-You asked for the pending questions to be answered on an **industry-standard/best-practice basis**, and then adopted the answers. Current state:
+You asked for the pending questions to be answered on an **industry-standard/best-practice basis**, adopted the answers, redefined the pilot as a **synthetic reference pilot** (no real property — see `inputs-register.md` §3.1), and took the role of acting operations authority. Current state:
 
 | Outcome | Count | Meaning |
 |---|---|---|
-| **Closed — industry-standard answers adopted** | **25** | Decided on 23 Sep 2026; design proceeds on them (details in `industry-standard-answers.md`) |
-| Need a fact from you or the hotel | **9** | No standard can invent a company name, a person, a bank's API, or a site survey — see below |
-| Need legal/tax advice | **3** | Recommended position in force; a professional confirms before launch |
-| Need your cost approval | **1** | The 24×7 staffing/recovery model |
+| **Closed** | **26** | 25 industry-standard answers adopted + OQ-003 (you are the operations authority and acceptance approver) |
+| Need a fact | **8** | 2 now: Finance Controller (OQ-002), Technical Lead/Security adviser (OQ-033); 6 deferred to the first property (OQ-001/004/006/007/025/038) |
+| Need legal/tax advice | **3** | Recommended position in force; a professional confirms before launch (OQ-024/028/029) |
+| Need your cost approval | **1** | The 24×7 staffing/recovery model (OQ-010) |
 
 ## What still needs you
 
-### 1. Facts only you or the hotel can provide
+### 1. Facts — now (programme-level)
 
 | ID | What to provide | Needed by |
 |---|---|---|
-| OQ-001 | CAC certificate, TIN, VAT registration, registered address of the legal entity | Week 1 |
-| OQ-002 | Name the Finance Controller (and a deputy) | Week 1 |
-| OQ-003 | Name the Hotel Operations representative / acceptance approver (and a deputy) | Week 1 |
-| OQ-004 | Which bank is the primary collections/operating account, which is the POS acquirer, and does either offer API/virtual accounts? | Week 1 |
-| OQ-006 | POS acquirer, merchant/terminal IDs, settlement frequency and a sample settlement report | Week 1 |
-| OQ-007 | Bank statement samples and access method for both banks | Week 1–2 |
-| OQ-025 | Is there existing data to migrate (old system, spreadsheets, paper)? Volume and quality? | Week 2 |
+| OQ-002 | Name the Finance Controller (and a deputy) — or confirm you are acting | Week 1 |
 | OQ-033 | Name the Technical Lead and the Security/Privacy adviser (and deputies) | Week 1–2 |
-| OQ-038 | Connectivity/power reality at the property — schedule the site survey (links, failover, generator, UPS) | Week 1 |
 
-### 2. Professional advice
+### 2. Facts — deferred to the first property
+
+No action now; these form the **First-Property Deployment Gate** and must be closed before any real deployment:
+
+| ID | What will be needed when a property is secured |
+|---|---|
+| OQ-001 | Entity registration and tax documents (CAC, TIN, VAT registration, registered address) |
+| OQ-004 | Bank roles: primary collections/operating account, POS acquirer, API/virtual accounts |
+| OQ-006 | POS acquirer, terminals, settlement frequency and sample settlement reports |
+| OQ-007 | Bank statement formats and access for both banks |
+| OQ-025 | Existing data inventory (if any) — volumes, quality and history depth |
+| OQ-038 | Site survey: links and failover, power/generator, UPS coverage, equipment room |
+
+### 3. Professional advice
 
 | ID | Recommended position | Confirmation needed |
 |---|---|---|
@@ -50,7 +56,7 @@ You asked for the pending questions to be answered on an **industry-standard/bes
 | OQ-028 | Open-source policy with SBOM/license scanning; copyleft review before any distribution | Legal counsel |
 | OQ-029 | Fiscalisation as a configurable adapter deriving from our invoice; confirm current FIRS e-invoicing obligations | Tax adviser |
 
-### 3. Cost approval
+### 4. Cost approval
 
 | ID | Recommended model | Decision needed |
 |---|---|---|
@@ -58,10 +64,11 @@ You asked for the pending questions to be answered on an **industry-standard/bes
 
 ## What is now decided (adopted 23 Sep 2026)
 
-These 25 no longer need you unless you want to change them through change control. The one-line answers:
+These no longer need you unless you want to change them through change control. The one-line answers:
 
 | ID | Decided answer |
 |---|---|
+| OQ-003 | You act as operations authority and acceptance approver until a real property is secured |
 | OQ-005 | Online payment links: yes at enterprise target; at pilot, at most one provider path if prepayment is needed |
 | OQ-008 | Night close: 02:00 WAT cutoff, audit 02:00–03:30, certified by 04:00 |
 | OQ-009 | Keep 99.5% availability for pilot; 99.9% enterprise target |
@@ -95,18 +102,16 @@ These 25 no longer need you unless you want to change them through change contro
 Reply in chat in any format, for example:
 
 ```
-OQ-002: Finance Controller is <name>
-OQ-003: Operations representative is <name>
-OQ-038: site has fibre + 4G failover, generator, UPS on front desk
+OQ-002: Finance Controller is <name> (or confirm you are acting)
+OQ-033: Technical Lead is <name>; Security adviser is <name>
 OQ-010: approved — 4-person rota plus managed NOC partner
-OQ-001: entity documents attached
 ```
 
-The nine facts, three advice items and one approval listed above are what remains before the blueprint can be ACCEPTED. Nothing adopted so far overrides an accepted business requirement.
+The two programme-level facts, three advice items and one approval listed above are what remains before the blueprint can be ACCEPTED; the six property-dependent facts close at the First-Property Deployment Gate. The synthetic-pilot amendment is recorded in the inputs register (BR-PILOT-001/005/008/009/010).
 
 ## What happens if the remaining items stay open
 
-The adopted answers are in force and the pilot can be configured to them; the open facts and advice items do not block design work. But statutory documents cannot be finalised without the entity details (OQ-001), financial sign-off needs the Finance Controller (OQ-002), operational acceptance needs the hotel representative (OQ-003), and the site survey (OQ-038) decides whether the connectivity design holds at this property. Unanswered means a system built to *common practice* instead of *Golfview practice* — changes then become configuration work or rework.
+The adopted answers are in force and the reference pilot can be configured to them; the remaining facts and advice items do not block design work. But financial sign-off needs the Finance Controller (OQ-002); blueprint approval needs the Technical Lead and the Security/Privacy adviser (OQ-033); and the six property-dependent items will surface at the first real deployment — the First-Property Deployment Gate exists so they are not discovered there. Until a real hotel validates operations, expect gaps between reference-pilot results and reality (RSK-PROD-003): synthetic acceptance proves the logic, not the hotel.
 
 ## Version history
 
@@ -115,3 +120,4 @@ The adopted answers are in force and the pilot can be configured to them; the op
 | 0.1 | 2026-09-23 | Initial digest issued after Product Owner question on OQ numbering; register authoritative | PROPOSED |
 | 0.2 | 2026-09-23 | Rewritten against the industry-standard answer pack (GOV-ANSWERS): what is answered (25), what still needs facts (9), advice (3) and cost approval (1) | PROPOSED |
 | 0.3 | 2026-09-23 | All 25 industry-standard answers adopted; remaining items restated as facts, advice and one approval | PROPOSED |
+| 0.4 | 2026-09-23 | Synthetic reference pilot: OQ-003 closed (you are the operations authority); property-dependent facts deferred to the First-Property Deployment Gate | PROPOSED |

@@ -4,7 +4,7 @@ title: Workflow Catalogue
 status: PROPOSED
 version: 0.1
 date: 2026-09-23
-owner: Hospitality Domain Architect (drafted); Hotel Operations representative (validation; OQ-003 open)
+owner: Hospitality Domain Architect (drafted); operational validation by the acting operations authority (OQ-003 closed)
 applies-to: full enterprise target; pilot workflows marked
 depends-on: [ARCH-STATES, ARCH-RULES, PROD-PERSONAS]
 ---

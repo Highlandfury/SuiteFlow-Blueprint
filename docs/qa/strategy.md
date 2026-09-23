@@ -2,7 +2,7 @@
 doc-id: QA-STRATEGY
 title: Target QA and Acceptance Architecture
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: QA Architect (drafted); Product Owner (approval)
 applies-to: full enterprise target; pilot acceptance
@@ -33,7 +33,7 @@ This document defines how SuiteFlow proves it works: test levels, data strategy,
 | Performance | Production-scale synthetic volume; budgets in NFR §2 | NFR P-1…P-10 | Release / go-live |
 | Security | Scope leakage, authz bypass, injection, secrets, webhook forgery, AI tool abuse | SEC-MODEL §13 | Release / go-live |
 | Regression | Full suites re-run on every change to shared logic | See §7 | Every release |
-| UAT | Hotel and finance scripts with real roles on UAT environment | §8 | Go-live |
+| UAT | Scripted role-played scenarios on synthetic data (Product Owner as acting operations authority, OQ-003 closed; finance review); real-role UAT deferred to the first property | §8 | Reference release / First-Property Deployment Gate |
 
 ## 3. Test data strategy
 
@@ -84,7 +84,8 @@ Every invariant, business rule and state machine produces test obligations `TO-<
 |---|---|
 | Merge | Unit + module + API tests; architecture tests; no new unmapped posting families |
 | Release candidate | Full regression suites; financial suite; permission/scope pack; failure injection; UI key flows |
-| Pilot go-live | Golden day acceptance; performance at scale; security test pack; timed restore drill; migration reconciliation; UAT sign-off (hotel + finance); documentation updated; runbooks exercised |
+| Reference release | Golden day acceptance on synthetic data; performance at scale; security test pack; timed restore drill; synthetic migration reconciliation; role-played UAT accepted by the Product Owner (acting operations authority) and finance; documentation updated; runbooks exercised |
+| First property | First-Property Deployment Gate: real-data migration reconciliation; hotel-staff UAT and acceptance; training completed; on-site readiness review |
 | Post-release | Monitored stabilization; defect triage; no S0/S1 open from previous release |
 
 ## 6. Defect severity
@@ -112,7 +113,7 @@ Any change to shared logic (authorization, posting, close, inventory) re-runs th
 
 - **UAT scripts** derived from the workflow catalogue, executed by real roles (agent, supervisor, housekeeping, night audit, income audit, finance) on a UAT environment with production-like synthetic data.
 - **Financial acceptance**: finance controller executes close, reconciliation review, refund/forfeit flows and signs the golden-day result.
-- **Hotel acceptance**: GM/operations representative signs workflow and service-quality acceptance.
+- **Operational acceptance**: the acting operations authority (Product Owner; OQ-003 closed) signs workflow and service-quality acceptance at the reference release; hotel staff sign at the First-Property Deployment Gate.
 - **Go/no-go** considers: open S0/S1, golden-day result, restore drill recency, permission pack, security pack, runbook readiness, 24×7 rota (OQ-010), documentation completeness, and unresolved blocking open questions.
 
 ## 9. Environments
@@ -130,7 +131,7 @@ Promotion is by versioned artefact only; no environment-specific code branches; 
 
 | Item | Owner | Effect |
 |---|---|---|
-| OQ-002/OQ-003 named acceptance participants | Product Owner | UAT script owners and sign-off |
+| OQ-002 named acceptance participant (finance); OQ-003 closed (acting operations authority) | Product Owner | UAT script owners and sign-off |
 | OQ-008 (closed) close window | Hotel Ops | Close performance gate |
 | OQ-009 (closed) availability objective | Product Owner | Availability test definition |
 | OQ-024 retention | Security/Legal | Test data retention |
@@ -141,3 +142,4 @@ Promotion is by versioned artefact only; no environment-specific code branches; 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial QA and acceptance architecture issued with WP 0.7 | PROPOSED |
+| 0.2 | 2026-09-23 | Synthetic reference pilot: UAT reframed as scripted role-played acceptance; release gates updated (reference release; First-Property Deployment Gate) | PROPOSED |

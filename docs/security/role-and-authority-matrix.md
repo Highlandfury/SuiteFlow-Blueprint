@@ -4,7 +4,7 @@ title: Role and Authority Matrix
 status: PROPOSED
 version: 0.1
 date: 2026-09-23
-owner: Security Engineer (drafted); Product Owner + Finance Controller (approval; OQ-002/OQ-003 open)
+owner: Security Engineer (drafted); Product Owner + Finance Controller (approval; OQ-002 open; OQ-003 closed — acting operations authority)
 applies-to: full enterprise target; pilot roles
 depends-on: [SEC-MODEL, ADR-009, PROD-PERSONAS]
 ---
@@ -123,7 +123,7 @@ Exception principle: where staffing makes strict separation impossible (small ni
 | Item | Owner |
 |---|---|
 | OQ-002 Finance Controller named (approves bands) | Product Owner |
-| OQ-003 Operations representative named (validates operational roles) | Product Owner |
+| OQ-003 closed — acting operations authority validates operational roles | Product Owner |
 | OQ-012 (closed) deposit/refund/cancellation policy (defines forfeiture formula) | Product Owner / Finance |
 | OQ-013 (closed) corporate credit policy (limits and suspension) | Finance |
 | OQ-033 Security adviser named | Product Owner |
