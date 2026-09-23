@@ -2,7 +2,7 @@
 doc-id: GOV-OQ
 title: Open Questions Register
 status: PROPOSED
-version: 0.6
+version: 0.7
 date: 2026-09-23
 owner: Product Owner (accountable)
 applies-to: all blueprint work
@@ -34,7 +34,7 @@ Resolution statuses:
 | ID | Question | Owner | Needed by | Blocks | Priority | Status |
 |---|---|---|---|---|---|---|
 | OQ-001 | Registered legal entity name and tax identifiers (TIN, VAT registration) [PO-001A] | Product Owner | First property | Financial architecture, invoicing, tax configuration (WP 0.4) | B | OPEN-FACT |
-| OQ-002 | Named Finance Controller / pilot Finance representative [PO-001B] | Product Owner | Week 1 | Financial approvals, blueprint sign-off | B | INTERIM ACTING (role assistant; real-PO countersignature pending — GOV-APPOINT); human appointment pending |
+| OQ-002 | Named Finance Controller / pilot Finance representative [PO-001B] | Product Owner | Week 1 | Financial approvals, blueprint sign-off | B | INTERIM ACTING (countersigned 23 Sep 2026; GOV-APPOINT); human appointment pending |
 | OQ-003 | Named Hotel Operations representative and hotel acceptance approver [PO-001C] | Product Owner | Week 1 | Workflow validation, UAT acceptance (WP 0.3) | B | CLOSED |
 | OQ-004 | Exact role of UBA and Wema Bank (operating, acquirer, transfer, settlement, API) [PAY-001] | Product Owner / Finance | First property | Payments architecture (WP 0.7) | I | OPEN-FACT |
 | OQ-005 | Are guest-facing online payment links required? [PAY-002] | Product Owner | Week 1 | Payments architecture scope | I | CLOSED |
@@ -84,7 +84,7 @@ Resolution statuses:
 | OQ-036 | Comp and house-use policy: who may authorise, limits, and statistical treatment (are comps counted in occupancy? is house use excluded from ADR?) | Product Owner / Hotel Operations | Statistics and reporting rules (BR-RPT-003, BR-FOL-005) | I | CLOSED |
 | OQ-037 | Cash handling policy: house-bank size, cashier variance tolerance, payout limits, deposit-to-safe rules | Finance | Cashiering rules (BR-CSH-002/005) | I | CLOSED |
 | OQ-038 | Connectivity and power reality at the property: WAN links and redundancy, power stability/UPS coverage, appetite for on-site equipment. Directly determines the offline/degraded-mode design (a front desk that stops when the internet drops is not viable) | Product Owner / Platform | Offline strategy, deployment architecture (WP 0.7) | I | OPEN-FACT |
-| OQ-033 | Named Technical Lead and Security/Privacy adviser for blueprint approval gates; no such named roles exist yet | Product Owner | Blueprint ACCEPTED status (charter §12) | I | INTERIM ACTING (role assistants; real-PO countersignature pending — GOV-APPOINT); human appointments pending |
+| OQ-033 | Named Technical Lead and Security/Privacy adviser for blueprint approval gates; no such named roles exist yet | Product Owner | Blueprint ACCEPTED status (charter §12) | I | INTERIM ACTING (countersigned 23 Sep 2026; GOV-APPOINT); human appointments pending |
 
 *Deferral (PO decision, 23 Sep 2026): OQ-038 is deferred to the First-Property Deployment Gate; the reference pilot has no site and runs on a hosted environment with the mandated connectivity/UPS controls assumed at deployment.*
 
@@ -137,3 +137,4 @@ For the industry-standard answers of 23 September 2026 (GOV-ANSWERS): an `ANSWER
 | 0.4 | 2026-09-23 | Synthetic reference pilot: OQ-003 closed (Product Owner acting operations authority); OQ-001/004/006/007/025/038 deferred to the First-Property Deployment Gate | PROPOSED |
 | 0.5 | 2026-09-23 | OQ-010 approved in principle under delegated PO direction; OQ-002/OQ-033 interim arrangements recorded with expiry at the P0 sitting | PROPOSED |
 | 0.6 | 2026-09-23 | OQ-002/OQ-033 interim acting capacities recorded (role assistants; countersignature pending); INTERIM ACTING status added | PROPOSED |
+| 0.7 | 2026-09-23 | Interim instruments countersigned by recorded Product Owner direction (A-01 complete); human appointments remain pending | PROPOSED |

@@ -2,7 +2,7 @@
 doc-id: GOV-APPOINT
 title: Interim Appointment Instruments — Finance Controller, Technical Lead, Security/Privacy Adviser
 status: PROPOSED
-version: 0.1
+version: 0.2
 date: 2026-09-23
 owner: Product Owner (countersignature and human appointments); prepared under delegated PO direction
 applies-to: OQ-002, OQ-033 interim arrangements for the synthetic reference pilot
@@ -11,7 +11,7 @@ depends-on: [GOV-PO-DEC, PROD-PERSONAS]
 
 # Interim Appointment Instruments
 
-Recorded under **Product Owner direction (delegated), 23 Sep 2026** (GOV-PO-DEC §B.2). Acting capacities mean **review conclusions, delegated role direction and role-played UAT participation — never a human sign-off**. The human appointment slots (OQ-002, OQ-033) remain open; each countersignature block is the real Product Owner's human step. All three expire at the P0 sitting (≤14 Oct 2026) or on human appointment, whichever is earlier, and are revocable immediately.
+Recorded under **Product Owner direction (delegated), 23 Sep 2026** (GOV-PO-DEC §B.2); **countersigned by recorded Product Owner direction on 23 Sep 2026** (see the countersignature record in each instrument). Acting capacities mean **review conclusions, delegated role direction and role-played UAT participation — never a human sign-off**. The human appointment slots (OQ-002, OQ-033) remain open; each countersignature block is the real Product Owner's human step. All three expire at the P0 sitting (≤14 Oct 2026) or on human appointment, whichever is earlier, and are revocable immediately.
 
 ## 1. Finance Controller (acting interim capacity)
 
@@ -21,7 +21,7 @@ Recorded under **Product Owner direction (delegated), 23 Sep 2026** (GOV-PO-DEC 
 
 **Limits.** Never a human sign-off or charter §12 finance approval; financial defaults stay PROPOSED; no spend, fees or contract commitments; no personnel decisions or appointments; tax positions stay UNVERIFIED pending the tax adviser.
 
-**Countersignature (real Product Owner — human step):** Name __________ Signature __________ Date __________
+**Countersigned:** Product Owner by recorded direction, 23 Sep 2026 (instruction: "countersigned"); identity on file with the Product Owner. A wet-ink or digital-signature copy may be produced on request.
 
 ## 2. Technical Lead (acting interim capacity)
 
@@ -31,7 +31,7 @@ Recorded under **Product Owner direction (delegated), 23 Sep 2026** (GOV-PO-DEC 
 
 **Limits.** Never a human sign-off; no ADR or release sign-off (approver-matrix signatures belong to the appointed human Technical Lead); no spend or contract commitments; no personnel decisions.
 
-**Countersignature (real Product Owner — human step):** Name __________ Signature __________ Date __________
+**Countersigned:** Product Owner by recorded direction, 23 Sep 2026 (instruction: "countersigned"); identity on file with the Product Owner. A wet-ink or digital-signature copy may be produced on request.
 
 ## 3. Security/Privacy Adviser (acting interim advisory capacity)
 
@@ -41,10 +41,11 @@ Recorded under **Product Owner direction (delegated), 23 Sep 2026** (GOV-PO-DEC 
 
 **Limits.** Advisory only — never a human sign-off or charter §12 security acceptance; the blueprint cannot reach ACCEPTED without the appointed adviser. No access to real personal data; legal/privacy positions (NDPA, retention) stay UNVERIFIED pending counsel; no spend; no personnel decisions.
 
-**Countersignature (real Product Owner — human step):** Name __________ Signature __________ Date __________
+**Countersigned:** Product Owner by recorded direction, 23 Sep 2026 (instruction: "countersigned"); identity on file with the Product Owner. A wet-ink or digital-signature copy may be produced on request.
 
 ## 4. Version history
 
 | Version | Date | Change | Status |
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial interim appointment instruments (acting role-assistant capacities; human countersignature and appointments pending) | PROPOSED |
+| 0.2 | 2026-09-23 | Countersignature recorded: Product Owner countersigned all three instruments by recorded direction; human appointments remain pending | PROPOSED |

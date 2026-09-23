@@ -2,7 +2,7 @@
 doc-id: GOV-ACTIONS
 title: Action Register — Human and Programme Actions
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Product Owner (accountable); maintained by the programme
 applies-to: execution actions arising from GOV-PO-DEC and GOV-REVIEW
@@ -15,7 +15,7 @@ Every action arising from the delegated Product Owner record and the review reso
 
 | ID | Action | Owner | Due / trigger | Evidence | Status |
 |---|---|---|---|---|---|
-| A-01 | Countersign the three interim appointment instruments (Finance Controller, Technical Lead, Security/Privacy Adviser) | Real Product Owner | Before/at P0 sitting (≤14 Oct 2026) | Signed instruments (`interim-appointments-2026-09-23.md`) | OPEN — human |
+| A-01 | Countersign the three interim appointment instruments (Finance Controller, Technical Lead, Security/Privacy Adviser) | Real Product Owner | Before/at P0 sitting (≤14 Oct 2026) | Signed instruments (`interim-appointments-2026-09-23.md`) | **DONE — countersigned by recorded Product Owner direction, 23 Sep 2026** |
 | A-02 | Appoint the human Finance Controller + deputy (OQ-002) | Real Product Owner | ≤14 Oct 2026 or on appointment | Appointment minute; role-charter acceptance; FC sign-offs on financial architecture, ADR-005…008, limits table, close contract | OPEN — human |
 | A-03 | Appoint the human Technical Lead + Security/Privacy Adviser + deputies (OQ-033) | Real Product Owner | ≤14 Oct 2026 or on appointment | Appointment minutes; ADR/NFR/deployment and security sign-offs; tabletop participation | OPEN — human |
 | A-04 | Issue RFQ for the two 24×7 options; score quotes | Programme (PO oversight) | RFQ by 30 Sep; quotes by 7 Oct | `operations/support-model-and-procurement.md` §6 | OPEN |
@@ -33,3 +33,4 @@ Every action arising from the delegated Product Owner record and the review reso
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial action register: 10 actions (human-only marked) from GOV-PO-DEC and the review resolutions | PROPOSED |
 | 0.2 | 2026-09-23 | A-08 progress (R1–R2, R5); A-11 added (P2 audit execution, ready) | PROPOSED |
+| 0.3 | 2026-09-23 | A-01 complete: interim instruments countersigned by recorded Product Owner direction | PROPOSED |
