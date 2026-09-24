@@ -2,7 +2,7 @@
 doc-id: GOV-P2PLAN
 title: Programme P2 — Current-State Audit Plan
 status: PROPOSED
-version: 0.2
+version: 0.3
 date: 2026-09-23
 owner: Technical Lead (audit owner at appointment); interim: Product Owner; prepared under delegated PO direction
 applies-to: current-state audit of the implementation and ecosystem (charter §14 P2)
@@ -13,7 +13,7 @@ depends-on: [GOV-CHARTER, GOV-REVIEW, GOV-RESEARCH, GOV-INPUTS]
 
 ## 0. Execution status
 
-**Entered 23 Sep 2026 under P0 conditional completion** (GOV-PO-DEC §G). Workspace: `/home/suiteflow/suiteflow-audit` (separate from both repositories, per charter). Pass 1 complete: baseline pinned (implementation `c8daa6440d7d`; image sha256:f1fb23…; stack versions) and inventory generated (71 DocTypes, 4 pages, 73 tests, 19 patches, 20 docs). Capability-mapping scaffold ready for all 204 frozen pilot capabilities; evidence register seeded with the carried obligations. Passes 2+ proceed next.
+**Entered 23 Sep 2026 under P0 conditional completion** (GOV-PO-DEC §G). Workspace: `/home/suiteflow/suiteflow-audit` (separate from both repositories, per charter). Passes 1–2 complete: baseline pinned (implementation `c8daa6440d7d`; image sha256:f1fb23…; stack versions); inventory generated (71 DocTypes, 4 pages, 73 tests, 19 patches, 20 docs); **all 204 frozen pilot capabilities mapped and classified** (82 verified / 95 partial / 7 defective / 20 missing) with **40 findings (1 critical, 18 high, 20 medium, 1 low)** and obligations updated (OB-08: re-run baseline suites before promoting to verified). Pass 3 next.
 
 ## 1. Purpose and gate
 
@@ -118,3 +118,4 @@ If appointments are delayed, interim role assistants execute the passes; **sign-
 |---|---|---|---|
 | 0.1 | 2026-09-23 | Initial P2 audit plan prepared under delegated PO direction (scope, evidence rules, rubric, passes, obligations, timeline) | PROPOSED |
 | 0.2 | 2026-09-23 | Audit entered under conditional completion; workspace created; pass 1 (baseline + inventory) complete | PROPOSED |
+| 0.3 | 2026-09-24 | Pass 2 complete: 204/204 capabilities mapped; 40 findings recorded | PROPOSED |
