@@ -1,15 +1,15 @@
 ---
 doc-id: BP-V1
-title: SuiteFlow Target-State Blueprint v1.12
+title: SuiteFlow Target-State Blueprint v1.13
 status: PROPOSED
-version: 1.12
+version: 1.13
 date: 2026-09-23
 owner: Product Owner (acceptance); Principal Architect (maintainer)
 applies-to: all SuiteFlow work
 depends-on: [GOV-CHARTER, GOV-INPUTS]
 ---
 
-# SuiteFlow Target-State Blueprint v1.12
+# SuiteFlow Target-State Blueprint v1.13
 
 ## 1. What this is
 
@@ -106,7 +106,7 @@ Pilot D1–D9 (foundation → property/rates → guests/reservations → front o
 
 - **Open questions:** 38 in the register (`00-governance/open-questions.md`); **26 are closed** (25 by Product Owner adoption of the industry-standard answers on 23 Sep 2026, plus OQ-003 by the Product Owner acting as operations authority; decision log in the register §4). The 12 open items: **8 facts** — OQ-002 and OQ-033 now, OQ-001/004/006/007/025/038 deferred to the First-Property Deployment Gate — **3 professional-advice** items (OQ-024/028/029) and **one cost approval** (OQ-010). The non-deferred blockers are **OQ-002/033** (Finance Controller; Technical Lead and Security adviser).
 - **Risks:** 33 in the register (`00-governance/risk-register.md`); highest: blueprint drift (RSK-GOV-001), financial/tax correctness (RSK-FIN-001/004), scope leakage (RSK-SEC-001), tenancy migration (RSK-MIG-002), connectivity/power (RSK-DEP-003), reference-vs-reality gap (RSK-PROD-003), operational adoption (RSK-OPS-001).
-- **Phase status:** P0 **conditionally complete** (23 Sep 2026, GOV-PO-DEC §G) — scope freeze effective; **Programme P2 audit complete** (24 Sep, `suiteflow-audit/report.md`; 204/204 capabilities classified; 79 findings — 2 critical, 34 high; pending Technical Lead review); P3 gap matrix ready; outstanding human sign-offs gate ACCEPTED status and committed delivery.
+- **Phase status:** P0 **conditionally complete** (23 Sep 2026, GOV-PO-DEC §G) — scope freeze effective; **Programme P2 audit complete** and **P3 gap matrix complete** (24 Sep, `suiteflow-audit/report.md`, `p3-gap-matrix.md`; 204/204 assessed with actions — Keep 71 / Extend 95 / Refactor 15 / Build 15 / Re-scope 5 / Wrap 2 / Replace 1; pending Technical Lead review); P4 transition next; outstanding human sign-offs gate ACCEPTED status and committed delivery.
 - **Review record:** acceptance-readiness review (`00-governance/review-findings-2026-09-23.md`, GOV-REVIEW) — 45 findings (3 critical, 13 high, 26 medium, 3 low), **all resolved** through the P0/P1/P2 passes under delegated Product Owner decisions (`product-owner-decisions-2026-09-23.md`); residual dependencies are adviser inputs (tax/retention/licensing) and appointed-signatory reviews.
 - **Adopted answers and interim defaults:** the closed questions' answers are in force and marked `OQ-nnn (closed)` in affected documents; open questions carry interim defaults, clearly marked, until their evidence, advice or approval exists. The synthetic reference pilot amendment (no real property; role-played acceptance) is recorded in the inputs register §3.1.
 
@@ -150,3 +150,4 @@ When the above complete, the blueprint is promoted to **ACCEPTED (current versio
 | 1.10 | 2026-09-23 | Product Owner human-action checklist issued (62 documents) | PROPOSED |
 | 1.11 | 2026-09-23 | P0 conditional completion recorded; scope freeze effective; P2 audit underway | PROPOSED |
 | 1.12 | 2026-09-24 | P2 audit complete: 204/204 classified; 79 findings; report issued (pending TL review) | PROPOSED |
+| 1.13 | 2026-09-24 | P3 gap matrix complete: 204 actions + programme actions; P4 ready | PROPOSED |

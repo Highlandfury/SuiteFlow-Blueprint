@@ -2,7 +2,7 @@
 doc-id: GOV-ACTIONS
 title: Action Register — Human and Programme Actions
 status: PROPOSED
-version: 0.12
+version: 0.13
 date: 2026-09-23
 owner: Product Owner (accountable); maintained by the programme
 applies-to: execution actions arising from GOV-PO-DEC and GOV-REVIEW
@@ -45,3 +45,4 @@ Every action arising from the delegated Product Owner record and the review reso
 | 0.10 | 2026-09-24 | P2 pass 3 partial: 14 modules re-run (76 OK); F-FUNC-01 baseline EOD suite red; F-FO-06 resolved | PROPOSED |
 | 0.11 | 2026-09-24 | P2 pass 3 complete (app suite): 50 modules / 399 tests; 5 failing modules recorded; golden day passed | PROPOSED |
 | 0.12 | 2026-09-24 | P2 passes 4–10 complete; audit report issued (79 findings); P3 item A-12 added | PROPOSED |
+| 0.13 | 2026-09-24 | P3 gap matrix complete (204 actions + S3-01…S3-10); P4 item A-13 added | PROPOSED |
