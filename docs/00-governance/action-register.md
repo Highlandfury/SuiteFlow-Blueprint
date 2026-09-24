@@ -2,7 +2,7 @@
 doc-id: GOV-ACTIONS
 title: Action Register — Human and Programme Actions
 status: PROPOSED
-version: 0.11
+version: 0.12
 date: 2026-09-23
 owner: Product Owner (accountable); maintained by the programme
 applies-to: execution actions arising from GOV-PO-DEC and GOV-REVIEW
@@ -25,7 +25,7 @@ Every action arising from the delegated Product Owner record and the review reso
 | A-08 | Complete Programme P1 evidence collection (R1–R6) | Programme (TL review at appointment) | Inside P1–P2 envelope (by Week 8) | `research-register.md` statuses and citations | IN-PROGRESS — R1 largely evidenced; R2 domain walk + dispositions done (R2-F1…F5 → D15/D10/D11/D17 + docs); R5 volume model pass 1 (R5-F1 corrected); R3 FIRS/CBN access-blocked; R4 deferred; RS-502 + R2 per-capability depth remain (TL appointment) |
 | A-09 | Freeze the pilot capability set | Product Owner | **DONE 23 Sep 2026** — freeze effective with conditional completion | Capability map v0.3 (204/76/3); GOV-PO-DEC §G | **DONE** |
 | A-10 | Discharge or extend interim arrangements at the sitting | Real Product Owner | At P0 sitting | Sitting minute; GOV-APPOINT status update | OPEN — human |
-| A-11 | Execute the Programme P2 current-state audit per the plan | Technical Lead (at appointment); interim: Programme | Entry 23 Sep 2026 (conditional completion) | Workspace `/home/suiteflow/suiteflow-audit`: passes 1–2 complete (204/204 mapped; **40 findings — 1 critical, 18 high**); pass 3 complete for the app suite (**50 modules / 399 tests: 381 OK, 16 errors, 2 failures**; golden day passed); failing modules → F-FUNC-01/03/04/05/06 (incl. **F-FUNC-04 High: invalid invoice naming series from company name with `&`**); contract tests pending OB-09; passes 4–10 next | **IN-PROGRESS** |
+| A-11 | Execute the Programme P2 current-state audit per the plan | Technical Lead (at appointment); interim: Programme | P2 complete 24 Sep 2026 (pending TL review) | Workspace `/home/suiteflow/suiteflow-audit`: passes 1–2 complete (204/204 mapped; **40 findings — 1 critical, 18 high**); **all passes 1–10 complete 24 Sep** — 204/204 classified; app suite 399 tests (381 OK); **79 findings (2 critical, 34 high)**; audit report issued (`report.md`, pending TL review); obligations OB-01…OB-14 tracked | **COMPLETE — pending TL review** |
 
 **One-page human checklist:** `product-owner-checklist.md`.
 
@@ -44,3 +44,4 @@ Every action arising from the delegated Product Owner record and the review reso
 | 0.9 | 2026-09-24 | P2 pass 2 complete: 204/204 mapped, 40 findings; pass 3 next | PROPOSED |
 | 0.10 | 2026-09-24 | P2 pass 3 partial: 14 modules re-run (76 OK); F-FUNC-01 baseline EOD suite red; F-FO-06 resolved | PROPOSED |
 | 0.11 | 2026-09-24 | P2 pass 3 complete (app suite): 50 modules / 399 tests; 5 failing modules recorded; golden day passed | PROPOSED |
+| 0.12 | 2026-09-24 | P2 passes 4–10 complete; audit report issued (79 findings); P3 item A-12 added | PROPOSED |
