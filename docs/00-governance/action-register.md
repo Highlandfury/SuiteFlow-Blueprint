@@ -2,7 +2,7 @@
 doc-id: GOV-ACTIONS
 title: Action Register — Human and Programme Actions
 status: PROPOSED
-version: 0.9
+version: 0.10
 date: 2026-09-23
 owner: Product Owner (accountable); maintained by the programme
 applies-to: execution actions arising from GOV-PO-DEC and GOV-REVIEW
@@ -25,7 +25,7 @@ Every action arising from the delegated Product Owner record and the review reso
 | A-08 | Complete Programme P1 evidence collection (R1–R6) | Programme (TL review at appointment) | Inside P1–P2 envelope (by Week 8) | `research-register.md` statuses and citations | IN-PROGRESS — R1 largely evidenced; R2 domain walk + dispositions done (R2-F1…F5 → D15/D10/D11/D17 + docs); R5 volume model pass 1 (R5-F1 corrected); R3 FIRS/CBN access-blocked; R4 deferred; RS-502 + R2 per-capability depth remain (TL appointment) |
 | A-09 | Freeze the pilot capability set | Product Owner | **DONE 23 Sep 2026** — freeze effective with conditional completion | Capability map v0.3 (204/76/3); GOV-PO-DEC §G | **DONE** |
 | A-10 | Discharge or extend interim arrangements at the sitting | Real Product Owner | At P0 sitting | Sitting minute; GOV-APPOINT status update | OPEN — human |
-| A-11 | Execute the Programme P2 current-state audit per the plan | Technical Lead (at appointment); interim: Programme | Entry 23 Sep 2026 (conditional completion) | Workspace `/home/suiteflow/suiteflow-audit`: passes 1–2 complete (204/204 capabilities mapped; 82 verified / 95 partial / 7 defective / 20 missing; **40 findings — 1 critical, 18 high**); pass 3 next (baseline suite re-run per OB-08) | **IN-PROGRESS** |
+| A-11 | Execute the Programme P2 current-state audit per the plan | Technical Lead (at appointment); interim: Programme | Entry 23 Sep 2026 (conditional completion) | Workspace `/home/suiteflow/suiteflow-audit`: passes 1–2 complete (204/204 mapped; **40 findings — 1 critical, 18 high**); pass 3 partial (14 modules re-run at baseline: **76 tests OK**; EOD suite red at baseline — F-FUNC-01, stale patch target since `0dcc36e`; F-FO-06 resolved); golden-day + full-app sweep next | **IN-PROGRESS** |
 
 **One-page human checklist:** `product-owner-checklist.md`.
 
@@ -42,3 +42,4 @@ Every action arising from the delegated Product Owner record and the review reso
 | 0.7 | 2026-09-23 | Human-action checklist published and cross-linked | PROPOSED |
 | 0.8 | 2026-09-23 | P0 conditional completion: human actions deferred (tracked); freeze DONE; P2 in progress | PROPOSED |
 | 0.9 | 2026-09-24 | P2 pass 2 complete: 204/204 mapped, 40 findings; pass 3 next | PROPOSED |
+| 0.10 | 2026-09-24 | P2 pass 3 partial: 14 modules re-run (76 OK); F-FUNC-01 baseline EOD suite red; F-FO-06 resolved | PROPOSED |
